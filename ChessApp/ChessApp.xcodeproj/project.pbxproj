@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		333031022ADB1611004A0976 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031012ADB1611004A0976 /* Board.swift */; };
 		333031042ADB1904004A0976 /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031032ADB1904004A0976 /* PieceColor.swift */; };
+		333031062ADB197D004A0976 /* Board+Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031052ADB197D004A0976 /* Board+Rank.swift */; };
 		333DAEF62AD9820000F821EC /* ChessAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DAEF52AD9820000F821EC /* ChessAppApp.swift */; };
 		333DAEF82AD9820000F821EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DAEF72AD9820000F821EC /* ContentView.swift */; };
 		333DAEFA2AD9820200F821EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 333DAEF92AD9820200F821EC /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		333031012ADB1611004A0976 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		333031032ADB1904004A0976 /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
+		333031052ADB197D004A0976 /* Board+Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Rank.swift"; sourceTree = "<group>"; };
 		333DAEF22AD9820000F821EC /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333DAEF52AD9820000F821EC /* ChessAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppApp.swift; sourceTree = "<group>"; };
 		333DAEF72AD9820000F821EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				333DAEF52AD9820000F821EC /* ChessAppApp.swift */,
 				333031012ADB1611004A0976 /* Board.swift */,
+				333031052ADB197D004A0976 /* Board+Rank.swift */,
 				333031032ADB1904004A0976 /* PieceColor.swift */,
 				333DAEF72AD9820000F821EC /* ContentView.swift */,
 				333DAEF92AD9820200F821EC /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333031062ADB197D004A0976 /* Board+Rank.swift in Sources */,
 				333031042ADB1904004A0976 /* PieceColor.swift in Sources */,
 				333DAEF82AD9820000F821EC /* ContentView.swift in Sources */,
 				333DAEF62AD9820000F821EC /* ChessAppApp.swift in Sources */,
