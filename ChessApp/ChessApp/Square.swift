@@ -6,5 +6,13 @@
 //
 
 struct Square {
+    private var piece: Piece?
     
+    init(piece: Piece? = nil) {
+        self.piece = piece
+    }
+    
+    func isEmpty() -> Bool {
+        self.piece == nil
+    }
 }
