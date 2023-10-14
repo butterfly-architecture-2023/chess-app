@@ -11,6 +11,7 @@
 		333031042ADB1904004A0976 /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031032ADB1904004A0976 /* PieceColor.swift */; };
 		333031062ADB197D004A0976 /* Board+Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031052ADB197D004A0976 /* Board+Rank.swift */; };
 		333031082ADB1A29004A0976 /* Board+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031072ADB1A29004A0976 /* Board+File.swift */; };
+		3330310E2ADB2DFD004A0976 /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3330310D2ADB2DFD004A0976 /* Square.swift */; };
 		333DAEF62AD9820000F821EC /* ChessAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DAEF52AD9820000F821EC /* ChessAppApp.swift */; };
 		333DAEF82AD9820000F821EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DAEF72AD9820000F821EC /* ContentView.swift */; };
 		333DAEFA2AD9820200F821EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 333DAEF92AD9820200F821EC /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		333031032ADB1904004A0976 /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
 		333031052ADB197D004A0976 /* Board+Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Rank.swift"; sourceTree = "<group>"; };
 		333031072ADB1A29004A0976 /* Board+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+File.swift"; sourceTree = "<group>"; };
+		3330310D2ADB2DFD004A0976 /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		333DAEF22AD9820000F821EC /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333DAEF52AD9820000F821EC /* ChessAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppApp.swift; sourceTree = "<group>"; };
 		333DAEF72AD9820000F821EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				333031072ADB1A29004A0976 /* Board+File.swift */,
 				333031032ADB1904004A0976 /* PieceColor.swift */,
 				333DAEF72AD9820000F821EC /* ContentView.swift */,
+				3330310D2ADB2DFD004A0976 /* Square.swift */,
 				333DAEF92AD9820200F821EC /* Assets.xcassets */,
 				333DAEFB2AD9820200F821EC /* Preview Content */,
 			);
@@ -272,6 +275,7 @@
 				333031062ADB197D004A0976 /* Board+Rank.swift in Sources */,
 				333031042ADB1904004A0976 /* PieceColor.swift in Sources */,
 				333DAEF82AD9820000F821EC /* ContentView.swift in Sources */,
+				3330310E2ADB2DFD004A0976 /* Square.swift in Sources */,
 				333DAEF62AD9820000F821EC /* ChessAppApp.swift in Sources */,
 				333031082ADB1A29004A0976 /* Board+File.swift in Sources */,
 				333031022ADB1611004A0976 /* Board.swift in Sources */,
