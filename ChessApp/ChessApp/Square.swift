@@ -6,9 +6,13 @@
 //
 
 struct Square {
+    private let rank: Board.Rank
+    private let file: Board.File
     private var piece: Piece?
     
-    init(piece: Piece? = nil) {
+    init(rank: Board.Rank, file: Board.File, piece: Piece? = nil) {
+        self.rank = rank
+        self.file = file
         self.piece = piece
     }
     

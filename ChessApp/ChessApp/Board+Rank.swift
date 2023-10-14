@@ -6,7 +6,7 @@
 //
 
 extension Board {
-    enum Rank {
+    enum Rank: CaseIterable {
         case one
         case two
         case three

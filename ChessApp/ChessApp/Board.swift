@@ -6,5 +6,9 @@
 //
 
 struct Board {
+    private var squares: [Square]
     
+    init(squares: [Square] = BoardMaker.make()) {
+        self.squares = squares
+    }
 }

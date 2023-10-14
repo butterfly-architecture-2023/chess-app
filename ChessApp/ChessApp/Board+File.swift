@@ -6,7 +6,7 @@
 //
 
 extension Board {
-    enum File {
+    enum File: CaseIterable {
         case a
         case b
         case c
