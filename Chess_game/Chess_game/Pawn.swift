@@ -9,7 +9,7 @@ import Foundation
 
 protocol Pawn {
     var type: PawnType { get }
-    var isAlive: Bool { get }
+    var isAlive: Bool { get set }
     var position: BoardPosition { get set }
     init(position: BoardPosition)
 }
