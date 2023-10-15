@@ -13,6 +13,13 @@
 		1B20D8F82ADBB6A50057C0CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B20D8F72ADBB6A50057C0CD /* Preview Assets.xcassets */; };
 		1B20D9022ADBB6A50057C0CD /* ChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9012ADBB6A50057C0CD /* ChessAppTests.swift */; };
 		1B20D91B2ADBBD040057C0CD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1B20D91A2ADBBD040057C0CD /* README.md */; };
+		1B20D91D2ADBCAE40057C0CD /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91C2ADBCAE40057C0CD /* Board.swift */; };
+		1B20D91F2ADBCAF00057C0CD /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91E2ADBCAF00057C0CD /* Pawn.swift */; };
+		1B20D9212ADBDB250057C0CD /* RowColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9202ADBDB250057C0CD /* RowColumn.swift */; };
+		1B20D9232ADBDB340057C0CD /* PieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9222ADBDB340057C0CD /* PieceType.swift */; };
+		1B20D9252ADBDB390057C0CD /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9242ADBDB390057C0CD /* PieceColor.swift */; };
+		1B20D9272ADBDB420057C0CD /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9262ADBDB420057C0CD /* MoveDirection.swift */; };
+		1B20D9292ADBDB470057C0CD /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9282ADBDB470057C0CD /* Piece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,13 @@
 		1B20D8FD2ADBB6A50057C0CD /* ChessAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B20D9012ADBB6A50057C0CD /* ChessAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppTests.swift; sourceTree = "<group>"; };
 		1B20D91A2ADBBD040057C0CD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1B20D91C2ADBCAE40057C0CD /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		1B20D91E2ADBCAF00057C0CD /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		1B20D9202ADBDB250057C0CD /* RowColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowColumn.swift; sourceTree = "<group>"; };
+		1B20D9222ADBDB340057C0CD /* PieceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceType.swift; sourceTree = "<group>"; };
+		1B20D9242ADBDB390057C0CD /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
+		1B20D9262ADBDB420057C0CD /* MoveDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDirection.swift; sourceTree = "<group>"; };
+		1B20D9282ADBDB470057C0CD /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +92,13 @@
 			children = (
 				1B20D8F02ADBB6A40057C0CD /* ChessAppApp.swift */,
 				1B20D8F22ADBB6A40057C0CD /* ContentView.swift */,
+				1B20D91C2ADBCAE40057C0CD /* Board.swift */,
+				1B20D91E2ADBCAF00057C0CD /* Pawn.swift */,
+				1B20D9202ADBDB250057C0CD /* RowColumn.swift */,
+				1B20D9222ADBDB340057C0CD /* PieceType.swift */,
+				1B20D9242ADBDB390057C0CD /* PieceColor.swift */,
+				1B20D9262ADBDB420057C0CD /* MoveDirection.swift */,
+				1B20D9282ADBDB470057C0CD /* Piece.swift */,
 				1B20D8F42ADBB6A50057C0CD /* Assets.xcassets */,
 				1B20D8F62ADBB6A50057C0CD /* Preview Content */,
 			);
@@ -202,7 +223,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B20D8F32ADBB6A40057C0CD /* ContentView.swift in Sources */,
+				1B20D9212ADBDB250057C0CD /* RowColumn.swift in Sources */,
+				1B20D9252ADBDB390057C0CD /* PieceColor.swift in Sources */,
 				1B20D8F12ADBB6A40057C0CD /* ChessAppApp.swift in Sources */,
+				1B20D91D2ADBCAE40057C0CD /* Board.swift in Sources */,
+				1B20D9292ADBDB470057C0CD /* Piece.swift in Sources */,
+				1B20D9232ADBDB340057C0CD /* PieceType.swift in Sources */,
+				1B20D9272ADBDB420057C0CD /* MoveDirection.swift in Sources */,
+				1B20D91F2ADBCAF00057C0CD /* Pawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
