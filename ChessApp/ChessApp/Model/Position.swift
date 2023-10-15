@@ -10,30 +10,32 @@ import Foundation
 struct Position: Hashable {
     struct Rank: Hashable {
         static let range: Range<UInt8> = 0..<8
-        private(set) var value: UInt8
+        private(set) var rawValue: UInt8
         
         init?(_ value: UInt8) {
             guard Self.range ~= value else { return nil }
-            self.value = value
+            self.rawValue = value
         }
         
         init?(_ value: Character) {
-            guard let value = value.asciiValue else { return nil }
+            guard let value = value.asciiValue,
+                  value >= 49 else { return nil }
             self.init(value - 49) // value - "1"
         }
     }
     
     struct File: Hashable {
         static let range: Range<UInt8> = 0..<8
-        private(set) var value: UInt8
+        private(set) var rawValue: UInt8
         
         init?(_ value: UInt8) {
             guard Self.range ~= value else { return nil }
-            self.value = value
+            self.rawValue = value
         }
         
         init?(_ value: Character) {
-            guard let value = value.asciiValue else { return nil }
+            guard let value = value.asciiValue,
+                  value >= 65 else { return nil }
             self.init(value - 65) // value - "A"
         }
     }
@@ -47,7 +49,7 @@ struct Position: Hashable {
     }
     
     init?(_ value: String) {
-        let value = Array(value)
+        let value = Array(value.uppercased())
         guard value.count == 2,
               let file = File(value[0]),
               let rank = Rank(value[1]) else { return nil }

@@ -13,7 +13,7 @@ struct Pawn: Piece {
     
     var availableMovePositions: Set<Position> {
         let stride = color == .black ? 1 : -1
-        let expectedY = Int(position.rank.value) + stride
+        let expectedY = Int(position.rank.rawValue) + stride
         guard expectedY > 0,
               let rank = Position.Rank(UInt8(expectedY)) else { return [] }
         return [Position(file: position.file, rank: rank)]
