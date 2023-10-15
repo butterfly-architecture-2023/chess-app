@@ -59,6 +59,30 @@ final class BoardTests: XCTestCase {
         XCTAssertFalse(result)
     }
     
+    func testA7에_있는_백색Pawn을_A5으로_옮길_수_없다() {
+        var board = Board(pieces: [
+            Pawn(color: .white, position: "A7")
+        ])
+        let result = board.move(from: "A7", to: "A5")
+        XCTAssertFalse(result)
+    }
+    
+    func testA7에_있는_백색Pawn을_A8으로_옮길_수_없다() {
+        var board = Board(pieces: [
+            Pawn(color: .white, position: "A7")
+        ])
+        let result = board.move(from: "A7", to: "A8")
+        XCTAssertFalse(result)
+    }
+    
+    func testA7에_있는_흑색Pawn을_A6으로_옮길_수_없다() {
+        var board = Board(pieces: [
+            Pawn(color: .black, position: "A7")
+        ])
+        let result = board.move(from: "A7", to: "A6")
+        XCTAssertFalse(result)
+    }
+    
     private var initialPieces: [Piece] {
         return (0..<8).flatMap { (i: Int) in
             let file = String(UnicodeScalar(65 + i)!) // "A" + i
