@@ -7,15 +7,16 @@
 
 import Foundation
 
-struct Pawn {
+final class Pawn {
+    private let type: PawnType
     var isAlive: Bool = true
-    let type: PawnType
+    var position: BoardPosition
 
-    init(type: PawnType) {
+    init(type: PawnType, position: BoardPosition) {
         self.type = type
+        self.position = position
     }
 }
-
 
 enum PawnType {
     case black
