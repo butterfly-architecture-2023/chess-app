@@ -83,6 +83,12 @@ final class BoardTests: XCTestCase {
         XCTAssertFalse(result)
     }
     
+    func testA7에_말이_없을때_A6으로_옮길_수_없다() {
+        var board = Board(pieces: [])
+        let result = board.move(from: "A7", to: "A6")
+        XCTAssertFalse(result)
+    }
+    
     func test초기상태의_board를_display할_수_있다() {
         let board = Board(pieces: initialPieces)
         let expect = """
@@ -121,11 +127,5 @@ final class BoardTests: XCTestCase {
                 Pawn(color: .white, position: .init(stringLiteral: "\(file)7"))
             ].compactMap { $0 }
         }
-    }
-}
-
-extension Position: ExpressibleByStringLiteral {
-    public init(stringLiteral value: StringLiteralType) {
-        self.init(value)!
     }
 }
