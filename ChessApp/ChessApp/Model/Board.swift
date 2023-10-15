@@ -10,7 +10,7 @@ import Foundation
 struct Board {
     private(set) var pieces: [Position: Piece] = [:]
     
-    init(pieces: [Piece]) {
+    init(pieces: [Piece] = Self.initialPieces) {
         let piecePairs = pieces.map { ($0.position, $0) }
         self.pieces = [Position: Piece](uniqueKeysWithValues: piecePairs)
     }
@@ -60,5 +60,21 @@ struct Board {
                 fromPiece.availableMovePositions.contains(to) else { return false }
         guard let toPiece = pieces[to] else { return true }
         return fromPiece.color != toPiece.color
+    }
+}
+
+extension Board {
+    private static var initialPieces: [Piece] {
+        (0..<8).flatMap { (i: Int) in
+            let file = String(UnicodeScalar(65 + i)!) // "A" + i
+            let pawn = { (color: Color, position: String) -> Pawn? in
+                guard let position = Position(position) else { return nil }
+                return Pawn(color: color, position: position)
+            }
+            return [
+                pawn(.black, "\(file)2"),
+                pawn(.white, "\(file)7")
+            ].compactMap { $0 }
+        }
     }
 }

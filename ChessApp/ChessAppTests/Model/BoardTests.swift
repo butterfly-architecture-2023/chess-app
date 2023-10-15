@@ -10,7 +10,7 @@ import XCTest
 
 final class BoardTests: XCTestCase {
     func test초기상태의_검정색_점수는_8이다() {
-        let board = Board(pieces: initialPieces)
+        let board = Board()
         
         let whiteScore = board.score(for: .white)
         let blackScore = board.score(for: .black)
@@ -90,7 +90,7 @@ final class BoardTests: XCTestCase {
     }
     
     func test초기상태의_board를_display할_수_있다() {
-        let board = Board(pieces: initialPieces)
+        let board = Board()
         let expect = """
 ........
 ♟♟♟♟♟♟♟♟
@@ -117,15 +117,5 @@ final class BoardTests: XCTestCase {
 ........
 """
         XCTAssertEqual(board.display(), expect)
-    }
-    
-    private var initialPieces: [Piece] {
-        return (0..<8).flatMap { (i: Int) in
-            let file = String(UnicodeScalar(65 + i)!) // "A" + i
-            return [
-                Pawn(color: .black, position: .init(stringLiteral: "\(file)2")),
-                Pawn(color: .white, position: .init(stringLiteral: "\(file)7"))
-            ].compactMap { $0 }
-        }
     }
 }
