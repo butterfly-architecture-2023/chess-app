@@ -76,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90D2B3312ADC3BAF00C34FA0 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				90EE6FA02ADAE54000C1E8EE /* Main.storyboard */,
+				90EE6FA52ADAE54100C1E8EE /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		90EE6F8E2ADAE54000C1E8EE = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +111,8 @@
 				90EE6F9A2ADAE54000C1E8EE /* AppDelegate.swift */,
 				90EE6F9C2ADAE54000C1E8EE /* SceneDelegate.swift */,
 				90EE6F9E2ADAE54000C1E8EE /* ViewController.swift */,
-				90EE6FA02ADAE54000C1E8EE /* Main.storyboard */,
+				90D2B3312ADC3BAF00C34FA0 /* Storyboard */,
 				90EE6FA32ADAE54100C1E8EE /* Assets.xcassets */,
-				90EE6FA52ADAE54100C1E8EE /* LaunchScreen.storyboard */,
 				90EE6FA82ADAE54100C1E8EE /* Info.plist */,
 			);
 			path = ChessApp;
