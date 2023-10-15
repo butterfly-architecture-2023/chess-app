@@ -40,8 +40,8 @@ struct Board {
     }
     
     func display() -> String {
-        (0..<8).map { i in
-            (0..<8).map { j in
+        Position.Rank.range.map { i in
+            Position.File.range.map { j in
                 guard let rank = Position.Rank(UInt8(i)),
                       let file = Position.File(UInt8(j)),
                       let piece = pieces[Position(file: file, rank: rank)] else { return "." }
@@ -65,8 +65,8 @@ struct Board {
 
 extension Board {
     private static var initialPieces: [Piece] {
-        (0..<8).flatMap { (i: Int) in
-            let file = String(UnicodeScalar(65 + i)!) // "A" + i
+        Position.File.range.flatMap { (i: UInt8) in
+            let file = String(UnicodeScalar(65 + i)) // "A" + i
             let pawn = { (color: Color, position: String) -> Pawn? in
                 guard let position = Position(position) else { return nil }
                 return Pawn(color: color, position: position)

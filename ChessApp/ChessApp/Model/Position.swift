@@ -9,10 +9,11 @@ import Foundation
 
 struct Position: Hashable {
     struct Rank: Hashable {
+        static let range: Range<UInt8> = 0..<8
         private(set) var value: UInt8
         
         init?(_ value: UInt8) {
-            guard 0..<8 ~= value else { return nil }
+            guard Self.range ~= value else { return nil }
             self.value = value
         }
         
@@ -23,10 +24,11 @@ struct Position: Hashable {
     }
     
     struct File: Hashable {
+        static let range: Range<UInt8> = 0..<8
         private(set) var value: UInt8
         
         init?(_ value: UInt8) {
-            guard 0..<8 ~= value else { return nil }
+            guard Self.range ~= value else { return nil }
             self.value = value
         }
         
