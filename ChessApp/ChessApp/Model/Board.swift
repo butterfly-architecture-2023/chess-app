@@ -8,18 +8,32 @@
 import Foundation
 
 struct Board {
-    private(set) var pieces: [Piece] = []
+    private(set) var pieces: [Position: Piece] = [:]
     
     init(pieces: [Piece]) {
-        self.pieces = pieces
+        let piecePairs = pieces.map { ($0.position, $0) }
+        self.pieces = [Position: Piece](uniqueKeysWithValues: piecePairs)
     }
     
     func score(for color: Color) -> Int {
-        pieces.filter { $0.color == color }.count
+        pieces.values
+            .filter { $0.color == color }
+            .count
     }
     
-    func move(from: Position, to: Position) -> Bool {
-        // TODO
-        false
+    mutating func move(from: Position, to: Position) -> Bool {
+        guard canMove(from: from, to: to) else {
+            return false
+        }
+        
+        pieces[to] = pieces[from]
+        pieces[from] = nil
+        return true
+    }
+    
+    private func canMove(from: Position, to: Position) -> Bool {
+        guard let fromPiece = pieces[from] else { return false }
+        guard let toPiece = pieces[to] else { return true }
+        return fromPiece.color != toPiece.color
     }
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Position {
-    struct Rank {
+struct Position: Hashable {
+    struct Rank: Hashable {
         private(set) var value: UInt8
         
         init?(_ value: UInt8) {
@@ -22,7 +22,7 @@ struct Position {
         }
     }
     
-    struct File {
+    struct File: Hashable {
         private(set) var value: UInt8
         
         init?(_ value: UInt8) {
