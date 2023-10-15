@@ -18,7 +18,7 @@ struct Position: Hashable {
         
         init?(_ value: Character) {
             guard let value = value.asciiValue else { return nil }
-            self.init(value - 50) // value - "1"
+            self.init(value - 49) // value - "1"
         }
     }
     

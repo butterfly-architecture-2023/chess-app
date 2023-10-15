@@ -39,6 +39,22 @@ struct Board {
         return true
     }
     
+    func display() -> String {
+        (0..<8).map { i in
+            (0..<8).map { j in
+                guard let rank = Position.Rank(UInt8(i)),
+                      let file = Position.File(UInt8(j)),
+                      let piece = pieces[Position(file: file, rank: rank)] else { return "." }
+                switch piece {
+                case is Pawn:
+                    return piece.color == .black ? "♟" : "♙"
+                default:
+                    return "."
+                }
+            }.joined()
+        }.joined(separator: "\n")
+    }
+    
     private func canMove(from: Position, to: Position) -> Bool {
         guard let fromPiece = pieces[from],
                 fromPiece.availableMovePositions.contains(to) else { return false }
