@@ -18,7 +18,15 @@ struct Board {
     func score(for color: Color) -> Int {
         pieces.values
             .filter { $0.color == color }
-            .count
+            .map {
+                switch $0 {
+                case is Pawn:
+                    return 1
+                default:
+                    return 0
+                }
+            }
+            .reduce(0, +)
     }
     
     mutating func move(from: Position, to: Position) -> Bool {
