@@ -32,7 +32,8 @@ struct Board {
     }
     
     private func canMove(from: Position, to: Position) -> Bool {
-        guard let fromPiece = pieces[from] else { return false }
+        guard let fromPiece = pieces[from],
+                fromPiece.availableMovePositions.contains(to) else { return false }
         guard let toPiece = pieces[to] else { return true }
         return fromPiece.color != toPiece.color
     }
