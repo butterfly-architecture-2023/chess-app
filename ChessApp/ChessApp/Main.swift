@@ -11,11 +11,13 @@ func main() {
     // MARK: - 체스 시작 초기화
     // "체스 보드를 초기화했습니다." 출력
     // 8 x 8 board 초기화 (1,2-rank는 흑색 체스말이, 7,8-rank는 백색 체스말이 위치)
+    let printManager = PrintManager()
     
     var board: Board = Board(size: 8)
     
     // 초기 체스 보드 출력
-    board.display()
+    printManager.showChessBoard(board.display())
+    
     
     // "명령을 입력하세요>" 출력
     
@@ -32,7 +34,7 @@ func main() {
     
     // MARK: - [형식, 출력] 수정된 board 출력
     // 상대편 말을 잡는 경우 수정된 board 출력
-    board.display()
+    printManager.showChessBoard(board.display())
 }
 
 main()

@@ -7,10 +7,11 @@
 
 import Foundation
 
+typealias ChessPieceGroup = [[PawnType]]
 
 struct Board {
     private var size: Int = 0
-    private(set) lazy var chessBoard: [[PawnType]] = Array(repeating: Array(repeating: .none, count: size), count: size)
+    private(set) lazy var chessBoard: ChessPieceGroup = Array(repeating: Array(repeating: .none, count: size), count: size)
     private var chessPoint: ChessPoint = ChessPoint(black: 0, white: 0)
     
     init(size: Int) {
@@ -36,15 +37,10 @@ struct Board {
         return chessPoint
     }
     
-    // Board는 모든 말의 위치를 알 수 있고, display() 함수는 1-rank부터 8-rank까지 rank 문자열 배열로 보드 위에 체스말을 리턴
-    mutating func display() {
-        print("---")
-        for row in chessBoard {
-            for value in row {
-                print(value.rawValue, terminator: " ")
-            }
-            print()
-        }
+    
+    // MARK: - 체스말 리턴 (1-rank부터 8-rank까지 rank 문자열 배열)
+    mutating func display() -> ChessPieceGroup {
+        return chessBoard
     }
     
     // 말을 옮길 수 있으면 true, 옮길 수 없으면 false를 리턴한다.
@@ -52,7 +48,8 @@ struct Board {
         return false
     }
     
-    // 특정 말을 옮기는 메소드는 Board에서 제공
+    
+    // MARK: - 특정 체스말 이동 ([0]: current position, [1]: update position)
     mutating func updateBoard(_ positionArray: [Position]) {
         guard let currentPosition = positionArray.first,
               let updatePosition = positionArray.last else { return }
