@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		45C18FB32ADD13C300B05FFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FB22ADD13C300B05FFE /* main.swift */; };
+		45C18FBE2ADD180000B05FFE /* PawnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FBD2ADD180000B05FFE /* PawnType.swift */; };
+		45C18FC02ADD181700B05FFE /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FBF2ADD181700B05FFE /* Position.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		45C18FAF2ADD13C300B05FFE /* ChessApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChessApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C18FB22ADD13C300B05FFE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		45C18FBD2ADD180000B05FFE /* PawnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnType.swift; sourceTree = "<group>"; };
+		45C18FBF2ADD181700B05FFE /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				45C18FB22ADD13C300B05FFE /* main.swift */,
+				45C18FBD2ADD180000B05FFE /* PawnType.swift */,
+				45C18FBF2ADD181700B05FFE /* Position.swift */,
 			);
 			path = ChessApp;
 			sourceTree = "<group>";
@@ -121,6 +127,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				45C18FB32ADD13C300B05FFE /* main.swift in Sources */,
+				45C18FBE2ADD180000B05FFE /* PawnType.swift in Sources */,
+				45C18FC02ADD181700B05FFE /* Position.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
