@@ -10,18 +10,19 @@ import Foundation
 struct Pawn: Piece {
 
     var color: Color
-
-    static var maxCount: Int = 8
-
-    // 출력할 pawn 텍스트
-    func getPrintString() -> String {
-        switch color {
-        case .white:
-            return "U+2659"
-        case .black:
-            return "U+265F"
+    
+    var displayText: String {
+        get {
+            switch color {
+            case .white:
+                return "\u{2659}"
+            case .black:
+                return "\u{265F}"
+            }
         }
     }
+
+    static var maxCount: Int = 8
     
     func canMoveRank(from: Position.Rank, to: Position.Rank) -> Bool {
         var canMove: Bool = false
