@@ -14,10 +14,10 @@ struct Board {
         initGrid()
     }
     
-    func getStore() -> Int {
-        var store: Int = 0
+    func getScore() -> Int {
+        var score: Int = 0
         
-        return store
+        return score
     }
     
     func display() -> String {
