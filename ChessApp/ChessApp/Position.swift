@@ -16,8 +16,9 @@ class Position {
         self.file = file
     }
     
-    convenience init(rank: Character, file: Int) {
-        let rankNumber: Int = Int((rank.asciiValue ?? 0) - 65)
-        self.init(rank: rankNumber, file: file)
+    convenience init(rank: String, file: String) {
+        let rankNumber: Int = Int(rank) ?? 0
+        let fileNumber: Int = Int((Character(file).asciiValue ?? 0) - 65)
+        self.init(rank: rankNumber, file: fileNumber)
     }
 }
