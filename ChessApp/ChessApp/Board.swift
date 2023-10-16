@@ -13,6 +13,7 @@ struct Board {
     private var size: Int = 0
     private(set) lazy var chessBoard: ChessPieceGroup = Array(repeating: Array(repeating: .none, count: size), count: size)
     private var chessPoint: ChessPoint = ChessPoint(black: 0, white: 0)
+    private var gameTurn: PawnType = .white
     
     init(size: Int) {
         self.size = size
@@ -56,4 +57,15 @@ struct Board {
         chessBoard[updatePosition.rank-1][updatePosition.file] = chessBoard[currentPosition.rank-1][currentPosition.file]
         chessBoard[currentPosition.rank-1][currentPosition.file] = .none
     }
-}
+    
+    mutating func checkGameTurn(_ positionArray: [Position]) throws {
+        guard let currentPosition = positionArray.first else { return }
+        guard getPawnType(by: currentPosition) == gameTurn else {
+            throw ErrorType.chessTypeError(pawnType: gameTurn)
+        }
+    }
+    
+    private mutating func getPawnType(by position: Position) -> PawnType {
+        return chessBoard[position.rank][position.file]
+    }
+ }

@@ -25,8 +25,15 @@ func main() {
     // MARK: - [입력, 검증] 체스 이동할 Pawn 현재 위치 & 이동할 위치 입력 받기 (ex, A2->A3)
     // 형식에 맞지 않으면 다시 입력
     // 백색부터 시작 -> 처음 입력된 pawn 흑색이면 "백색 체스말의 차례입니다." 출력
-    let inputManager = InputManager(inputText: "A2->A3")
-    
+    var inputManager = InputManager(inputText: "A2->A3")
+    do {
+        try inputManager.checkInputFormat()
+        try board.checkGameTurn(inputManager.positionInfo)
+    } catch let error as ErrorType {
+        print(error.showMessage())
+    } catch {
+        print(error)
+    }
     
     // MARK: - [처리/계산] board 저장값 수정
     board.updateBoard(inputManager.positionInfo)

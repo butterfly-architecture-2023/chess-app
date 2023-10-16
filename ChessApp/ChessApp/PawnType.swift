@@ -11,4 +11,15 @@ enum PawnType: String {
     case black = "♟"
     case white = "♙"
     case none = "."
+    
+    func korean() -> String {
+        switch self {
+        case .black:
+            return "흑"
+        case .white:
+            return "백"
+        case .none:
+            return ""
+        }
+    }
 }

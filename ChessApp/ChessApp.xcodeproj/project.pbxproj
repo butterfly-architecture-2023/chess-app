@@ -14,6 +14,7 @@
 		45C18FCC2ADD389F00B05FFE /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FCB2ADD389F00B05FFE /* Board.swift */; };
 		45C18FCE2ADD3C1300B05FFE /* ChessPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FCD2ADD3C1300B05FFE /* ChessPoint.swift */; };
 		45C18FD12ADD3E9500B05FFE /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FD02ADD3E9500B05FFE /* InputManager.swift */; };
+		45C18FD32ADD4D8D00B05FFE /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FD22ADD4D8D00B05FFE /* ErrorType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		45C18FCB2ADD389F00B05FFE /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		45C18FCD2ADD3C1300B05FFE /* ChessPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPoint.swift; sourceTree = "<group>"; };
 		45C18FD02ADD3E9500B05FFE /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
+		45C18FD22ADD4D8D00B05FFE /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				45C18FCB2ADD389F00B05FFE /* Board.swift */,
 				45C18FCD2ADD3C1300B05FFE /* ChessPoint.swift */,
 				45C18FD02ADD3E9500B05FFE /* InputManager.swift */,
+				45C18FD22ADD4D8D00B05FFE /* ErrorType.swift */,
 			);
 			path = ChessApp;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				45C18FD12ADD3E9500B05FFE /* InputManager.swift in Sources */,
 				45C18FCE2ADD3C1300B05FFE /* ChessPoint.swift in Sources */,
 				45C18FC02ADD181700B05FFE /* Position.swift in Sources */,
+				45C18FD32ADD4D8D00B05FFE /* ErrorType.swift in Sources */,
 				45C18FC42ADD2B6300B05FFE /* PrintManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,22 +13,30 @@ struct InputManager {
     
     init(inputText: String) {
         self.inputText = inputText
-        checkInputFormat()
     }
     
     // MARK: - 입력값 분리 ("->"기준)
-    private mutating func checkInputFormat() {
+    mutating func checkInputFormat() throws {
         let inputArray = inputText.split(separator: "->")
-        let currentPosition = String(inputArray.first ?? "")
-        let updatePosition = String(inputArray.last ?? "")
+        let currentText = String(inputArray.first ?? "")
+        let updateText = String(inputArray.last ?? "")
         
-        positionInfo = [makeTextToPosition(currentPosition), makeTextToPosition(updatePosition)]
+        do {
+            let currentPosition = try makeTextToPosition(currentText)
+            let updatePosition = try makeTextToPosition(updateText)
+            positionInfo = [currentPosition, updatePosition]
+        } catch {
+            throw ErrorType.invalidInputText
+        }
     }
     
     
     // MARK: - Text -> Position type 변환
-    private func makeTextToPosition(_ textPosition: String) -> Position {
-        guard let col = textPosition.first, let row = textPosition.last else { return Position(rank: 0, file: 0) }
-        return Position(rank: String(row), file: String(col))
+    private func makeTextToPosition(_ textPosition: String) throws -> Position {
+        if textPosition.count > 2 { throw ErrorType.invalidInputText }
+        if let col = textPosition.first, let row = textPosition.last {
+            return Position(rank: String(row), file: String(col))
+        }
+        return Position(rank: 0, file: 0)
     }
 }
