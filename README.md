@@ -73,5 +73,7 @@
   - 이동이 가능할 것으로 예상되는 MoveDirection 이 어떤 Pawn 을 이동하는지 여부를 통신 기반 테스트로 검증한다.
 2. Pawn
   - 이동방향 입력에 대해 정확한 결과를 반환하는지 출력 기반 테스트로 검증한다.
-3. PieceType
+3. Row, Column
+  - Board 의 `getPosition(from:String)` 을 통해 테스트
+4. PieceType
   - 자체적으로 만든 Mock 객체가 Pawn 과 똑같이 동작하는지 출력 기반 테스트로 검증한다.

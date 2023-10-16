@@ -78,6 +78,25 @@ class Board {
       hasher.combine(column)
     }
   }
+  
+  func getPosition(from input: String) throws -> Position {
+    guard input.count == 2 else {
+      throw { () -> InputError in
+        input.count < 2 ? .minimumLengthViolated : .maximumLengthExceeded
+      }()
+    }
+    
+    guard let column = input.getColumn,
+          let row = input.getRow else {
+      throw InputError.formatError
+    }
+    
+    return Position(column, row)
+  }
+  
+  enum InputError: Error {
+    case maximumLengthExceeded, minimumLengthViolated, formatError, noColumn, noRow
+  }
 }
 
 extension Set where Element == Board.Position {

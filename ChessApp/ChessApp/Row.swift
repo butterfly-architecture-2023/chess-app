@@ -17,12 +17,8 @@ extension Int {
   }
 }
 
-enum Column: String, CaseIterable, Equatable {
-  case A, B, C, D, E, F, G, H
-}
-
 extension String {
-  var toColumn: Column? {
-    Column.allCases.first(where: {$0.rawValue == self})
+  var getRow: Row? {
+    Int(String(self.last ?? Character("")))?.toRow
   }
 }

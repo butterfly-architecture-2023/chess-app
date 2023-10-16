@@ -15,11 +15,12 @@
 		1B20D91B2ADBBD040057C0CD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1B20D91A2ADBBD040057C0CD /* README.md */; };
 		1B20D91D2ADBCAE40057C0CD /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91C2ADBCAE40057C0CD /* Board.swift */; };
 		1B20D91F2ADBCAF00057C0CD /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91E2ADBCAF00057C0CD /* Pawn.swift */; };
-		1B20D9212ADBDB250057C0CD /* RowColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9202ADBDB250057C0CD /* RowColumn.swift */; };
+		1B20D9212ADBDB250057C0CD /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9202ADBDB250057C0CD /* Row.swift */; };
 		1B20D9232ADBDB340057C0CD /* PieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9222ADBDB340057C0CD /* PieceType.swift */; };
 		1B20D9252ADBDB390057C0CD /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9242ADBDB390057C0CD /* PieceColor.swift */; };
 		1B20D9272ADBDB420057C0CD /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9262ADBDB420057C0CD /* MoveDirection.swift */; };
 		1B20D9292ADBDB470057C0CD /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9282ADBDB470057C0CD /* Piece.swift */; };
+		1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D32ADD7B9700ACE122 /* Column.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +44,12 @@
 		1B20D91A2ADBBD040057C0CD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1B20D91C2ADBCAE40057C0CD /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		1B20D91E2ADBCAF00057C0CD /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
-		1B20D9202ADBDB250057C0CD /* RowColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowColumn.swift; sourceTree = "<group>"; };
+		1B20D9202ADBDB250057C0CD /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
 		1B20D9222ADBDB340057C0CD /* PieceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceType.swift; sourceTree = "<group>"; };
 		1B20D9242ADBDB390057C0CD /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
 		1B20D9262ADBDB420057C0CD /* MoveDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDirection.swift; sourceTree = "<group>"; };
 		1B20D9282ADBDB470057C0CD /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		1BF7B7D32ADD7B9700ACE122 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +96,8 @@
 				1B20D8F22ADBB6A40057C0CD /* ContentView.swift */,
 				1B20D91C2ADBCAE40057C0CD /* Board.swift */,
 				1B20D91E2ADBCAF00057C0CD /* Pawn.swift */,
-				1B20D9202ADBDB250057C0CD /* RowColumn.swift */,
+				1B20D9202ADBDB250057C0CD /* Row.swift */,
+				1BF7B7D32ADD7B9700ACE122 /* Column.swift */,
 				1B20D9222ADBDB340057C0CD /* PieceType.swift */,
 				1B20D9242ADBDB390057C0CD /* PieceColor.swift */,
 				1B20D9262ADBDB420057C0CD /* MoveDirection.swift */,
@@ -223,9 +226,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B20D8F32ADBB6A40057C0CD /* ContentView.swift in Sources */,
-				1B20D9212ADBDB250057C0CD /* RowColumn.swift in Sources */,
+				1B20D9212ADBDB250057C0CD /* Row.swift in Sources */,
 				1B20D9252ADBDB390057C0CD /* PieceColor.swift in Sources */,
 				1B20D8F12ADBB6A40057C0CD /* ChessAppApp.swift in Sources */,
+				1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */,
 				1B20D91D2ADBCAE40057C0CD /* Board.swift in Sources */,
 				1B20D9292ADBDB470057C0CD /* Piece.swift in Sources */,
 				1B20D9232ADBDB340057C0CD /* PieceType.swift in Sources */,
