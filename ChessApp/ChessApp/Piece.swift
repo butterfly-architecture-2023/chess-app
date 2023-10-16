@@ -5,10 +5,8 @@
 //  Created by 김혜지 on 10/15/23.
 //
 
-struct Piece {
-    let color: PieceColor
+protocol Piece {
+    var color: PieceColor { get }
     
-    init(color: PieceColor) {
-        self.color = color
-    }
+    func _movableCoordiantes(currentCoordinate: Board.Coordinate) -> [Board.Coordinate]
 }

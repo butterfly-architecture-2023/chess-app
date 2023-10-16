@@ -22,11 +22,11 @@ struct BoardMaker {
     
     private static func _piece(for rank: Board.Rank) -> Piece? {
         if rank == .two {
-            return Piece(color: .black)
+            return Pawn(color: .black)
         }
         
         if rank == .seven {
-            return Piece(color: .white)
+            return Pawn(color: .white)
         }
         
         return nil

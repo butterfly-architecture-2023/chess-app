@@ -6,7 +6,7 @@
 //
 
 struct Board {
-    typealias Coordinate = (rank: Rank, file: File)
+    typealias Coordinate = (file: File, rank: Rank)
     
     private let squares: [Square]
     
