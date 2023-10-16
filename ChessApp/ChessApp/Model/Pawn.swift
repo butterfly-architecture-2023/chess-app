@@ -21,9 +21,19 @@ struct Pawn: Piece {
             }
         }
     }
-
-    static var maxCount: Int = 8
     
+    func isPossibleInitPosition(with rank: Position.Rank) -> Bool {
+        var isPossible: Bool = false
+        
+        if rank == .two && color == .black {
+            isPossible = true
+        } else if rank == .seven && color == .white {
+            isPossible = true
+        }
+        
+        return isPossible
+    }
+
     func canMoveRank(from: Position.Rank, to: Position.Rank) -> Bool {
         var canMove: Bool = false
         
