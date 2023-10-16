@@ -9,7 +9,7 @@ import Foundation
 
 class BoardManager {
     private var size: Int = 0
-    private(set) lazy var board: [[PawnType]] = Array(repeating: Array(repeating: .none, count: size), count: size)
+    private(set) lazy var board: Board = Array(repeating: Array(repeating: .none, count: size), count: size)
     
     init(size: Int) {
         self.size = size
@@ -36,16 +36,5 @@ class BoardManager {
     func updateBoard(currentPosition: Position, updatePosition: Position) {
         board[updatePosition.file-1][updatePosition.rank] = board[currentPosition.file-1][currentPosition.rank]
         board[currentPosition.file-1][currentPosition.rank] = .none
-    }
-
-    // FIXME: - 확인을 위한 임시 출력
-    func printBoard() {
-        print("---")
-        for row in board {
-            for value in row {
-                print(value.rawValue, terminator: " ")
-            }
-            print()
-        }
     }
 }
