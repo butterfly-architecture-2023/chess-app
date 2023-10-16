@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		90D2B3332ADD68D900C34FA0 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B3322ADD68D900C34FA0 /* Board.swift */; };
 		90D2B3352ADD84AC00C34FA0 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B3342ADD84AC00C34FA0 /* Position.swift */; };
+		90D2B3382ADD860500C34FA0 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B3372ADD860500C34FA0 /* Piece.swift */; };
+		90D2B33A2ADD862300C34FA0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B3392ADD862300C34FA0 /* Color.swift */; };
+		90D2B33D2ADD864200C34FA0 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B33C2ADD864200C34FA0 /* Pawn.swift */; };
 		90EE6F9B2ADAE54000C1E8EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE6F9A2ADAE54000C1E8EE /* AppDelegate.swift */; };
 		90EE6F9D2ADAE54000C1E8EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE6F9C2ADAE54000C1E8EE /* SceneDelegate.swift */; };
 		90EE6F9F2ADAE54000C1E8EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE6F9E2ADAE54000C1E8EE /* ViewController.swift */; };
@@ -40,6 +43,9 @@
 /* Begin PBXFileReference section */
 		90D2B3322ADD68D900C34FA0 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		90D2B3342ADD84AC00C34FA0 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		90D2B3372ADD860500C34FA0 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		90D2B3392ADD862300C34FA0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		90D2B33C2ADD864200C34FA0 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		90EE6F972ADAE54000C1E8EE /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EE6F9A2ADAE54000C1E8EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90EE6F9C2ADAE54000C1E8EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,8 +100,18 @@
 			children = (
 				90D2B3322ADD68D900C34FA0 /* Board.swift */,
 				90D2B3342ADD84AC00C34FA0 /* Position.swift */,
+				90D2B3372ADD860500C34FA0 /* Piece.swift */,
+				90D2B33C2ADD864200C34FA0 /* Pawn.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		90D2B33B2ADD862800C34FA0 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				90D2B3392ADD862300C34FA0 /* Color.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		90EE6F8E2ADAE54000C1E8EE = {
@@ -124,6 +140,7 @@
 				90EE6F9A2ADAE54000C1E8EE /* AppDelegate.swift */,
 				90EE6F9C2ADAE54000C1E8EE /* SceneDelegate.swift */,
 				90EE6F9E2ADAE54000C1E8EE /* ViewController.swift */,
+				90D2B33B2ADD862800C34FA0 /* Enum */,
 				90D2B3362ADD85E000C34FA0 /* Model */,
 				90D2B3312ADC3BAF00C34FA0 /* Storyboard */,
 				90EE6FA32ADAE54100C1E8EE /* Assets.xcassets */,
@@ -282,6 +299,9 @@
 			files = (
 				90EE6F9F2ADAE54000C1E8EE /* ViewController.swift in Sources */,
 				90EE6F9B2ADAE54000C1E8EE /* AppDelegate.swift in Sources */,
+				90D2B33A2ADD862300C34FA0 /* Color.swift in Sources */,
+				90D2B33D2ADD864200C34FA0 /* Pawn.swift in Sources */,
+				90D2B3382ADD860500C34FA0 /* Piece.swift in Sources */,
 				90D2B3332ADD68D900C34FA0 /* Board.swift in Sources */,
 				90D2B3352ADD84AC00C34FA0 /* Position.swift in Sources */,
 				90EE6F9D2ADAE54000C1E8EE /* SceneDelegate.swift in Sources */,
