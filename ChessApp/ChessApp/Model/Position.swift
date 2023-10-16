@@ -8,11 +8,11 @@
 import Foundation
 
 struct Position {
-    enum Rank: CaseIterable {
+    enum Rank: Int, CaseIterable {
         case one, two, three, four, five, six, seven, eight
     }
     
-    enum File: CaseIterable {
+    enum File: Int, CaseIterable {
         case A, B, C, D, E, F, G, H
     }
     

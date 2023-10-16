@@ -22,10 +22,19 @@ struct Pawn: Piece {
             return "U+265F"
         }
     }
-
-    // rank를 이동할 수 있는지
+    
     func canMoveRank(from: Position.Rank, to: Position.Rank) -> Bool {
         var canMove: Bool = false
+        
+        let diff = abs(from.rawValue - to.rawValue)
+        
+        switch color {
+        case .white:
+            canMove = from.rawValue > to.rawValue && diff == 1
+        case .black:
+            canMove = from.rawValue < to.rawValue && diff == 1
+        }
+        
         return canMove
     }
 
