@@ -6,5 +6,9 @@
 //
 
 struct Piece {
+    let color: PieceColor
     
+    init(color: PieceColor) {
+        self.color = color
+    }
 }
