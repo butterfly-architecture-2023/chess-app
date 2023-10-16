@@ -11,11 +11,24 @@ struct BoardMaker {
         
         for rank in Board.Rank.allCases {
             for file in Board.File.allCases {
-                let square = Square(rank: rank, file: file)
+                let piece = _piece(for: rank)
+                let square = Square(rank: rank, file: file, piece: piece)
                 squares.append(square)
             }
         }
         
         return squares
+    }
+    
+    private static func _piece(for rank: Board.Rank) -> Piece? {
+        if rank == .two {
+            return Piece(color: .black)
+        }
+        
+        if rank == .seven {
+            return Piece(color: .white)
+        }
+        
+        return nil
     }
 }
