@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol Pawn {
+protocol ChessPiece {
     var type: PawnType { get }
     var isAlive: Bool { get set }
     var position: BoardPosition { get set }
     init(position: BoardPosition)
 }
 
-struct BlackPawn: Pawn {
+struct BlackPawn: ChessPiece {
     var type: PawnType = .black
     var isAlive: Bool = true
     var position: BoardPosition
@@ -24,7 +24,8 @@ struct BlackPawn: Pawn {
     }
 }
 
-struct WhitePawn: Pawn {
+struct WhitePawn: ChessPiece {
+
     var type: PawnType = .white
     var isAlive: Bool = true
     var position: BoardPosition
