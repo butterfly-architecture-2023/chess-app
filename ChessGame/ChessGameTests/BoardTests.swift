@@ -8,8 +8,6 @@
 import XCTest
 @testable import ChessGame
 
-import XCTest
-
 final class BoardTests: XCTestCase {
 
     func testHasPieces_체스말_존재_시_TRUE_반환() {
