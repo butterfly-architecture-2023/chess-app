@@ -22,14 +22,8 @@ enum Capital: String, CaseIterable {
     case G
     case H
     
-    init?(number: Int) {
-        for (index, capital) in Capital.allCases.enumerated() {
-            if number == index {
-                self = capital
-            }
-        }
-        
-        return nil
+    init(index: Int) {
+        self = Capital.allCases[index]
     }
 }
 
@@ -42,6 +36,10 @@ enum Rank: Int, Comparable, CaseIterable {
     case six
     case seven
     case eight
+    
+    init(index: Int) {
+        self = Rank.allCases[index]
+    }
     
     func distance(with compared: Rank) -> Int {
         return abs(self.rawValue - compared.rawValue)

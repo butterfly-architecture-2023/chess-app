@@ -37,10 +37,8 @@ final class Board: BoardConfigurable {
         
         for (rankNum, board) in boards.enumerated() {
             for (capitalNum, _) in board.enumerated() {
-                guard let capital = Capital(number: capitalNum),
-                      let rank = Rank(rawValue: rankNum) else {
-                    continue
-                }
+                let capital = Capital(index: capitalNum)
+                let rank = Rank(index: rankNum)
 
                 let pawn = self.pawnsManager.gatPawn(at: Location(capital: capital, rank: rank))
                 switch pawn?.color {
