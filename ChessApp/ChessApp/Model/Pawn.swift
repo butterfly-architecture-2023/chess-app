@@ -22,11 +22,11 @@ struct Pawn: PawnConfigurable {
         let currentRank = self.currentLocation.rank
         let destinationRank = location.rank
         
-        guard currentRank.distance(with: destinationRank) != 1 else {
+        guard currentRank.distance(with: destinationRank) == 1 else {
             return false
         }
         
-        switch color {
+        switch self.color {
         case .black:
             return currentRank < destinationRank
         case .white:

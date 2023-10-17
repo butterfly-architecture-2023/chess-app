@@ -25,6 +25,14 @@ enum Capital: String, CaseIterable {
     init(index: Int) {
         self = Capital.allCases[index]
     }
+    
+    init?(_ character: Character) {
+        guard let capital = Capital(rawValue: String(character)) else {
+            return nil
+        }
+        
+        self = capital
+    }
 }
 
 enum Rank: Int, Comparable, CaseIterable {
@@ -46,6 +54,6 @@ enum Rank: Int, Comparable, CaseIterable {
     }
     
     static func < (lhs: Rank, rhs: Rank) -> Bool {
-        return lhs.rawValue < lhs.rawValue
+        return lhs.rawValue < rhs.rawValue
     }
 }

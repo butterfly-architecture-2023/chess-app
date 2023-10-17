@@ -13,10 +13,11 @@ protocol BoardConfigurable {
     func start()
     func move(userInput: String) throws
     func display() -> [[String]]
-    func generateScore(of color: Color) -> Int
+    func getScore(of color: Color) -> Int
 }
 
 final class Board: BoardConfigurable {
+    private(set) var turnColor: Color = .white
     private var pawnsManager: PawnsManager
     
     init(pawnsManager: PawnsManager) {
@@ -28,7 +29,46 @@ final class Board: BoardConfigurable {
     }
     
     func move(userInput: String) throws {
+        let inputs = userInput.split(separator: "->")
+        guard let source = self.makeLocation(from: String(inputs[0])),
+              let destination = self.makeLocation(from: String(inputs[1])) else {
+            
+            throw InputError.overRange
+        }
+                
+        guard let originPawn = self.pawnsManager.gatPawn(at: source) else {
+            throw InputError.sourceNotExist
+        }
         
+        guard originPawn.color == self.turnColor else {
+            throw InputError.invalidTurn
+        }
+        
+        guard originPawn.canMove(to: destination) else {
+            throw InputError.invalidScope
+        }
+        
+        let pawnOrNilForDestination = self.pawnsManager.gatPawn(at: destination)
+        guard originPawn.color != pawnOrNilForDestination?.color else {
+            throw InputError.sameTeam
+        }
+        
+        self.pawnsManager.update(originPawn: originPawn, to: destination)
+        self.turnColor = (self.turnColor == .black) ? .white : .black
+    }
+    
+    private func makeLocation(from input: String) -> Location? {
+        if input.count != 2 {
+            return nil
+        }
+        
+        guard let capital = Capital(input[input.startIndex]),
+              let rankNum = Int(String(input[input.index(input.startIndex, offsetBy: 1)])),
+              let rank = Rank(rawValue: rankNum) else {
+            return nil
+        }
+        
+        return Location(capital: capital, rank: rank)
     }
     
     func display() -> [[String]] {
@@ -55,7 +95,7 @@ final class Board: BoardConfigurable {
         return boards
     }
     
-    func generateScore(of color: Color) -> Int {
+    func getScore(of color: Color) -> Int {
         return self.pawnsManager.getPawns(color: color).count
     }
 }
