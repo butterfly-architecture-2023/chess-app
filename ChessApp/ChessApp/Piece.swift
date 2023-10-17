@@ -9,5 +9,5 @@ protocol Piece {
     var color: PieceColor { get }
     var icon: String { get }
     
-    func canMove(from coordinate: Board.Coordinate) -> [Board.Coordinate]
+    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate]
 }

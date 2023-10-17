@@ -20,7 +20,7 @@ struct Pawn: Piece {
         self.color = color
     }
     
-    func canMove(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
+    func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
         switch self.color {
         case .black:
             guard let nextRank = Board.Rank(rawValue: coordinate.rank.rawValue + 1) else { return [] }
