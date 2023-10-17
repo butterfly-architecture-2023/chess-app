@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		ED04CCF72ADE95AB0056D777 /* PieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04CCF62ADE95AB0056D777 /* PieceType.swift */; };
 		ED04CCF92ADE95CB0056D777 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04CCF82ADE95CB0056D777 /* ColorType.swift */; };
+		ED04CCFB2ADE95F30056D777 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04CCFA2ADE95F30056D777 /* Piece.swift */; };
 		ED56FF3A2ADBEACA004258A4 /* ChessAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED56FF392ADBEACA004258A4 /* ChessAppApp.swift */; };
 		ED56FF3C2ADBEACA004258A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED56FF3B2ADBEACA004258A4 /* ContentView.swift */; };
 		ED56FF3E2ADBEACB004258A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED56FF3D2ADBEACB004258A4 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		ED04CCF62ADE95AB0056D777 /* PieceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceType.swift; sourceTree = "<group>"; };
 		ED04CCF82ADE95CB0056D777 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
+		ED04CCFA2ADE95F30056D777 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		ED56FF362ADBEACA004258A4 /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED56FF392ADBEACA004258A4 /* ChessAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppApp.swift; sourceTree = "<group>"; };
 		ED56FF3B2ADBEACA004258A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				ED04CCF62ADE95AB0056D777 /* PieceType.swift */,
 				ED04CCF82ADE95CB0056D777 /* ColorType.swift */,
+				ED04CCFA2ADE95F30056D777 /* Piece.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED04CCFB2ADE95F30056D777 /* Piece.swift in Sources */,
 				ED04CCF92ADE95CB0056D777 /* ColorType.swift in Sources */,
 				ED04CCF72ADE95AB0056D777 /* PieceType.swift in Sources */,
 				ED56FF3C2ADBEACA004258A4 /* ContentView.swift in Sources */,
