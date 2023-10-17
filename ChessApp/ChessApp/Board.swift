@@ -22,8 +22,13 @@ class Board {
   }
   
   // movePiece, calculate 호출
+  @discardableResult
   func move(from start: Position, to dest: Position) -> Bool {
-    let result = movePiece(from: start, to: dest)
+    let (result, sideEffect) = movePiece(from: start, to: dest)
+    if sideEffect != nil {
+      calculate()
+    }
+    
     currentTurn = currentTurn == .white ? .black : .white
     
     return result
@@ -33,37 +38,35 @@ class Board {
   private func movePiece(
     from start: Position,
     to dest: Position
-  ) -> Bool {
-    guard let startPiece = positions[start]?.piece else {
-      return false
+  ) -> (result: Bool, sideEffect: (any Piece)?) {
+    // 기존에 subscript 로 Piece 를 가져오던 것을 getPiece 로 변경
+    // 테스트 코드에서 Position 에 대해 원하는 PieceType 을 접근하는지 접근하기 위한 테스트
+    guard let startPiece = getPiece(start) else {
+      return (false, nil)
     }
     
     guard let directionToMove = start.direction(to: dest), startPiece.directionMovable.contains(directionToMove) else {
-      return false
+      return (false, nil)
     }
     
-    guard let destPiece = positions[dest]?.piece else {
+    guard let destPiece = getPiece(dest) else {
       positions[start]?.piece = nil
       positions[dest]?.piece = startPiece
-      return true
+      return (true, nil)
     }
     
     if destPiece.color == startPiece.color {
-      return false
+      return (false, nil)
     } else {
       positions[start]?.piece = nil
       positions[dest]?.piece = startPiece
-      return true
+      return (true, destPiece)
     }
   }
   
   // 점수를 수정하는 Side-Effect 존재
-  private func calculate(
-    from start: Position,
-    to dest: Position,
-    piece: (any Piece)?
-  ) {
-    
+  private func calculate() {
+    score[currentTurn] = ((score[currentTurn] ?? 0) + 1)
   }
   
   class Position: Equatable, Hashable {
