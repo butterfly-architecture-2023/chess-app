@@ -7,20 +7,25 @@
 
 struct Board {
     typealias Coordinate = (file: File, rank: Rank)
+    typealias Squares = [Rank: [File: Piece?]]
     
-    private let squares: [Square]
+    private var squares: Squares
     
-    init(squares: [Square] = BoardMaker.make()) {
+    init(squares: Squares = BoardMaker.make()) {
         self.squares = squares
     }
     
-    func move(from currentCoordinate: Coordinate, to nextCoordinate: Coordinate) -> Bool {
-        guard let currentSquare = self.squares.first(where: { $0.rank == currentCoordinate.rank && $0.file == currentCoordinate.file }),
-              let nextSquare = self.squares.first(where: { $0.rank == nextCoordinate.rank && $0.file == nextCoordinate.file }) else { return false }
+    mutating func move(from currentCoordinate: Coordinate, to targetCoordinate: Coordinate) -> Bool {
+        guard let currentPiece = self.squares[currentCoordinate.rank]?[currentCoordinate.file] as? Piece else { return false }
+        guard let targetPiece = self.squares[targetCoordinate.rank]?[targetCoordinate.file] as? Piece else {
+            self.squares[targetCoordinate.rank]?[targetCoordinate.file] = currentPiece
+            self.squares[currentCoordinate.rank]?[currentCoordinate.file] = nil
+            return true
+        }
         
-        guard let currentSquarePiece = currentSquare.piece else { return false }
-        guard nextSquare.put(otherPiece: currentSquarePiece) else { return false }
-        currentSquare.deletePiece()
+        guard targetPiece.color != currentPiece.color else { return false }
+        self.squares[targetCoordinate.rank]?[targetCoordinate.file] = currentPiece
+        self.squares[currentCoordinate.rank]?[currentCoordinate.file] = nil
         return true
     }
 }

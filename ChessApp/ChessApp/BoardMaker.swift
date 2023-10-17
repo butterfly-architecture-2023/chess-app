@@ -6,15 +6,18 @@
 //
 
 struct BoardMaker {
-    static func make() -> [Square] {
-        var squares: [Square] = []
+    static func make() -> [Board.Rank: [Board.File: Piece?]] {
+        var squares: [Board.Rank: [Board.File: Piece?]] = [:]
         
         for rank in Board.Rank.allCases {
+            var squaresPerRank: [Board.File: Piece?] = [:]
+            
             for file in Board.File.allCases {
                 let piece = _piece(for: rank)
-                let square = Square(rank: rank, file: file, piece: piece)
-                squares.append(square)
+                squaresPerRank.updateValue(piece, forKey: file)
             }
+            
+            squares.updateValue(squaresPerRank, forKey: rank)
         }
         
         return squares
