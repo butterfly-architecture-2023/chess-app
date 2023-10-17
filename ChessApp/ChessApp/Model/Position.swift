@@ -22,6 +22,10 @@ struct Position: Hashable {
                   value >= 49 else { return nil }
             self.init(value - 49) // value - "1"
         }
+        
+        static var allCases: [Rank] {
+            range.compactMap { Rank($0) }
+        }
     }
     
     struct File: Hashable {
@@ -37,6 +41,10 @@ struct Position: Hashable {
             guard let value = value.asciiValue,
                   value >= 65 else { return nil }
             self.init(value - 65) // value - "A"
+        }
+        
+        static var allCases: [File] {
+            range.compactMap { File($0) }
         }
     }
     

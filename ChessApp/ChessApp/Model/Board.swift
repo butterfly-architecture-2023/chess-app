@@ -28,11 +28,9 @@ struct Board {
     }
     
     func display() -> String {
-        Position.Rank.range.map { i in
-            Position.File.range.map { j in
-                guard let rank = Position.Rank(UInt8(i)),
-                      let file = Position.File(UInt8(j)),
-                      let piece = pieces[Position(file: file, rank: rank)] else { return "." }
+        Position.Rank.allCases.map { rank in
+            Position.File.allCases.map { file in
+                guard let piece = pieces[Position(file: file, rank: rank)] else { return "." }
                 switch piece {
                 case is Pawn:
                     return piece.color == .black ? "♟" : "♙"
