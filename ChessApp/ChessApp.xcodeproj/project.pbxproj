@@ -22,7 +22,6 @@
 		1B20D9292ADBDB470057C0CD /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9282ADBDB470057C0CD /* Piece.swift */; };
 		1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D32ADD7B9700ACE122 /* Column.swift */; };
 		1BF7B7D62ADD7FB000ACE122 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */; };
-		1BF7B7DA2ADD7FD400ACE122 /* RowColumnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D92ADD7FD400ACE122 /* RowColumnTests.swift */; };
 		1BF7B7DB2ADD800E00ACE122 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91C2ADBCAE40057C0CD /* Board.swift */; };
 		1BF7B7DC2ADD801900ACE122 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D32ADD7B9700ACE122 /* Column.swift */; };
 		1BF7B7DD2ADD801900ACE122 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9202ADBDB250057C0CD /* Row.swift */; };
@@ -61,7 +60,6 @@
 		1B20D9282ADBDB470057C0CD /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		1BF7B7D32ADD7B9700ACE122 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
-		1BF7B7D92ADD7FD400ACE122 /* RowColumnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowColumnTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +131,6 @@
 			children = (
 				1B20D9012ADBB6A50057C0CD /* PieceTypeTests.swift */,
 				1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */,
-				1BF7B7D92ADD7FD400ACE122 /* RowColumnTests.swift */,
 			);
 			path = ChessAppTests;
 			sourceTree = "<group>";
@@ -258,7 +255,6 @@
 			files = (
 				1BF7B7E12ADD803500ACE122 /* Piece.swift in Sources */,
 				1BF7B7DE2ADD802200ACE122 /* PieceColor.swift in Sources */,
-				1BF7B7DA2ADD7FD400ACE122 /* RowColumnTests.swift in Sources */,
 				1BF7B7E02ADD802B00ACE122 /* PieceType.swift in Sources */,
 				1BF7B7DB2ADD800E00ACE122 /* Board.swift in Sources */,
 				1BF7B7E22ADD803800ACE122 /* MoveDirection.swift in Sources */,
