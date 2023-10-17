@@ -29,4 +29,25 @@ struct Piece: Equatable {
     }
     
     let category: Category
+    
+    // 프로그래밍 요구사항 7.
+    // 체스말은 현재 위치를 기준으로 이동할 수 있는 모든 위치를 제공한다.
+    // 다른 말이 있는지 여부는 판단하지 않는다.
+    func movablePositions(currentPosition: (file: Int, rank: Int)) -> [(file: Int, rank: Int)] {
+        
+        switch category {
+        case .pawn(let color):
+            
+            switch color {
+            case .black:
+                return [(file: currentPosition.file, rank: currentPosition.rank + 1)]
+                
+            case .white:
+                return [(file: currentPosition.file, rank: currentPosition.rank - 1)]
+            }
+   
+        case .empty:
+            return []
+        }
+    }
 }
