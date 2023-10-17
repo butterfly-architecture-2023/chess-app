@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		333031022ADB1611004A0976 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031012ADB1611004A0976 /* Board.swift */; };
 		333031042ADB1904004A0976 /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031032ADB1904004A0976 /* PieceColor.swift */; };
-		333031062ADB197D004A0976 /* Board+Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031052ADB197D004A0976 /* Board+Rank.swift */; };
-		333031082ADB1A29004A0976 /* Board+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031072ADB1A29004A0976 /* Board+File.swift */; };
+		333031062ADB197D004A0976 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031052ADB197D004A0976 /* Rank.swift */; };
+		333031082ADB1A29004A0976 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031072ADB1A29004A0976 /* File.swift */; };
 		333031102ADB2EBE004A0976 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3330310F2ADB2EBE004A0976 /* Piece.swift */; };
 		333031122ADB314A004A0976 /* BoardMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031112ADB314A004A0976 /* BoardMaker.swift */; };
 		333031142ADD21EE004A0976 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333031132ADD21EE004A0976 /* Pawn.swift */; };
@@ -43,8 +43,8 @@
 /* Begin PBXFileReference section */
 		333031012ADB1611004A0976 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		333031032ADB1904004A0976 /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
-		333031052ADB197D004A0976 /* Board+Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Rank.swift"; sourceTree = "<group>"; };
-		333031072ADB1A29004A0976 /* Board+File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+File.swift"; sourceTree = "<group>"; };
+		333031052ADB197D004A0976 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		333031072ADB1A29004A0976 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		3330310F2ADB2EBE004A0976 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		333031112ADB314A004A0976 /* BoardMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMaker.swift; sourceTree = "<group>"; };
 		333031132ADD21EE004A0976 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 			children = (
 				333DAEF52AD9820000F821EC /* ChessAppApp.swift */,
 				333031012ADB1611004A0976 /* Board.swift */,
-				333031052ADB197D004A0976 /* Board+Rank.swift */,
-				333031072ADB1A29004A0976 /* Board+File.swift */,
+				333031052ADB197D004A0976 /* Rank.swift */,
+				333031072ADB1A29004A0976 /* File.swift */,
 				333031032ADB1904004A0976 /* PieceColor.swift */,
 				333DAEF72AD9820000F821EC /* ContentView.swift */,
 				333031112ADB314A004A0976 /* BoardMaker.swift */,
@@ -279,13 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				333031122ADB314A004A0976 /* BoardMaker.swift in Sources */,
-				333031062ADB197D004A0976 /* Board+Rank.swift in Sources */,
+				333031062ADB197D004A0976 /* Rank.swift in Sources */,
 				333031042ADB1904004A0976 /* PieceColor.swift in Sources */,
 				333031142ADD21EE004A0976 /* Pawn.swift in Sources */,
 				333DAEF82AD9820000F821EC /* ContentView.swift in Sources */,
 				333031102ADB2EBE004A0976 /* Piece.swift in Sources */,
 				333DAEF62AD9820000F821EC /* ChessAppApp.swift in Sources */,
-				333031082ADB1A29004A0976 /* Board+File.swift in Sources */,
+				333031082ADB1A29004A0976 /* File.swift in Sources */,
 				333031022ADB1611004A0976 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

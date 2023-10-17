@@ -6,13 +6,13 @@
 //
 
 struct BoardMaker {
-    static func make() -> [Board.Rank: [Board.File: Piece?]] {
-        var squares: [Board.Rank: [Board.File: Piece?]] = [:]
+    static func make() -> [Rank: [File: Piece?]] {
+        var squares: [Rank: [File: Piece?]] = [:]
         
-        for rank in Board.Rank.allCases {
-            var squaresPerRank: [Board.File: Piece?] = [:]
+        for rank in Rank.allCases {
+            var squaresPerRank: [File: Piece?] = [:]
             
-            for file in Board.File.allCases {
+            for file in File.allCases {
                 let piece = _piece(for: rank)
                 squaresPerRank.updateValue(piece, forKey: file)
             }
@@ -23,7 +23,7 @@ struct BoardMaker {
         return squares
     }
     
-    private static func _piece(for rank: Board.Rank) -> Piece? {
+    private static func _piece(for rank: Rank) -> Piece? {
         if rank == .two {
             return Pawn(color: .black)
         }

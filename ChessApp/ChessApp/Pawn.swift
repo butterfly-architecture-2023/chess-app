@@ -23,10 +23,10 @@ struct Pawn: Piece {
     func _movableCoordinates(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
         switch self.color {
         case .black:
-            guard let nextRank = Board.Rank(rawValue: coordinate.rank.rawValue + 1) else { return [] }
+            guard let nextRank = Rank(rawValue: coordinate.rank.rawValue + 1) else { return [] }
             return [(coordinate.file, nextRank)]
         case .white:
-            guard let nextRank = Board.Rank(rawValue: coordinate.rank.rawValue - 1) else { return [] }
+            guard let nextRank = Rank(rawValue: coordinate.rank.rawValue - 1) else { return [] }
             return [(coordinate.file, nextRank)]
         }
     }
