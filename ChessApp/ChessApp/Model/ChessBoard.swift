@@ -78,9 +78,8 @@ struct ChessBoard {
     }
     
     private mutating func startGame() {
-        // 8을 어디에 두지
-        var blackPawns: [Pawn] = .init(repeating: .init(color: .black), count: 8)
-        var whitePawns: [Pawn] = .init(repeating: .init(color: .white), count: 8)
+        var blackPawns: [Pawn] = .init(repeating: .init(color: .black), count: Pawn.maxCount)
+        var whitePawns: [Pawn] = .init(repeating: .init(color: .white), count: Pawn.maxCount)
 
         for (rank, oneRank) in board.enumerated() {
             for (file, square) in oneRank.enumerated() {

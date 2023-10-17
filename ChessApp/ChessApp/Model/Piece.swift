@@ -8,6 +8,7 @@
 import Foundation
 
 protocol Piece {
+    static var maxCount: Int { get }
     var color: Color { get }
     var displayText: String { get }
 
