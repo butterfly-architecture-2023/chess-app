@@ -9,9 +9,9 @@ import Foundation
 
 struct Pawn: Piece {
     static let maxCount: Int = 8
+    let score: Int = 1
     
     var color: Color
-    let score: Int = 1
     var displayText: String {
         get {
             switch color {
@@ -52,5 +52,4 @@ struct Pawn: Piece {
         
         return canMove
     }
-    
 }
