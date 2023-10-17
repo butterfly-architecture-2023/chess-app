@@ -19,6 +19,8 @@
 		1EDE71152ADD8BE500175E09 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE71142ADD8BE500175E09 /* Board.swift */; };
 		1EDE71172ADEDBCE00175E09 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE71162ADEDBCE00175E09 /* Piece.swift */; };
 		1EDE71192ADEE48600175E09 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE71182ADEE48600175E09 /* BoardTests.swift */; };
+		1EDE711B2ADF0E7C00175E09 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE711A2ADF0E7C00175E09 /* InputManager.swift */; };
+		1EDE711D2ADF150100175E09 /* InputManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE711C2ADF150100175E09 /* InputManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		1EDE71142ADD8BE500175E09 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		1EDE71162ADEDBCE00175E09 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		1EDE71182ADEE48600175E09 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		1EDE711A2ADF0E7C00175E09 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
+		1EDE711C2ADF150100175E09 /* InputManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				1EAF89412AD99BB0000C5AF7 /* Info.plist */,
 				1EDE71142ADD8BE500175E09 /* Board.swift */,
 				1EDE71162ADEDBCE00175E09 /* Piece.swift */,
+				1EDE711A2ADF0E7C00175E09 /* InputManager.swift */,
 			);
 			path = ChessGame;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			children = (
 				1EAF894A2AD99BB1000C5AF7 /* ChessGameTests.swift */,
 				1EDE71182ADEE48600175E09 /* BoardTests.swift */,
+				1EDE711C2ADF150100175E09 /* InputManagerTests.swift */,
 			);
 			path = ChessGameTests;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDE711B2ADF0E7C00175E09 /* InputManager.swift in Sources */,
 				1EAF89382AD99BAF000C5AF7 /* ViewController.swift in Sources */,
 				1EAF89342AD99BAF000C5AF7 /* AppDelegate.swift in Sources */,
 				1EDE71172ADEDBCE00175E09 /* Piece.swift in Sources */,
@@ -279,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDE711D2ADF150100175E09 /* InputManagerTests.swift in Sources */,
 				1EDE71192ADEE48600175E09 /* BoardTests.swift in Sources */,
 				1EAF894B2AD99BB1000C5AF7 /* ChessGameTests.swift in Sources */,
 			);
