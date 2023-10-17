@@ -22,4 +22,12 @@ final class BoardTests: XCTestCase {
         XCTAssertFalse(board.hasPieces)
     }
 
+    
+    func testScore_검은_폰_1개_하얀_폰_2개_존재_시_각_1점_2점_반환() {
+        let board = Board(square: [[.init(category: .pawn(color: .black)),
+                                    .init(category: .pawn(color: .white)),
+                                    .init(category: .pawn(color: .white))]])
+        let sut = board.score() == (1, 2)
+        XCTAssertTrue(sut)
+    }
 }
