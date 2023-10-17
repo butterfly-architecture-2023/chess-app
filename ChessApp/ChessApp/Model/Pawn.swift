@@ -11,6 +11,7 @@ struct Pawn: Piece {
     static let maxCount: Int = 8
     
     var color: Color
+    let score: Int = 1
     var displayText: String {
         get {
             switch color {
@@ -34,25 +35,22 @@ struct Pawn: Piece {
         return isPossible
     }
 
-    func canMoveRank(from: Position.Rank, to: Position.Rank) -> Bool {
+    func canMove(from: Position, to: Position) -> Bool {
         var canMove: Bool = false
         
-        let diff = abs(from.rawValue - to.rawValue)
+        let rankDiff = abs(from.rank.rawValue - to.rank.rawValue)
+        let fileDiff = abs(from.rank.rawValue - to.rank.rawValue)
         
-        switch color {
-        case .white:
-            canMove = from.rawValue > to.rawValue && diff == 1
-        case .black:
-            canMove = from.rawValue < to.rawValue && diff == 1
+        if rankDiff <= 1, fileDiff <= 1 {
+            switch color {
+            case .white:
+                canMove = from.rank.rawValue > to.rank.rawValue
+            case .black:
+                canMove = from.rank.rawValue < to.rank.rawValue
+            }
         }
         
         return canMove
     }
-
-    // file을 이동할 수 있는지
-    func canMoveFile(from: Position.File, to: Position.File) -> Bool {
-        var canMove: Bool = false
-        return canMove
-    }
-
+    
 }

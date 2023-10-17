@@ -7,13 +7,25 @@
 
 import Foundation
 
-struct Position {
-    enum Rank: Int, CaseIterable {
-        case one, two, three, four, five, six, seven, eight
+struct Position: Equatable, Comparable {
+    static func < (lhs: Position, rhs: Position) -> Bool {
+        return lhs.rank.rawValue < rhs.rank.rawValue && lhs.file.rawValue < rhs.file.rawValue
     }
     
-    enum File: String, CaseIterable {
+    enum Rank: Int, CaseIterable {
+        case one, two, three, four, five, six, seven, eight
+        
+        var displayText: String {
+            return "\(self.rawValue + 1)"
+        }
+    }
+    
+    enum File: Int, CaseIterable {
         case A, B, C, D, E, F, G, H
+        
+        var displayText: String {
+            return String(describing: self)
+        }
     }
     
     let rank: Rank
