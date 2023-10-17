@@ -8,5 +8,5 @@
 protocol Piece {
     var color: PieceColor { get }
     
-    func _movableCoordiantes(currentCoordinate: Board.Coordinate) -> [Board.Coordinate]
+    func canMove(from coordinate: Board.Coordinate) -> [Board.Coordinate]
 }

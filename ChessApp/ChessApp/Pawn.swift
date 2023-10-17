@@ -12,14 +12,14 @@ struct Pawn: Piece {
         self.color = color
     }
     
-    func _movableCoordiantes(currentCoordinate: Board.Coordinate) -> [Board.Coordinate] {
+    func canMove(from coordinate: Board.Coordinate) -> [Board.Coordinate] {
         switch self.color {
         case .black:
-            guard let nextRank = Board.Rank(rawValue: currentCoordinate.rank.rawValue + 1) else { return [] }
-            return [(currentCoordinate.file, nextRank)]
+            guard let nextRank = Board.Rank(rawValue: coordinate.rank.rawValue + 1) else { return [] }
+            return [(coordinate.file, nextRank)]
         case .white:
-            guard let nextRank = Board.Rank(rawValue: currentCoordinate.rank.rawValue - 1) else { return [] }
-            return [(currentCoordinate.file, nextRank)]
+            guard let nextRank = Board.Rank(rawValue: coordinate.rank.rawValue - 1) else { return [] }
+            return [(coordinate.file, nextRank)]
         }
     }
 }

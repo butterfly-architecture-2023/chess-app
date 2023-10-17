@@ -17,6 +17,12 @@ class Square {
         self.piece = piece
     }
     
+    func canMoveAt() -> [Board.Coordinate] {
+        let coordinate: Board.Coordinate = (self.file, self.rank)
+        guard let movableCoordinates = self.piece?.canMove(from: coordinate) else { return [] }
+        return movableCoordinates
+    }
+    
     func put(otherPiece: Piece) -> Bool {
         guard let piece else {
             self.piece = otherPiece
