@@ -18,4 +18,15 @@ struct Position {
     
     let rank: Rank
     let file: File
+    
+    func getInitAvailableColor() -> Color? {
+        switch rank {
+        case .one, .two:
+            return .black
+        case .seven, .eight:
+            return .white
+        default:
+            return nil
+        }
+    }
 }
