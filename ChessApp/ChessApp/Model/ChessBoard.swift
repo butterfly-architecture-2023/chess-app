@@ -23,7 +23,8 @@ struct ChessBoard {
     
     func getScore() -> Int {
         var score: Int = 0
-        
+        let result = board.flatMap({ $0 }).filter({ $0.piece != nil })
+        score = result.compactMap({ $0.piece as? Pawn }).count
         return score
     }
     
@@ -77,6 +78,7 @@ struct ChessBoard {
     }
     
     private mutating func startGame() {
+        // 8을 어디에 두지
         var blackPawns: [Pawn] = .init(repeating: .init(color: .black), count: 8)
         var whitePawns: [Pawn] = .init(repeating: .init(color: .white), count: 8)
 
