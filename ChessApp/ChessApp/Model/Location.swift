@@ -1,0 +1,53 @@
+//
+//  Location.swift
+//  ChessApp
+//
+//  Created by 김도형 on 2023/10/18.
+//
+
+import Foundation
+
+struct Location: Hashable {
+    let capital: Capital
+    let rank: Rank
+}
+
+enum Capital: String, CaseIterable {
+    case A
+    case B
+    case C
+    case D
+    case E
+    case F
+    case G
+    case H
+    
+    init?(number: Int) {
+        for (index, capital) in Capital.allCases.enumerated() {
+            if number == index {
+                self = capital
+            }
+        }
+        
+        return nil
+    }
+}
+
+enum Rank: Int, Comparable, CaseIterable {
+    case one = 1
+    case two
+    case three
+    case four
+    case five
+    case six
+    case seven
+    case eight
+    
+    func distance(with compared: Rank) -> Int {
+        return abs(self.rawValue - compared.rawValue)
+    }
+    
+    static func < (lhs: Rank, rhs: Rank) -> Bool {
+        return lhs.rawValue < lhs.rawValue
+    }
+}
