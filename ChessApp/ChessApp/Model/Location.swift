@@ -22,10 +22,6 @@ enum Capital: String, CaseIterable {
     case G
     case H
     
-    init(index: Int) {
-        self = Capital.allCases[index]
-    }
-    
     init?(_ character: Character) {
         guard let capital = Capital(rawValue: String(character)) else {
             return nil
@@ -44,10 +40,6 @@ enum Rank: Int, Comparable, CaseIterable {
     case six
     case seven
     case eight
-    
-    init(index: Int) {
-        self = Rank.allCases[index]
-    }
     
     func distance(with compared: Rank) -> Int {
         return abs(self.rawValue - compared.rawValue)
