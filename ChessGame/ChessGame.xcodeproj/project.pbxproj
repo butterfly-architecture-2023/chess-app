@@ -20,6 +20,7 @@
 		B45686472ADEEC1B002F9EC7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45686462ADEEC1B002F9EC7 /* File.swift */; };
 		B45686492ADEEC28002F9EC7 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45686482ADEEC28002F9EC7 /* Position.swift */; };
 		B456864B2ADEEC32002F9EC7 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456864A2ADEEC32002F9EC7 /* Pawn.swift */; };
+		B456864E2ADEEC7D002F9EC7 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456864D2ADEEC7D002F9EC7 /* ChessBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B45686462ADEEC1B002F9EC7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		B45686482ADEEC28002F9EC7 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		B456864A2ADEEC32002F9EC7 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		B456864D2ADEEC7D002F9EC7 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				B456864C2ADEEC3A002F9EC7 /* ChessPiece */,
+				B456864D2ADEEC7D002F9EC7 /* ChessBoard.swift */,
 			);
 			path = ChessTest;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45686472ADEEC1B002F9EC7 /* File.swift in Sources */,
+				B456864E2ADEEC7D002F9EC7 /* ChessBoard.swift in Sources */,
 				B456864B2ADEEC32002F9EC7 /* Pawn.swift in Sources */,
 				B4458F162ADAD6DB00427F6E /* ViewController.swift in Sources */,
 				B45686492ADEEC28002F9EC7 /* Position.swift in Sources */,
