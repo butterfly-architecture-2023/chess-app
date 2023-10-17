@@ -11,8 +11,8 @@ protocol BoardConfigurable {
     init(pawnsManager: PawnsManager)
     
     func start()
-    func move(userInput: String) throws
     func display() -> [[String]]
+    func move(userInput: String) throws
     func getScore(of color: Color) -> Int
 }
 
@@ -25,7 +25,27 @@ final class Board: BoardConfigurable {
     }
     
     func start() {
-        self.pawnsManager.setupPawns()
+        self.pawnsManager.resetPawns()
+    }
+    
+    func display() -> [[String]] {
+        var boards = [[String]](repeating: [String](repeating: "", count: File.allCases.count),
+                                count: Rank.allCases.count)
+        
+        for (rankNumber, board) in boards.enumerated() {
+            for (fileNumber, _) in board.enumerated() {
+                let file = File.allCases[fileNumber]
+                let rank = Rank.allCases[rankNumber]
+
+                let text = self.pawnsManager
+                    .getPawn(at: Location(file: file, rank: rank))?
+                    .text
+                
+                boards[rankNumber][fileNumber] = text ?? "."
+            }
+        }
+
+        return boards
     }
     
     func move(userInput: String) throws {
@@ -62,40 +82,18 @@ final class Board: BoardConfigurable {
             return nil
         }
         
-        guard let capital = Capital(input[input.startIndex]),
+        guard let file = File(input[input.startIndex]),
               let rankNum = Int(String(input[input.index(input.startIndex, offsetBy: 1)])),
               let rank = Rank(rawValue: rankNum) else {
             return nil
         }
         
-        return Location(capital: capital, rank: rank)
-    }
-    
-    func display() -> [[String]] {
-        var boards = [[String]](repeating: [String](repeating: "", count: Capital.allCases.count),
-                                count: Rank.allCases.count)
-        
-        for (rankNum, board) in boards.enumerated() {
-            for (capitalNum, _) in board.enumerated() {
-                let capital = Capital.allCases[capitalNum]
-                let rank = Rank.allCases[rankNum]
-
-                let pawn = self.pawnsManager.getPawn(at: Location(capital: capital, rank: rank))
-                switch pawn?.color {
-                case .black:
-                    boards[rankNum][capitalNum] = "♟"
-                case .white:
-                    boards[rankNum][capitalNum] = "♙"
-                case .none:
-                    boards[rankNum][capitalNum] = "."
-                }
-            }
-        }
-
-        return boards
+        return Location(file: file, rank: rank)
     }
     
     func getScore(of color: Color) -> Int {
-        return self.pawnsManager.getPawns(color: color).count
+        return self.pawnsManager.getPawns(color: color)
+            .map({ $0.score })
+            .reduce(0, +)
     }
 }

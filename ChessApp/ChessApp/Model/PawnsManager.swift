@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PawnsManager {
-    func setupPawns()
+    func resetPawns()
     func getPawn(at location: Location) -> Pawn?
     func update(originPawn: Pawn, to destination: Location)
     func hasPawn(at location: Location) -> Bool
@@ -18,7 +18,9 @@ protocol PawnsManager {
 final class PawnsManagerImpl: PawnsManager {
     private var pawns: [Location: Pawn] = [:]
     
-    func setupPawns() {
+    func resetPawns() {
+        self.pawns.removeAll()
+        
         let pawns = self.makePawns()
         for pawn in pawns {
             self.pawns[pawn.currentLocation] = pawn
@@ -30,12 +32,12 @@ final class PawnsManagerImpl: PawnsManager {
             .map({ color in
                 switch color {
                 case .black:
-                    return Capital.allCases.map({ capital in
-                        return Pawn(color: .black, currentLocation: Location(capital: capital, rank: .two))
+                    return File.allCases.map({ file in
+                        return Pawn(color: .black, currentLocation: Location(file: file, rank: .two))
                     })
                 case .white:
-                    return Capital.allCases.map({ capital in
-                        return Pawn(color: .white, currentLocation: Location(capital: capital, rank: .seven))
+                    return File.allCases.map({ file in
+                        return Pawn(color: .white, currentLocation: Location(file: file, rank: .seven))
                     })
                 }
             })

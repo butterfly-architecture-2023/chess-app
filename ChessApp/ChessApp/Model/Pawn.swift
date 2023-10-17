@@ -10,11 +10,13 @@ import Foundation
 protocol PawnConfigurable {
     var color: Color { get }
     var currentLocation: Location { get }
+    var text: String { get }
     
     func canMove(to location: Location) -> Bool
 }
 
 struct Pawn: PawnConfigurable {
+    let score: Int = 1
     let color: Color
     let currentLocation: Location
     
@@ -31,6 +33,15 @@ struct Pawn: PawnConfigurable {
             return currentRank < destinationRank
         case .white:
             return currentRank > destinationRank
+        }
+    }
+    
+    var text: String {
+        switch self.color {
+        case .black:
+            return "♟"
+        case .white:
+            return "♙"
         }
     }
 }

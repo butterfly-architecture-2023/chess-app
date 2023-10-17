@@ -8,11 +8,11 @@
 import Foundation
 
 struct Location: Hashable {
-    let capital: Capital
+    let file: File
     let rank: Rank
 }
 
-enum Capital: String, CaseIterable {
+enum File: String, CaseIterable {
     case A
     case B
     case C
@@ -23,11 +23,11 @@ enum Capital: String, CaseIterable {
     case H
     
     init?(_ character: Character) {
-        guard let capital = Capital(rawValue: String(character)) else {
+        guard let file = File(rawValue: String(character)) else {
             return nil
         }
         
-        self = capital
+        self = file
     }
 }
 
