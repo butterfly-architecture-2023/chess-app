@@ -9,8 +9,8 @@ import XCTest
 @testable import ChessApp
 
 final class BoardTests: XCTestCase {
-    func test초기상태의_검정색_점수는_8이다() {
-        let board = Board()
+    func test초기상태의_점수는_색깔별로_각각_8이다() {
+        let board = Board(pieces: [Piece].initialPieces)
         
         let whiteScore = board.score(for: .white)
         let blackScore = board.score(for: .black)
@@ -19,7 +19,7 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(blackScore, 8)
     }
     
-    func test빈_Board의_점수를_계산할_수_있다() {
+    func test빈_Board의_점수는_색깔별로_각각_0이다() {
         let board = Board(pieces: [])
         
         let whiteScore = board.score(for: .white)
@@ -35,7 +35,7 @@ final class BoardTests: XCTestCase {
         ])
         let result = board.move(from: "A7", to: "A6")
         XCTAssertTrue(result)
-        XCTAssertTrue(board.pieces["A6"]?.color == .white)
+        XCTAssertEqual(board.pieces["A6"]?.color, .white)
         XCTAssertNil(board.pieces["A7"])
     }
     
@@ -46,7 +46,19 @@ final class BoardTests: XCTestCase {
         ])
         let result = board.move(from: "A7", to: "A6")
         XCTAssertTrue(result)
-        XCTAssertTrue(board.pieces["A6"]?.color == .white)
+        XCTAssertEqual(board.pieces["A6"]?.color, .white)
+        XCTAssertNil(board.pieces["A7"])
+    }
+    
+    func testA6에_흑색Pawn이_있을때_A7에_있는_백색Pawn을_A6으로_옮겼다가_다시_A7로_옮길_수_없다() {
+        var board = Board(pieces: [
+            Pawn(color: .black, position: "A6"),
+            Pawn(color: .white, position: "A7")
+        ])
+        _ = board.move(from: "A7", to: "A6")
+        let result = board.move(from: "A6", to: "A7")
+        XCTAssertFalse(result)
+        XCTAssertEqual(board.pieces["A6"]?.color, .white)
         XCTAssertNil(board.pieces["A7"])
     }
     
@@ -90,7 +102,7 @@ final class BoardTests: XCTestCase {
     }
     
     func test초기상태의_board를_display할_수_있다() {
-        let board = Board()
+        let board = Board(pieces: [Piece].initialPieces)
         let expect = """
 ........
 ♟♟♟♟♟♟♟♟
@@ -117,5 +129,21 @@ final class BoardTests: XCTestCase {
 ........
 """
         XCTAssertEqual(board.display(), expect)
+    }
+    
+    func test흰색_Pawn_9개로_Board를_초기화_할_수_없다() {
+        var board = Board()
+        let result = board.updatePieces([
+            Pawn(color: .white, position: "A1"),
+            Pawn(color: .white, position: "A4"),
+            Pawn(color: .white, position: "B6"),
+            Pawn(color: .white, position: "A8"),
+            Pawn(color: .white, position: "C2"),
+            Pawn(color: .white, position: "D2"),
+            Pawn(color: .white, position: "E2"),
+            Pawn(color: .white, position: "F4"),
+            Pawn(color: .white, position: "G6")
+        ])
+        XCTAssertFalse(result)
     }
 }

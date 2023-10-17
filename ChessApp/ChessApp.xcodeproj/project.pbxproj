@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC47D4E82ADEAFD300CE1774 /* Piece+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC47D4E72ADEAFD300CE1774 /* Piece+Test.swift */; };
 		CC4FCB7A2ADBD8A90084E261 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4FCB792ADBD8A90084E261 /* Board.swift */; };
 		CC4FCB7C2ADBD8B30084E261 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4FCB7B2ADBD8B30084E261 /* Pawn.swift */; };
 		CC4FCB7E2ADBD8D90084E261 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4FCB7D2ADBD8D90084E261 /* Piece.swift */; };
@@ -22,7 +23,6 @@
 		CCEA52692ADBCE1000CD43ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCEA52672ADBCE1000CD43ED /* Main.storyboard */; };
 		CCEA526B2ADBCE1100CD43ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCEA526A2ADBCE1100CD43ED /* Assets.xcassets */; };
 		CCEA526E2ADBCE1100CD43ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCEA526C2ADBCE1100CD43ED /* LaunchScreen.storyboard */; };
-		CCEA52792ADBCE1100CD43ED /* ChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52782ADBCE1100CD43ED /* ChessAppTests.swift */; };
 		CCEA52832ADBCE1100CD43ED /* ChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52822ADBCE1100CD43ED /* ChessAppUITests.swift */; };
 		CCEA52852ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52842ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC47D4E72ADEAFD300CE1774 /* Piece+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Piece+Test.swift"; sourceTree = "<group>"; };
 		CC4FCB792ADBD8A90084E261 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		CC4FCB7B2ADBD8B30084E261 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		CC4FCB7D2ADBD8D90084E261 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		CCEA526D2ADBCE1100CD43ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCEA526F2ADBCE1100CD43ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCEA52742ADBCE1100CD43ED /* ChessAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCEA52782ADBCE1100CD43ED /* ChessAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppTests.swift; sourceTree = "<group>"; };
 		CCEA527E2ADBCE1100CD43ED /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52822ADBCE1100CD43ED /* ChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITests.swift; sourceTree = "<group>"; };
 		CCEA52842ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -136,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				CCD18EBE2ADBFB33007D02AF /* Position+StringLiteral.swift */,
+				CC47D4E72ADEAFD300CE1774 /* Piece+Test.swift */,
 			);
 			path = TestExtensions;
 			sourceTree = "<group>";
@@ -180,7 +181,6 @@
 			children = (
 				CCD18EBD2ADBFB25007D02AF /* TestExtensions */,
 				CC4FCB802ADBD91B0084E261 /* Model */,
-				CCEA52782ADBCE1100CD43ED /* ChessAppTests.swift */,
 			);
 			path = ChessAppTests;
 			sourceTree = "<group>";
@@ -340,8 +340,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCEA52792ADBCE1100CD43ED /* ChessAppTests.swift in Sources */,
 				CC4FCB822ADBD9240084E261 /* PawnTests.swift in Sources */,
+				CC47D4E82ADEAFD300CE1774 /* Piece+Test.swift in Sources */,
 				CCD18EC12ADC001B007D02AF /* PostionTests.swift in Sources */,
 				CC4FCB842ADBD9290084E261 /* BoardTests.swift in Sources */,
 				CCD18EBF2ADBFB33007D02AF /* Position+StringLiteral.swift in Sources */,

@@ -18,4 +18,7 @@ struct Pawn: Piece {
               let rank = Position.Rank(UInt8(expectedY)) else { return [] }
         return [Position(file: position.file, rank: rank)]
     }
+    
+    let score: Int = 1
+    let maximumCount: Int = 8
 }

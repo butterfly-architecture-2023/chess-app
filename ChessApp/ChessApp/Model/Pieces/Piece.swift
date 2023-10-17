@@ -10,6 +10,12 @@ import Foundation
 protocol Piece {
     var color: Color { get }
     var position: Position { get set }
-    
     var availableMovePositions: Set<Position> { get }
+    
+    var maximumCount: Int { get }
+    var score: Int { get }
+}
+
+extension Piece {
+    var type: String { String(describing: Self.self) }
 }

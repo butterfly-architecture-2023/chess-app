@@ -10,23 +10,11 @@ import Foundation
 struct Board {
     private(set) var pieces: [Position: Piece] = [:]
     
-    init(pieces: [Piece] = Self.initialPieces) {
+    mutating func updatePieces(_ pieces: [Piece]) -> Bool {
+        guard validate(pieces: pieces) else { return false }
         let piecePairs = pieces.map { ($0.position, $0) }
         self.pieces = [Position: Piece](uniqueKeysWithValues: piecePairs)
-    }
-    
-    func score(for color: Color) -> Int {
-        pieces.values
-            .filter { $0.color == color }
-            .map {
-                switch $0 {
-                case is Pawn:
-                    return 1
-                default:
-                    return 0
-                }
-            }
-            .reduce(0, +)
+        return true
     }
     
     mutating func move(from: Position, to: Position) -> Bool {
@@ -55,26 +43,30 @@ struct Board {
         }.joined(separator: "\n")
     }
     
+    func score(for color: Color) -> Int {
+        pieces.values
+            .filter { $0.color == color }
+            .map(\.score)
+            .reduce(0, +)
+    }
+    
+    private func validate(pieces: [Piece]) -> Bool {
+        var classified = [String: Int]()
+        for piece in pieces {
+            let identifier = piece.type + "\(piece.color)"
+            let count = classified[identifier, default: 0] + 1
+            guard piece.maximumCount >= count else {
+                return false
+            }
+            classified[identifier] = count
+        }
+        return true
+    }
+    
     private func canMove(from: Position, to: Position) -> Bool {
         guard let fromPiece = pieces[from],
                 fromPiece.availableMovePositions.contains(to) else { return false }
         guard let toPiece = pieces[to] else { return true }
         return fromPiece.color != toPiece.color
-    }
-}
-
-extension Board {
-    private static var initialPieces: [Piece] {
-        Position.File.range.flatMap { (i: UInt8) in
-            let file = String(UnicodeScalar(65 + i)) // "A" + i
-            let pawn = { (color: Color, position: String) -> Pawn? in
-                guard let position = Position(position) else { return nil }
-                return Pawn(color: color, position: position)
-            }
-            return [
-                pawn(.black, "\(file)2"),
-                pawn(.white, "\(file)7")
-            ].compactMap { $0 }
-        }
     }
 }
