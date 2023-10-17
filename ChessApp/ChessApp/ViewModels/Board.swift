@@ -5,6 +5,9 @@ class Board {
 
   typealias Squares = [Int: [String: Piece?]]
 
+  let blackPawn = String("\u{265F}")
+  let whitePawn = String("\u{2659}")
+
   var squares: Squares = [:]
 
   func initialSquares() -> Squares {
@@ -22,5 +25,27 @@ class Board {
     }
 
     return result
+  }
+
+  func display() -> [String] {
+    Array(0...7).map { rankIndex in
+      Array(0...7).reduce("") { result, fileIndex in
+        let piece = getPiece(rankIndex: rankIndex, fileIndex: fileIndex)
+        let pawn = piece.map { $0.colorType == .black ? blackPawn : whitePawn }
+        var temp = result
+        temp.append(pawn ?? ".")
+        return temp
+      }
+    }
+  }
+
+  func getPiece(rankIndex: Int, fileIndex: Int) -> Piece? {
+    guard
+      let rank = squares[rankIndex + 1],
+      let piece = rank[String(format: "%c", fileIndex + 65)]
+    else {
+      return nil
+    }
+    return piece
   }
 }
