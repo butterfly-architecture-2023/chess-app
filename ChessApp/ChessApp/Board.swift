@@ -9,7 +9,7 @@ struct Board {
     typealias Coordinate = (file: File, rank: Rank)
     typealias Squares = [Rank: [File: Piece?]]
     
-    private var squares: Squares
+    private(set) var squares: Squares
     
     init(squares: Squares = BoardMaker.make()) {
         self.squares = squares
