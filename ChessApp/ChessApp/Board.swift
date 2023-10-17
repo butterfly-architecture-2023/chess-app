@@ -24,20 +24,33 @@ class Board {
   // movePiece, calculate 호출
   func move(from start: Position, to dest: Position) -> Bool {
     let result = movePiece(from: start, to: dest)
-    calculate(from: start, to: dest, piece: result)
-    
     currentTurn = currentTurn == .white ? .black : .white
     
-    return false
+    return result
   }
   
-  // positions 일부의 체스말 상태를 바꾸는 Side-Effect 존재
+  /// positions 일부의 체스말 상태를 바꾸는 Side-Effect 존재. 이동 성공여부를 반환한다.
   private func movePiece(
     from start: Position,
-    to deest: Position
-  ) -> (any Piece)? {
+    to dest: Position
+  ) -> Bool {
+    guard let startPiece = positions[start]?.piece else {
+      return false
+    }
     
-    return nil
+    guard let destPiece = positions[dest]?.piece else {
+      positions[start]?.piece = nil
+      positions[dest]?.piece = startPiece
+      return true
+    }
+    
+    if destPiece.color == startPiece.color {
+      return false
+    } else {
+      positions[start]?.piece = nil
+      positions[dest]?.piece = startPiece
+      return true
+    }
   }
   
   // 점수를 수정하는 Side-Effect 존재
@@ -79,7 +92,21 @@ class Board {
     }
   }
   
-  func getPosition(from input: String) throws -> Position {
+  func getCmd(_ cmd: String) throws -> (from: Position, to: Position) {
+    let cmds = cmd.split(separator: " ").map({String($0)})
+    
+    guard cmds.count == 2 else {
+      throw InputError.formatError
+    }
+    
+    return try (from: getPosition(from: cmds[0]), to: getPosition(from: cmds[1]))
+  }
+  
+  func getPiece(_ position: Position) -> (any Piece)? {
+    return positions[position]?.piece
+  }
+  
+  private func getPosition(from input: String) throws -> Position {
     guard input.count == 2 else {
       throw { () -> InputError in
         input.count < 2 ? .minimumLengthViolated : .maximumLengthExceeded

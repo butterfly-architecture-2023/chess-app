@@ -13,7 +13,7 @@ enum Row: Int, CaseIterable, Equatable {
 
 extension Int {
   var toRow: Row? {
-    Row.allCases.first(where: {$0.rawValue == self})
+    Row.allCases.first(where: {$0.rawValue == (self-1)})
   }
 }
 
