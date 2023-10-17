@@ -57,4 +57,68 @@ final class BoardTests: XCTestCase {
 
         XCTAssertEqual(board.square, startedSquare)
     }
+    
+    func testMovePawn_체스보드_맨_위에_검은_폰이_위치했을_때_폰을_움직일_수_있는지_확인() {
+        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        square[0] = square[0].map{ _ in Piece(category: .pawn(color: .black)) }
+        
+        let board = Board(square: square)
+
+        XCTAssertTrue(board.movePawn(rank: 0, file: 0))
+    }
+    
+    func testMovePawn_체스보드_맨_위에_하얀_폰이_위치했을_때_폰을_움직일_수_없는지_확인() {
+        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        square[0] = square[0].map{ _ in Piece(category: .pawn(color: .white)) }
+        
+        let board = Board(square: square)
+
+        XCTAssertFalse(board.movePawn(rank: 0, file: 0))
+    }
+    
+    func testMovePawn_체스보드_맨_아래에_검은_폰이_위치했을_때_폰을_움직일_수_없는지_확인() {
+        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        square[7] = square[7].map{ _ in Piece(category: .pawn(color: .black)) }
+        
+        let board = Board(square: square)
+
+        XCTAssertFalse(board.movePawn(rank: 7, file: 7))
+    }
+    
+    func testMovePawn_체스보드_맨_아래에_하얀_폰이_위치했을_때_폰을_움직일_수_있는지_확인() {
+        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        square[7] = square[7].map{ _ in Piece(category: .pawn(color: .white)) }
+        
+        let board = Board(square: square)
+
+        XCTAssertTrue(board.movePawn(rank: 7, file: 7))
+    }
+    
+    func testMovePawn_하얀_폰이_이동하려는_위치에_같은_말이_있을_때_FALSE_반환() {
+        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        square[6] = square[6].map{ _ in Piece(category: .pawn(color: .white)) }
+        square[7] = square[7].map{ _ in Piece(category: .pawn(color: .white)) }
+        
+        let board = Board(square: square)
+
+        XCTAssertFalse(board.movePawn(rank: 7, file: 7))
+    }
+    
+    func testMovePawn_검은_폰이_이동하려는_위치에_같은_말이_있을_때_FALSE_반환() {
+        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        square[3] = square[3].map{ _ in Piece(category: .pawn(color: .black)) }
+        square[4] = square[4].map{ _ in Piece(category: .pawn(color: .black)) }
+        
+        let board = Board(square: square)
+
+        XCTAssertFalse(board.movePawn(rank: 3, file: 6))
+    }
+    
+    func testMovePawn_체크말이_없는_곳에서_이동하려고_할_때_FALSE_반환() {
+        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        
+        let board = Board(square: square)
+
+        XCTAssertFalse(board.movePawn(rank: 3, file: 6))
+    }
 }

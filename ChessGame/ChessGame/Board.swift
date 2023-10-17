@@ -65,4 +65,40 @@ final class Board {
         square[1] = square[1].map{ _ in Piece(category: .pawn(color: .black)) }
         square[6] = square[6].map{ _ in Piece(category: .pawn(color: .white)) }
     }
+    
+    // 프로그래밍 요구사항 5.
+    // 특정 말을 옮기는 메소드는 Board에서 제공한다.
+    // 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없다.
+    // 말을 옮길 수 있으면 true, 옮길 수 없으면 false를 리턴한다.
+    // 만약, 다른 색상의 말이 to 위치에 있는 경우는 기존에 있던 말을 제거하고 이동한다.
+    func movePawn(rank: Int, file: Int) -> Bool {
+        let piece = square[rank][file]
+        let newRank: Int
+        
+        switch piece.category {
+        case .pawn(color: .black):
+            newRank = rank + 1
+        case .pawn(color: .white):
+            newRank = rank - 1
+        case .empty:
+            return false
+        }
+        
+        guard isValidMove(piece: piece, rank: rank, file: file) else {
+            return false
+        }
+        
+        square[newRank][file] = piece
+        square[rank][file] = Piece(category: .empty)
+        
+        return true
+    }
+
+    private func isValidMove(piece: Piece, rank: Int, file: Int) -> Bool {
+        guard rank >= 0,
+              rank < square.count,
+              square[rank][file].category != piece.category else { return false }
+        
+        return true
+    }
 }
