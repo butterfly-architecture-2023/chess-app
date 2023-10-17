@@ -3,6 +3,7 @@ import Foundation
 class Board {
   init() {}
 
+  typealias SquarePosition = (rank: Int, file: String)
   typealias Squares = [Int: [String: Piece?]]
 
   let blackPawn = String("\u{265F}")
@@ -39,6 +40,16 @@ class Board {
     }
   }
 
+  func movePiece(from startSquare: String, to endSquare: String) throws -> Squares {
+    let start: SquarePosition = try getSquarePosition(from: startSquare)
+    let end: SquarePosition = try getSquarePosition(from: endSquare)
+
+    var temp = squares
+    temp[end.rank]?[end.file] = squares[start.rank]?[start.file]
+    temp[start.rank]?[start.file] = nil
+    return temp
+  }
+
   func getPiece(rankIndex: Int, fileIndex: Int) -> Piece? {
     guard
       let rank = squares[rankIndex + 1],
@@ -47,5 +58,17 @@ class Board {
       return nil
     }
     return piece
+  }
+
+  func getSquarePosition(from square: String) throws -> SquarePosition {
+    guard
+      let file = square.first.map(String.init),
+      let stringifiedRank = square.last.map(String.init),
+      let rank = Int(stringifiedRank)
+    else {
+      throw AppError.wrongSquareID
+    }
+
+    return (rank: rank, file: file)
   }
 }
