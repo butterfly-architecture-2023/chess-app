@@ -31,12 +31,7 @@ struct Board {
         Position.Rank.allCases.map { rank in
             Position.File.allCases.map { file in
                 guard let piece = pieces[Position(file: file, rank: rank)] else { return "." }
-                switch piece {
-                case is Pawn:
-                    return piece.color == .black ? "♟" : "♙"
-                default:
-                    return "."
-                }
+                return piece.description
             }.joined()
         }.joined(separator: "\n")
     }

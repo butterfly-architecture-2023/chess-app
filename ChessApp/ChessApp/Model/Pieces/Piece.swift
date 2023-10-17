@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Piece {
+protocol Piece: CustomStringConvertible {
     var color: Color { get }
     var position: Position { get set }
     var availableMovePositions: Set<Position> { get }
