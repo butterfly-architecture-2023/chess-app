@@ -39,4 +39,13 @@ final class Board {
         
         return score
     }
+    
+    // 프로그래밍 요구사항 3.
+    // Board는 모든 말의 위치를 알 수 있고, display() 함수는 1-rank부터 8-rank까지 rank 문자열 배열로 보드 위에 체스말을 리턴한다
+    // 흑색 Pawn는 ♟ U+265F를 빈 곳은 "."을 표시한다.
+    // 백색 Pawn는 ♙ U+2659를 빈 곳은 "."을 표시한다.
+    func display() -> [[String]] {
+        let convertedSquare = square.map{ $0.map{ $0.category.unicode } }
+        return convertedSquare
+    }
 }
