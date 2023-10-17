@@ -11,6 +11,12 @@ enum Row: Int, CaseIterable, Equatable {
   case `one`, `two`, `three`, `four`, `five`, `six`, `seven`, `eight`
 }
 
+extension Row: Comparable {
+  static func < (lhs: Row, rhs: Row) -> Bool {
+    lhs.rawValue < rhs.rawValue
+  }
+}
+
 extension Int {
   var toRow: Row? {
     Row.allCases.first(where: {$0.rawValue == (self-1)})

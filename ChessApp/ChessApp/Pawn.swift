@@ -16,16 +16,14 @@ class Pawn: Piece {
   
   let type: PieceType = .pawn
   let color: PieceColor
-  let directionMovable: Set<MoveDirection> = Set([
-    .up(1),
-    .up(2),
-    .upLeft(1),
-    .upRight(1)
-  ])
+  let directionMovable: Set<MoveDirection>
   
   var moveCount: Int = 0
   
   required init(_ color: PieceColor) {
     self.color = color
+    self.directionMovable = color == .black
+    ? Set([.down(1), .downLeft(1), .downRight(1)])
+    : Set([.up(1), .upLeft(1), .upRight(1)])
   }
 }

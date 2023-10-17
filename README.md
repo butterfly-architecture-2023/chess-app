@@ -71,9 +71,9 @@
   - 연속적인 이동을 하고 다음의 내용을 상태 기반 테스트한다. 점수, 말의 갯수, 누구의 턴.
   - (폐기. 이후 Position 은 enum 상태값으로 진행하므로 불필요) 위의 연속적인 이동 중 제대로 MoveDirection 에 대한 이동을 수행하는지 출력 기반 테스트로 검증한다.
   - 이동이 가능할 것으로 예상되는 MoveDirection 이 어떤 Pawn 을 이동하는지 여부를 통신 기반 테스트로 검증한다.
-2. Pawn
+2. Pawn *(Done)*
   - 이동방향 입력에 대해 정확한 결과를 반환하는지 출력 기반 테스트로 검증한다.
-3. Row, Column
-  - Board 의 `getPosition(from:String)` 을 통해 테스트
+3. Row, Column *(Done)*
+  - Board 의 `getPosition(from:String)` 을 통해 경계조건을 테스트
 4. PieceType
   - 자체적으로 만든 Mock 객체가 Pawn 과 똑같이 동작하는지 출력 기반 테스트로 검증한다.

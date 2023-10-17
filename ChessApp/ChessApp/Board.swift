@@ -38,6 +38,10 @@ class Board {
       return false
     }
     
+    guard let directionToMove = start.direction(to: dest), startPiece.directionMovable.contains(directionToMove) else {
+      return false
+    }
+    
     guard let destPiece = positions[dest]?.piece else {
       positions[start]?.piece = nil
       positions[dest]?.piece = startPiece
@@ -115,7 +119,9 @@ class Board {
     
     guard let column = input.getColumn,
           let row = input.getRow else {
-      throw InputError.formatError
+      throw { () -> InputError in
+        input.getColumn == nil ? .noColumn : .noRow
+      }()
     }
     
     return Position(column, row)
@@ -150,6 +156,44 @@ extension Set where Element == Board.Position {
   subscript(position: Board.Position) -> Board.Position? {
     get {
       self.first(where: {$0 == position})
+    }
+  }
+}
+
+extension Board.Position {
+  func distance(to position: Board.Position) -> Int {
+    if self.row != position.row {
+      return abs(row.rawValue - position.row.rawValue)
+    } else {
+      return abs(column.order - position.column.order)
+    }
+  }
+  
+  func direction(to position: Board.Position) -> MoveDirection? {
+    guard position != self else {
+      return nil
+    }
+    
+    let distance = distance(to: position)
+    
+    if row == position.row { // 왼쪽 오른쪽
+      return (column < position.column) ? .right(distance) : .left(distance)
+    } else { // 대각선, 위 아래
+      if column == position.column { // 위 아래
+        return self.row < position.row ? .down(distance) : .up(distance)
+      } else {
+        if row > position.row && column > position.column {
+          return .upRight(distance)
+        } else if row > position.row && column < position.column {
+          return .upLeft(distance)
+        } else if row < position.row && column > position.column {
+          return .downLeft(distance)
+        } else if row < position.row && column < position.column {
+          return .downRight(distance)
+        } else {
+          return nil
+        }
+      }
     }
   }
 }
