@@ -30,6 +30,29 @@ struct ChessBoard {
     func display() -> String {
         var result: String = ""
         
+        result.append(" ")
+        Position.File.allCases.forEach {
+            result.append("\($0.rawValue)")
+        }
+        result.append("\n")
+        
+        let flatBoard = board.flatMap({ $0 })
+        
+        Position.Rank.allCases.forEach {
+            let rank = $0
+            let currentRank = flatBoard.filter({ $0.position.rank == rank }).sorted(by: { $0.position.file.rawValue < $1.position.file.rawValue })
+            result.append("\(rank.rawValue + 1)")
+            currentRank.forEach {
+                result.append("\($0.piece?.displayText ?? ".")")
+            }
+            result.append("\n")
+        }
+        
+        result.append(" ")
+        Position.File.allCases.forEach {
+            result.append("\($0.rawValue)")
+        }
+        
         return result
     }
     

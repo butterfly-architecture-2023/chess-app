@@ -12,7 +12,7 @@ struct Position {
         case one, two, three, four, five, six, seven, eight
     }
     
-    enum File: Int, CaseIterable {
+    enum File: String, CaseIterable {
         case A, B, C, D, E, F, G, H
     }
     
