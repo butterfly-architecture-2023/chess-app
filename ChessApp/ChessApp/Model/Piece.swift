@@ -8,10 +8,10 @@
 import Foundation
 
 protocol Piece {
-    var color: Color { get set }
+    var color: Color { get }
     var displayText: String { get }
 
-    func isPossibleInitPosition(with rank: Position.Rank) -> Bool
+    func isPossibleInitPosition(with position: Position) -> Bool
     func canMoveRank(from: Position.Rank, to: Position.Rank) -> Bool
     func canMoveFile(from: Position.File, to: Position.File) -> Bool
 }

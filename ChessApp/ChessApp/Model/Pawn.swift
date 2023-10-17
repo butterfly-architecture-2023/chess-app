@@ -22,12 +22,12 @@ struct Pawn: Piece {
         }
     }
     
-    func isPossibleInitPosition(with rank: Position.Rank) -> Bool {
+    func isPossibleInitPosition(with position: Position) -> Bool {
         var isPossible: Bool = false
         
-        if rank == .two && color == .black {
+        if position.rank == .two && color == .black {
             isPossible = true
-        } else if rank == .seven && color == .white {
+        } else if position.rank == .seven && color == .white {
             isPossible = true
         }
         
