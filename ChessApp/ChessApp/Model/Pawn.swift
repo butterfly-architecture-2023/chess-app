@@ -39,7 +39,7 @@ struct Pawn: Piece {
         var canMove: Bool = false
         
         let rankDiff = abs(from.rank.rawValue - to.rank.rawValue)
-        let fileDiff = abs(from.rank.rawValue - to.rank.rawValue)
+        let fileDiff = abs(from.file.rawValue - to.file.rawValue)
         
         if rankDiff <= 1, fileDiff <= 1 {
             switch color {
