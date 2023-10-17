@@ -7,6 +7,14 @@
 
 struct Pawn: Piece {
     let color: PieceColor
+    var icon: String {
+        switch self.color {
+        case .black:
+            return "♟"
+        case .white:
+            return "♙"
+        }
+    }
     
     init(color: PieceColor) {
         self.color = color

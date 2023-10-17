@@ -6,7 +6,7 @@
 //
 
 extension Board {
-    enum Rank: Int, CaseIterable {
+    enum Rank: Int, CaseIterable, CustomStringConvertible {
         case one = 1
         case two = 2
         case three = 3
@@ -15,5 +15,9 @@ extension Board {
         case six = 6
         case seven = 7
         case eight = 8
+        
+        var description: String {
+            self.rawValue.description
+        }
     }
 }

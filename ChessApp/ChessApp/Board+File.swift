@@ -6,7 +6,7 @@
 //
 
 extension Board {
-    enum File: CaseIterable {
+    enum File: CaseIterable, CustomStringConvertible {
         case a
         case b
         case c
@@ -15,5 +15,26 @@ extension Board {
         case f
         case g
         case h
+        
+        var description: String {
+            switch self {
+            case .a:
+                return "A"
+            case .b:
+                return "B"
+            case .c:
+                return "C"
+            case .d:
+                return "D"
+            case .e:
+                return "E"
+            case .f:
+                return "F"
+            case .g:
+                return "G"
+            case .h:
+                return "H"
+            }
+        }
     }
 }
