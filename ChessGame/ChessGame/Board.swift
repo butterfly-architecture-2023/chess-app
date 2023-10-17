@@ -9,7 +9,7 @@ import Foundation
 
 final class Board {
     
-    private var square: [[Piece]]
+    private(set) var square: [[Piece]]
     
     init(square: [[Piece]]) {
         self.square = square
@@ -47,5 +47,22 @@ final class Board {
     func display() -> [[String]] {
         let convertedSquare = square.map{ $0.map{ $0.category.unicode } }
         return convertedSquare
+    }
+    
+    // 프로그래밍 요구사항 4.
+    // 게임 시작시점에는 특정 위치에 특정 말을 생성한다.
+    // 초기화할 때 1,2-rank는 흑백 체스말이, 7,8-rank는 백색 체스말이 위치한다.
+    // 체스말 초기 위치가 아니면 생성하지 않는다.
+    // 이미 해당 위치에 다른 말이 있으면 생성하지 않는다.
+    // 체스말 종류별로 최대 개수보다 많이 생성할 수는 없다.
+    // Pawn는 색상별로 8개만 가능하다.
+    func gameStart() {
+        
+        // 초기화
+        self.square =  Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        
+        // 폰들 초기화
+        square[1] = square[1].map{ _ in Piece(category: .pawn(color: .black)) }
+        square[6] = square[6].map{ _ in Piece(category: .pawn(color: .white)) }
     }
 }

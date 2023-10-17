@@ -41,4 +41,20 @@ final class BoardTests: XCTestCase {
         let sut = board.display()
         XCTAssertEqual(sut, [["\u{265F}", "\u{2659}", "\u{002E}"]])
     }
+    
+    func testGameStart_게임_시작_시점에_체스보드_위_체스말이_특정_위치에_초기화_되는지_확인() {
+        // 체스보드 위에 체스말이 초기화 되는 위치
+        // 8x8 2차원 
+        // 검은 폰 - row = 1 인 곳
+        // 하얀 폰 - row = 6 인 곳
+        
+        let board = Board()
+        board.gameStart()
+        
+        var startedSquare = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
+        startedSquare[1] = startedSquare[1].map{ _ in Piece(category: .pawn(color: .black)) }
+        startedSquare[6] = startedSquare[6].map{ _ in Piece(category: .pawn(color: .white)) }
+
+        XCTAssertEqual(board.square, startedSquare)
+    }
 }

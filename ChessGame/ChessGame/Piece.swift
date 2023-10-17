@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Piece {
+struct Piece: Equatable {
 
     enum Color {
         case black
