@@ -25,4 +25,16 @@ final class ChessGameTests: XCTestCase {
     func test_checkInitialPosition() {
         XCTAssertTrue(sut.checkInitialPosition())
     }
+
+    func test_black_movePiece() {
+        let from = Pawn(pieceType: .black, position: Position(rank: 2, file: .D))
+        let to = Pawn(pieceType: .black, position: Position(rank: 3, file: .E))
+        XCTAssertTrue(sut.movePiece(from: from, to: to))
+    }
+
+    func test_white_movePiece() {
+        let from = Pawn(pieceType: .white, position: Position(rank: 7, file: .D))
+        let to = Pawn(pieceType: .white, position: Position(rank: 6, file: .E))
+        XCTAssertTrue(sut.movePiece(from: from, to: to))
+    }
 }

@@ -90,4 +90,73 @@ final class ChessBoard {
 
         return true
     }
+
+    // MARK: - Move Chess Piece
+
+    /// 입력: 움직이려는 말이 있는 위치(from)와 이동하려는 위치(to)를 차례대로 입력받아서 말을 이동한다.
+    func movePiece(from: Pawn, to: Pawn) -> Bool {
+        return canMove(from: from, to: to) &&
+        isValidRankMove(from: from, to: to) &&
+        isOneSpaceMove(from: from, to: to)
+    }
+
+    private func canMove(from: Pawn, to: Pawn) -> Bool {
+        let pawnAtFromPosition = board[from.position.rank - 1][from.position.file.index]
+        let pawnAtToPosition = board[to.position.rank - 1][to.position.file.index]
+
+        /// 검증1: 형식에 맞지 않으면 다시 입력받는다.
+        guard from.position.isValidPosition() && to.position.isValidPosition() else {
+            return false
+        }
+
+        /// 검증2: from 위치에 동일한 pieceType의 체스말이 존재하는지 확인한다.
+        if pawnAtFromPosition.pieceType != from.pieceType {
+            return false
+        }
+
+        /// 검증3: from과 to의 체스말은 동일할 수 없다.
+        if from.pieceType != to.pieceType {
+            return false
+        }
+
+        /// 검증4: 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없다.
+        if pawnAtToPosition.pieceType == to.pieceType {
+            return false
+        }
+
+        return true
+    }
+
+    /// 검증5 - 백색은 큰 rank에서 더 작은 rank로 움직일 수 있고, 흑색은 작은 rank에서 더 큰 rank로 움직일 수 있다.
+    private func isValidRankMove(from: Pawn, to: Pawn) -> Bool {
+        let fromPieceRank = from.position.rank
+        let toPieceRank = to.position.rank
+
+        switch from.pieceType {
+        case .black:
+            if fromPieceRank >= toPieceRank {
+                return false
+            }
+        case .white:
+            if fromPieceRank <= toPieceRank {
+                return false
+            }
+        case .dot:
+            return true
+        }
+
+        return true
+    }
+
+    /// 검증6 - 1칸만 움직일 수 있다. (직선/대각선)
+    private func isOneSpaceMove(from: Pawn, to: Pawn) -> Bool {
+        let rankDifference = abs(from.position.rank - to.position.rank)
+        let fileDifference = abs(from.position.file.index - to.position.file.index)
+
+        if rankDifference > 1 || fileDifference > 1 {
+            return false
+        }
+
+        return true
+    }
 }
