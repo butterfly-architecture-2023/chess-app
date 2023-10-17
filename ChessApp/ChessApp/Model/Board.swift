@@ -36,7 +36,7 @@ final class Board: BoardConfigurable {
             throw InputError.overRange
         }
                 
-        guard let originPawn = self.pawnsManager.gatPawn(at: source) else {
+        guard let originPawn = self.pawnsManager.getPawn(at: source) else {
             throw InputError.sourceNotExist
         }
         
@@ -48,7 +48,7 @@ final class Board: BoardConfigurable {
             throw InputError.invalidScope
         }
         
-        let pawnOrNilForDestination = self.pawnsManager.gatPawn(at: destination)
+        let pawnOrNilForDestination = self.pawnsManager.getPawn(at: destination)
         guard originPawn.color != pawnOrNilForDestination?.color else {
             throw InputError.sameTeam
         }
@@ -80,7 +80,7 @@ final class Board: BoardConfigurable {
                 let capital = Capital.allCases[capitalNum]
                 let rank = Rank.allCases[rankNum]
 
-                let pawn = self.pawnsManager.gatPawn(at: Location(capital: capital, rank: rank))
+                let pawn = self.pawnsManager.getPawn(at: Location(capital: capital, rank: rank))
                 switch pawn?.color {
                 case .black:
                     boards[rankNum][capitalNum] = "♟"
