@@ -55,4 +55,10 @@ final class SwiftChessAppTests: XCTestCase {
         ]
         XCTAssertEqual(sampleBoard, board.display())
     }
+    
+    func test_반대색상() {
+        let whitePawn = Pawn(color: .white)
+        let oppositeColor = whitePawn.color.getOppositeColor()
+        XCTAssertEqual(oppositeColor, .black)
+    }
 }
