@@ -18,4 +18,13 @@ struct Pawn: Piece {
         }
     }
     static let maxCount: Int = 8
+    
+    func getMovableDirections() -> [moveDirection] {
+        switch color {
+        case .black:
+            return [moveDirection(file: 0, rank: 1)]
+        case .white:
+            return [moveDirection(file: 0, rank: -1)]
+        }
+    }
 }

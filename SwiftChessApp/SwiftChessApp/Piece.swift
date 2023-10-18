@@ -11,6 +11,7 @@ protocol Piece {
     var color: PieceColor { get }
     var symbol: String { get }
     static var maxCount: Int { get }
+    func getMovableDirections() -> [moveDirection]
 }
 
 enum PieceColor {
@@ -34,4 +35,9 @@ enum PieceColor {
             return .black
         }
     }
+}
+
+struct moveDirection {
+    let file: Int
+    let rank: Int
 }
