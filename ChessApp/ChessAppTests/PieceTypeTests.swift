@@ -76,4 +76,53 @@ final class PieceTypeTests: XCTestCase {
       }
     }
   }
+  
+  // 경로 상 다른 체스말이 있을 경우 이동하지 못하는 기능 테스트
+  func testPieceShouldntThroughOtherPiece() throws {
+    for position in board.positions.rows(.two) {
+      position.piece = MockPiece(.white)
+    }
+    for position in board.positions.rows(.seven) {
+      position.piece = MockPiece(.black)
+    }
+    let whitePawnInputs = [
+      "B2 B5"
+    ]
+    let blackPawnInputs = [
+      "B7 B4"
+    ]
+    
+    let whiteInput = whitePawnInputs[0]
+    let blackInput = blackPawnInputs[0]
+    
+    let whiteMock = try board.getCmd(whiteInput)
+    let whiteMoveResult = board.move(from: whiteMock.from, to: whiteMock.to)
+    let blackMock = try board.getCmd(blackInput)
+    let blackMoveResult = board.move(from: blackMock.from, to: blackMock.to)
+    
+    XCTAssertTrue(whiteMoveResult)
+    XCTAssertFalse(blackMoveResult)
+  }
+  
+  class MockPiece: Piece {
+    static func == (lhs: MockPiece, rhs: MockPiece) -> Bool {
+      lhs.color == rhs.color
+      && lhs.type == rhs.type
+      && lhs.directionMovable == rhs.directionMovable
+    }
+    
+    var type: PieceType = .pawn
+    var color: PieceColor
+    
+    var directionMovable: Set<MoveDirection>
+    
+    required init(_ color: PieceColor) {
+      self.color = color
+      self.directionMovable = .init(
+        color == .black
+        ? [.up(3), .upLeft(3), .upRight(3)]
+        : [.down(3), .downLeft(3), .downRight(3)]
+      )
+    }
+  }
 }

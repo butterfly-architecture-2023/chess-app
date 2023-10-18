@@ -45,7 +45,10 @@ class Board {
       return (false, nil)
     }
     
-    guard let directionToMove = start.direction(to: dest), startPiece.directionMovable.contains(directionToMove) else {
+    guard let directionToMove = start.direction(to: dest),
+          startPiece.directionMovable.contains(directionToMove),
+          getExistsPieces(from: start, to: directionToMove).isEmpty
+    else {
       return (false, nil)
     }
     
@@ -111,6 +114,29 @@ class Board {
   
   func getPiece(_ position: Position) -> (any Piece)? {
     return positions[position]?.piece
+  }
+  
+  /// 도착지점을 제외하고 경로 상에 있는 모든 체스말들을 반환합니다.
+  func getExistsPieces(from position: Position, to direction: MoveDirection) -> [(any Piece)] {
+    var position = position
+    let distance = direction.distance-1
+    var result = [(any Piece)]()
+    
+    guard distance >= 0 else {
+      return result
+    }
+    
+    for _ in 0..<distance {
+      if let next = position.getNextPosition(to: direction) {
+        position = next
+        
+        if let piece = getPiece(next) {
+          result.append(piece)
+        }
+      }
+    }
+    
+    return result
   }
   
   private func getPosition(from input: String) throws -> Position {
@@ -197,6 +223,52 @@ extension Board.Position {
           return nil
         }
       }
+    }
+  }
+  
+  func getNextPosition(to direction: MoveDirection) -> Board.Position? {
+    // 이동하는 거리는 고려하지 않음. 다음 칸은 무조건 한칸이므로 Int 값 불필요
+    switch direction {
+    case .up(_), .upRight(_), .upLeft(_), .downLeft(_), .downRight(_), .down(_):
+      var columnDistance: Int = {
+        switch direction {
+        case .downRight(_), .upRight(_): return 1 // 오른쪽으로 가므로 +1
+        case .downLeft(_), .upLeft(_): return -1 // 왼쪽으로 가므로 -1
+        default: return 0
+        }
+      }()
+      var rowDistance: Int = {
+        switch direction {
+        case .downRight(_), .downLeft(_), .down(_): return 1 // 내려가므로 +1
+        case .upRight(_), .upLeft(_), .up(_): return -1 // 올라가므로 -1
+        default: return 0
+        }
+      }()
+      
+      let newRow = self.row.rawValue + rowDistance
+      let newColumn = self.column.order + columnDistance
+      
+      guard newRow >= 1, newColumn >= 0,
+            let destRow = newRow.toRow,
+            let destColumn = newColumn.toColumn else {
+        return nil
+      }
+      
+      return Board.Position(destColumn, destRow)
+    case .left(_), .right(_):
+      var distance: Int = {
+        switch direction {
+        case .right(_): return 1
+        case .left(_): return -1
+        default: return 0
+        }
+      }()
+      let newColumn = self.column.order + distance
+      guard newColumn >= 0, let destColumn = newColumn.toColumn else {
+        return nil
+      }
+      
+      return Board.Position(destColumn, row)
     }
   }
 }

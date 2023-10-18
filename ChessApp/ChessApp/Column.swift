@@ -39,3 +39,9 @@ extension String {
     String(self.first ?? Character("")).toColumn
   }
 }
+
+extension Int {
+  var toColumn: Column? {
+    Column.allCases.first(where: {$0.order == self})
+  }
+}
