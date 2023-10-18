@@ -37,3 +37,14 @@ enum File: String, CaseIterable {
         self = File.allCases[column - 1]
     }
 }
+
+// TODO: property wrapper 로 개선 가능한가?
+struct Action {
+    var rowAction: Int
+    var columnAction: Int
+
+    init(rowAction: Int = 0, columnAction: Int = 0) {
+        self.rowAction = rowAction
+        self.columnAction = columnAction
+    }
+}
