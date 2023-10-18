@@ -117,6 +117,19 @@ final class Board {
             }
         }
     }
+
+    // Map 출력 함수
+    // 추후 입,출력 테스트시 사용예정
+    func printMap(_ map: [[String]]) {
+        var board = String(map.flatMap({$0}).joined())
+        var index = board.index(board.startIndex, offsetBy: 8)
+
+        while index < board.endIndex {
+            board.insert(contentsOf: "\n", at: index)
+            index = board.index(index, offsetBy: 8 + "\n".count)
+        }
+        print(board)
+    }
 }
 
 extension Board {

@@ -53,7 +53,7 @@ final class Chess_gameTests: XCTestCase {
     }
 
     // MARK: -- Pawn 이동 테스트
-    
+
     func test_특정위치로_말이_이동한후_맵이_정상적으로_바뀌는가() {
         let mockBlackPawnPosition1: BoardPosition = (rank: .one, file: .A)
         let mockBlackPawnPosition2: BoardPosition = (rank: .two, file: .A)
@@ -85,17 +85,6 @@ final class Chess_gameTests: XCTestCase {
         // 이동만 함
         sut.move(mockWhitePawnPosition2, (.three, .A))
         XCTAssertEqual(mockJustMoveMap, sut.display())
-        var board = String(sut.display().flatMap({$0}).joined())
-        var index = board.index(board.startIndex, offsetBy: 8)
-
-        while index < board.endIndex {
-            board.insert(contentsOf: "\n", at: index)
-            index = board.index(index, offsetBy: 8 + "\n".count)
-        }
-
-        print(board)
-
-
     }
 
     func test_특정위치_체스말을_찾는지_못찾는지() {
@@ -196,7 +185,7 @@ final class Chess_gameTests: XCTestCase {
         // rank 오름차순 1씩 가능
         XCTAssertTrue(sut.validateCanGo(mockBlackPawnPosition1, mockBlackPawnPosition2))
         XCTAssertTrue(sut.validateCanGo(mockBlackPawnPosition2, mockBlackPawnPosition3))
-        
+
         // 갈수 없을때(이미 죽은상태)
         XCTAssertTrue(sut.validateCanGo(mockDeadWhitePawnPosition, mockWhitePawnPosition1))
 
