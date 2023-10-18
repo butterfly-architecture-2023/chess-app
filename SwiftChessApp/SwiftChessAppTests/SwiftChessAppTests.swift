@@ -86,4 +86,30 @@ final class SwiftChessAppTests: XCTestCase {
         let inputString = "Z59"
         XCTAssertNil(board.parseSquareName(inputString))
     }
+    
+    func test_체스말이동_백pawn_성공() {
+        let A7 = ChessSquare(fileIndex: 0, rankIndex: 6)
+        let A6 = ChessSquare(fileIndex: 0, rankIndex: 5)
+        XCTAssertTrue(board.movePiece(from: A7, to: A6))
+    }
+    
+    func test_체스말이동_흑pawn_성공() {
+        board.switchPlayer()
+        let F2 = ChessSquare(fileIndex: 5, rankIndex: 1)
+        let F3 = ChessSquare(fileIndex: 5, rankIndex: 2)
+        XCTAssertTrue(board.movePiece(from: F2, to: F3))
+    }
+    
+    func test_체스말이동_백pawn_실패() {
+        let A7 = ChessSquare(fileIndex: 0, rankIndex: 6)
+        let A6 = ChessSquare(fileIndex: 0, rankIndex: 5)
+        XCTAssertFalse(board.movePiece(from: A6, to: A7))
+    }
+    
+    func test_체스말이동_흑pawn_실패() {
+        board.switchPlayer()
+        let F2 = ChessSquare(fileIndex: 5, rankIndex: 1)
+        let F3 = ChessSquare(fileIndex: 5, rankIndex: 2)
+        XCTAssertFalse(board.movePiece(from: F3, to: F2))
+    }
 }
