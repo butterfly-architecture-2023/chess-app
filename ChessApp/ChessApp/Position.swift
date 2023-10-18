@@ -8,8 +8,8 @@
 import Foundation
 
 struct Position: Equatable, CustomStringConvertible, Hashable {
-    var rank: Rank
-    var file: File
+    private(set) var rank: Rank
+    private(set) var file: File
 
     var description: String { return "\(file)\(rank)" }
 

@@ -8,6 +8,7 @@
 import Foundation
 
 // TODO: PieceType enum과 역할이 불분명함. 차라리 protocol로 만드는 것도?
+// PieceType에서도 color를 뽑을 수 있을거 같긴한데, 역할 분리가 더 애매해지는 느낌
 class Piece: Equatable {
     static func == (lhs: Piece, rhs: Piece) -> Bool {
         return lhs.color == rhs.color && lhs.type == rhs.type
@@ -23,7 +24,7 @@ class Piece: Equatable {
 
     func getMovablePositions(from position: Position) -> [Position] {
         return self.type.actionList.map { action in
-            // TODO: 계산 로직은 Action 객체 쪽으로 역할을 분리하는게 나을지?
+            // TODO: 계산 로직은 Action 객체나 Position 쪽으로 역할을 분리하는게 나을지?
             let movedRow = position.rank.rawValue + action.rowAction
             let movedColumn = position.file.value + action.columnAction
 
@@ -37,16 +38,24 @@ class Piece: Equatable {
     }
 }
 
-enum PieceColor {
+enum PieceColor: String {
     case black, white
 }
 
-enum PieceType: Equatable {
+enum PieceType: Equatable, CustomStringConvertible {
     static var allCases: (PieceColor) -> [PieceType] {
         { color in return [.pawn(color)] }
     }
 
-    case pawn(_ color: PieceColor)
+    case pawn(_ color: PieceColor? = nil)
+}
+
+extension PieceType {
+    var description: String {
+        switch self {
+        case .pawn: return "pawn"
+        }
+    }
 
     var icon: String {
         switch self {
