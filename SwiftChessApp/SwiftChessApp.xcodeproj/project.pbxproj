@@ -19,6 +19,9 @@
 		776444452ADFEF9600988316 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444442ADFEF9600988316 /* Piece.swift */; };
 		776444472ADFF07600988316 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444462ADFF07600988316 /* Pawn.swift */; };
 		776444492ADFF15000988316 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444482ADFF15000988316 /* Board.swift */; };
+		7764444A2ADFF44100988316 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444482ADFF15000988316 /* Board.swift */; };
+		7764444B2ADFF44C00988316 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444462ADFF07600988316 /* Pawn.swift */; };
+		7764444C2ADFF45500988316 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444442ADFEF9600988316 /* Piece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,6 +291,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7764444C2ADFF45500988316 /* Piece.swift in Sources */,
+				7764444A2ADFF44100988316 /* Board.swift in Sources */,
+				7764444B2ADFF44C00988316 /* Pawn.swift in Sources */,
 				774D52072ADEAD5C00C95AF3 /* SwiftChessAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
