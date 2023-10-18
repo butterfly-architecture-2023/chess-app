@@ -61,4 +61,14 @@ final class SwiftChessAppTests: XCTestCase {
         let oppositeColor = whitePawn.color.getOppositeColor()
         XCTAssertEqual(oppositeColor, .black)
     }
+    
+    func test_점수계산_흑pawn() {
+        let score = board.getNumber(of: Pawn.self, color: .black)
+        XCTAssertEqual(score, 8)
+    }
+    
+    func test_점수계산_백pawn() {
+        let score = board.getNumber(of: Pawn.self, color: .white)
+        XCTAssertEqual(score, 8)
+    }
 }
