@@ -17,6 +17,23 @@ struct Board {
     init() {
         self.squares = Array(repeating: Array(repeating: nil, count: size), count: size)
     }
+    
+    mutating func initializeBoard() {
+        setUpPawns(count: size)
+    }
+}
+
+extension Board {
+    mutating private func setUpPawns(count: Int) {
+        (0..<count).forEach {
+            setUpPawn(color: .black, at: ChessSquare(fileIndex: $0, rankIndex: 1))
+            setUpPawn(color: .white, at: ChessSquare(fileIndex: $0, rankIndex: 6))
+        }
+    }
+    
+    mutating private func setUpPawn(color: PieceColor, at square: ChessSquare) {
+        squares[square.rankIndex][square.fileIndex] = Pawn(color: color)
+    }
 }
 
 struct ChessSquare {
