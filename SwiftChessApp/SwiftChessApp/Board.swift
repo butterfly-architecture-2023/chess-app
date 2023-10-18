@@ -22,6 +22,7 @@ struct Board {
         setUpPawns(count: size)
     }
     
+    @discardableResult
     mutating func movePiece(from sourceSquare: ChessSquare, to targetSquare: ChessSquare) -> Bool {
         guard let movingPiece = getPiece(at: sourceSquare) else { return false }
         guard turn == movingPiece.color else { return false }
@@ -34,6 +35,7 @@ struct Board {
         guard movableSquares.contains(targetSquare) else { return false }
         let currentPieceAtTargetSquare = getPiece(at: targetSquare)
         if movingPiece.color != currentPieceAtTargetSquare?.color {
+            squares[sourceSquare.rankIndex][sourceSquare.fileIndex] = nil
             squares[targetSquare.rankIndex][targetSquare.fileIndex] = movingPiece
             switchPlayer()
             return true
