@@ -71,7 +71,7 @@ extension Board {
     }
 }
 
-struct ChessSquare {
+struct ChessSquare: Equatable {
     let fileIndex: Int
     let rankIndex: Int
 }

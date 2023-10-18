@@ -71,4 +71,19 @@ final class SwiftChessAppTests: XCTestCase {
         let score = board.getNumber(of: Pawn.self, color: .white)
         XCTAssertEqual(score, 8)
     }
+    
+    func test_인풋문자열_A1_파싱() {
+        let inputString = "A1"
+        XCTAssertEqual(board.parseSquareName(inputString), ChessSquare(fileIndex: 0, rankIndex: 0))
+    }
+    
+    func test_인풋문자열_D6_파싱() {
+        let inputString = "D6"
+        XCTAssertEqual(board.parseSquareName(inputString), ChessSquare(fileIndex: 3, rankIndex: 5))
+    }
+    
+    func test_인풋문자열_Z59_파싱() {
+        let inputString = "Z59"
+        XCTAssertNil(board.parseSquareName(inputString))
+    }
 }
