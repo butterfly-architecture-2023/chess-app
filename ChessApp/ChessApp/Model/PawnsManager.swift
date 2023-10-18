@@ -19,29 +19,26 @@ final class PawnsManagerImpl: PawnsManager {
     private var pawns: [Location: Pawn] = [:]
     
     func resetPawns() {
-        self.pawns.removeAll()
-        
-        let pawns = self.makePawns()
-        for pawn in pawns {
-            self.pawns[pawn.currentLocation] = pawn
-        }
+        self.pawns = self.makePawns()
     }
     
-    private func makePawns() -> [Pawn] {
-        return Color.allCases
-            .map({ color in
+    private func makePawns() -> [Location: Pawn] {
+        var pawns: [Location: Pawn] = [:]
+        
+        for file in File.allCases {
+            for color in Color.allCases {
                 switch color {
                 case .black:
-                    return File.allCases.map({ file in
-                        return Pawn(color: .black, currentLocation: Location(file: file, rank: .two))
-                    })
+                    let location = Location(file: file, rank: .two)
+                    pawns[location] = Pawn(color: .black, currentLocation: location)
                 case .white:
-                    return File.allCases.map({ file in
-                        return Pawn(color: .white, currentLocation: Location(file: file, rank: .seven))
-                    })
+                    let location = Location(file: file, rank: .seven)
+                    pawns[location] = Pawn(color: .white, currentLocation: location)
                 }
-            })
-            .flatMap({ $0 })
+            }
+        }
+        
+        return pawns
     }
     
     func getPawn(at location: Location) -> Pawn? {
