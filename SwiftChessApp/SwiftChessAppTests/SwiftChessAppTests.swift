@@ -8,8 +8,15 @@
 import XCTest
 
 final class SwiftChessAppTests: XCTestCase {
-
-    override func setUpWithError() throws { }
-
-    override func tearDownWithError() throws { }
+    var board: Board!
+    let size = 8
+    
+    override func setUpWithError() throws {
+        board = Board()
+        board.initializeBoard()
+    }
+    
+    override func tearDownWithError() throws {
+        board = nil
+    }
 }
