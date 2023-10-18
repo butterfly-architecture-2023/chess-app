@@ -18,6 +18,7 @@
 		774D52132ADEAD5D00C95AF3 /* SwiftChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D52122ADEAD5D00C95AF3 /* SwiftChessAppUITestsLaunchTests.swift */; };
 		776444452ADFEF9600988316 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444442ADFEF9600988316 /* Piece.swift */; };
 		776444472ADFF07600988316 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444462ADFF07600988316 /* Pawn.swift */; };
+		776444492ADFF15000988316 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444482ADFF15000988316 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		774D52122ADEAD5D00C95AF3 /* SwiftChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		776444442ADFEF9600988316 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		776444462ADFF07600988316 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		776444482ADFF15000988316 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		774D51EE2ADEAD5C00C95AF3 /* SwiftChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				776444482ADFF15000988316 /* Board.swift */,
 				776444442ADFEF9600988316 /* Piece.swift */,
 				776444462ADFF07600988316 /* Pawn.swift */,
 				774D51F32ADEAD5C00C95AF3 /* ViewController.swift */,
@@ -274,6 +277,7 @@
 			files = (
 				776444452ADFEF9600988316 /* Piece.swift in Sources */,
 				774D51F42ADEAD5C00C95AF3 /* ViewController.swift in Sources */,
+				776444492ADFF15000988316 /* Board.swift in Sources */,
 				774D51F02ADEAD5C00C95AF3 /* AppDelegate.swift in Sources */,
 				776444472ADFF07600988316 /* Pawn.swift in Sources */,
 				774D51F22ADEAD5C00C95AF3 /* SceneDelegate.swift in Sources */,
