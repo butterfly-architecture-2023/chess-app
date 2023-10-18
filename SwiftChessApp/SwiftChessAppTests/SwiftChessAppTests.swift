@@ -112,4 +112,41 @@ final class SwiftChessAppTests: XCTestCase {
         let F3 = ChessSquare(fileIndex: 5, rankIndex: 2)
         XCTAssertFalse(board.movePiece(from: F3, to: F2))
     }
+    
+    func test_체스말이동_1번_display() {
+        let sampleBoard = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            ["♙", ".", ".", ".", ".", ".", ".", "."],
+            [".", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+            [".", ".", ".", ".", ".", ".", ".", "."]
+        ]
+        let A7 = ChessSquare(fileIndex: 0, rankIndex: 6)
+        let A6 = ChessSquare(fileIndex: 0, rankIndex: 5)
+        board.movePiece(from: A7, to: A6)
+        XCTAssertEqual(sampleBoard, board.display())
+    }
+    
+    func test_체스말이동_2번_display() {
+        let sampleBoard = [
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+            ["♟", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            [".", ".", ".", ".", ".", ".", ".", "."],
+            ["♙", ".", ".", ".", ".", ".", ".", "."],
+            [".", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+            [".", ".", ".", ".", ".", ".", ".", "."]
+        ]
+        let A7 = ChessSquare(fileIndex: 0, rankIndex: 6)
+        let A6 = ChessSquare(fileIndex: 0, rankIndex: 5)
+        let A2 = ChessSquare(fileIndex: 0, rankIndex: 1)
+        let A3 = ChessSquare(fileIndex: 0, rankIndex: 2)
+        board.movePiece(from: A7, to: A6)
+        board.movePiece(from: A2, to: A3)
+        XCTAssertEqual(sampleBoard, board.display())
+    }
 }
