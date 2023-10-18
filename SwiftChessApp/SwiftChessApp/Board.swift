@@ -18,3 +18,8 @@ struct Board {
         self.squares = Array(repeating: Array(repeating: nil, count: size), count: size)
     }
 }
+
+struct ChessSquare {
+    let fileIndex: Int
+    let rankIndex: Int
+}
