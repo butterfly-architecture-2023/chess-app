@@ -45,6 +45,17 @@ struct Board {
             .filter { $0 is T && $0?.color == color }
             .count
     }
+    
+    func parseSquareName(_ squareName: String) -> ChessSquare? {
+        var squareName = squareName
+        
+        let file = squareName.removeFirst()
+        guard let fileIndex = fileNames.firstIndex(of: file) else { return nil }
+        guard let rank = Int(squareName) else { return nil }
+        let rankIndex = rank - 1
+        guard (0..<size).contains(rankIndex) else { return nil }
+        return ChessSquare(fileIndex: fileIndex, rankIndex: rankIndex)
+    }
 }
 
 extension Board {
