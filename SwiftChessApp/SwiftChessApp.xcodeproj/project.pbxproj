@@ -16,6 +16,7 @@
 		774D52072ADEAD5C00C95AF3 /* SwiftChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D52062ADEAD5C00C95AF3 /* SwiftChessAppTests.swift */; };
 		774D52112ADEAD5C00C95AF3 /* SwiftChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D52102ADEAD5C00C95AF3 /* SwiftChessAppUITests.swift */; };
 		774D52132ADEAD5D00C95AF3 /* SwiftChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D52122ADEAD5D00C95AF3 /* SwiftChessAppUITestsLaunchTests.swift */; };
+		776444452ADFEF9600988316 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776444442ADFEF9600988316 /* Piece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		774D520C2ADEAD5C00C95AF3 /* SwiftChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		774D52102ADEAD5C00C95AF3 /* SwiftChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppUITests.swift; sourceTree = "<group>"; };
 		774D52122ADEAD5D00C95AF3 /* SwiftChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		776444442ADFEF9600988316 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		774D51EE2ADEAD5C00C95AF3 /* SwiftChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				776444442ADFEF9600988316 /* Piece.swift */,
 				774D51F32ADEAD5C00C95AF3 /* ViewController.swift */,
 				774D51FD2ADEAD5C00C95AF3 /* Info.plist */,
 				77CD84602ADF5D3000AF2E09 /* SupportFiles */,
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				776444452ADFEF9600988316 /* Piece.swift in Sources */,
 				774D51F42ADEAD5C00C95AF3 /* ViewController.swift in Sources */,
 				774D51F02ADEAD5C00C95AF3 /* AppDelegate.swift in Sources */,
 				774D51F22ADEAD5C00C95AF3 /* SceneDelegate.swift in Sources */,
