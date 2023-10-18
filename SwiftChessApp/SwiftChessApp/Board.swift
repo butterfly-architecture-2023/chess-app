@@ -22,6 +22,24 @@ struct Board {
         setUpPawns(count: size)
     }
     
+    mutating func movePiece(from sourceSquare: ChessSquare, to targetSquare: ChessSquare) -> Bool {
+        guard let movingPiece = getPiece(at: sourceSquare) else { return false }
+        guard turn == movingPiece.color else { return false }
+        let movableSquares = movingPiece.getMovableDirections().map({ direction in
+            ChessSquare(
+                fileIndex: sourceSquare.fileIndex + direction.file,
+                rankIndex: sourceSquare.rankIndex + direction.rank
+            )
+        })
+        guard movableSquares.contains(targetSquare) else { return false }
+        let currentPieceAtTargetSquare = getPiece(at: targetSquare)
+        if movingPiece.color != currentPieceAtTargetSquare?.color {
+            squares[targetSquare.rankIndex][targetSquare.fileIndex] = movingPiece
+            switchPlayer()
+            return true
+        }
+        return false
+    }
     
     mutating func switchPlayer() {
         turn = turn.getOppositeColor()
