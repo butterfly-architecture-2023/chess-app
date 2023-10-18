@@ -99,13 +99,9 @@
 		774D51EE2ADEAD5C00C95AF3 /* SwiftChessApp */ = {
 			isa = PBXGroup;
 			children = (
-				774D51EF2ADEAD5C00C95AF3 /* AppDelegate.swift */,
-				774D51F12ADEAD5C00C95AF3 /* SceneDelegate.swift */,
 				774D51F32ADEAD5C00C95AF3 /* ViewController.swift */,
-				774D51F52ADEAD5C00C95AF3 /* Main.storyboard */,
-				774D51F82ADEAD5C00C95AF3 /* Assets.xcassets */,
-				774D51FA2ADEAD5C00C95AF3 /* LaunchScreen.storyboard */,
 				774D51FD2ADEAD5C00C95AF3 /* Info.plist */,
+				77CD84602ADF5D3000AF2E09 /* SupportFiles */,
 			);
 			path = SwiftChessApp;
 			sourceTree = "<group>";
@@ -125,6 +121,18 @@
 				774D52122ADEAD5D00C95AF3 /* SwiftChessAppUITestsLaunchTests.swift */,
 			);
 			path = SwiftChessAppUITests;
+			sourceTree = "<group>";
+		};
+		77CD84602ADF5D3000AF2E09 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				774D51EF2ADEAD5C00C95AF3 /* AppDelegate.swift */,
+				774D51F12ADEAD5C00C95AF3 /* SceneDelegate.swift */,
+				774D51F52ADEAD5C00C95AF3 /* Main.storyboard */,
+				774D51F82ADEAD5C00C95AF3 /* Assets.xcassets */,
+				774D51FA2ADEAD5C00C95AF3 /* LaunchScreen.storyboard */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
