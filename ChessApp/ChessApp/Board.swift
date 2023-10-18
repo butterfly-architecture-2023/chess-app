@@ -8,7 +8,7 @@
 import Foundation
 
 final class Board {
-    var board: [Position: Piece?] = [:]
+    private(set) var board: [Position: Piece?] = [:]
 
     func initPiece(_ color: PieceColor) {
         PieceType.allCases(color).forEach { pieceType in
@@ -43,11 +43,15 @@ final class Board {
         board.removeValue(forKey: arrival)
     }
 
-    func calculatePoint(_ color: PieceColor) -> Int {
-        return board.values.compactMap { $0 }.filter { $0.color == color }.reduce(0) { $0 + $1.type.point }
+    func getPieces(_ color: PieceColor) -> [Piece] {
+        return board.values.compactMap { $0 }.filter { $0.color == color }
     }
 
-    func display() {
+    func getPoint(_ color: PieceColor) -> Int {
+        return getPieces(color).reduce(0) { $0 + $1.type.point }
+    }
+
+    func display() -> String {
         var result = " "
         File.allCases.forEach { result += $0.rawValue }
 
@@ -65,10 +69,6 @@ final class Board {
             result += "\n\(rank.rawValue)\(rowResult)"
         }
 
-        print(result)
-    }
-
-    func printPoint() {
-        print("\n흑색: \(calculatePoint(.black))\n백색: \(calculatePoint(.white))\n")
+        return result
     }
 }

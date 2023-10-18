@@ -8,7 +8,11 @@
 import Foundation
 
 // TODO: PieceType enum과 역할이 불분명함. 차라리 protocol로 만드는 것도?
-class Piece {
+class Piece: Equatable {
+    static func == (lhs: Piece, rhs: Piece) -> Bool {
+        return lhs.color == rhs.color && lhs.type == rhs.type
+    }
+    
     let color: PieceColor
     let type: PieceType
 
@@ -31,17 +35,13 @@ class Piece {
             return Position(newRank, newFile)
         }.compactMap { $0 }
     }
-
-    deinit {
-        print("\(color)-\(type.icon) 사라짐!")
-    }
 }
 
 enum PieceColor {
     case black, white
 }
 
-enum PieceType {
+enum PieceType: Equatable {
     static var allCases: (PieceColor) -> [PieceType] {
         { color in return [.pawn(color)] }
     }
@@ -81,13 +81,6 @@ enum PieceType {
             } else {
                 return [Action(rowAction: -1)]
             }
-        }
-    }
-
-    var maxCount: Int {
-        switch self {
-        case .pawn:
-            return 8
         }
     }
 }
