@@ -22,6 +22,14 @@ struct Board {
         setUpPawns(count: size)
     }
     
+    func display() -> [[String]] {
+        squares.map { ranks in
+            ranks.map { piece in
+                piece?.symbol ?? "."
+            }
+        }
+    }
+    
     func getPiece(at square: ChessSquare) -> Piece? {
         squares[square.rankIndex][square.fileIndex]
     }
