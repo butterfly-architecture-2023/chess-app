@@ -14,7 +14,7 @@ final class BoardTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.sut = Board(pawnsManager: PawnsManagerImpl())
+        self.sut = Board(inputManager: InputManager(separator: "->"), pawnsManager: PawnsManagerImpl())
     }
     
     func test_start메서드_호출후_display_확인() {
@@ -40,7 +40,7 @@ final class BoardTests: XCTestCase {
         do {
             try self.sut.move(userInput: "A2->A3")
         } catch let error {
-            XCTAssertEqual(error as! InputError, InputError.invalidTurn)
+            XCTAssertEqual(error as! ValidationError, ValidationError.invalidTurn)
         }
     }
     

@@ -9,8 +9,4 @@ import Foundation
 
 enum InputError: Error {
     case overRange
-    case sourceNotExist
-    case invalidTurn
-    case invalidScope
-    case sameTeam
 }

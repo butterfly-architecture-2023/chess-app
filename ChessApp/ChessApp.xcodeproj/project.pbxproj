@@ -15,6 +15,8 @@
 		8957D9D72ADD15FD00B7606D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8957D9D52ADD15FD00B7606D /* LaunchScreen.storyboard */; };
 		8962896D2ADF1FA900D31D25 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962896C2ADF1FA900D31D25 /* BoardTests.swift */; };
 		8962896F2ADF2C2E00D31D25 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962896E2ADF2C2E00D31D25 /* InputError.swift */; };
+		896289712ADFC19600D31D25 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896289702ADFC19600D31D25 /* InputManager.swift */; };
+		896289732ADFCAD300D31D25 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896289722ADFCAD300D31D25 /* ValidationError.swift */; };
 		89B5A00C2ADEF9EF007A1988 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A00B2ADEF9EF007A1988 /* Board.swift */; };
 		89B5A00F2ADEFA46007A1988 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A00E2ADEFA46007A1988 /* Pawn.swift */; };
 		89B5A0112ADEFBCC007A1988 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0102ADEFBCC007A1988 /* Color.swift */; };
@@ -53,6 +55,8 @@
 		8962896B2ADF1FA900D31D25 /* ChessAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8962896C2ADF1FA900D31D25 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		8962896E2ADF2C2E00D31D25 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
+		896289702ADFC19600D31D25 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
+		896289722ADFCAD300D31D25 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		89B5A00B2ADEF9EF007A1988 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		89B5A00E2ADEFA46007A1988 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		89B5A0102ADEFBCC007A1988 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				89B5A0122ADEFD55007A1988 /* Location.swift */,
 				89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */,
 				8962896E2ADF2C2E00D31D25 /* InputError.swift */,
+				896289702ADFC19600D31D25 /* InputManager.swift */,
+				896289722ADFCAD300D31D25 /* ValidationError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,12 +279,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896289712ADFC19600D31D25 /* InputManager.swift in Sources */,
 				8957D9CF2ADD15F900B7606D /* ViewController.swift in Sources */,
 				8962896F2ADF2C2E00D31D25 /* InputError.swift in Sources */,
 				8957D9CB2ADD15F900B7606D /* AppDelegate.swift in Sources */,
 				89B5A00C2ADEF9EF007A1988 /* Board.swift in Sources */,
 				89B5A00F2ADEFA46007A1988 /* Pawn.swift in Sources */,
 				8957D9CD2ADD15F900B7606D /* SceneDelegate.swift in Sources */,
+				896289732ADFCAD300D31D25 /* ValidationError.swift in Sources */,
 				89B5A0112ADEFBCC007A1988 /* Color.swift in Sources */,
 				89B5A0132ADEFD55007A1988 /* Location.swift in Sources */,
 				89B5A0152ADF0BF3007A1988 /* PawnsManager.swift in Sources */,

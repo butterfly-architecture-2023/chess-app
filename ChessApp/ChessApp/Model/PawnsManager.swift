@@ -10,7 +10,7 @@ import Foundation
 protocol PawnsManager {
     func resetPawns()
     func getPawn(at location: Location) -> Pawn?
-    func update(originPawn: Pawn, to destination: Location)
+    func update(from source: Location, to destination: Location)
     func hasPawn(at location: Location) -> Bool
     func getPawns(color: Color) -> [Pawn]
 }
@@ -45,9 +45,11 @@ final class PawnsManagerImpl: PawnsManager {
         return self.pawns[location]
     }
     
-    func update(originPawn: Pawn, to destination: Location) {
-        self.pawns[originPawn.currentLocation] = nil
-        self.pawns[destination] = Pawn(color: originPawn.color, currentLocation: destination)
+    func update(from source: Location, to destination: Location) {
+        guard let pawn = self.pawns[source] else { return }
+        
+        self.pawns[pawn.currentLocation] = nil
+        self.pawns[destination] = Pawn(color: pawn.color, currentLocation: destination)
     }
     
     func hasPawn(at location: Location) -> Bool {
