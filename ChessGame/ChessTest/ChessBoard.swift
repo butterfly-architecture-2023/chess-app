@@ -30,15 +30,10 @@ final class ChessBoard {
     /// 1-rank부터 8-rank까지 rank 문자열로 보드 위에 체스말을 리턴
     func display() -> String {
         var boardString = ""
-        var count = 0
-
-        print(" ABCDEFGH")
         for row in board {
-            count += 1
             let rowString = row.map { $0.pieceType.rawValue }.joined(separator: "")
-            boardString += "\(count)" + rowString + "\n"
+            boardString += rowString + "\n"
         }
-        print(boardString)
         return boardString
     }
 
