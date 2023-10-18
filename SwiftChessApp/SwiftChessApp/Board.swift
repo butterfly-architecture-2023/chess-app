@@ -22,6 +22,11 @@ struct Board {
         setUpPawns(count: size)
     }
     
+    
+    mutating func switchPlayer() {
+        turn = turn.getOppositeColor()
+    }
+    
     func display() -> [[String]] {
         squares.map { ranks in
             ranks.map { piece in

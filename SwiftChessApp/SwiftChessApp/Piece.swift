@@ -15,4 +15,13 @@ protocol Piece {
 enum PieceColor {
     case black
     case white
+    
+    func getOppositeColor() -> PieceColor {
+        switch self {
+        case .black:
+            return .white
+        case .white:
+            return .black
+        }
+    }
 }
