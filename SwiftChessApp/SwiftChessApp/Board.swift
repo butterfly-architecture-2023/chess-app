@@ -67,6 +67,9 @@ extension Board {
     }
     
     mutating private func setUpPawn(color: PieceColor, at square: ChessSquare) {
+        guard color.startingRows.contains(square.rankIndex) else { return }
+        guard squares[square.rankIndex][square.fileIndex] == nil else { return }
+        guard Pawn.maxCount >= getNumber(of: Pawn.self, color: color) else { return }
         squares[square.rankIndex][square.fileIndex] = Pawn(color: color)
     }
 }

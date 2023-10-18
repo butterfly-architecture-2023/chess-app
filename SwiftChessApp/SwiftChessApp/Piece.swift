@@ -10,11 +10,21 @@ import Foundation
 protocol Piece {
     var color: PieceColor { get }
     var symbol: String { get }
+    static var maxCount: Int { get }
 }
 
 enum PieceColor {
     case black
     case white
+    
+    var startingRows: [Int] {
+        switch self {
+        case .black:
+            return [0, 1]
+        case .white:
+            return [6, 7]
+        }
+    }
     
     func getOppositeColor() -> PieceColor {
         switch self {

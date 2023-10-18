@@ -17,4 +17,5 @@ struct Pawn: Piece {
             return "\u{2659}"
         }
     }
+    static let maxCount: Int = 8
 }
