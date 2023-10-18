@@ -38,6 +38,13 @@ struct Board {
     func getPiece(at square: ChessSquare) -> Piece? {
         squares[square.rankIndex][square.fileIndex]
     }
+    
+    func getNumber<T>(of pieceType: T.Type, color: PieceColor) -> Int {
+        squares
+            .flatMap { $0 }
+            .filter { $0 is T && $0?.color == color }
+            .count
+    }
 }
 
 extension Board {
