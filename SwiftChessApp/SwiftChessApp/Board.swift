@@ -21,6 +21,10 @@ struct Board {
     mutating func initializeBoard() {
         setUpPawns(count: size)
     }
+    
+    func getPiece(at square: ChessSquare) -> Piece? {
+        squares[square.rankIndex][square.fileIndex]
+    }
 }
 
 extension Board {
