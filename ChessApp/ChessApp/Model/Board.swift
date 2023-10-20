@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum BoardMoveError: Error {
+    case sameColor
+    case invalidDestination
+}
+
 struct Board {
     private(set) var pieces: [Position: Piece] = [:]
     
@@ -16,14 +21,10 @@ struct Board {
         return true
     }
     
-    mutating func move(from: Position, to: Position) -> Bool {
-        guard canMove(from: from, to: to) else {
-            return false
-        }
-        
+    mutating func move(from: Position, to: Position) throws {
+        try checkMovable(from: from, to: to)
         pieces[to] = pieces[from]
         pieces[from] = nil
-        return true
     }
     
     func display() -> String {
@@ -55,10 +56,10 @@ struct Board {
         return true
     }
     
-    private func canMove(from: Position, to: Position) -> Bool {
+    private func checkMovable(from: Position, to: Position) throws {
         guard let fromPiece = pieces[from],
-                fromPiece.availableMovePositions(for: from).contains(to) else { return false }
-        guard let toPiece = pieces[to] else { return true }
-        return fromPiece.color != toPiece.color
+              fromPiece.availableMovePositions(for: from).contains(to) else { throw BoardMoveError.invalidDestination }
+        guard let toPiece = pieces[to] else { return }
+        guard fromPiece.color != toPiece.color else { throw BoardMoveError.sameColor }
     }
 }
