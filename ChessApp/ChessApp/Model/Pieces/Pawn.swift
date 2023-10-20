@@ -9,9 +9,8 @@ import Foundation
 
 struct Pawn: Piece {
     let color: Color
-    var position: Position
     
-    var availableMovePositions: Set<Position> {
+    func availableMovePositions(for position: Position) -> Set<Position> {
         let stride = {
             switch color {
             case .black:

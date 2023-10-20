@@ -10,10 +10,9 @@ import Foundation
 struct Board {
     private(set) var pieces: [Position: Piece] = [:]
     
-    mutating func updatePieces(_ pieces: [Piece]) -> Bool {
+    mutating func updatePieces(_ pieces: [Position: Piece]) -> Bool {
         guard validate(pieces: pieces) else { return false }
-        let piecePairs = pieces.map { ($0.position, $0) }
-        self.pieces = [Position: Piece](uniqueKeysWithValues: piecePairs)
+        self.pieces = pieces
         return true
     }
     
@@ -43,9 +42,9 @@ struct Board {
             .reduce(0, +)
     }
     
-    private func validate(pieces: [Piece]) -> Bool {
+    private func validate(pieces: [Position: Piece]) -> Bool {
         var classified = [String: Int]()
-        for piece in pieces {
+        for piece in pieces.values {
             let identifier = piece.type + "\(piece.color)"
             let count = classified[identifier, default: 0] + 1
             guard piece.maximumCount >= count else {
@@ -58,7 +57,7 @@ struct Board {
     
     private func canMove(from: Position, to: Position) -> Bool {
         guard let fromPiece = pieces[from],
-                fromPiece.availableMovePositions.contains(to) else { return false }
+                fromPiece.availableMovePositions(for: from).contains(to) else { return false }
         guard let toPiece = pieces[to] else { return true }
         return fromPiece.color != toPiece.color
     }
