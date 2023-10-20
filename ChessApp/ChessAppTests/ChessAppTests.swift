@@ -9,28 +9,29 @@ import XCTest
 @testable import ChessApp
 
 final class ChessAppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testPawn_움직일_수_있는_좌표_1개이고_블랙이라서_rank만_1커짐() {
+        let board = Board()
+        let coordinate: (File, Rank) = (.a, .two)
+        let movableCoordinates = board._movableCoordinates(from: coordinate)
+        XCTAssertEqual(movableCoordinates.count, 1)
+        XCTAssertEqual(movableCoordinates[0].rank, .three)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testPawn_움직일_수_있는_좌표_1개이고_화이트라서_rank만_1작아짐() {
+        let board = Board()
+        let coordinate: (File, Rank) = (.a, .seven)
+        let movableCoordinates = board._movableCoordinates(from: coordinate)
+        XCTAssertEqual(movableCoordinates.count, 1)
+        XCTAssertEqual(movableCoordinates[0].rank, .six)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testBoard_한칸_전진해서_이전좌표에는_피스가_없고_현재좌표에는_피스가_있음() {
+        var board = Board()
+        let movingResult = board.move(from: (.a, .two), to: (.a, .three))
+        let previousSquarePiece = board.squares[.two]![.a] as? Piece
+        let currentSquarePiece = board.squares[.three]![.a] as? Piece
+        XCTAssertTrue(movingResult)
+        XCTAssertNil(previousSquarePiece)
+        XCTAssertNotNil(currentSquarePiece)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
