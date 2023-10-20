@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum BoardValidateError: Error {
+    case exceedMaximumCount
+}
+
 enum BoardMoveError: Error {
     case sameColor
     case invalidDestination
@@ -15,10 +19,9 @@ enum BoardMoveError: Error {
 struct Board {
     private(set) var pieces: [Position: Piece] = [:]
     
-    mutating func updatePieces(_ pieces: [Position: Piece]) -> Bool {
-        guard validate(pieces: pieces) else { return false }
+    mutating func updatePieces(_ pieces: [Position: Piece]) throws {
+        try validate(pieces: pieces)
         self.pieces = pieces
-        return true
     }
     
     mutating func move(from: Position, to: Position) throws {
@@ -43,17 +46,16 @@ struct Board {
             .reduce(0, +)
     }
     
-    private func validate(pieces: [Position: Piece]) -> Bool {
+    private func validate(pieces: [Position: Piece]) throws {
         var classified = [String: Int]()
         for piece in pieces.values {
             let identifier = piece.type + "\(piece.color)"
             let count = classified[identifier, default: 0] + 1
             guard piece.maximumCount >= count else {
-                return false
+                throw BoardValidateError.exceedMaximumCount
             }
             classified[identifier] = count
         }
-        return true
     }
     
     private func checkMovable(from: Position, to: Position) throws {
