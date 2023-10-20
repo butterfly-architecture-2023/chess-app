@@ -9,11 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var inputCurrent = String()
+    var inputNext = String()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let board = Board()
+
     }
-
-
 }
-

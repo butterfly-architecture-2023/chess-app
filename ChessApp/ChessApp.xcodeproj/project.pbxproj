@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6824A4992ADEA0FA003F504F /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6824A4982ADEA0FA003F504F /* Board.swift */; };
+		6824B3322ADFB0C1003F504F /* board_p1_t1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6824B3312ADFB0C1003F504F /* board_p1_t1.swift */; };
+		682AD8A02ADE632500DF24D8 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682AD89F2ADE632500DF24D8 /* Pawn.swift */; };
+		6845F3BA2ADFD7FC00BFC0E8 /* pawn_p1_t1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6845F3B92ADFD7FC00BFC0E8 /* pawn_p1_t1.swift */; };
+		6845F3D22ADFDED400BFC0E8 /* pawn_n1_t1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6845F3D12ADFDED400BFC0E8 /* pawn_n1_t1.swift */; };
+		6845F3D42ADFE36F00BFC0E8 /* board_n1_t1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6845F3D32ADFE36F00BFC0E8 /* board_n1_t1.swift */; };
 		68A497172ADBBD83005F1E05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A497162ADBBD83005F1E05 /* AppDelegate.swift */; };
 		68A497192ADBBD83005F1E05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A497182ADBBD83005F1E05 /* SceneDelegate.swift */; };
 		68A4971B2ADBBD83005F1E05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A4971A2ADBBD83005F1E05 /* ViewController.swift */; };
@@ -36,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6824A4982ADEA0FA003F504F /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		6824B3312ADFB0C1003F504F /* board_p1_t1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = board_p1_t1.swift; sourceTree = "<group>"; };
+		682AD89F2ADE632500DF24D8 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		6845F3B92ADFD7FC00BFC0E8 /* pawn_p1_t1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pawn_p1_t1.swift; sourceTree = "<group>"; };
+		6845F3D12ADFDED400BFC0E8 /* pawn_n1_t1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pawn_n1_t1.swift; sourceTree = "<group>"; };
+		6845F3D32ADFE36F00BFC0E8 /* board_n1_t1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = board_n1_t1.swift; sourceTree = "<group>"; };
 		68A497132ADBBD83005F1E05 /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A497162ADBBD83005F1E05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68A497182ADBBD83005F1E05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +88,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6824B3302ADFB08D003F504F /* BoardTests */ = {
+			isa = PBXGroup;
+			children = (
+				6824B3312ADFB0C1003F504F /* board_p1_t1.swift */,
+				6845F3D32ADFE36F00BFC0E8 /* board_n1_t1.swift */,
+			);
+			path = BoardTests;
+			sourceTree = "<group>";
+		};
+		682AD89E2ADE631300DF24D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				682AD89F2ADE632500DF24D8 /* Pawn.swift */,
+				6824A4982ADEA0FA003F504F /* Board.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6845F3B82ADFD7E600BFC0E8 /* PawnTests */ = {
+			isa = PBXGroup;
+			children = (
+				6845F3B92ADFD7FC00BFC0E8 /* pawn_p1_t1.swift */,
+				6845F3D12ADFDED400BFC0E8 /* pawn_n1_t1.swift */,
+			);
+			path = PawnTests;
+			sourceTree = "<group>";
+		};
 		68A4970A2ADBBD82005F1E05 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +138,7 @@
 		68A497152ADBBD83005F1E05 /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				682AD89E2ADE631300DF24D8 /* Model */,
 				68A497162ADBBD83005F1E05 /* AppDelegate.swift */,
 				68A497182ADBBD83005F1E05 /* SceneDelegate.swift */,
 				68A4971A2ADBBD83005F1E05 /* ViewController.swift */,
@@ -113,6 +153,8 @@
 		68A4972C2ADBBD86005F1E05 /* ChessAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				6845F3B82ADFD7E600BFC0E8 /* PawnTests */,
+				6824B3302ADFB08D003F504F /* BoardTests */,
 				68A4972D2ADBBD86005F1E05 /* ChessAppTests.swift */,
 			);
 			path = ChessAppTests;
@@ -259,7 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				68A4971B2ADBBD83005F1E05 /* ViewController.swift in Sources */,
+				6824A4992ADEA0FA003F504F /* Board.swift in Sources */,
 				68A497172ADBBD83005F1E05 /* AppDelegate.swift in Sources */,
+				682AD8A02ADE632500DF24D8 /* Pawn.swift in Sources */,
 				68A497192ADBBD83005F1E05 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +312,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6845F3BA2ADFD7FC00BFC0E8 /* pawn_p1_t1.swift in Sources */,
+				6824B3322ADFB0C1003F504F /* board_p1_t1.swift in Sources */,
 				68A4972E2ADBBD86005F1E05 /* ChessAppTests.swift in Sources */,
+				6845F3D22ADFDED400BFC0E8 /* pawn_n1_t1.swift in Sources */,
+				6845F3D42ADFE36F00BFC0E8 /* board_n1_t1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
