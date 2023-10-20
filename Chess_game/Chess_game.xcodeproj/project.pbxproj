@@ -12,6 +12,8 @@
 		8DAD68C02AD953C100FB0B91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DAD68BF2AD953C100FB0B91 /* Assets.xcassets */; };
 		8DAD68C32AD953C100FB0B91 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DAD68C22AD953C100FB0B91 /* Preview Assets.xcassets */; };
 		8DAD68CD2AD953C100FB0B91 /* Chess_gameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD68CC2AD953C100FB0B91 /* Chess_gameTests.swift */; };
+		8DAD69002ADBFD5E00FB0B91 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD68FF2ADBFD5E00FB0B91 /* Board.swift */; };
+		8DAD69022ADC003E00FB0B91 /* ChessPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAD69012ADC003E00FB0B91 /* ChessPieces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		8DAD68C22AD953C100FB0B91 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8DAD68C82AD953C100FB0B91 /* Chess_gameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Chess_gameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DAD68CC2AD953C100FB0B91 /* Chess_gameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess_gameTests.swift; sourceTree = "<group>"; };
+		8DAD68FF2ADBFD5E00FB0B91 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		8DAD69012ADC003E00FB0B91 /* ChessPieces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieces.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 			children = (
 				8DAD68BB2AD953B800FB0B91 /* Chess_gameApp.swift */,
 				8DAD68BD2AD953B800FB0B91 /* ContentView.swift */,
+				8DAD68FF2ADBFD5E00FB0B91 /* Board.swift */,
+				8DAD69012ADC003E00FB0B91 /* ChessPieces.swift */,
 				8DAD68BF2AD953C100FB0B91 /* Assets.xcassets */,
 				8DAD68C12AD953C100FB0B91 /* Preview Content */,
 			);
@@ -199,6 +205,8 @@
 			files = (
 				8DAD68BE2AD953B800FB0B91 /* ContentView.swift in Sources */,
 				8DAD68BC2AD953B800FB0B91 /* Chess_gameApp.swift in Sources */,
+				8DAD69002ADBFD5E00FB0B91 /* Board.swift in Sources */,
+				8DAD69022ADC003E00FB0B91 /* ChessPieces.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
