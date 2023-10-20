@@ -17,6 +17,8 @@
 		CC4FCB8B2ADBD9E10084E261 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4FCB8A2ADBD9E10084E261 /* Color.swift */; };
 		CCD18EBF2ADBFB33007D02AF /* Position+StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD18EBE2ADBFB33007D02AF /* Position+StringLiteral.swift */; };
 		CCD18EC12ADC001B007D02AF /* PostionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD18EC02ADC001B007D02AF /* PostionTests.swift */; };
+		CCE1673E2AE2A99A0065E27F /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1673D2AE2A99A0065E27F /* BishopTests.swift */; };
+		CCE167402AE2AA210065E27F /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1673F2AE2AA210065E27F /* Bishop.swift */; };
 		CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */; };
 		CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */; };
 		CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52652ADBCE1000CD43ED /* ViewController.swift */; };
@@ -55,6 +57,8 @@
 		CC4FCB8A2ADBD9E10084E261 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CCD18EBE2ADBFB33007D02AF /* Position+StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Position+StringLiteral.swift"; sourceTree = "<group>"; };
 		CCD18EC02ADC001B007D02AF /* PostionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostionTests.swift; sourceTree = "<group>"; };
+		CCE1673D2AE2A99A0065E27F /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
+		CCE1673F2AE2AA210065E27F /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		CCEA525E2ADBCE1000CD43ED /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			children = (
 				CC4FCB7B2ADBD8B30084E261 /* Pawn.swift */,
 				CC4FCB7D2ADBD8D90084E261 /* Piece.swift */,
+				CCE1673F2AE2AA210065E27F /* Bishop.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				CC4FCB812ADBD9240084E261 /* PawnTests.swift */,
+				CCE1673D2AE2A99A0065E27F /* BishopTests.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 				CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */,
 				CC4FCB7E2ADBD8D90084E261 /* Piece.swift in Sources */,
 				CC4FCB8B2ADBD9E10084E261 /* Color.swift in Sources */,
+				CCE167402AE2AA210065E27F /* Bishop.swift in Sources */,
 				CC4FCB7A2ADBD8A90084E261 /* Board.swift in Sources */,
 				CC4FCB7C2ADBD8B30084E261 /* Pawn.swift in Sources */,
 				CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */,
@@ -340,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCE1673E2AE2A99A0065E27F /* BishopTests.swift in Sources */,
 				CC4FCB822ADBD9240084E261 /* PawnTests.swift in Sources */,
 				CC47D4E82ADEAFD300CE1774 /* Piece+Test.swift in Sources */,
 				CCD18EC12ADC001B007D02AF /* PostionTests.swift in Sources */,
