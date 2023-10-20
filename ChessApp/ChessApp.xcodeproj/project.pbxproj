@@ -13,9 +13,15 @@
 		8957D9D22ADD15F900B7606D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8957D9D02ADD15F900B7606D /* Main.storyboard */; };
 		8957D9D42ADD15FD00B7606D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8957D9D32ADD15FD00B7606D /* Assets.xcassets */; };
 		8957D9D72ADD15FD00B7606D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8957D9D52ADD15FD00B7606D /* LaunchScreen.storyboard */; };
-		8957D9E22ADD15FD00B7606D /* ChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9E12ADD15FD00B7606D /* ChessAppTests.swift */; };
-		8957D9EC2ADD15FD00B7606D /* ChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9EB2ADD15FD00B7606D /* ChessAppUITests.swift */; };
-		8957D9EE2ADD15FD00B7606D /* ChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9ED2ADD15FD00B7606D /* ChessAppUITestsLaunchTests.swift */; };
+		8962896D2ADF1FA900D31D25 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962896C2ADF1FA900D31D25 /* BoardTests.swift */; };
+		8962896F2ADF2C2E00D31D25 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8962896E2ADF2C2E00D31D25 /* InputError.swift */; };
+		896289712ADFC19600D31D25 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896289702ADFC19600D31D25 /* InputManager.swift */; };
+		896289732ADFCAD300D31D25 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896289722ADFCAD300D31D25 /* ValidationError.swift */; };
+		89B5A00C2ADEF9EF007A1988 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A00B2ADEF9EF007A1988 /* Board.swift */; };
+		89B5A00F2ADEFA46007A1988 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A00E2ADEFA46007A1988 /* Pawn.swift */; };
+		89B5A0112ADEFBCC007A1988 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0102ADEFBCC007A1988 /* Color.swift */; };
+		89B5A0132ADEFD55007A1988 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0122ADEFD55007A1988 /* Location.swift */; };
+		89B5A0152ADF0BF3007A1988 /* PawnsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +51,17 @@
 		8957D9D62ADD15FD00B7606D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8957D9D82ADD15FD00B7606D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8957D9DD2ADD15FD00B7606D /* ChessAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8957D9E12ADD15FD00B7606D /* ChessAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppTests.swift; sourceTree = "<group>"; };
 		8957D9E72ADD15FD00B7606D /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8957D9EB2ADD15FD00B7606D /* ChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITests.swift; sourceTree = "<group>"; };
-		8957D9ED2ADD15FD00B7606D /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8962896B2ADF1FA900D31D25 /* ChessAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		8962896C2ADF1FA900D31D25 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		8962896E2ADF2C2E00D31D25 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
+		896289702ADFC19600D31D25 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
+		896289722ADFCAD300D31D25 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		89B5A00B2ADEF9EF007A1988 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		89B5A00E2ADEFA46007A1988 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		89B5A0102ADEFBCC007A1988 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		89B5A0122ADEFD55007A1988 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +94,6 @@
 			children = (
 				8957D9C92ADD15F900B7606D /* ChessApp */,
 				8957D9E02ADD15FD00B7606D /* ChessAppTests */,
-				8957D9EA2ADD15FD00B7606D /* ChessAppUITests */,
 				8957D9C82ADD15F900B7606D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +111,7 @@
 		8957D9C92ADD15F900B7606D /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				89B5A00D2ADEF9FA007A1988 /* Model */,
 				8957D9CA2ADD15F900B7606D /* AppDelegate.swift */,
 				8957D9CC2ADD15F900B7606D /* SceneDelegate.swift */,
 				8957D9CE2ADD15F900B7606D /* ViewController.swift */,
@@ -113,18 +126,25 @@
 		8957D9E02ADD15FD00B7606D /* ChessAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				8957D9E12ADD15FD00B7606D /* ChessAppTests.swift */,
+				8962896C2ADF1FA900D31D25 /* BoardTests.swift */,
+				8962896B2ADF1FA900D31D25 /* ChessAppTests-Bridging-Header.h */,
 			);
 			path = ChessAppTests;
 			sourceTree = "<group>";
 		};
-		8957D9EA2ADD15FD00B7606D /* ChessAppUITests */ = {
+		89B5A00D2ADEF9FA007A1988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8957D9EB2ADD15FD00B7606D /* ChessAppUITests.swift */,
-				8957D9ED2ADD15FD00B7606D /* ChessAppUITestsLaunchTests.swift */,
+				89B5A00B2ADEF9EF007A1988 /* Board.swift */,
+				89B5A00E2ADEFA46007A1988 /* Pawn.swift */,
+				89B5A0102ADEFBCC007A1988 /* Color.swift */,
+				89B5A0122ADEFD55007A1988 /* Location.swift */,
+				89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */,
+				8962896E2ADF2C2E00D31D25 /* InputError.swift */,
+				896289702ADFC19600D31D25 /* InputManager.swift */,
+				896289722ADFCAD300D31D25 /* ValidationError.swift */,
 			);
-			path = ChessAppUITests;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +218,7 @@
 					};
 					8957D9DC2ADD15FD00B7606D = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = 8957D9C62ADD15F900B7606D;
 					};
 					8957D9E62ADD15FD00B7606D = {
@@ -258,9 +279,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896289712ADFC19600D31D25 /* InputManager.swift in Sources */,
 				8957D9CF2ADD15F900B7606D /* ViewController.swift in Sources */,
+				8962896F2ADF2C2E00D31D25 /* InputError.swift in Sources */,
 				8957D9CB2ADD15F900B7606D /* AppDelegate.swift in Sources */,
+				89B5A00C2ADEF9EF007A1988 /* Board.swift in Sources */,
+				89B5A00F2ADEFA46007A1988 /* Pawn.swift in Sources */,
 				8957D9CD2ADD15F900B7606D /* SceneDelegate.swift in Sources */,
+				896289732ADFCAD300D31D25 /* ValidationError.swift in Sources */,
+				89B5A0112ADEFBCC007A1988 /* Color.swift in Sources */,
+				89B5A0132ADEFD55007A1988 /* Location.swift in Sources */,
+				89B5A0152ADF0BF3007A1988 /* PawnsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8957D9E22ADD15FD00B7606D /* ChessAppTests.swift in Sources */,
+				8962896D2ADF1FA900D31D25 /* BoardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8957D9EE2ADD15FD00B7606D /* ChessAppUITestsLaunchTests.swift in Sources */,
-				8957D9EC2ADD15FD00B7606D /* ChessAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,15 +518,23 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NXRYTWY76F;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = austin.kd.ChessAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ChessAppTests/ChessAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChessApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChessApp";
@@ -511,15 +546,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NXRYTWY76F;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = austin.kd.ChessAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "ChessAppTests/ChessAppTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChessApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChessApp";
