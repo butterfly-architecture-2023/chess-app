@@ -162,6 +162,31 @@ final class BoardTests: XCTestCase {
         }
     }
     
+    func test폰과_룩_그리고_비숍이_초기화된_상태의_board를_display할_수_있다() {
+        let pieces = [
+            "A1": Rook(color: .black),
+            "C1": Bishop(color: .black),
+            "F1": Bishop(color: .black),
+            "H1": Rook(color: .black),
+            "A8": Rook(color: .white),
+            "C8": Bishop(color: .white),
+            "F8": Bishop(color: .white),
+            "H8": Rook(color: .white)
+        ].merging([Position: Piece].initialPawns, uniquingKeysWith: { $1 })
+        
+        let board = Board(pieces: pieces)
+        let expect = """
+♜.♝..♝.♜
+♟♟♟♟♟♟♟♟
+........
+........
+........
+........
+♙♙♙♙♙♙♙♙
+♖.♗..♗.♖
+"""
+    }
+    
     func test폰이_초기화된_상태의_board를_display할_수_있다() {
         let board = Board(pieces: [Position: Piece].initialPawns)
         let expect = """
