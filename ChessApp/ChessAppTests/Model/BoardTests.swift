@@ -112,6 +112,48 @@ final class BoardTests: XCTestCase {
         }
     }
     
+    func testC6에_검정색Pawn이_있을때_D5에_있는_흰색_Bishop을_C6으로_옮길_수_있다() throws {
+        var board = Board(pieces: [
+            "C6": Pawn(color: .black),
+            "D5": Bishop(color: .white)
+        ])
+        let isCaptured = try board.move(from: "D5", to: "C6")
+        XCTAssertTrue(isCaptured)
+        XCTAssertEqual(board.pieces["C6"]?.color, .white)
+        XCTAssertNil(board.pieces["D5"])
+    }
+    
+    func testC6에_검정색Pawn이_있을때_D5에_있는_흰색_Bishop을_A8으로_옮길_수_없다() throws {
+        var board = Board(pieces: [
+            "C6": Pawn(color: .black),
+            "D5": Bishop(color: .white)
+        ])
+        XCTAssertThrowsError(try board.move(from: "D5", to: "A8")) {
+            XCTAssertEqual($0 as? BoardMoveError, .invalidDestination)
+        }
+    }
+    
+    func testC6에_검정색Pawn이_있을때_D6에_있는_흰색_Rook을_C6으로_옮길_수_있다() throws {
+        var board = Board(pieces: [
+            "C6": Pawn(color: .black),
+            "D6": Rook(color: .white)
+        ])
+        let isCaptured = try board.move(from: "D6", to: "C6")
+        XCTAssertTrue(isCaptured)
+        XCTAssertEqual(board.pieces["C6"]?.color, .white)
+        XCTAssertNil(board.pieces["D6"])
+    }
+    
+    func testC6에_검정색Pawn이_있을때_D6에_있는_흰색_Rook을_A6으로_옮길_수_없다() throws {
+        var board = Board(pieces: [
+            "C6": Pawn(color: .black),
+            "D6": Rook(color: .white)
+        ])
+        XCTAssertThrowsError(try board.move(from: "D6", to: "A6")) {
+            XCTAssertEqual($0 as? BoardMoveError, .invalidDestination)
+        }
+    }
+    
     func testA7에_말이_없을때_A6으로_옮길_수_없다() throws {
         var board = Board(pieces: [:])
         

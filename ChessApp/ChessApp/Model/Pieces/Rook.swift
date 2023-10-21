@@ -11,7 +11,27 @@ struct Rook: Piece {
     let color: Color
     
     func availableMovePositions(for position: Position) -> Set<Position> {
-        []
+        let rankTransformed = Position.Rank.range.flatMap { rank in
+            [
+                Position.Rank(position.rank.rawValue - rank),
+                Position.Rank(position.rank.rawValue + rank)
+            ]
+                .compactMap { $0 }
+                .map {
+                    Position(file: position.file, rank: $0)
+                }
+        }
+        let fileTransformed = Position.File.range.flatMap { file in
+            [
+                Position.File(position.file.rawValue - file),
+                Position.File(position.file.rawValue + file)
+            ]
+                .compactMap { $0 }
+                .map {
+                    Position(file: $0, rank: position.rank)
+                }
+        }
+        return Set(rankTransformed).union(fileTransformed).subtracting([position])
     }
     
     let maximumCount: Int = 2
