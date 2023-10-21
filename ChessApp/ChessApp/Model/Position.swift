@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Position: Hashable {
-    struct Rank: Hashable {
+struct Position: Hashable, CustomStringConvertible {
+    struct Rank: Hashable, CustomStringConvertible {
         static let range: Range<Int> = 0..<8
         private(set) var rawValue: Int
         
@@ -26,9 +26,13 @@ struct Position: Hashable {
         static var allCases: [Rank] {
             range.compactMap { Rank($0) }
         }
+        
+        var description: String {
+            "\(rawValue + 1)"
+        }
     }
     
-    struct File: Hashable {
+    struct File: Hashable, CustomStringConvertible {
         static let range: Range<Int> = 0..<8
         private(set) var rawValue: Int
         
@@ -46,6 +50,13 @@ struct Position: Hashable {
         static var allCases: [File] {
             range.compactMap { File($0) }
         }
+        
+        var description: String {
+            guard let unicodeScalar = UnicodeScalar(65 + rawValue) else {
+                return "?"
+            }
+            return String(unicodeScalar)
+        }
     }
     
     let file: File
@@ -62,5 +73,9 @@ struct Position: Hashable {
               let file = File(value[0]),
               let rank = Rank(value[1]) else { return nil }
         self.init(file: file, rank: rank)
+    }
+    
+    var description: String {
+        return file.description + rank.description 
     }
 }
