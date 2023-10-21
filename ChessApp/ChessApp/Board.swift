@@ -7,13 +7,13 @@
 
 import Foundation
 
-typealias ChessPieceGroup = [[PawnType]]
+typealias ChessPieceGroup = [Position:Piece]
 
 struct Board {
     private var size: Int = 0
-    private(set) lazy var chessBoard: ChessPieceGroup = Array(repeating: Array(repeating: .none, count: size), count: size)
+    private(set) var chessBoard: ChessPieceGroup = [:]
     private var chessPoint: ChessPoint = ChessPoint(black: 0, white: 0)
-    private var gameTurn: PawnType = .white
+    private var gameTurn: PieceColorType = .white
     
     init(size: Int) {
         self.size = size
@@ -22,13 +22,31 @@ struct Board {
     
     // MARK: - 체스 프로그램 시작 시, 흑/백 Pawn을 초기화
     private mutating func startBoard() {
-        for (offset, _) in chessBoard.enumerated() {
-            if offset < 2 {         // 1,2-rank
-                chessBoard[offset] = Array(repeating: .black, count: size)
-            } else if offset > 5 {  // 7,8-rank
-                chessBoard[offset] = Array(repeating: .white, count: size)
+        for rank in 0..<size {
+            for file in 0..<size {
+                let position = Position(rank: rank, file: file)
+                chessBoard[position] = makeInitialPieces(by: position)
             }
         }
+    }
+    
+    private func makeInitialPieces(by position: Position) -> Piece {
+        let area = (rank: position.rank, file: position.file)
+        switch area {
+            case (rank: 1, file: _):
+                return Pawn(pieceColorType: .black)
+            case (rank: 6, file: _):
+                return Pawn(pieceColorType: .white)
+            default:
+                return EmptySpace()
+        }
+        // 초기화할 때 1,2-rank는 흑백 체스말이, 7,8-rank는 백색 체스말이 위치한다.
+        // Pawn는 색상별로 8개. Bishop, Rook는 색상별로 2개, Queen는 색상별로 1개만 가능하다.
+        // Pawn - 생성 위치는 흑색은 2-rank 또는 백색 7-rank에만 가능하다.
+        // Bishop - 생성 위치는 흑색은 C-1 과 F-1 에만 가능하고, 백색은 C-8 과 F-8 에만 가능하다.
+        // Rook - 생성 위치는 흑색은 A-1 과 H-1 에만 가능하고, 백색은 A-8 과 H-8 에만 가능하다.
+        // Queen - 생성 위치는 흑색은 E-1에만 가능하고, 백색은 E-8 에만 가능하다.
+        // Knight - 생성 위치는 흑색은 B-1 과 G-1 에만 가능하고, 백색은 B-8 과 G-8 에만 가능하다.
     }
     
     // Board는 8x8 크기 체스판에 체스말(Piece) 존재 여부를 관리
@@ -54,8 +72,13 @@ struct Board {
     mutating func updateBoard(_ positionArray: [Position]) {
         guard let currentPosition = positionArray.first,
               let updatePosition = positionArray.last else { return }
-        chessBoard[updatePosition.rank-1][updatePosition.file] = chessBoard[currentPosition.rank-1][currentPosition.file]
-        chessBoard[currentPosition.rank-1][currentPosition.file] = .none
+        chessBoard[updatePosition] = chessBoard[currentPosition]
+        print(currentPosition.rank, currentPosition.file)
+        print(chessBoard[currentPosition])
+        print("=>")
+        chessBoard[currentPosition] = EmptySpace()
+        print(chessBoard[currentPosition])
+        
     }
     
     mutating func checkGameTurn(_ positionArray: [Position]) throws {
@@ -65,7 +88,8 @@ struct Board {
         }
     }
     
-    private mutating func getPawnType(by position: Position) -> PawnType {
-        return chessBoard[position.rank][position.file]
+    private mutating func getPawnType(by position: Position) -> PieceColorType {
+        let pawn = Pawn(pieceColorType: .black)
+        return pawn.pieceColorType
     }
  }
