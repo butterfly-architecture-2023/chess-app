@@ -19,5 +19,12 @@ struct Bishop: Piece {
 }
 
 extension Bishop: CustomStringConvertible {
-    var description: String { "" }
+    var description: String {
+        switch color {
+        case .black:
+            return "♝"
+        case .white:
+            return "♗"
+        }
+    }
 }

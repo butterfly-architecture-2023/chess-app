@@ -19,5 +19,12 @@ struct Rook: Piece {
 }
 
 extension Rook: CustomStringConvertible {
-    var description: String { "" }
+    var description: String {
+        switch color {
+        case .black:
+            return "♜"
+        case .white:
+            return "♖"
+        }
+    }
 }
