@@ -24,10 +24,13 @@ struct Board {
         self.pieces = pieces
     }
     
-    mutating func move(from: Position, to: Position) throws {
+    @discardableResult
+    mutating func move(from: Position, to: Position) throws -> Bool {
         try checkMovable(from: from, to: to)
+        let hasPieceAtDestination = pieces[to] != nil
         pieces[to] = pieces[from]
         pieces[from] = nil
+        return hasPieceAtDestination
     }
     
     func display() -> String {

@@ -33,9 +33,10 @@ final class BoardTests: XCTestCase {
         var board = Board(pieces: [
             "A7": Pawn(color: .white)
         ])
-        try board.move(from: "A7", to: "A6")
+        let didCaptured = try board.move(from: "A7", to: "A6")
         XCTAssertEqual(board.pieces["A6"]?.color, .white)
         XCTAssertNil(board.pieces["A7"])
+        XCTAssertFalse(didCaptured)
     }
     
     func testA7에_있는_백색Pawn을_2턴에_걸쳐_A5으로_옮길_수_있다() throws {
@@ -54,9 +55,10 @@ final class BoardTests: XCTestCase {
             "A6": Pawn(color: .black),
             "A7": Pawn(color: .white)
         ])
-        try board.move(from: "A7", to: "A6")
+        let didCaptured = try board.move(from: "A7", to: "A6")
         XCTAssertEqual(board.pieces["A6"]?.color, .white)
         XCTAssertNil(board.pieces["A7"])
+        XCTAssertTrue(didCaptured)
     }
     
     func testA6에_흑색Pawn이_있을때_A7에_있는_백색Pawn을_A6으로_옮겼다가_다시_A7로_옮길_수_없다() throws {
