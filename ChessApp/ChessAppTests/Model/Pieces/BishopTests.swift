@@ -20,7 +20,7 @@ final class BishopTests: XCTestCase {
         XCTAssertEqual(availablePositions, [
             "A8", "B7", "C6",
             "G8", "F7", "E6",
-            "A2", "B3", "D4",
+            "A2", "B3", "C4",
             "H1", "G2", "F3", "E4"
         ])
     }

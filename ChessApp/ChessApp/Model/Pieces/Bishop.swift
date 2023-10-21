@@ -11,7 +11,25 @@ struct Bishop: Piece {
     let color: Color
     
     func availableMovePositions(for position: Position) -> Set<Position> {
-        []
+        let transformed = (1..<8).flatMap { stride in
+            [
+                Position.Rank(position.rank.rawValue - stride),
+                Position.Rank(position.rank.rawValue + stride)
+            ]
+                .compactMap { $0 }
+                .flatMap { rank in
+                    [
+                        Position.File(position.file.rawValue - stride),
+                        Position.File(position.file.rawValue + stride)
+                    ]
+                        .compactMap { $0 }
+                        .map { file in
+                            Position(file: file, rank: rank)
+                        }
+                }
+        }
+        
+        return Set(transformed)
     }
     
     let maximumCount: Int = 2
