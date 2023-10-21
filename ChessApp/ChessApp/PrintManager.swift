@@ -10,11 +10,23 @@ import Foundation
 class PrintManager {
     func showChessBoard(_ group: ChessPieceGroup) {
         print("---")
-        for row in group {
-            for value in row {
-                print(value.rawValue, terminator: " ")
+        // sort
+        let pieceGroup = group.sorted {
+            if $0.key.rank == $1.key.rank {
+                return $0.key.file < $1.key.file
             }
-            print()
+            return $0.key.rank < $1.key.rank
         }
+        
+        // print
+        for (index, row) in pieceGroup.enumerated() {
+            for icon in row.value.showIcon() {
+                print(icon, terminator: " ")
+            }
+            if (index + 1) % 8 == 0 {
+                print()
+            }
+        }
+        print()
     }
 }

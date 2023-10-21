@@ -9,7 +9,7 @@ import Foundation
 
 enum ErrorType: Error {
     case invalidInputText
-    case chessTypeError(pawnType: PawnType)
+    case chessTypeError(pawnType: PieceColorType)
     
     func showMessage() -> String {
         switch self {

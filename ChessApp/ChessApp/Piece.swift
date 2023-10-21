@@ -34,7 +34,7 @@ class Pawn: Piece {
 
 class EmptySpace: Piece {
     var point: Int = 0
-    var pieceColorType: PieceColorType = .none
+    var pieceColorType: PieceColorType = .white
     
     func showIcon() -> String {
         return "."
