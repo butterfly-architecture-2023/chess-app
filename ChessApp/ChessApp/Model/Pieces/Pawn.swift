@@ -19,9 +19,8 @@ struct Pawn: Piece {
                 return -1
             }
         }()
-        let expectedRank = position.rank.rawValue + stride
-        guard let rank = Position.Rank(expectedRank) else { return [] }
-        return [PieceMovingWay(rawValue: [Position(file: position.file, rank: rank)])]
+        guard let position = position.offsetBy(fileOffset: 0, rankOffset: stride) else { return [] }
+        return [PieceMovingWay(rawValue: [position])]
     }
     
     let score: Int = 1

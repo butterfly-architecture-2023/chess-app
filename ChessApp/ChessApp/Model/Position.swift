@@ -30,6 +30,10 @@ struct Position: Hashable, CustomStringConvertible {
         var description: String {
             "\(rawValue + 1)"
         }
+        
+        func offsetBy(_ offset: Int) -> Rank? {
+            return Rank(rawValue + offset)
+        }
     }
     
     struct File: Hashable, CustomStringConvertible {
@@ -57,6 +61,10 @@ struct Position: Hashable, CustomStringConvertible {
             }
             return String(unicodeScalar)
         }
+        
+        func offsetBy(_ offset: Int) -> File? {
+            return File(rawValue + offset)
+        }
     }
     
     let file: File
@@ -73,6 +81,12 @@ struct Position: Hashable, CustomStringConvertible {
               let file = File(value[0]),
               let rank = Rank(value[1]) else { return nil }
         self.init(file: file, rank: rank)
+    }
+    
+    func offsetBy(fileOffset: Int, rankOffset: Int) -> Position? {
+        guard let file = file.offsetBy(fileOffset),
+              let rank = rank.offsetBy(rankOffset) else { return nil }
+        return Position(file: file, rank: rank)
     }
     
     var description: String {

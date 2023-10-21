@@ -12,25 +12,20 @@ struct Bishop: Piece {
     
     func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
         [
-            availableMovingWay(for: position, fileTransform: -, rankTransform: -),
-            availableMovingWay(for: position, fileTransform: -, rankTransform: +),
-            availableMovingWay(for: position, fileTransform: +, rankTransform: -),
-            availableMovingWay(for: position, fileTransform: +, rankTransform: +)
+            availableMovingWay(for: position, fileMultiplier: -1, rankMultiplier: -1),
+            availableMovingWay(for: position, fileMultiplier: -1, rankMultiplier: +1),
+            availableMovingWay(for: position, fileMultiplier: +1, rankMultiplier: -1),
+            availableMovingWay(for: position, fileMultiplier: +1, rankMultiplier: +1)
         ]
     }
     
-    private func availableMovingWay(
-        for position: Position,
-        fileTransform: (Int, Int) -> Int,
-        rankTransform: (Int, Int) -> Int) -> PieceMovingWay {
-            let positions = (1..<8).compactMap { (stride: Int) -> Position? in
-                guard let file = Position.File(fileTransform(position.file.rawValue, stride)),
-                      let rank = Position.Rank(rankTransform(position.rank.rawValue, stride)) else {
-                    return nil
-                }
-                return Position(file: file, rank: rank)
-            }
-            return PieceMovingWay(rawValue: positions)
+    private func availableMovingWay(for position: Position,
+                                    fileMultiplier: Int,
+                                    rankMultiplier: Int) -> PieceMovingWay {
+        let positions = (1..<8).compactMap { (stride: Int) -> Position? in
+            return position.offsetBy(fileOffset: stride * fileMultiplier, rankOffset: stride * rankMultiplier)
+        }
+        return PieceMovingWay(rawValue: positions)
     }
     
     let maximumCount: Int = 2

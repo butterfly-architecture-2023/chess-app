@@ -12,25 +12,23 @@ struct Rook: Piece {
     
     func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
         let ways = [
-            rankTransformed(for: position, transform: +),
-            rankTransformed(for: position, transform: -),
-            fileTransformed(for: position, transform: +),
-            fileTransformed(for: position, transform: -)
+            rankTransformed(for: position, multiplier: +1),
+            rankTransformed(for: position, multiplier: -1),
+            fileTransformed(for: position, multiplier: +1),
+            fileTransformed(for: position, multiplier: -1)
         ].map { PieceMovingWay(rawValue: $0) }
         return Set(ways)
     }
     
-    private func rankTransformed(for position: Position, transform: (Int, Int) -> Int) -> [Position] {
+    private func rankTransformed(for position: Position, multiplier: Int) -> [Position] {
         return (1..<8).compactMap { (rank) -> Position? in
-            guard let rank = Position.Rank(transform(position.rank.rawValue, rank)) else { return nil }
-            return Position(file: position.file, rank: rank)
+            position.offsetBy(fileOffset: 0, rankOffset: rank * multiplier)
         }
     }
     
-    private func fileTransformed(for position: Position, transform: (Int, Int) -> Int) -> [Position] {
+    private func fileTransformed(for position: Position, multiplier: Int) -> [Position] {
         return (1..<8).compactMap { (file) -> Position? in
-            guard let file = Position.File(transform(position.file.rawValue, file)) else { return nil }
-            return Position(file: file, rank: position.rank)
+            position.offsetBy(fileOffset: file * multiplier, rankOffset: 0)
         }
     }
     
