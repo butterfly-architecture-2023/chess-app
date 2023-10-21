@@ -7,15 +7,6 @@
 
 import Foundation
 
-enum BoardValidateError: Error {
-    case exceedMaximumCount
-}
-
-enum BoardMoveError: Error {
-    case sameColor
-    case invalidDestination
-}
-
 struct Board {
     private(set) var pieces: [Position: Piece] = [:]
     

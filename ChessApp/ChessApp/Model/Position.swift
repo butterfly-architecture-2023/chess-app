@@ -9,10 +9,10 @@ import Foundation
 
 struct Position: Hashable {
     struct Rank: Hashable {
-        static let range: Range<UInt8> = 0..<8
-        private(set) var rawValue: UInt8
+        static let range: Range<Int> = 0..<8
+        private(set) var rawValue: Int
         
-        init?(_ value: UInt8) {
+        init?(_ value: Int) {
             guard Self.range ~= value else { return nil }
             self.rawValue = value
         }
@@ -20,7 +20,7 @@ struct Position: Hashable {
         init?(_ value: Character) {
             guard let value = value.asciiValue,
                   value >= 49 else { return nil }
-            self.init(value - 49) // value - "1"
+            self.init(Int(value) - 49) // value - "1"
         }
         
         static var allCases: [Rank] {
@@ -29,10 +29,10 @@ struct Position: Hashable {
     }
     
     struct File: Hashable {
-        static let range: Range<UInt8> = 0..<8
-        private(set) var rawValue: UInt8
+        static let range: Range<Int> = 0..<8
+        private(set) var rawValue: Int
         
-        init?(_ value: UInt8) {
+        init?(_ value: Int) {
             guard Self.range ~= value else { return nil }
             self.rawValue = value
         }
@@ -40,7 +40,7 @@ struct Position: Hashable {
         init?(_ value: Character) {
             guard let value = value.asciiValue,
                   value >= 65 else { return nil }
-            self.init(value - 65) // value - "A"
+            self.init(Int(value) - 65) // value - "A"
         }
         
         static var allCases: [File] {

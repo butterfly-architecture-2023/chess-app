@@ -19,9 +19,8 @@ struct Pawn: Piece {
                 return -1
             }
         }()
-        let expectedRank = Int(position.rank.rawValue) + stride
-        guard expectedRank > 0,
-              let rank = Position.Rank(UInt8(expectedRank)) else { return [] }
+        let expectedRank = position.rank.rawValue + stride
+        guard let rank = Position.Rank(expectedRank) else { return [] }
         return [Position(file: position.file, rank: rank)]
     }
     

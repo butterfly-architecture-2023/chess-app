@@ -10,10 +10,12 @@ import Foundation
 import XCTest
 
 extension [Position: Piece] {
-    static var initialPieces: [Position: Piece] {
-        Position.File.range.reduce([:]) { (partialResult: [Position: Piece], i: UInt8) -> [Position: Piece] in
+    static var initialPawns: [Position: Piece] {
+        Position.File.range.reduce([:]) { (partialResult: [Position: Piece], i: Int) -> [Position: Piece] in
+            guard let file = UnicodeScalar(65 + i) else { // "A" + i
+                return partialResult
+            }
             var partialResult = partialResult
-            let file = String(UnicodeScalar(65 + i)) // "A" + i
             if let blackPawnPosition = Position("\(file)2") {
                 partialResult[blackPawnPosition] = Pawn(color: .black)
             }

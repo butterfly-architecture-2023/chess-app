@@ -21,6 +21,7 @@
 		CCE167402AE2AA210065E27F /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1673F2AE2AA210065E27F /* Bishop.swift */; };
 		CCE167422AE3A18B0065E27F /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167412AE3A18B0065E27F /* Rook.swift */; };
 		CCE167442AE3A1C10065E27F /* RookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167432AE3A1C10065E27F /* RookTests.swift */; };
+		CCE167462AE3A6730065E27F /* BoardErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167452AE3A6730065E27F /* BoardErrors.swift */; };
 		CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */; };
 		CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */; };
 		CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52652ADBCE1000CD43ED /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		CCE1673F2AE2AA210065E27F /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		CCE167412AE3A18B0065E27F /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		CCE167432AE3A1C10065E27F /* RookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookTests.swift; sourceTree = "<group>"; };
+		CCE167452AE3A6730065E27F /* BoardErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardErrors.swift; sourceTree = "<group>"; };
 		CCEA525E2ADBCE1000CD43ED /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				CC4FCB792ADBD8A90084E261 /* Board.swift */,
 				CC4FCB882ADBD9790084E261 /* Position.swift */,
 				CC4FCB8A2ADBD9E10084E261 /* Color.swift */,
+				CCE167452AE3A6730065E27F /* BoardErrors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */,
 				CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */,
 				CC4FCB7E2ADBD8D90084E261 /* Piece.swift in Sources */,
+				CCE167462AE3A6730065E27F /* BoardErrors.swift in Sources */,
 				CCE167422AE3A18B0065E27F /* Rook.swift in Sources */,
 				CC4FCB8B2ADBD9E10084E261 /* Color.swift in Sources */,
 				CCE167402AE2AA210065E27F /* Bishop.swift in Sources */,

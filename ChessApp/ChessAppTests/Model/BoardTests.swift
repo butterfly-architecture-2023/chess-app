@@ -9,8 +9,8 @@ import XCTest
 @testable import ChessApp
 
 final class BoardTests: XCTestCase {
-    func test초기상태의_점수는_색깔별로_각각_8이다() {
-        let board = Board(pieces: [Position: Piece].initialPieces)
+    func test폰이_초기화된_상태의_점수는_색깔별로_각각_8이다() {
+        let board = Board(pieces: [Position: Piece].initialPawns)
         
         let whiteScore = board.score(for: .white)
         let blackScore = board.score(for: .black)
@@ -120,8 +120,8 @@ final class BoardTests: XCTestCase {
         }
     }
     
-    func test초기상태의_board를_display할_수_있다() {
-        let board = Board(pieces: [Position: Piece].initialPieces)
+    func test폰이_초기화된_상태의_board를_display할_수_있다() {
+        let board = Board(pieces: [Position: Piece].initialPawns)
         let expect = """
 ........
 ♟♟♟♟♟♟♟♟
@@ -162,6 +162,24 @@ final class BoardTests: XCTestCase {
             "E2": Pawn(color: .white),
             "F4": Pawn(color: .white),
             "G6": Pawn(color: .white)
+        ]))
+    }
+    
+    func test검정색_Bishop_3개로_Board를_초기화_할_수_없다() {
+        var board = Board()
+        XCTAssertThrowsError(try board.updatePieces([
+            "A1": Bishop(color: .black),
+            "A4": Bishop(color: .black),
+            "B6": Bishop(color: .black)
+        ]))
+    }
+    
+    func test검정색_Rook_3개로_Board를_초기화_할_수_없다() {
+        var board = Board()
+        XCTAssertThrowsError(try board.updatePieces([
+            "A1": Rook(color: .black),
+            "A4": Rook(color: .black),
+            "B6": Rook(color: .black)
         ]))
     }
 }
