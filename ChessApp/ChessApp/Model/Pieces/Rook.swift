@@ -10,28 +10,28 @@ import Foundation
 struct Rook: Piece {
     let color: Color
     
-    func availableMovePositions(for position: Position) -> Set<Position> {
-        let rankTransformed = Position.Rank.range.flatMap { rank in
-            [
-                Position.Rank(position.rank.rawValue - rank),
-                Position.Rank(position.rank.rawValue + rank)
-            ]
-                .compactMap { $0 }
-                .map {
-                    Position(file: position.file, rank: $0)
-                }
+    func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
+        let ways = [
+            rankTransformed(for: position, transform: +),
+            rankTransformed(for: position, transform: -),
+            fileTransformed(for: position, transform: +),
+            fileTransformed(for: position, transform: -)
+        ].map { PieceMovingWay(rawValue: $0) }
+        return Set(ways)
+    }
+    
+    private func rankTransformed(for position: Position, transform: (Int, Int) -> Int) -> [Position] {
+        return (1..<8).compactMap { (rank) -> Position? in
+            guard let rank = Position.Rank(transform(position.rank.rawValue, rank)) else { return nil }
+            return Position(file: position.file, rank: rank)
         }
-        let fileTransformed = Position.File.range.flatMap { file in
-            [
-                Position.File(position.file.rawValue - file),
-                Position.File(position.file.rawValue + file)
-            ]
-                .compactMap { $0 }
-                .map {
-                    Position(file: $0, rank: position.rank)
-                }
+    }
+    
+    private func fileTransformed(for position: Position, transform: (Int, Int) -> Int) -> [Position] {
+        return (1..<8).compactMap { (file) -> Position? in
+            guard let file = Position.File(transform(position.file.rawValue, file)) else { return nil }
+            return Position(file: file, rank: position.rank)
         }
-        return Set(rankTransformed).union(fileTransformed).subtracting([position])
     }
     
     let maximumCount: Int = 2

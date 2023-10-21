@@ -9,7 +9,7 @@ import Foundation
 
 protocol Piece: CustomStringConvertible {
     var color: Color { get }
-    func availableMovePositions(for position: Position) -> Set<Position>
+    func availableMovingWays(for position: Position) -> Set<PieceMovingWay>
     
     var maximumCount: Int { get }
     var score: Int { get }

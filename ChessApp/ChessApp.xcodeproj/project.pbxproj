@@ -22,6 +22,7 @@
 		CCE167422AE3A18B0065E27F /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167412AE3A18B0065E27F /* Rook.swift */; };
 		CCE167442AE3A1C10065E27F /* RookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167432AE3A1C10065E27F /* RookTests.swift */; };
 		CCE167462AE3A6730065E27F /* BoardErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167452AE3A6730065E27F /* BoardErrors.swift */; };
+		CCE167482AE3B7950065E27F /* PieceMovingWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167472AE3B7950065E27F /* PieceMovingWay.swift */; };
 		CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */; };
 		CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */; };
 		CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52652ADBCE1000CD43ED /* ViewController.swift */; };
@@ -65,6 +66,7 @@
 		CCE167412AE3A18B0065E27F /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		CCE167432AE3A1C10065E27F /* RookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookTests.swift; sourceTree = "<group>"; };
 		CCE167452AE3A6730065E27F /* BoardErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardErrors.swift; sourceTree = "<group>"; };
+		CCE167472AE3B7950065E27F /* PieceMovingWay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceMovingWay.swift; sourceTree = "<group>"; };
 		CCEA525E2ADBCE1000CD43ED /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				CC4FCB882ADBD9790084E261 /* Position.swift */,
 				CC4FCB8A2ADBD9E10084E261 /* Color.swift */,
 				CCE167452AE3A6730065E27F /* BoardErrors.swift */,
+				CCE167472AE3B7950065E27F /* PieceMovingWay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				CC4FCB892ADBD9790084E261 /* Position.swift in Sources */,
 				CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */,
+				CCE167482AE3B7950065E27F /* PieceMovingWay.swift in Sources */,
 				CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */,
 				CC4FCB7E2ADBD8D90084E261 /* Piece.swift in Sources */,
 				CCE167462AE3A6730065E27F /* BoardErrors.swift in Sources */,

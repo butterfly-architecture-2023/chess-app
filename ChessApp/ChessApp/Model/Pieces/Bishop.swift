@@ -10,26 +10,27 @@ import Foundation
 struct Bishop: Piece {
     let color: Color
     
-    func availableMovePositions(for position: Position) -> Set<Position> {
-        let transformed = (1..<8).flatMap { stride in
-            [
-                Position.Rank(position.rank.rawValue - stride),
-                Position.Rank(position.rank.rawValue + stride)
-            ]
-                .compactMap { $0 }
-                .flatMap { rank in
-                    [
-                        Position.File(position.file.rawValue - stride),
-                        Position.File(position.file.rawValue + stride)
-                    ]
-                        .compactMap { $0 }
-                        .map { file in
-                            Position(file: file, rank: rank)
-                        }
+    func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
+        [
+            availableMovingWay(for: position, fileTransform: -, rankTransform: -),
+            availableMovingWay(for: position, fileTransform: -, rankTransform: +),
+            availableMovingWay(for: position, fileTransform: +, rankTransform: -),
+            availableMovingWay(for: position, fileTransform: +, rankTransform: +)
+        ]
+    }
+    
+    private func availableMovingWay(
+        for position: Position,
+        fileTransform: (Int, Int) -> Int,
+        rankTransform: (Int, Int) -> Int) -> PieceMovingWay {
+            let positions = (1..<8).compactMap { (stride: Int) -> Position? in
+                guard let file = Position.File(fileTransform(position.file.rawValue, stride)),
+                      let rank = Position.Rank(rankTransform(position.rank.rawValue, stride)) else {
+                    return nil
                 }
-        }
-        
-        return Set(transformed)
+                return Position(file: file, rank: rank)
+            }
+            return PieceMovingWay(rawValue: positions)
     }
     
     let maximumCount: Int = 2

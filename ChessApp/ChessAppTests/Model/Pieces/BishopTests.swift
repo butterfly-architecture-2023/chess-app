@@ -16,20 +16,21 @@ final class BishopTests: XCTestCase {
     
     func testD5에_있는_흰색_비숍의_움직일_수_있는_위치를_확인한다() {
         let bishop = Bishop(color: .white)
-        let availablePositions = bishop.availableMovePositions(for: "D5")
+        let availablePositions = bishop.availableMovingWays(for: "D5")
         XCTAssertEqual(availablePositions, [
-            "A8", "B7", "C6",
-            "G8", "F7", "E6",
-            "A2", "B3", "C4",
-            "H1", "G2", "F3", "E4"
+            PieceMovingWay(rawValue: ["C6", "B7", "A8"]),
+            PieceMovingWay(rawValue: ["E6", "F7", "G8"]),
+            PieceMovingWay(rawValue: ["C4", "B3", "A2"]),
+            PieceMovingWay(rawValue: ["E4", "F3", "G2", "H1"])
         ])
     }
     
     func testH8에_있는_검정색_비숍의_움직일_수_있는_위치를_확인한다() {
         let bishop = Bishop(color: .black)
-        let availablePositions = bishop.availableMovePositions(for: "H8")
+        let availablePositions = bishop.availableMovingWays(for: "H8")
         XCTAssertEqual(availablePositions, [
-            "A1", "B2", "C3", "D4", "E5", "F6", "G7"
+            PieceMovingWay(rawValue: ["G7", "F6", "E5", "D4", "C3", "B2", "A1"]),
+            PieceMovingWay(rawValue: [])
         ])
     }
 }

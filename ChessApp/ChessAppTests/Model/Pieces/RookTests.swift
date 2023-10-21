@@ -16,19 +16,21 @@ final class RookTests: XCTestCase {
     
     func testD5에_있는_흰색_룩의_움직일_수_있는_위치를_확인한다() {
         let rook = Rook(color: .white)
-        let availablePositions = rook.availableMovePositions(for: "D5")
+        let availablePositions = rook.availableMovingWays(for: "D5")
         XCTAssertEqual(availablePositions, [
-            "A5", "B5", "C5", "E5", "F5", "G5", "H5",
-            "D1", "D2", "D3", "D4", "D6", "D7", "D8"
+            ["C5", "B5", "A5"], ["E5", "F5", "G5", "H5"],
+            ["D4", "D3", "D2", "D1"], ["D6", "D7", "D8"]
         ])
     }
     
     func testH8에_있는_검정색_룩의_움직일_수_있는_위치를_확인한다() {
         let rook = Rook(color: .black)
-        let availablePositions = rook.availableMovePositions(for: "H8")
+        let availablePositions = rook.availableMovingWays(for: "H8")
         XCTAssertEqual(availablePositions, [
-            "A8", "B8", "C8", "D8", "E8", "F8", "G8",
-            "H1", "H2", "H3", "H4", "H5", "H6", "H7"
+            [],
+            [],
+            ["G8", "F8", "E8", "D8", "C8", "B8", "A8"],
+            ["H7", "H6", "H5", "H4", "H3", "H2", "H1"]
         ])
     }
 }

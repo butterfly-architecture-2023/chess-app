@@ -10,7 +10,7 @@ import Foundation
 struct Pawn: Piece {
     let color: Color
     
-    func availableMovePositions(for position: Position) -> Set<Position> {
+    func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
         let stride = {
             switch color {
             case .black:
@@ -21,7 +21,7 @@ struct Pawn: Piece {
         }()
         let expectedRank = position.rank.rawValue + stride
         guard let rank = Position.Rank(expectedRank) else { return [] }
-        return [Position(file: position.file, rank: rank)]
+        return [PieceMovingWay(rawValue: [Position(file: position.file, rank: rank)])]
     }
     
     let score: Int = 1
