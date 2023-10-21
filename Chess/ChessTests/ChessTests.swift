@@ -13,11 +13,36 @@ final class ChessTests: XCTestCase {
     override func setUp() {
         sut = Board()
         super.setUp()
+        sut.display()
     }
     
     override func tearDown() {
         sut = nil
         super.tearDown()
+    }
+    
+    func test_유효한_입력값_제공시_Position리턴이_nil이_아닌가1() {
+        let text = "A2->A3"
+        let result = sut.makeInputPositions(text: text)
+        XCTAssertNotNil(result)
+    }
+    
+    func test_유효하지_않은_입력값_제공시_Position리턴이_nil인가1() {
+        let text = "A2->33"
+        let result = sut.makeInputPositions(text: text)
+        XCTAssertNil(result)
+    }
+    
+    func test_유효하지_않은_입력값_제공시_Position리턴이_nil인가2() {
+        let text = "ㄴ2->33"
+        let result = sut.makeInputPositions(text: text)
+        XCTAssertNil(result)
+    }
+    
+    func test_유효하지_않은_입력값_제공시_Position리턴이_nil인가4() {
+        let text = "->"
+        let result = sut.makeInputPositions(text: text)
+        XCTAssertNil(result)
     }
     
     func test_Board를_초기화_했을때_체스말이_존재하는가() {
@@ -97,44 +122,39 @@ final class ChessTests: XCTestCase {
     }
     
     func test_화이트Pawn이_Rank는_같지만_Column이_다른_위치_이동요청이_실패하는가() {
-        let fromPosition = Position(rank: 7, column: .a)
-        let toPosition = Position(rank: 6, column: .e)
-        let canMove = sut.canMovePawn(pawnType: .white, fromPosition: fromPosition, toPosition: toPosition)
+        let a7toa6 = "A2->A3"
+        let canMove = sut.requestMovePawn(inputText: a7toa6)
         XCTAssertFalse(canMove)
     }
     
     func test_블랙Pawn이_알맞는_이동요청을_성공하는가() {
-        let fromPosition = Position(rank: 2, column: .c)
-        let toPosition = Position(rank: 3, column: .c)
-        let moveResult = sut.movePawn(fromPosition: fromPosition, toPosition: toPosition)
+        let c2toc3 = "C2->C3"
+        let moveResult = sut.requestMovePawn(inputText: c2toc3)
         XCTAssertTrue(moveResult)
     }
     
     func test_화이트Pawn이_알맞는_이동요청을_성공하는가() {
-        let fromPosition = Position(rank: 7, column: .a)
-        let toPosition = Position(rank: 6, column: .a)
-        let moveResult = sut.movePawn(fromPosition: fromPosition, toPosition: toPosition)
+        let a7toa6 = "A7->A6"
+        let moveResult = sut.requestMovePawn(inputText: a7toa6)
         XCTAssertTrue(moveResult)
     }
     
     func test_Pawn이_없는_칸을_이동할떄_실패하는가() {
-        let fromPosition = Position(rank: 1, column: .a)
-        let toPosition = Position(rank: 2, column: .a)
-        let moveResult = sut.movePawn(fromPosition: fromPosition, toPosition: toPosition)
+      
+        let a1toa2 = "A1->A2"
+        let moveResult = sut.requestMovePawn(inputText: a1toa2)
         XCTAssertFalse(moveResult)
     }
     
     func test_블랙Pawn이_다른_Column에_이동요청을_실패하는가() {
-        let fromPosition = Position(rank: 2, column: .c)
-        let toPosition = Position(rank: 3, column: .a)
-        let moveResult = sut.movePawn(fromPosition: fromPosition, toPosition: toPosition)
+        let c2toa3 = "C2->A3"
+        let moveResult = sut.requestMovePawn(inputText: c2toa3)
         XCTAssertFalse(moveResult)
     }
     
     func test_화이트Pawn이_다른_Column에_이동요청을_실패하는가() {
-        let fromPosition = Position(rank: 7, column: .a)
-        let toPosition = Position(rank: 6, column: .h)
-        let moveResult = sut.movePawn(fromPosition: fromPosition, toPosition: toPosition)
+        let a7toh6 = "A7->H6"
+        let moveResult = sut.requestMovePawn(inputText: a7toh6)
         sut.display()
         XCTAssertFalse(moveResult)
     }
