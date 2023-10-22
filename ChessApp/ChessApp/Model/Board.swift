@@ -36,7 +36,7 @@ struct Board {
     func score(for color: Color) -> Int {
         pieces.values
             .filter { $0.color == color }
-            .map(\.score)
+            .map { type(of: $0).score }
             .reduce(0, +)
     }
     
@@ -45,7 +45,7 @@ struct Board {
         for piece in pieces.values {
             let identifier = piece.type + "\(piece.color)"
             let count = classified[identifier, default: 0] + 1
-            guard piece.maximumCount >= count else {
+            guard type(of: piece).maximumCount >= count else {
                 throw BoardValidateError.exceedMaximumCount
             }
             classified[identifier] = count

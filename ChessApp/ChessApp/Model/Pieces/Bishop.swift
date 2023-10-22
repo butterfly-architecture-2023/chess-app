@@ -19,8 +19,8 @@ struct Bishop: Piece {
         ]
     }
     
-    let maximumCount: Int = 2
-    let score: Int = 3
+    static let maximumCount: Int = 2
+    static let score: Int = 3
 }
 
 extension Bishop: CustomStringConvertible {

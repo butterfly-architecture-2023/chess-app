@@ -22,8 +22,9 @@ struct Queen: Piece {
             .init(for: position, fileMultiplier: +1, rankMultiplier: +1, repeat: 8),
         ]
     }
-    let maximumCount: Int = 1
-    let score: Int = 9
+    
+    static let maximumCount: Int = 1
+    static let score: Int = 9
 }
 
 extension Queen: CustomStringConvertible {

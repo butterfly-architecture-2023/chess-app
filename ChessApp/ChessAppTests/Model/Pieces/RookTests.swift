@@ -10,8 +10,7 @@ import XCTest
 
 final class RookTests: XCTestCase {
     func testRook의_점수는_5점이다() {
-        let rook = Rook(color: .white)
-        XCTAssertEqual(rook.score, 5)
+        XCTAssertEqual(Rook.score, 5)
     }
     
     func testD5에_있는_흰색_룩의_움직일_수_있는_위치를_확인한다() {

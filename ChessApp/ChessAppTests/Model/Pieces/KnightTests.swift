@@ -10,8 +10,7 @@ import XCTest
 
 final class KnightTests: XCTestCase {
     func testKnight의_점수는_3점이다() {
-        let knight = Knight(color: .white)
-        XCTAssertEqual(knight.score, 3)
+        XCTAssertEqual(Knight.score, 3)
     }
     
     func testD5에_있는_흰색_나이트의_움직일_수_있는_위치를_확인한다() {

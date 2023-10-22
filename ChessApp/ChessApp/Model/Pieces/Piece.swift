@@ -11,8 +11,8 @@ protocol Piece: CustomStringConvertible {
     var color: Color { get }
     func availableMovingWays(for position: Position) -> Set<PieceMovingWay>
     
-    var maximumCount: Int { get }
-    var score: Int { get }
+    static var maximumCount: Int { get }
+    static var score: Int { get }
 }
 
 extension Piece {

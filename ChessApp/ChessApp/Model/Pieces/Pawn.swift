@@ -23,8 +23,8 @@ struct Pawn: Piece {
         return [PieceMovingWay(positions: [position])]
     }
     
-    let score: Int = 1
-    let maximumCount: Int = 8
+    static let score: Int = 1
+    static let maximumCount: Int = 8
 }
 
 extension Pawn: CustomStringConvertible {

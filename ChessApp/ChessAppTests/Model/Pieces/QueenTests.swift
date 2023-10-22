@@ -10,8 +10,7 @@ import XCTest
 
 final class QueenTests: XCTestCase {
     func testQueen의_점수는_9점이다() {
-        let queen = Queen(color: .white)
-        XCTAssertEqual(queen.score, 9)
+        XCTAssertEqual(Queen.score, 9)
     }
     
     func testD5에_있는_흰색_퀸의_움직일_수_있는_위치를_확인한다() {

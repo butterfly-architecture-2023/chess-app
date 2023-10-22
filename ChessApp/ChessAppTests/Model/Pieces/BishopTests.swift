@@ -10,8 +10,7 @@ import XCTest
 
 final class BishopTests: XCTestCase {
     func testBishop의_점수는_3점이다() {
-        let bishop = Bishop(color: .white)
-        XCTAssertEqual(bishop.score, 3)
+        XCTAssertEqual(Bishop.score, 3)
     }
     
     func testD5에_있는_흰색_비숍의_움직일_수_있는_위치를_확인한다() {

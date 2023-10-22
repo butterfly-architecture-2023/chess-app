@@ -18,8 +18,8 @@ struct Rook: Piece {
             .init(for: position, fileMultiplier: -1, rankMultiplier:  0, repeat: 8),
         ]
     }
-    let maximumCount: Int = 2
-    let score: Int = 5
+    static let maximumCount: Int = 2
+    static let score: Int = 5
 }
 
 extension Rook: CustomStringConvertible {
