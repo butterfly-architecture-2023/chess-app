@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		739CE6B72AE52AE3009FD513 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 739CE6B62AE52AE3009FD513 /* SnapKit */; };
+		739CE6BB2AE52B12009FD513 /* Pieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BA2AE52B12009FD513 /* Pieces.swift */; };
 		73DB20972ADBB91E00376571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB20962ADBB91E00376571 /* AppDelegate.swift */; };
 		73DB20992ADBB91E00376571 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB20982ADBB91E00376571 /* SceneDelegate.swift */; };
 		73DB209B2ADBB91E00376571 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB209A2ADBB91E00376571 /* ViewController.swift */; };
@@ -35,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		739CE6BA2AE52B12009FD513 /* Pieces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pieces.swift; sourceTree = "<group>"; };
 		73DB20932ADBB91E00376571 /* chess-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chess-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73DB20962ADBB91E00376571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73DB20982ADBB91E00376571 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				739CE6B72AE52AE3009FD513 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +104,7 @@
 				73DB209A2ADBB91E00376571 /* ViewController.swift */,
 				73DB20C72ADBBA0400376571 /* Application */,
 				73DB20C62ADBB96100376571 /* Resources */,
+				739CE6BA2AE52B12009FD513 /* Pieces.swift */,
 			);
 			path = "chess-app";
 			sourceTree = "<group>";
@@ -156,6 +161,9 @@
 			dependencies = (
 			);
 			name = "chess-app";
+			packageProductDependencies = (
+				739CE6B62AE52AE3009FD513 /* SnapKit */,
+			);
 			productName = "chess-app";
 			productReference = 73DB20932ADBB91E00376571 /* chess-app.app */;
 			productType = "com.apple.product-type.application";
@@ -228,6 +236,9 @@
 				Base,
 			);
 			mainGroup = 73DB208A2ADBB91E00376571;
+			packageReferences = (
+				739CE6B52AE52AE3009FD513 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 73DB20942ADBB91E00376571 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -270,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				739CE6BB2AE52B12009FD513 /* Pieces.swift in Sources */,
 				73DB209B2ADBB91E00376571 /* ViewController.swift in Sources */,
 				73DB20972ADBB91E00376571 /* AppDelegate.swift in Sources */,
 				73DB20992ADBB91E00376571 /* SceneDelegate.swift in Sources */,
@@ -604,6 +616,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		739CE6B52AE52AE3009FD513 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		739CE6B62AE52AE3009FD513 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 739CE6B52AE52AE3009FD513 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 73DB208B2ADBB91E00376571 /* Project object */;
 }
