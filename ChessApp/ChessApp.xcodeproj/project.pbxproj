@@ -24,6 +24,7 @@
 		CCE167462AE3A6730065E27F /* BoardErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167452AE3A6730065E27F /* BoardErrors.swift */; };
 		CCE167482AE3B7950065E27F /* PieceMovingWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167472AE3B7950065E27F /* PieceMovingWay.swift */; };
 		CCE1674A2AE3C6AA0065E27F /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167492AE3C6AA0065E27F /* Knight.swift */; };
+		CCE1674C2AE3D2190065E27F /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1674B2AE3D2190065E27F /* KnightTests.swift */; };
 		CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */; };
 		CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */; };
 		CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52652ADBCE1000CD43ED /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		CCE167452AE3A6730065E27F /* BoardErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardErrors.swift; sourceTree = "<group>"; };
 		CCE167472AE3B7950065E27F /* PieceMovingWay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceMovingWay.swift; sourceTree = "<group>"; };
 		CCE167492AE3C6AA0065E27F /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
+		CCE1674B2AE3D2190065E27F /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
 		CCEA525E2ADBCE1000CD43ED /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				CC4FCB812ADBD9240084E261 /* PawnTests.swift */,
 				CCE1673D2AE2A99A0065E27F /* BishopTests.swift */,
 				CCE167432AE3A1C10065E27F /* RookTests.swift */,
+				CCE1674B2AE3D2190065E27F /* KnightTests.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				CC4FCB822ADBD9240084E261 /* PawnTests.swift in Sources */,
 				CC47D4E82ADEAFD300CE1774 /* Piece+Test.swift in Sources */,
 				CCD18EC12ADC001B007D02AF /* PostionTests.swift in Sources */,
+				CCE1674C2AE3D2190065E27F /* KnightTests.swift in Sources */,
 				CC4FCB842ADBD9290084E261 /* BoardTests.swift in Sources */,
 				CCE167442AE3A1C10065E27F /* RookTests.swift in Sources */,
 				CCD18EBF2ADBFB33007D02AF /* Position+StringLiteral.swift in Sources */,

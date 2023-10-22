@@ -43,7 +43,7 @@ struct Knight: Piece {
     }
     
     let maximumCount: Int = 2
-    let score: Int = 5
+    let score: Int = 3
 }
 
 extension Knight: CustomStringConvertible {
