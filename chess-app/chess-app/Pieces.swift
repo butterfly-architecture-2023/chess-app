@@ -10,8 +10,8 @@ import Foundation
 // MARK: - Piece
 
 struct Piece {
-    var type: PieceType
-    var color: PieceColor
+    let type: PieceType
+    let color: PieceColor
     
     init(type: PieceType, color: PieceColor) {
         self.type = type
@@ -22,13 +22,13 @@ struct Piece {
 // MARK: - PieceType
 
 enum PieceType {
-    case pawn, rook, knight, bishop, queen, king
+    case pawn, rook, knight, bishop, queen, king, none
 }
 
 // MARK: - PieceColor
 
 enum PieceColor {
-    case black, white
+    case black, white, none
     
     var symbol: String {
         switch self {
@@ -36,6 +36,8 @@ enum PieceColor {
             return "\u{265F}"
         case .white:
             return "\u{2659}"
+        case .none:
+            return "."
         }
     }
 }

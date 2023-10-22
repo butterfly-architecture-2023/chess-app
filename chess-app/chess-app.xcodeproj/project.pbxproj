@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		739CE6B72AE52AE3009FD513 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 739CE6B62AE52AE3009FD513 /* SnapKit */; };
 		739CE6BB2AE52B12009FD513 /* Pieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BA2AE52B12009FD513 /* Pieces.swift */; };
+		739CE6BD2AE540D3009FD513 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BC2AE540D3009FD513 /* Board.swift */; };
+		739CE6BF2AE54136009FD513 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BE2AE54136009FD513 /* Position.swift */; };
 		73DB20972ADBB91E00376571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB20962ADBB91E00376571 /* AppDelegate.swift */; };
 		73DB20992ADBB91E00376571 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB20982ADBB91E00376571 /* SceneDelegate.swift */; };
 		73DB209B2ADBB91E00376571 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB209A2ADBB91E00376571 /* ViewController.swift */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		739CE6BA2AE52B12009FD513 /* Pieces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pieces.swift; sourceTree = "<group>"; };
+		739CE6BC2AE540D3009FD513 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		739CE6BE2AE54136009FD513 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		73DB20932ADBB91E00376571 /* chess-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chess-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73DB20962ADBB91E00376571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73DB20982ADBB91E00376571 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				73DB209A2ADBB91E00376571 /* ViewController.swift */,
 				73DB20C72ADBBA0400376571 /* Application */,
 				73DB20C62ADBB96100376571 /* Resources */,
+				739CE6BC2AE540D3009FD513 /* Board.swift */,
+				739CE6BE2AE54136009FD513 /* Position.swift */,
 				739CE6BA2AE52B12009FD513 /* Pieces.swift */,
 			);
 			path = "chess-app";
@@ -283,6 +289,8 @@
 			files = (
 				739CE6BB2AE52B12009FD513 /* Pieces.swift in Sources */,
 				73DB209B2ADBB91E00376571 /* ViewController.swift in Sources */,
+				739CE6BF2AE54136009FD513 /* Position.swift in Sources */,
+				739CE6BD2AE540D3009FD513 /* Board.swift in Sources */,
 				73DB20972ADBB91E00376571 /* AppDelegate.swift in Sources */,
 				73DB20992ADBB91E00376571 /* SceneDelegate.swift in Sources */,
 			);
