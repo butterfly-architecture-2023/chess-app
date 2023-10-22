@@ -18,6 +18,17 @@ struct PieceMovingWay: Hashable {
         self.init(spots: positions.map { Spot(position: $0) })
     }
     
+    init(for position: Position, fileMultiplier: Int, rankMultiplier: Int, repeat: Int) {
+        guard 1<`repeat` else {
+            self.init(positions: [])
+            return
+        }
+        let positions = (1..<`repeat`).compactMap { (stride: Int) -> Position? in
+            return position.offsetBy(fileOffset: stride * fileMultiplier, rankOffset: stride * rankMultiplier)
+        }
+        self.init(positions: positions)
+    }
+    
     func canMove(to destination: Position, pieces: [Position: Piece]) -> Bool {
         for spot in rawValue {
             if spot.position == destination {

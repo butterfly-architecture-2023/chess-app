@@ -12,20 +12,11 @@ struct Bishop: Piece {
     
     func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
         [
-            availableMovingWay(for: position, fileMultiplier: -1, rankMultiplier: -1),
-            availableMovingWay(for: position, fileMultiplier: -1, rankMultiplier: +1),
-            availableMovingWay(for: position, fileMultiplier: +1, rankMultiplier: -1),
-            availableMovingWay(for: position, fileMultiplier: +1, rankMultiplier: +1)
+            .init(for: position, fileMultiplier: -1, rankMultiplier: -1, repeat: 8),
+            .init(for: position, fileMultiplier: -1, rankMultiplier: +1, repeat: 8),
+            .init(for: position, fileMultiplier: +1, rankMultiplier: -1, repeat: 8),
+            .init(for: position, fileMultiplier: +1, rankMultiplier: +1, repeat: 8),
         ]
-    }
-    
-    private func availableMovingWay(for position: Position,
-                                    fileMultiplier: Int,
-                                    rankMultiplier: Int) -> PieceMovingWay {
-        let positions = (1..<8).compactMap { (stride: Int) -> Position? in
-            return position.offsetBy(fileOffset: stride * fileMultiplier, rankOffset: stride * rankMultiplier)
-        }
-        return PieceMovingWay(positions: positions)
     }
     
     let maximumCount: Int = 2
