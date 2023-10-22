@@ -206,17 +206,19 @@ final class BoardTests: XCTestCase {
         }
     }
     
-    func test폰과_룩_그리고_비숍이_초기화된_상태의_board를_display할_수_있다() {
+    func test킹을_제외한_말들이_초기화된_상태의_board를_display할_수_있다() {
         let pieces = [
             "A1": Rook(color: .black),
             "B1": Knight(color: .black),
             "C1": Bishop(color: .black),
+            "E1": Queen(color: .black),
             "F1": Bishop(color: .black),
             "G1": Knight(color: .black),
             "H1": Rook(color: .black),
             "A8": Rook(color: .white),
             "B8": Knight(color: .white),
             "C8": Bishop(color: .white),
+            "E8": Queen(color: .white),
             "F8": Bishop(color: .white),
             "G8": Knight(color: .white),
             "H8": Rook(color: .white)
@@ -224,14 +226,14 @@ final class BoardTests: XCTestCase {
         
         let board = Board(pieces: pieces)
         let expect = """
-♜♞♝..♝♞♜
+♜♞♝.♛♝♞♜
 ♟♟♟♟♟♟♟♟
 ........
 ........
 ........
 ........
 ♙♙♙♙♙♙♙♙
-♖♘♗..♗♘♖
+♖♘♗.♕♗♘♖
 """
         XCTAssertEqual(board.display(), expect)
     }

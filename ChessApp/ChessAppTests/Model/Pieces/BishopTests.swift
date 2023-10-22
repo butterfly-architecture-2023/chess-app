@@ -18,10 +18,10 @@ final class BishopTests: XCTestCase {
         let bishop = Bishop(color: .white)
         let availablePositions = bishop.availableMovingWays(for: "D5")
         XCTAssertEqual(availablePositions, [
-            PieceMovingWay(positions: ["C6", "B7", "A8"]),
-            PieceMovingWay(positions: ["E6", "F7", "G8"]),
-            PieceMovingWay(positions: ["C4", "B3", "A2"]),
-            PieceMovingWay(positions: ["E4", "F3", "G2", "H1"])
+            ["C6", "B7", "A8"],
+            ["E6", "F7", "G8"],
+            ["C4", "B3", "A2"],
+            ["E4", "F3", "G2", "H1"]
         ])
     }
     
@@ -29,8 +29,8 @@ final class BishopTests: XCTestCase {
         let bishop = Bishop(color: .black)
         let availablePositions = bishop.availableMovingWays(for: "H8")
         XCTAssertEqual(availablePositions, [
-            PieceMovingWay(positions: ["G7", "F6", "E5", "D4", "C3", "B2", "A1"]),
-            PieceMovingWay(positions: [])
+            ["G7", "F6", "E5", "D4", "C3", "B2", "A1"],
+            []
         ])
     }
 }

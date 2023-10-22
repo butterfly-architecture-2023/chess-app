@@ -28,7 +28,6 @@ final class RookTests: XCTestCase {
         let availablePositions = rook.availableMovingWays(for: "H8")
         XCTAssertEqual(availablePositions, [
             [],
-            [],
             ["G8", "F8", "E8", "D8", "C8", "B8", "A8"],
             ["H7", "H6", "H5", "H4", "H3", "H2", "H1"]
         ])

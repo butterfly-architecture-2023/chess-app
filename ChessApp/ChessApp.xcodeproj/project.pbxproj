@@ -25,6 +25,8 @@
 		CCE167482AE3B7950065E27F /* PieceMovingWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167472AE3B7950065E27F /* PieceMovingWay.swift */; };
 		CCE1674A2AE3C6AA0065E27F /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE167492AE3C6AA0065E27F /* Knight.swift */; };
 		CCE1674C2AE3D2190065E27F /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1674B2AE3D2190065E27F /* KnightTests.swift */; };
+		CCE1674E2AE531340065E27F /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1674D2AE531340065E27F /* Queen.swift */; };
+		CCE167502AE531E40065E27F /* QueenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1674F2AE531E40065E27F /* QueenTests.swift */; };
 		CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */; };
 		CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */; };
 		CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52652ADBCE1000CD43ED /* ViewController.swift */; };
@@ -71,6 +73,8 @@
 		CCE167472AE3B7950065E27F /* PieceMovingWay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceMovingWay.swift; sourceTree = "<group>"; };
 		CCE167492AE3C6AA0065E27F /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		CCE1674B2AE3D2190065E27F /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
+		CCE1674D2AE531340065E27F /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		CCE1674F2AE531E40065E27F /* QueenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenTests.swift; sourceTree = "<group>"; };
 		CCEA525E2ADBCE1000CD43ED /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				CCE1673F2AE2AA210065E27F /* Bishop.swift */,
 				CCE167412AE3A18B0065E27F /* Rook.swift */,
 				CCE167492AE3C6AA0065E27F /* Knight.swift */,
+				CCE1674D2AE531340065E27F /* Queen.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				CCE1673D2AE2A99A0065E27F /* BishopTests.swift */,
 				CCE167432AE3A1C10065E27F /* RookTests.swift */,
 				CCE1674B2AE3D2190065E27F /* KnightTests.swift */,
+				CCE1674F2AE531E40065E27F /* QueenTests.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 			files = (
 				CC4FCB892ADBD9790084E261 /* Position.swift in Sources */,
 				CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */,
+				CCE1674E2AE531340065E27F /* Queen.swift in Sources */,
 				CCE167482AE3B7950065E27F /* PieceMovingWay.swift in Sources */,
 				CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */,
 				CC4FCB7E2ADBD8D90084E261 /* Piece.swift in Sources */,
@@ -377,6 +384,7 @@
 				CC4FCB842ADBD9290084E261 /* BoardTests.swift in Sources */,
 				CCE167442AE3A1C10065E27F /* RookTests.swift in Sources */,
 				CCD18EBF2ADBFB33007D02AF /* Position+StringLiteral.swift in Sources */,
+				CCE167502AE531E40065E27F /* QueenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
