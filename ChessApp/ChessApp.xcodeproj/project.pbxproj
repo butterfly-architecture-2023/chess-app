@@ -20,6 +20,9 @@
 		1B20D9252ADBDB390057C0CD /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9242ADBDB390057C0CD /* PieceColor.swift */; };
 		1B20D9272ADBDB420057C0CD /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9262ADBDB420057C0CD /* MoveDirection.swift */; };
 		1B20D9292ADBDB470057C0CD /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D9282ADBDB470057C0CD /* Piece.swift */; };
+		1B76CF062AE5377B0079011D /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF052AE5377B0079011D /* Bishop.swift */; };
+		1B76CF082AE54E4F0079011D /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF072AE54E4F0079011D /* Knight.swift */; };
+		1B76CF0A2AE54F460079011D /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF092AE54F460079011D /* Queen.swift */; };
 		1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D32ADD7B9700ACE122 /* Column.swift */; };
 		1BF7B7D62ADD7FB000ACE122 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */; };
 		1BF7B7DB2ADD800E00ACE122 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91C2ADBCAE40057C0CD /* Board.swift */; };
@@ -58,6 +61,9 @@
 		1B20D9242ADBDB390057C0CD /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
 		1B20D9262ADBDB420057C0CD /* MoveDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveDirection.swift; sourceTree = "<group>"; };
 		1B20D9282ADBDB470057C0CD /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		1B76CF052AE5377B0079011D /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
+		1B76CF072AE54E4F0079011D /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
+		1B76CF092AE54F460079011D /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		1BF7B7D32ADD7B9700ACE122 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +89,8 @@
 		1B20D8E42ADBB6A30057C0CD = {
 			isa = PBXGroup;
 			children = (
+				1B76CF072AE54E4F0079011D /* Knight.swift */,
+				1B76CF092AE54F460079011D /* Queen.swift */,
 				1B20D91A2ADBBD040057C0CD /* README.md */,
 				1B20D8EF2ADBB6A40057C0CD /* ChessApp */,
 				1B20D9002ADBB6A50057C0CD /* ChessAppTests */,
@@ -106,6 +114,7 @@
 				1B20D8F22ADBB6A40057C0CD /* ContentView.swift */,
 				1B20D91C2ADBCAE40057C0CD /* Board.swift */,
 				1B20D91E2ADBCAF00057C0CD /* Pawn.swift */,
+				1B76CF052AE5377B0079011D /* Bishop.swift */,
 				1B20D9202ADBDB250057C0CD /* Row.swift */,
 				1BF7B7D32ADD7B9700ACE122 /* Column.swift */,
 				1B20D9222ADBDB340057C0CD /* PieceType.swift */,
@@ -239,6 +248,9 @@
 				1B20D8F32ADBB6A40057C0CD /* ContentView.swift in Sources */,
 				1B20D9212ADBDB250057C0CD /* Row.swift in Sources */,
 				1B20D9252ADBDB390057C0CD /* PieceColor.swift in Sources */,
+				1B76CF0A2AE54F460079011D /* Queen.swift in Sources */,
+				1B76CF062AE5377B0079011D /* Bishop.swift in Sources */,
+				1B76CF082AE54E4F0079011D /* Knight.swift in Sources */,
 				1B20D8F12ADBB6A40057C0CD /* ChessAppApp.swift in Sources */,
 				1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */,
 				1B20D91D2ADBCAE40057C0CD /* Board.swift in Sources */,

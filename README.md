@@ -24,7 +24,7 @@
 1. (class) Board : 체스판 전체
 2. (class) Pawn, Bishop, Knight, Queen : 각 체스말
 3. (enum) Row / Column : 열(1~8)과 행(A~H)
-4. (제거. enum) PieceType : 체스말 타입 색과 이동가능한 방향을 가짐
+4. (enum) PieceType : 체스말 타입 색과 이동가능한 방향을 가짐
   - 제거 이유. Piece 프로토콜이 이미 해당 역할을 수행한다고 생각하였음.
 5. (enum) Color : 체스말 색
 6. (enum) MoveDirection : 체스말이 이동할 수 있는 방향

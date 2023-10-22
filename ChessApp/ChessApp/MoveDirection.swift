@@ -8,9 +8,9 @@
 import Foundation
 
 enum MoveDirection: Hashable {
-  case `up`(Int), upRight(Int), `right`(Int), downRight(Int), `down`(Int), downLeft(Int), `left`(Int), upLeft(Int)
+  case `up`(Int?), upRight(Int?), `right`(Int?), downRight(Int?), `down`(Int?), downLeft(Int?), `left`(Int?), upLeft(Int?), combination([MoveDirection])
   
-  var distance: Int {
+  var distance: Int? {
     switch self {
     case .up(let distance):
       return distance
@@ -28,6 +28,8 @@ enum MoveDirection: Hashable {
       return distance
     case .upLeft(let distance):
       return distance
+    case .combination(let distances):
+      return distances.reduce(0, {$0 + ($1.distance ?? 0)})
     }
   }
 }
