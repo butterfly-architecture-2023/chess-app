@@ -53,8 +53,11 @@ struct Board {
     }
     
     private func checkMovable(from: Position, to: Position) throws {
-        guard let fromPiece = pieces[from],
-              fromPiece.availableMovingWays(for: from).contains(where: { $0.canMove(to: to, pieces: pieces) }) == true else { throw BoardMoveError.invalidDestination }
+        guard let fromPiece = pieces[from] else { throw BoardMoveError.invalidStartingPoint }
+        let hasAvailableWay = fromPiece
+            .availableMovingWays(for: from)
+            .contains(where: { $0.canMove(to: to, pieces: pieces) })
+        guard hasAvailableWay else { throw BoardMoveError.invalidDestination }
         guard let toPiece = pieces[to] else { return }
         guard fromPiece.color != toPiece.color else { throw BoardMoveError.sameColor }
     }

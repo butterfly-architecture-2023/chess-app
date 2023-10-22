@@ -202,7 +202,7 @@ final class BoardTests: XCTestCase {
         var board = Board(pieces: [:])
         
         XCTAssertThrowsError(try board.move(from: "A7", to: "A6")) {
-            XCTAssertEqual($0 as? BoardMoveError, .invalidDestination)
+            XCTAssertEqual($0 as? BoardMoveError, .invalidStartingPoint)
         }
     }
     
@@ -229,6 +229,7 @@ final class BoardTests: XCTestCase {
 ♙♙♙♙♙♙♙♙
 ♖.♗..♗.♖
 """
+        XCTAssertEqual(board.display(), expect)
     }
     
     func test폰이_초기화된_상태의_board를_display할_수_있다() {

@@ -16,7 +16,7 @@ struct Rook: Piece {
             rankTransformed(for: position, multiplier: -1),
             fileTransformed(for: position, multiplier: +1),
             fileTransformed(for: position, multiplier: -1)
-        ].map { PieceMovingWay(rawValue: $0) }
+        ].map { PieceMovingWay(positions: $0) }
         return Set(ways)
     }
     

@@ -14,4 +14,5 @@ enum BoardValidateError: Error {
 enum BoardMoveError: Error {
     case sameColor
     case invalidDestination
+    case invalidStartingPoint
 }

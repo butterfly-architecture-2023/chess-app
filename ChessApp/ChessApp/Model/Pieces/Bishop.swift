@@ -25,7 +25,7 @@ struct Bishop: Piece {
         let positions = (1..<8).compactMap { (stride: Int) -> Position? in
             return position.offsetBy(fileOffset: stride * fileMultiplier, rankOffset: stride * rankMultiplier)
         }
-        return PieceMovingWay(rawValue: positions)
+        return PieceMovingWay(positions: positions)
     }
     
     let maximumCount: Int = 2

@@ -8,15 +8,23 @@
 import Foundation
 
 struct PieceMovingWay: Hashable {
-    let rawValue: [Position]
+    private let rawValue: [Spot]
+    
+    init(spots: [Spot]) {
+        self.rawValue = spots
+    }
+    
+    init(positions: [Position]) {
+        self.init(spots: positions.map { Spot(position: $0) })
+    }
     
     func canMove(to destination: Position, pieces: [Position: Piece]) -> Bool {
-        for position in rawValue {
-            if position == destination {
-                return true
+        for spot in rawValue {
+            if spot.position == destination {
+                return spot.canStop
             }
-            if pieces[position] != nil {
-                // 다른 말이 있는경우
+            if pieces[spot.position] != nil {
+                // 가는 길에 다른 말이 있는경우
                 return false
             }
         }
@@ -25,8 +33,20 @@ struct PieceMovingWay: Hashable {
     }
 }
 
+extension PieceMovingWay {
+    struct Spot: Hashable {
+        let position: Position
+        let canStop: Bool
+        
+        init(position: Position, canStop: Bool = true) {
+            self.position = position
+            self.canStop = canStop
+        }
+    }
+}
+
 extension PieceMovingWay: ExpressibleByArrayLiteral {
     init(arrayLiteral elements: Position...) {
-        self.init(rawValue: elements)
+        self.init(positions: elements)
     }
 }

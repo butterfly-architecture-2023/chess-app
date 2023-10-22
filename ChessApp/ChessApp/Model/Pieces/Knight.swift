@@ -24,22 +24,33 @@ struct Knight: Piece {
         guard let forwardPosition = position.offsetBy(fileOffset: 0, rankOffset: multiplier) else {
             return []
         }
-        return [
+        let destinations = [
             forwardPosition.offsetBy(fileOffset: 1, rankOffset: multiplier),
             forwardPosition.offsetBy(fileOffset: -1, rankOffset: multiplier)
-        ].compactMap { $0 }
-            .map { [forwardPosition, $0] }
+        ]
+        return pieceMovingWays(destinations: destinations, with: forwardPosition)
     }
     
     private func fileTransformed(for position: Position, multiplier: Int) -> [PieceMovingWay] {
         guard let forwardPosition = position.offsetBy(fileOffset: multiplier, rankOffset: 0) else {
             return []
         }
-        return [
+        let destinations = [
             forwardPosition.offsetBy(fileOffset: multiplier, rankOffset: 1),
             forwardPosition.offsetBy(fileOffset: multiplier, rankOffset: -1)
-        ].compactMap { $0 }
-            .map { [forwardPosition, $0] }
+        ]
+        return pieceMovingWays(destinations: destinations, with: forwardPosition)
+    }
+    
+    private func pieceMovingWays(destinations: [Position?], with forwardPosition: Position) -> [PieceMovingWay] {
+        return destinations
+            .compactMap { $0 }
+            .map { position in
+                PieceMovingWay(spots: [
+                    PieceMovingWay.Spot(position: forwardPosition, canStop: false),
+                    PieceMovingWay.Spot(position: position)
+                ])
+            }
     }
     
     let maximumCount: Int = 2
