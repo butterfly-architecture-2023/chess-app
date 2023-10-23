@@ -33,9 +33,9 @@ struct Board {
     private func makeInitialPieces(by position: Position) -> Piece {
         let area = (rank: position.rank, file: position.file)
         switch area {
-            case (rank: 1, file: _):
+            case (rank: 1, file: _): // 2-rank
                 return Pawn(pieceColorType: .black)
-            case (rank: 6, file: _):
+            case (rank: 6, file: _): // 7-rank
                 return Pawn(pieceColorType: .white)
             default:
                 return EmptySpace()

@@ -9,39 +9,45 @@ import Foundation
 
 func main() {
     // MARK: - 체스 시작 초기화
-    // "체스 보드를 초기화했습니다." 출력
-    // 8 x 8 board 초기화 (1,2-rank는 흑색 체스말이, 7,8-rank는 백색 체스말이 위치)
     let printManager = PrintManager()
-    
+    printManager.showDescription(.initBoard)
     var board: Board = Board(size: 8)
     
     // 초기 체스 보드 출력
     printManager.showChessBoard(board.display())
     
     
-    // "명령을 입력하세요>" 출력
-    
-    
-    // MARK: - [입력, 검증] 체스 이동할 Pawn 현재 위치 & 이동할 위치 입력 받기 (ex, A2->A3)
-    // 형식에 맞지 않으면 다시 입력
-    // 백색부터 시작 -> 처음 입력된 pawn 흑색이면 "백색 체스말의 차례입니다." 출력
-    var inputManager = InputManager(inputText: "A2->A3")
-    do {
-        try inputManager.checkInputFormat()
-        try board.checkGameTurn(inputManager.positionInfo)
-    } catch let error as ErrorType {
-        print(error.showMessage())
-    } catch {
-        print(error)
-    }
-    
-    // MARK: - [처리/계산] board 저장값 수정
-    board.updateBoard(inputManager.positionInfo)
-    
-    
-    // MARK: - [형식, 출력] 수정된 board 출력
-    // 상대편 말을 잡는 경우 수정된 board 출력
-    printManager.showChessBoard(board.display())
+    repeat {
+        
+        // MARK: - 입력
+        printManager.showDescription(.inputText)
+        var inputManager = InputManager(inputText: readLine())
+        
+        do {
+            // MARK: - 검증
+            // - 형식에 맞는가? "OO->OO" or "?OO"인가
+            let inputFormatType = try inputManager.checkFormatType(inputManager.inputText)
+            
+            // - inputText를 분류하고, Position 형식으로 변환
+            let positionInfo = inputManager.makePositionList(inputManager.inputText, inputFormatType)
+            
+            // - currentPosition 값이 게임 순서와 맞는지 체크
+            try board.checkGameTurn(positionInfo)
+            
+            
+            // MARK: - [처리/계산] board 저장값 수정
+            board.updateBoard(positionInfo)
+            
+            
+            // MARK: - [형식, 출력] 수정된 board 출력
+            // 상대편 말을 잡는 경우 수정된 board 출력
+            printManager.showChessBoard(board.display())
+            
+        } catch let error {
+            guard let error = error as? ErrorType else { return }
+            print(error.showMessage())
+        }
+    } while(true)
 }
 
 main()
