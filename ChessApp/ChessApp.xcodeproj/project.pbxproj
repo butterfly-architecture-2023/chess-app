@@ -11,6 +11,7 @@
 		90011CFB2AE69EC8003485F1 /* QueenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90011CFA2AE69EC8003485F1 /* QueenTests.swift */; };
 		90011CFD2AE6A26D003485F1 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90011CFC2AE6A26D003485F1 /* Knight.swift */; };
 		90011CFF2AE6A42A003485F1 /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90011CFE2AE6A42A003485F1 /* KnightTests.swift */; };
+		90011D012AE6B42E003485F1 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90011D002AE6B42E003485F1 /* PawnTests.swift */; };
 		909229C92AE3F60500FB28AE /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909229C82AE3F60500FB28AE /* ErrorType.swift */; };
 		90A2743B2AE67B7E00DFF733 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A2743A2AE67B7E00DFF733 /* Bishop.swift */; };
 		90A2743D2AE691D900DFF733 /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A2743C2AE691D900DFF733 /* BishopTests.swift */; };
@@ -54,6 +55,7 @@
 		90011CFA2AE69EC8003485F1 /* QueenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenTests.swift; sourceTree = "<group>"; };
 		90011CFC2AE6A26D003485F1 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		90011CFE2AE6A42A003485F1 /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
+		90011D002AE6B42E003485F1 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		909229C82AE3F60500FB28AE /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		90A2743A2AE67B7E00DFF733 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		90A2743C2AE691D900DFF733 /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				90EE6FB12ADAE54100C1E8EE /* ChessBoardTests.swift */,
+				90011D002AE6B42E003485F1 /* PawnTests.swift */,
 				90A2743C2AE691D900DFF733 /* BishopTests.swift */,
 				90A274432AE6989C00DFF733 /* RookTests.swift */,
 				90011CFA2AE69EC8003485F1 /* QueenTests.swift */,
@@ -347,6 +350,7 @@
 				90011CFB2AE69EC8003485F1 /* QueenTests.swift in Sources */,
 				90A2743D2AE691D900DFF733 /* BishopTests.swift in Sources */,
 				90A274442AE6989C00DFF733 /* RookTests.swift in Sources */,
+				90011D012AE6B42E003485F1 /* PawnTests.swift in Sources */,
 				90EE6FB22ADAE54100C1E8EE /* ChessBoardTests.swift in Sources */,
 				90011CFF2AE6A42A003485F1 /* KnightTests.swift in Sources */,
 			);
