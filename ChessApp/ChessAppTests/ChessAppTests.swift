@@ -47,10 +47,7 @@ final class ChessAppTests: XCTestCase {
     
     // White Pawn을 큰 rank -> 작은 rank 이동
     func testWhitePawnMoveToSmallRank() throws {
-        let originPosition = Position(rank: .seven, file: .A)
-        let movingPosition = Position(rank: .six, file: .A)
-        
-        let canMove = chessBoard.canMovePiece(from: originPosition, to: movingPosition)
+        let canMove = try chessBoard.canMove(by: "A7->A6")
         
         let result =
         """
@@ -73,28 +70,19 @@ final class ChessAppTests: XCTestCase {
     
     // White Pawn을 작은 rank -> 큰 rank 이동
     func testWhitePawnMoveToLargeRank() throws {
-        let originPosition = Position(rank: .seven, file: .A)
-        let movingPosition = Position(rank: .eight, file: .A)
-        
-        let canMove = chessBoard.canMovePiece(from: originPosition, to: movingPosition)
+        let canMove = try chessBoard.canMove(by: "A7->A8")
         XCTAssertFalse(canMove)
     }
     
     // Black Pawn을 큰 rank -> 작은 rank 이동
     func testBlackPawnMoveToSmallRank() throws {
-        let originPosition = Position(rank: .two, file: .C)
-        let movingPosition = Position(rank: .one, file: .A)
-        
-        let canMove = chessBoard.canMovePiece(from: originPosition, to: movingPosition)
+        let canMove = try chessBoard.canMove(by: "C2->A1")
         XCTAssertFalse(canMove)
     }
     
     // Black Pawn을 작은 rank -> 큰 rank 이동
     func testBlackPawnMoveToLargeRank() throws {
-        let originPosition = Position(rank: .two, file: .A)
-        let movingPosition = Position(rank: .three, file: .A)
-        let canMove = chessBoard.canMovePiece(from: originPosition, to: movingPosition)
-
+        let canMove = try chessBoard.canMove(by: "A2->A3")
         let result =
         """
          ABCDEFGH
@@ -116,29 +104,23 @@ final class ChessAppTests: XCTestCase {
     
     // Pawn을 대각선 방향으로 이동
     func testPawnMoveToDiagonal() throws {
-        let originPosition = Position(rank: .seven, file: .C)
-        let movingPosition = Position(rank: .six, file: .F)
-        
-        let canMove = chessBoard.canMovePiece(from: originPosition, to: movingPosition)
+        let canMove = try chessBoard.canMove(by: "C7->F6")
         XCTAssertFalse(canMove)
     }
     
     // 같은 색의 Pawn이 위치한 곳으로 이동
     func testPawnAlreadySameColorPawn() throws {
-        let originPosition = Position(rank: .seven, file: .C)
-        let movingPosition = Position(rank: .seven, file: .D)
-        
-        let canMove = chessBoard.canMovePiece(from: originPosition, to: movingPosition)
+        let canMove = try chessBoard.canMove(by: "C7->D7")
         XCTAssertFalse(canMove)
     }
     
     // 여러번 이동하여 다른 색의 pawn을 잡는 케이스 확인
     func testMultipleMoving() throws {
-        let canMove1 = chessBoard.canMovePiece(from: .init(rank: .seven, file: .C), to: .init(rank: .six, file: .C))
-        let canMove2 = chessBoard.canMovePiece(from: .init(rank: .six, file: .C), to: .init(rank: .five, file: .C))
-        let canMove3 = chessBoard.canMovePiece(from: .init(rank: .two, file: .C), to: .init(rank: .three, file: .C))
-        let canMove4 = chessBoard.canMovePiece(from: .init(rank: .five, file: .C), to: .init(rank: .four, file: .C))
-        let canMove5 = chessBoard.canMovePiece(from: .init(rank: .three, file: .C), to: .init(rank: .four, file: .C))
+        let canMove1 = try chessBoard.canMove(by: "C7->C6")
+        let canMove2 = try chessBoard.canMove(by: "C6->C5")
+        let canMove3 = try chessBoard.canMove(by: "C2->C3")
+        let canMove4 = try chessBoard.canMove(by: "C5->C4")
+        let canMove5 = try chessBoard.canMove(by: "C3->C4")
         
         XCTAssertTrue(canMove1)
         XCTAssertTrue(canMove2)

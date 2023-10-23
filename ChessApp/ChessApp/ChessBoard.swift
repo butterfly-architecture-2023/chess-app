@@ -57,31 +57,38 @@ final class ChessBoard {
         return result
     }
     
-    func canMovePiece(from: Position, to: Position) -> Bool {
+    func canMove(by path: String) throws -> Bool {
         var canMove: Bool = false
-
-        guard let fromSquareIndex = board.firstIndex(where: { $0.position == from }), let toSquareIndex = board.firstIndex(where: { $0.position == to }) else { return canMove }
-
-        let fromSquare = board[fromSquareIndex]
-        let toSquare = board[toSquareIndex]
         
-        if fromSquare.piece?.canMove(from: from, to: to) == true {
-            if toSquare.piece == nil {
-                canMove = true
-            } else {
-                if fromSquare.piece?.color != toSquare.piece?.color {
+        do {
+            let positions = try validate(input: path)
+            let from = positions[0]
+            let to = positions[1]
+            guard let fromSquareIndex = board.firstIndex(where: { $0.position == from }), let toSquareIndex = board.firstIndex(where: { $0.position == to }) else { return canMove }
+            
+            let fromSquare = board[fromSquareIndex]
+            let toSquare = board[toSquareIndex]
+            
+            if fromSquare.piece?.canMove(from: from, to: to) == true {
+                if toSquare.piece == nil {
                     canMove = true
+                } else {
+                    if fromSquare.piece?.color != toSquare.piece?.color {
+                        canMove = true
+                    }
                 }
             }
+            
+            if canMove {
+                let movingPiece = board[fromSquareIndex].piece
+                board[toSquareIndex].piece = movingPiece
+                board[fromSquareIndex].piece = nil
+            }
+            
+            return canMove
+        } catch {
+            throw error
         }
-        
-        if canMove {
-            let movingPiece = board[fromSquareIndex].piece
-            board[toSquareIndex].piece = movingPiece
-            board[fromSquareIndex].piece = nil
-        }
-        
-        return canMove
     }
     
     private func initBoard() -> [Square] {
@@ -116,5 +123,27 @@ final class ChessBoard {
                 }
             }
         }
+    }
+    
+    private func validate(input: String) throws -> [Position] {
+        let inputs = input.components(separatedBy: "->")
+        guard inputs.count == 2 else { throw ErrorType.wrongInput }
+        
+        do {
+            let from = try makePosition(by: inputs[0])
+            let to = try makePosition(by: inputs[1])
+            return [from, to]
+        } catch {
+            throw error
+        }
+    }
+    
+    private func makePosition(by input: String) throws -> Position {
+        let separated = input.map({ String($0) })
+        guard let file = Position.File.allCases.first(where: { $0.displayText == separated[0] }),
+              let rank = Position.Rank.allCases.first(where: { $0.displayText == separated[1]}) else {
+            throw ErrorType.wrongInput
+        }
+        return .init(rank: rank, file: file)
     }
 }
