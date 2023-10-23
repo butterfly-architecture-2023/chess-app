@@ -1,5 +1,5 @@
 //
-//  Bishop.swift
+//  Rook.swift
 //  ChessApp
 //
 //  Created by Jiyeon  on 2023/10/23.
@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct Bishop: Piece {
-    static let maxCount: Int = 2
-    
-    static let score: Int = 3
+struct Rook: Piece {
+    static var maxCount: Int = 2
+    static var score: Int = 5
     
     var color: Color
     
@@ -18,9 +17,9 @@ struct Bishop: Piece {
         get {
             switch color {
             case .white:
-                return "\u{2657}"
+                return "\u{2656}"
             case .black:
-                return "\u{265D}"
+                return "\u{265C}"
             }
         }
     }
@@ -28,7 +27,7 @@ struct Bishop: Piece {
     func isPossibleInitPosition(with position: Position) -> Bool {
         var isPossible: Bool = false
         
-        if position.file == .C || position.file == .F {
+        if position.file == .A || position.file == .H {
             switch color {
             case .white:
                 if position.rank == .eight {
@@ -36,25 +35,25 @@ struct Bishop: Piece {
                 }
             case .black:
                 if position.rank == .one {
-                   isPossible = true
+                    isPossible = true
                 }
             }
         }
-        
         return isPossible
     }
     
     func getMovablePositions(from position: Position) -> Set<Position> {
         var result: Set<Position?> = []
-                
-        for index in 1..<8 {
-            result.insert(position.makePosition(rankDiff: index, fileDiff: index))
-            result.insert(position.makePosition(rankDiff: index, fileDiff: -index))
-            result.insert(position.makePosition(rankDiff: -index, fileDiff: index))
-            result.insert(position.makePosition(rankDiff: -index, fileDiff: -index))
+        
+        for index in 0..<8 {
+            result.insert(position.makePosition(rankDiff: 0, fileDiff: -index))
+            result.insert(position.makePosition(rankDiff: 0, fileDiff: index))
+            result.insert(position.makePosition(rankDiff: -index, fileDiff: 0))
+            result.insert(position.makePosition(rankDiff: index, fileDiff: 0))
         }
+        
         result.remove(position)
-
+        
         return Set(result.compactMap({ $0 }))
     }
 }
