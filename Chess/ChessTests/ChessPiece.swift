@@ -9,7 +9,7 @@ protocol ChessPiece {
     var pieceColor: PieceColor { get }
     var pieceType: PieceType { get }
     var position: Position { get set }
-    func isValidMove(to: Position) -> Bool
+    func isCanMove(to: Position) -> Bool
 }
 
 struct EmptyPiece: ChessPiece {
@@ -26,7 +26,7 @@ struct EmptyPiece: ChessPiece {
             self.position = position
         }
     
-    func isValidMove(to: Position) -> Bool {
+    func isCanMove(to: Position) -> Bool {
         return false
     }
 }
@@ -36,7 +36,7 @@ struct Pawn: ChessPiece {
     let pieceType: PieceType
     var position: Position
     
-    func isValidMove(to: Position) -> Bool {
+    func isCanMove(to: Position) -> Bool {
         let toRank = to.rank
         let toColumn = to.column
         
@@ -77,7 +77,7 @@ struct Rook: ChessPiece {
     let pieceType: PieceType
     var position: Position
     
-    func isValidMove(to: Position) -> Bool {
+    func isCanMove(to: Position) -> Bool {
         let toRank = to.rank
         
         if pieceColor == .white {
@@ -101,7 +101,7 @@ struct Bishop: ChessPiece {
     let pieceType: PieceType
     var position: Position
     
-    func isValidMove(to: Position) -> Bool {
+    func isCanMove(to: Position) -> Bool {
         let toRank = to.rank
         let toColumn = to.column
         
@@ -126,7 +126,7 @@ struct Knight: ChessPiece {
     let pieceType: PieceType
     var position: Position
     
-    func isValidMove(to: Position) -> Bool {
+    func isCanMove(to: Position) -> Bool {
         let toRank = to.rank
         let toColumn = to.column
         let rankDifference = abs(position.rank.rawValue - toRank.rawValue)
@@ -145,7 +145,7 @@ struct Queen: ChessPiece {
     let pieceType: PieceType
     var position: Position
     
-    func isValidMove(to: Position) -> Bool {
+    func isCanMove(to: Position) -> Bool {
         let toRank = to.rank
         let toColumn = to.column
         
