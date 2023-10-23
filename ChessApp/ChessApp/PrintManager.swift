@@ -8,6 +8,14 @@
 import Foundation
 
 class PrintManager {
+    enum ChessDescriptionType: String {
+        case initBoard = "체스 보드를 초기화했습니다."
+        case inputText = "명령을 입력하세요> "
+        
+        var description: String {
+            return self.rawValue
+        }
+    }
     func showChessBoard(_ group: ChessPieceGroup) {
         print("---")
         // sort
@@ -19,7 +27,11 @@ class PrintManager {
         }
         
         // print
+        print("  A B C D E F G H")
         for (index, row) in pieceGroup.enumerated() {
+            if index % 8 == 0 {
+                print(index / 8 + 1, terminator: " ")
+            }
             for icon in row.value.showIcon() {
                 print(icon, terminator: " ")
             }
@@ -28,5 +40,9 @@ class PrintManager {
             }
         }
         print()
+    }
+    
+    func showDescription(_ type: ChessDescriptionType) {
+        print(type.description)
     }
 }
