@@ -14,6 +14,19 @@ final class PieceTypeTests: XCTestCase {
     board = .init()
   }
   
+  func testBoardStatus() throws {
+    let blackAnswers: [(any Piece)?] =
+    [Rook(.black), Knight(.black), Bishop(.black), nil, Queen(.black), Bishop(.black), Knight(.black), Rook(.black)] + Array(repeating: Optional.some(Pawn(.black)), count: 8)
+    let whiteAnswers: [(any Piece)?] = Array(repeating: Optional.some(Pawn(.white)), count: 8) + [Rook(.white), Knight(.white), Bishop(.white), nil, Queen(.white), Bishop(.white), Knight(.white), Rook(.white)]
+    
+    for (i, position) in board.blackAreaPositions.enumerated() {
+      XCTAssertEqual(blackAnswers[i]?.type, position.piece?.type)
+    }
+    for (i, position) in board.whiteAreaPositions.enumerated() {
+      XCTAssertEqual(whiteAnswers[i]?.type, position.piece?.type)
+    }
+  }
+  
   func testPawnMovesRightDirection() throws {
     let mockInputs = ["A2 A3", "A3 A4", "A4 A5", "A5 A6"]
     
@@ -100,6 +113,7 @@ final class PieceTypeTests: XCTestCase {
     let blackMock = try board.getCmd(blackInput)
     let blackMoveResult = board.move(from: blackMock.from, to: blackMock.to)
     
+    // TODO: - getNextPosition 을 수정해야 함. 이동거리를 고려하지 않은 메소드이므로 수정 필요.
     XCTAssertTrue(whiteMoveResult)
     XCTAssertFalse(blackMoveResult)
   }

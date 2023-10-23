@@ -24,6 +24,10 @@
 		1B76CF082AE54E4F0079011D /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF072AE54E4F0079011D /* Knight.swift */; };
 		1B76CF0A2AE54F460079011D /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF092AE54F460079011D /* Queen.swift */; };
 		1B99EF5F2AE69562008DEAE3 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99EF5E2AE69562008DEAE3 /* Rook.swift */; };
+		1B99EF632AE6968F008DEAE3 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF072AE54E4F0079011D /* Knight.swift */; };
+		1B99EF642AE6968F008DEAE3 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF092AE54F460079011D /* Queen.swift */; };
+		1B99EF652AE6968F008DEAE3 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99EF5E2AE69562008DEAE3 /* Rook.swift */; };
+		1B99EF662AE696A0008DEAE3 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B76CF052AE5377B0079011D /* Bishop.swift */; };
 		1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D32ADD7B9700ACE122 /* Column.swift */; };
 		1BF7B7D62ADD7FB000ACE122 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */; };
 		1BF7B7DB2ADD800E00ACE122 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91C2ADBCAE40057C0CD /* Board.swift */; };
@@ -91,9 +95,6 @@
 		1B20D8E42ADBB6A30057C0CD = {
 			isa = PBXGroup;
 			children = (
-				1B99EF5E2AE69562008DEAE3 /* Rook.swift */,
-				1B76CF072AE54E4F0079011D /* Knight.swift */,
-				1B76CF092AE54F460079011D /* Queen.swift */,
 				1B20D91A2ADBBD040057C0CD /* README.md */,
 				1B20D8EF2ADBB6A40057C0CD /* ChessApp */,
 				1B20D9002ADBB6A50057C0CD /* ChessAppTests */,
@@ -118,6 +119,9 @@
 				1B20D91C2ADBCAE40057C0CD /* Board.swift */,
 				1B20D91E2ADBCAF00057C0CD /* Pawn.swift */,
 				1B76CF052AE5377B0079011D /* Bishop.swift */,
+				1B99EF5E2AE69562008DEAE3 /* Rook.swift */,
+				1B76CF072AE54E4F0079011D /* Knight.swift */,
+				1B76CF092AE54F460079011D /* Queen.swift */,
 				1B20D9202ADBDB250057C0CD /* Row.swift */,
 				1BF7B7D32ADD7B9700ACE122 /* Column.swift */,
 				1B20D9222ADBDB340057C0CD /* PieceType.swift */,
@@ -269,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B99EF642AE6968F008DEAE3 /* Queen.swift in Sources */,
 				1BF7B7E12ADD803500ACE122 /* Piece.swift in Sources */,
 				1BF7B7DE2ADD802200ACE122 /* PieceColor.swift in Sources */,
 				1BF7B7E02ADD802B00ACE122 /* PieceType.swift in Sources */,
@@ -276,8 +281,11 @@
 				1BF7B7E22ADD803800ACE122 /* MoveDirection.swift in Sources */,
 				1BF7B7D62ADD7FB000ACE122 /* BoardTests.swift in Sources */,
 				1B20D9022ADBB6A50057C0CD /* PieceTypeTests.swift in Sources */,
+				1B99EF662AE696A0008DEAE3 /* Bishop.swift in Sources */,
 				1BF7B7DD2ADD801900ACE122 /* Row.swift in Sources */,
 				1BF7B7DF2ADD802500ACE122 /* Pawn.swift in Sources */,
+				1B99EF632AE6968F008DEAE3 /* Knight.swift in Sources */,
+				1B99EF652AE6968F008DEAE3 /* Rook.swift in Sources */,
 				1BF7B7DC2ADD801900ACE122 /* Column.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Knight {
+struct Knight: Piece {
   let type: PieceType = .knight
   let color: PieceColor
   let directionMovable: Set<MoveDirection> = [

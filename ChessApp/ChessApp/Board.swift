@@ -9,7 +9,13 @@ import Foundation
 import Combine
 
 class Board {
-  let positions = Set<Position>.boardGrid
+  let positions = [Position].boardGrid
+  var blackAreaPositions: [Position] {
+    positions.rows(.one) + positions.rows(.two)
+  }
+  var whiteAreaPositions: [Position] {
+    positions.rows(.seven) + positions.rows(.eight)
+  }
   var currentTurn: PieceColor = .white
   var score: [PieceColor: Int] = [
     .black: 0,
@@ -17,8 +23,17 @@ class Board {
   ]
   
   init() {
-    positions.rows(.two).forEach { $0.piece = Pawn(.black) }
-    positions.rows(.seven).forEach { $0.piece = Pawn(.white) }
+    let blackComb = specialChessCombination(.black)
+    positions.rows(.one).enumerated().forEach { (inx, position) in
+      position.piece = blackComb[inx]
+    }
+    positions.rows(.two).forEach({ $0.piece = Pawn(.black) })
+    
+    positions.rows(.seven).forEach({ $0.piece = Pawn(.white) })
+    let whiteComb = specialChessCombination(.white)
+    positions.rows(.eight).enumerated().forEach { (inx, position) in
+      position.piece = whiteComb[inx]
+    }
   }
   
   // movePiece, calculate 호출
@@ -156,14 +171,21 @@ class Board {
     return Position(column, row)
   }
   
+  private func specialChessCombination(_ color: PieceColor) -> [(any Piece)?] {
+    [
+      Rook(color), Knight(color), Bishop(color),
+      nil,
+      Queen(color), Bishop(color), Knight(color), Rook(color)
+    ]
+  }
+  
   enum InputError: Error {
     case maximumLengthExceeded, minimumLengthViolated, formatError, noColumn, noRow
   }
 }
 
-extension Set where Element == Board.Position {
-  // Board 의 구조는 8*8로 구성하는 것이 일반적이므로 static 이용
-  static var boardGrid: Self = Set([
+extension Array where Element == Board.Position {
+  static var boardGrid: Self = [
     .init("A",1),.init("A",2),.init("A",3),.init("A",4),.init("A",5),.init("A",6),.init("A",7),.init("A",8),
     .init("B",1),.init("B",2),.init("B",3),.init("B",4),.init("B",5),.init("B",6),.init("B",7),.init("B",8),
     .init("C",1),.init("C",2),.init("C",3),.init("C",4),.init("C",5),.init("C",6),.init("C",7),.init("C",8),
@@ -172,7 +194,7 @@ extension Set where Element == Board.Position {
     .init("F",1),.init("F",2),.init("F",3),.init("F",4),.init("F",5),.init("F",6),.init("F",7),.init("F",8),
     .init("G",1),.init("G",2),.init("G",3),.init("G",4),.init("G",5),.init("G",6),.init("G",7),.init("G",8),
     .init("H",1),.init("H",2),.init("H",3),.init("H",4),.init("H",5),.init("H",6),.init("H",7),.init("H",8)
-  ].compactMap({$0}))
+  ].compactMap({$0})
   
   func rows(_ row: Row) -> Self {
     self.filter({$0.row == row})
