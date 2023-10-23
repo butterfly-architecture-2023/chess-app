@@ -19,6 +19,27 @@ struct Piece {
     }
 }
 
+extension Piece {
+    // TODO: - 중첩 Switch문을 어떻게 해결할 것인가 ..
+    var movableRange: MovableRange {
+        switch self.type {
+        case .pawn:
+            switch self.color {
+            case .black:
+                return .init(file: 0, rank: 1)
+            case .white:
+                return .init(file: 0, rank: -1)
+            case .none:
+                return .init(file: 0, rank: 0)
+            }
+            
+        // TODO: - 추후 룰 적용
+        default:
+            return .init(file: 0, rank: 0)
+        }
+    }
+}
+
 // MARK: - PieceType
 
 enum PieceType {
@@ -40,4 +61,11 @@ enum PieceColor {
             return "."
         }
     }
+}
+
+// MARK: - MovableRange
+
+struct MovableRange: Equatable {
+    let file: Int
+    let rank: Int
 }

@@ -12,6 +12,9 @@ import Foundation
 final class Board {
     private let size = 8
     private var chessBoard = [[Piece]]()
+    private var player: PieceColor = .white
+    
+    // MARK: - Initialize
     
     init() {
         reset()
@@ -47,7 +50,7 @@ final class Board {
             .insert(Array(repeating: blackPwan,
                           count: size
                          ), at: Rank.two.number
-            ) 
+            )
         
         chessBoard
             .insert(Array(repeating: whitePwan,
@@ -55,8 +58,42 @@ final class Board {
                          ), at: Rank.seven.number
             )
     }
- 
-    /// 현재 보드 상태 출력
+    
+    // MARK: - Move Method
+    
+    /// 말 이동
+    private func movePiece(piece: Piece, from: Position, to: Position) {
+        guard piece.color == player else { return }
+        guard validateMove(piece: piece, from: from, to: to) else { return }
+        guard move(from: from, to: to) else { return }
+        
+        chessBoard[to.file][to.rank] = chessBoard[from.file][from.rank]
+        chessBoard[from.file][from.rank] = .init(type: .none, color: .none)
+        changPlayer()
+    }
+    
+    /// 이동 가능한 범위인지 확인
+    private func validateMove(piece: Piece, from: Position, to: Position) -> Bool {
+        let distance: MovableRange = .init(file: from.file - to.file, rank: from.rank - to.rank)
+        return distance == piece.movableRange
+    }
+    
+    /// 말 이동 가능 여부 파악
+    private func move(from: Position, to: Position) -> Bool {
+        let currentColor = getPiece(position: from).color
+        let nextColor = getPiece(position: to).color
+        
+        guard currentColor != .none,
+              currentColor != nextColor else {
+            return false
+        }
+        
+        return true
+    }
+    
+    // MARK: - Method
+    
+    /// 현재 보드 상태
     private func display() -> [[String]] {
         chessBoard
             .map { file in
@@ -66,27 +103,13 @@ final class Board {
             }
     }
     
-    /// 말 이동 가능 여부 파악
-    private func canMove(from: Position, to: Position) -> Bool {
-        let prevColor = chessBoard[from.file][from.rank].color
-        let currentColor = chessBoard[to.file][to.rank].color
-        
-        // 현재 보드의 from 좌표 값이 비어있는지 확인
-        guard prevColor == .none else {
-            return false
-        }
-        
-        // 이동할 위치의 말이 현재 말과 같은지 확인
-        guard prevColor != currentColor else {
-            return false
-        }
-        
-        return true
+    /// 특정 위치의 말
+    private func getPiece(position: Position) -> Piece {
+        chessBoard[position.file][position.rank]
     }
     
-    /// 말 이동
-    private func move(from: Position, to: Position)  {
-        chessBoard[to.file][to.rank] = chessBoard[from.file][from.rank]
-        chessBoard[to.file][to.rank] = .init(type: .none, color: .none)
+    /// 순서 변경
+    private func changPlayer() {
+        player = (player == .white) ? .black : .white
     }
 }
