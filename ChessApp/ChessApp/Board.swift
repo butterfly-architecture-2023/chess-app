@@ -40,7 +40,7 @@ final class Board: BoardConfigurable {
                 let rank = Rank.allCases[rankNumber]
 
                 let text = self.pawnsManager
-                    .getPawn(at: Location(file: file, rank: rank))?
+                    .getPawn(at: Position(file: file, rank: rank))?
                     .text
                 
                 boards[rankNumber][fileNumber] = text ?? "."
@@ -58,7 +58,7 @@ final class Board: BoardConfigurable {
         self.turnColor = (self.turnColor == .black) ? .white : .black
     }
     
-    private func validate(inputs: (source: Location, destination: Location)) throws {
+    private func validate(inputs: (source: Position, destination: Position)) throws {
         let source = inputs.source
         let destination = inputs.destination
         

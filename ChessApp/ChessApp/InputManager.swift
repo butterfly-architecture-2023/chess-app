@@ -14,11 +14,11 @@ struct InputManager {
         self.separator = separator
     }
     
-    func makeFormattedInputs(from userInput: String) throws -> (source: Location, destination: Location) {
+    func makeFormattedInputs(from userInput: String) throws -> (source: Position, destination: Position) {
         let inputs = userInput.split(separator: "->")
         
-        guard let source = self.makeLocation(from: String(inputs[0])),
-              let destination = self.makeLocation(from: String(inputs[1])) else {
+        guard let source = self.makePosition(from: String(inputs[0])),
+              let destination = self.makePosition(from: String(inputs[1])) else {
             
             throw InputError.overRange
         }
@@ -26,7 +26,7 @@ struct InputManager {
         return (source: source, destination: destination)
     }
     
-    private func makeLocation(from input: String) -> Location? {
+    private func makePosition(from input: String) -> Position? {
         if input.count != 2 {
             return nil
         }
@@ -37,7 +37,7 @@ struct InputManager {
             return nil
         }
         
-        return Location(file: file, rank: rank)
+        return Position(file: file, rank: rank)
     }
 }
 

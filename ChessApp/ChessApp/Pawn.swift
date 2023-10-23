@@ -9,20 +9,20 @@ import Foundation
 
 protocol PawnConfigurable {
     var color: Color { get }
-    var currentLocation: Location { get }
+    var currentPosition: Position { get }
     var text: String { get }
     
-    func canMove(to location: Location) -> Bool
+    func canMove(to position: Position) -> Bool
 }
 
 struct Pawn: PawnConfigurable {
     let score: Int = 1
     let color: Color
-    let currentLocation: Location
+    let currentPosition: Position
     
-    func canMove(to location: Location) -> Bool {
-        let currentRank = self.currentLocation.rank
-        let destinationRank = location.rank
+    func canMove(to position: Position) -> Bool {
+        let currentRank = self.currentPosition.rank
+        let destinationRank = position.rank
         
         guard currentRank.distance(with: destinationRank) == 1 else {
             return false
