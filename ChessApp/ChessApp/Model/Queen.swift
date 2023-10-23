@@ -8,8 +8,8 @@
 import Foundation
 
 struct Queen: Piece {
-    static var maxCount: Int = 1
-    static var score: Int = 9
+    static let maxCount: Int = 1
+    static let score: Int = 9
     
     var color: Color
     

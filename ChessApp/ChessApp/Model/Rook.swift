@@ -8,8 +8,8 @@
 import Foundation
 
 struct Rook: Piece {
-    static var maxCount: Int = 2
-    static var score: Int = 5
+    static let maxCount: Int = 2
+    static let score: Int = 5
     
     var color: Color
     

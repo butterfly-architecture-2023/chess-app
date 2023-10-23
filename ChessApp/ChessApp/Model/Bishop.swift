@@ -9,7 +9,6 @@ import Foundation
 
 struct Bishop: Piece {
     static let maxCount: Int = 2
-    
     static let score: Int = 3
     
     var color: Color
