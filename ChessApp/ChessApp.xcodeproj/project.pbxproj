@@ -27,7 +27,7 @@
 		90EE6FA22ADAE54000C1E8EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90EE6FA02ADAE54000C1E8EE /* Main.storyboard */; };
 		90EE6FA42ADAE54100C1E8EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90EE6FA32ADAE54100C1E8EE /* Assets.xcassets */; };
 		90EE6FA72ADAE54100C1E8EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90EE6FA52ADAE54100C1E8EE /* LaunchScreen.storyboard */; };
-		90EE6FB22ADAE54100C1E8EE /* ChessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE6FB12ADAE54100C1E8EE /* ChessAppTests.swift */; };
+		90EE6FB22ADAE54100C1E8EE /* ChessBoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE6FB12ADAE54100C1E8EE /* ChessBoardTests.swift */; };
 		90EE6FBC2ADAE54100C1E8EE /* ChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE6FBB2ADAE54100C1E8EE /* ChessAppUITests.swift */; };
 		90EE6FBE2ADAE54100C1E8EE /* ChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EE6FBD2ADAE54100C1E8EE /* ChessAppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -73,7 +73,7 @@
 		90EE6FA62ADAE54100C1E8EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90EE6FA82ADAE54100C1E8EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90EE6FAD2ADAE54100C1E8EE /* ChessAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		90EE6FB12ADAE54100C1E8EE /* ChessAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppTests.swift; sourceTree = "<group>"; };
+		90EE6FB12ADAE54100C1E8EE /* ChessBoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardTests.swift; sourceTree = "<group>"; };
 		90EE6FB72ADAE54100C1E8EE /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90EE6FBB2ADAE54100C1E8EE /* ChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITests.swift; sourceTree = "<group>"; };
 		90EE6FBD2ADAE54100C1E8EE /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		90EE6FB02ADAE54100C1E8EE /* ChessAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				90EE6FB12ADAE54100C1E8EE /* ChessAppTests.swift */,
+				90EE6FB12ADAE54100C1E8EE /* ChessBoardTests.swift */,
 				90A2743C2AE691D900DFF733 /* BishopTests.swift */,
 				90A274432AE6989C00DFF733 /* RookTests.swift */,
 				90011CFA2AE69EC8003485F1 /* QueenTests.swift */,
@@ -347,7 +347,7 @@
 				90011CFB2AE69EC8003485F1 /* QueenTests.swift in Sources */,
 				90A2743D2AE691D900DFF733 /* BishopTests.swift in Sources */,
 				90A274442AE6989C00DFF733 /* RookTests.swift in Sources */,
-				90EE6FB22ADAE54100C1E8EE /* ChessAppTests.swift in Sources */,
+				90EE6FB22ADAE54100C1E8EE /* ChessBoardTests.swift in Sources */,
 				90011CFF2AE6A42A003485F1 /* KnightTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

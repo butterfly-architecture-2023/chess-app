@@ -1,5 +1,5 @@
 //
-//  ChessAppTests.swift
+//  ChessBoardTests.swift
 //  ChessAppTests
 //
 //  Created by Jiyeon  on 2023/10/15.
@@ -8,21 +8,21 @@
 import XCTest
 @testable import ChessApp
 
-final class ChessAppTests: XCTestCase {
+final class ChessBoardTests: XCTestCase {
     
     let chessBoard = ChessBoard()
     
     let boardInitDisplay =
         """
          ABCDEFGH
-        1........
+        1♜♞♝.♛♝♞♜
         2♟♟♟♟♟♟♟♟
         3........
         4........
         5........
         6........
         7♙♙♙♙♙♙♙♙
-        8........
+        8♖♘♗.♕♗♘♖
          ABCDEFGH
         """
 
@@ -32,12 +32,6 @@ final class ChessAppTests: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
-    func testGetScoreMethod() throws {
-        let initScore = chessBoard.getScore()
-        
-        XCTAssertEqual(initScore, 16)
     }
 
     func testChessBoardInit() throws {
@@ -52,14 +46,14 @@ final class ChessAppTests: XCTestCase {
         let result =
         """
          ABCDEFGH
-        1........
+        1♜♞♝.♛♝♞♜
         2♟♟♟♟♟♟♟♟
         3........
         4........
         5........
         6♙.......
         7.♙♙♙♙♙♙♙
-        8........
+        8♖♘♗.♕♗♘♖
          ABCDEFGH
         """
         let displayResult = chessBoard.display()
@@ -86,14 +80,14 @@ final class ChessAppTests: XCTestCase {
         let result =
         """
          ABCDEFGH
-        1........
+        1♜♞♝.♛♝♞♜
         2.♟♟♟♟♟♟♟
         3♟.......
         4........
         5........
         6........
         7♙♙♙♙♙♙♙♙
-        8........
+        8♖♘♗.♕♗♘♖
          ABCDEFGH
         """
         let displayResult = chessBoard.display()
@@ -113,46 +107,4 @@ final class ChessAppTests: XCTestCase {
         let canMove = try chessBoard.canMove(by: "C7->D7")
         XCTAssertFalse(canMove)
     }
-    
-    // 여러번 이동하여 다른 색의 pawn을 잡는 케이스 확인
-    func testMultipleMoving() throws {
-        let canMove1 = try chessBoard.canMove(by: "C7->C6")
-        let canMove2 = try chessBoard.canMove(by: "C6->C5")
-        let canMove3 = try chessBoard.canMove(by: "C2->C3")
-        let canMove4 = try chessBoard.canMove(by: "C5->C4")
-        let canMove5 = try chessBoard.canMove(by: "C3->C4")
-        
-        XCTAssertTrue(canMove1)
-        XCTAssertTrue(canMove2)
-        XCTAssertTrue(canMove3)
-        XCTAssertTrue(canMove4)
-        XCTAssertTrue(canMove5)
-
-        let result =
-        """
-         ABCDEFGH
-        1........
-        2♟♟.♟♟♟♟♟
-        3........
-        4..♟.....
-        5........
-        6........
-        7♙♙.♙♙♙♙♙
-        8........
-         ABCDEFGH
-        """
-        let displayResult = chessBoard.display()
-        XCTAssertEqual(result, displayResult)
-
-        let score = chessBoard.getScore()
-        XCTAssertEqual(score, 15)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

@@ -105,9 +105,18 @@ final class ChessBoard {
     }
     
     private func startGame() {
-        var blackPawns: [Pawn] = .init(repeating: .init(color: .black), count: Pawn.maxCount)
         var whitePawns: [Pawn] = .init(repeating: .init(color: .white), count: Pawn.maxCount)
+        var whiteBishops: [Bishop] = .init(repeating: .init(color: .white), count: Bishop.maxCount)
+        var whiteRooks: [Rook] = .init(repeating: .init(color: .white), count: Rook.maxCount)
+        var whiteQueens: [Queen] = .init(repeating: .init(color: .white), count: Queen.maxCount)
+        var whiteKnights: [Knight] = .init(repeating: .init(color: .white), count: Knight.maxCount)
         
+        var blackPawns: [Pawn] = .init(repeating: .init(color: .black), count: Pawn.maxCount)
+        var blackBishops: [Bishop] = .init(repeating: .init(color: .black), count: Bishop.maxCount)
+        var blackRooks: [Rook] = .init(repeating: .init(color: .black), count: Rook.maxCount)
+        var blackQueens: [Queen] = .init(repeating: .init(color: .black), count: Queen.maxCount)
+        var blackKnights: [Knight] = .init(repeating: .init(color: .black), count: Knight.maxCount)
+
         for (index, square) in board.enumerated() {
             if square.piece == nil, let availableInitPieceColor = square.position.getInitAvailableColor() {
                 switch availableInitPieceColor {
@@ -115,11 +124,35 @@ final class ChessBoard {
                     if let whitePawn = whitePawns.first, whitePawn.isPossibleInitPosition(with: square.position) {
                         board[index].piece = whitePawn
                         whitePawns.removeFirst()
+                    } else if let whiteBishop = whiteBishops.first, whiteBishop.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteBishop
+                        whiteBishops.removeFirst()
+                    } else if let whiteRook = whiteRooks.first, whiteRook.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteRook
+                        whiteRooks.removeFirst()
+                    } else if let whiteQueen = whiteQueens.first, whiteQueen.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteQueen
+                        whiteQueens.removeFirst()
+                    } else if let whiteKnight = whiteKnights.first, whiteKnight.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteKnight
+                        whiteKnights.removeFirst()
                     }
                 case .black:
                     if let blackPawn = blackPawns.first, blackPawn.isPossibleInitPosition(with: square.position) {
                         board[index].piece = blackPawn
                         blackPawns.removeFirst()
+                    } else if let blackBishop = blackBishops.first, blackBishop.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackBishop
+                        blackBishops.removeFirst()
+                    } else if let blackRook = blackRooks.first, blackRook.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackRook
+                        blackRooks.removeFirst()
+                    } else if let blackQueen = blackQueens.first, blackQueen.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackQueen
+                        blackQueens.removeFirst()
+                    } else if let blackKnight = blackKnights.first, blackKnight.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackKnight
+                        blackKnights.removeFirst()
                     }
                 }
             }
