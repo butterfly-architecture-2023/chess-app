@@ -23,7 +23,7 @@ final class ChessBoard {
     
     func getScore() -> Int {
         var result: Int = 0
-        let allPieceScore = board.compactMap({ $0.piece }).map({ $0.score })
+        let allPieceScore = board.compactMap({ $0.piece }).map({ type(of: $0).score })
         result = allPieceScore.reduce(0, +)
         return result
     }
@@ -69,7 +69,8 @@ final class ChessBoard {
             let fromSquare = board[fromSquareIndex]
             let toSquare = board[toSquareIndex]
             
-            if fromSquare.piece?.canMove(from: from, to: to) == true {
+            if let avaliableMovingPosition = fromSquare.piece?.getMovablePositions(from: fromSquare.position), avaliableMovingPosition.contains(where: { $0 == to }) {
+
                 if toSquare.piece == nil {
                     canMove = true
                 } else {
