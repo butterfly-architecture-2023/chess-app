@@ -71,33 +71,33 @@ final class Board {
     // 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없다.
     // 말을 옮길 수 있으면 true, 옮길 수 없으면 false를 리턴한다.
     // 만약, 다른 색상의 말이 to 위치에 있는 경우는 기존에 있던 말을 제거하고 이동한다.
-    func movePawn(rank: Int, file: Int) -> Bool {
-        let piece = square[rank][file]
+    func movePawn(current: Position) -> Bool {
+        let piece = square[current.rank][current.file]
         let newRank: Int
         
         switch piece.category {
         case .pawn(color: .black):
-            newRank = rank + 1
+            newRank = current.rank + 1
         case .pawn(color: .white):
-            newRank = rank - 1
+            newRank = current.rank - 1
         case .empty:
             return false
         }
         
-        guard isValidMove(piece: piece, rank: rank, file: file) else {
+        guard isValidMove(piece: piece, position: Position(file: current.file, rank: newRank)) else {
             return false
         }
         
-        square[newRank][file] = piece
-        square[rank][file] = Piece(category: .empty)
-        
+        square[newRank][current.file] = piece
+        square[current.rank][current.file] = Piece(category: .empty)
+
         return true
     }
 
-    private func isValidMove(piece: Piece, rank: Int, file: Int) -> Bool {
-        guard rank >= 0,
-              rank < square.count,
-              square[rank][file].category != piece.category else { return false }
+    private func isValidMove(piece: Piece, position: Position) -> Bool {
+        guard position.rank >= 0,
+              position.rank < square.count,
+              square[position.rank][position.file].category != piece.category else { return false }
         
         return true
     }
