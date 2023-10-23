@@ -14,7 +14,7 @@ final class BoardTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.sut = Board(inputManager: InputManager(separator: "->"), pawnsManager: PawnsManagerImpl())
+        self.sut = Board(pawnsManager: PawnsManagerImpl())
     }
     
     func test_start메서드_호출후_display_확인() {
@@ -34,30 +34,42 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(scoreByWhite, 8)
     }
     
-    func test_move_잘못된_턴인_경우_테스트() {
+    func test_move메서드_잘못된_턴인_경우_테스트() {
         self.sut.start()
         
         do {
-            try self.sut.move(userInput: "A2->A3")
+            try self.sut.move(from: Position(file: .A, rank: .two),
+                              to: Position(file: .A, rank: .three))
         } catch let error {
             XCTAssertEqual(error as! ValidationError, ValidationError.invalidTurn)
         }
     }
     
-    func test_move_이동이_성공했을_때() {
+    func test_move메서드_이동이_성공했을_때() {
         self.sut.start()
         
-        try? self.sut.move(userInput: "A7->A6")
+        try? self.sut.move(from: Position(file: .A, rank: .seven),
+                           to: Position(file: .A, rank: .six))
         XCTAssertEqual(self.sut.turnColor, .black)
     }
     
-    func test_move_싱대방_말을_잡을수_있는지_테스트() {
+    func test_move메서드_싱대방_말을_잡을수_있는지_테스트() {
         self.sut.start()
-        try? self.sut.move(userInput: "A7->A6")
-        try? self.sut.move(userInput: "A2->A3")
-        try? self.sut.move(userInput: "A6->A5")
-        try? self.sut.move(userInput: "A3->A4")
-        try? self.sut.move(userInput: "A5->A4")
+        
+        try? self.sut.move(from: Position(file: .A, rank: .seven),
+                           to: Position(file: .A, rank: .six))
+        
+        try? self.sut.move(from: Position(file: .A, rank: .two),
+                           to: Position(file: .A, rank: .three))
+        
+        try? self.sut.move(from: Position(file: .A, rank: .six),
+                           to: Position(file: .A, rank: .five))
+        
+        try? self.sut.move(from: Position(file: .A, rank: .three),
+                           to: Position(file: .A, rank: .four))
+        
+        try? self.sut.move(from: Position(file: .A, rank: .five),
+                           to: Position(file: .A, rank: .four))
         
         XCTAssertEqual(self.sut.getScore(of: .black), 7)
     }

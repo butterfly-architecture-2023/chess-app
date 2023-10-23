@@ -8,21 +8,19 @@
 import Foundation
 
 protocol BoardConfigurable {
-    init(inputManager: InputManager, pawnsManager: PawnsManager)
+    init(pawnsManager: PawnsManager)
     
     func start()
     func display() -> [[String]]
-    func move(userInput: String) throws
+    func move(from source: Position, to destination: Position) throws
     func getScore(of color: Color) -> Int
 }
 
 final class Board: BoardConfigurable {
     private(set) var turnColor: Color = .white
     private let pawnsManager: PawnsManager
-    private let inputManager: InputManager
     
-    init(inputManager: InputManager, pawnsManager: PawnsManager) {
-        self.inputManager = inputManager
+    init(pawnsManager: PawnsManager) {
         self.pawnsManager = pawnsManager
     }
     
@@ -50,18 +48,14 @@ final class Board: BoardConfigurable {
         return boards
     }
     
-    func move(userInput: String) throws {
-        let inputs = try self.inputManager.makeFormattedInputs(from: userInput)
-        try self.validate(inputs: inputs)
+    func move(from source: Position, to destination: Position) throws {
+        try self.validate(source: source, destination: destination)
         
-        self.pawnsManager.update(from: inputs.source, to: inputs.destination)
+        self.pawnsManager.update(from: source, to: destination)
         self.turnColor = (self.turnColor == .black) ? .white : .black
     }
     
-    private func validate(inputs: (source: Position, destination: Position)) throws {
-        let source = inputs.source
-        let destination = inputs.destination
-        
+    private func validate(source: Position, destination: Position) throws {
         guard let originPawn = self.pawnsManager.getPawn(at: source) else {
             throw ValidationError.sourceNotExist
         }

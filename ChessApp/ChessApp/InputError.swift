@@ -8,5 +8,6 @@
 import Foundation
 
 enum InputError: Error {
+    case invalidSeparator
     case overRange
 }
