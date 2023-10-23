@@ -62,7 +62,7 @@ final class BoardTests: XCTestCase {
         
         let board = Board(square: square)
 
-        XCTAssertTrue(board.movePawn(rank: 0, file: 0))
+        XCTAssertTrue(board.movePawn(current: .init(file: 0, rank: 0)))
     }
     
     func testMovePawn_체스보드_맨_위에_하얀_폰이_위치했을_때_폰을_움직일_수_없는지_확인() {
@@ -71,7 +71,7 @@ final class BoardTests: XCTestCase {
         
         let board = Board(square: square)
 
-        XCTAssertFalse(board.movePawn(rank: 0, file: 0))
+        XCTAssertFalse(board.movePawn(current: .init(file: 0, rank: 0)))
     }
     
     func testMovePawn_체스보드_맨_아래에_검은_폰이_위치했을_때_폰을_움직일_수_없는지_확인() {
@@ -80,7 +80,7 @@ final class BoardTests: XCTestCase {
         
         let board = Board(square: square)
 
-        XCTAssertFalse(board.movePawn(rank: 7, file: 7))
+        XCTAssertFalse(board.movePawn(current: .init(file: 7, rank: 7)))
     }
     
     func testMovePawn_체스보드_맨_아래에_하얀_폰이_위치했을_때_폰을_움직일_수_있는지_확인() {
@@ -89,7 +89,7 @@ final class BoardTests: XCTestCase {
         
         let board = Board(square: square)
 
-        XCTAssertTrue(board.movePawn(rank: 7, file: 7))
+        XCTAssertTrue(board.movePawn(current: .init(file: 7, rank: 7)))
     }
     
     func testMovePawn_하얀_폰이_이동하려는_위치에_같은_말이_있을_때_FALSE_반환() {
@@ -99,7 +99,7 @@ final class BoardTests: XCTestCase {
         
         let board = Board(square: square)
 
-        XCTAssertFalse(board.movePawn(rank: 7, file: 7))
+        XCTAssertFalse(board.movePawn(current: .init(file: 7, rank: 7)))
     }
     
     func testMovePawn_검은_폰이_이동하려는_위치에_같은_말이_있을_때_FALSE_반환() {
@@ -109,7 +109,7 @@ final class BoardTests: XCTestCase {
         
         let board = Board(square: square)
 
-        XCTAssertFalse(board.movePawn(rank: 3, file: 6))
+        XCTAssertFalse(board.movePawn(current: .init(file: 6, rank: 3)))
     }
     
     func testMovePawn_체크말이_없는_곳에서_이동하려고_할_때_FALSE_반환() {
@@ -117,6 +117,6 @@ final class BoardTests: XCTestCase {
         
         let board = Board(square: square)
 
-        XCTAssertFalse(board.movePawn(rank: 3, file: 6))
+        XCTAssertFalse(board.movePawn(current: .init(file: 6, rank: 3)))
     }
 }

@@ -22,6 +22,7 @@
 		1EDE711B2ADF0E7C00175E09 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE711A2ADF0E7C00175E09 /* InputManager.swift */; };
 		1EDE711D2ADF150100175E09 /* InputManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE711C2ADF150100175E09 /* InputManagerTests.swift */; };
 		1EDE711F2ADF1DEF00175E09 /* PieceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE711E2ADF1DEF00175E09 /* PieceTests.swift */; };
+		1EF0E0FA2AE6C7D2001BD846 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF0E0F92AE6C7D2001BD846 /* Position.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1EDE711A2ADF0E7C00175E09 /* InputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManager.swift; sourceTree = "<group>"; };
 		1EDE711C2ADF150100175E09 /* InputManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManagerTests.swift; sourceTree = "<group>"; };
 		1EDE711E2ADF1DEF00175E09 /* PieceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceTests.swift; sourceTree = "<group>"; };
+		1EF0E0F92AE6C7D2001BD846 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				1EDE71142ADD8BE500175E09 /* Board.swift */,
 				1EDE71162ADEDBCE00175E09 /* Piece.swift */,
 				1EDE711A2ADF0E7C00175E09 /* InputManager.swift */,
+				1EF0E0F92AE6C7D2001BD846 /* Position.swift */,
 			);
 			path = ChessGame;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EF0E0FA2AE6C7D2001BD846 /* Position.swift in Sources */,
 				1EDE711B2ADF0E7C00175E09 /* InputManager.swift in Sources */,
 				1EAF89382AD99BAF000C5AF7 /* ViewController.swift in Sources */,
 				1EAF89342AD99BAF000C5AF7 /* AppDelegate.swift in Sources */,
