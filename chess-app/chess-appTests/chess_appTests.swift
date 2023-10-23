@@ -20,4 +20,11 @@ final class chess_appTests: XCTestCase {
         
     }
     
+    func test_말의_이동_가능_여부가_정상적인지() {
+        
+    }
+    
+    func test_말을_잡았는지() {
+        
+    }
 }
