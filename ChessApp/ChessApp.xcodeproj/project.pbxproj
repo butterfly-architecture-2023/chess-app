@@ -111,7 +111,14 @@
 		8957D9C92ADD15F900B7606D /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
-				89B5A00D2ADEF9FA007A1988 /* Model */,
+				89B5A00B2ADEF9EF007A1988 /* Board.swift */,
+				89B5A00E2ADEFA46007A1988 /* Pawn.swift */,
+				89B5A0102ADEFBCC007A1988 /* Color.swift */,
+				89B5A0122ADEFD55007A1988 /* Location.swift */,
+				89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */,
+				8962896E2ADF2C2E00D31D25 /* InputError.swift */,
+				896289702ADFC19600D31D25 /* InputManager.swift */,
+				896289722ADFCAD300D31D25 /* ValidationError.swift */,
 				8957D9CA2ADD15F900B7606D /* AppDelegate.swift */,
 				8957D9CC2ADD15F900B7606D /* SceneDelegate.swift */,
 				8957D9CE2ADD15F900B7606D /* ViewController.swift */,
@@ -130,21 +137,6 @@
 				8962896B2ADF1FA900D31D25 /* ChessAppTests-Bridging-Header.h */,
 			);
 			path = ChessAppTests;
-			sourceTree = "<group>";
-		};
-		89B5A00D2ADEF9FA007A1988 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				89B5A00B2ADEF9EF007A1988 /* Board.swift */,
-				89B5A00E2ADEFA46007A1988 /* Pawn.swift */,
-				89B5A0102ADEFBCC007A1988 /* Color.swift */,
-				89B5A0122ADEFD55007A1988 /* Location.swift */,
-				89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */,
-				8962896E2ADF2C2E00D31D25 /* InputError.swift */,
-				896289702ADFC19600D31D25 /* InputManager.swift */,
-				896289722ADFCAD300D31D25 /* ValidationError.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
