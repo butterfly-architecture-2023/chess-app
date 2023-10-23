@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Position: Equatable {
+struct Position: Equatable, Hashable {
     enum Rank: Int, CaseIterable {
         case one, two, three, four, five, six, seven, eight
         

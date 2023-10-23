@@ -14,5 +14,5 @@ protocol Piece {
     var displayText: String { get }
 
     func isPossibleInitPosition(with position: Position) -> Bool
-    func getMovablePositions(from: Position) -> [Position]
+    func getMovablePositions(from: Position) -> Set<Position>
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		909229C92AE3F60500FB28AE /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909229C82AE3F60500FB28AE /* ErrorType.swift */; };
+		90A2743B2AE67B7E00DFF733 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A2743A2AE67B7E00DFF733 /* Bishop.swift */; };
+		90A2743D2AE691D900DFF733 /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A2743C2AE691D900DFF733 /* BishopTests.swift */; };
 		90D2B3332ADD68D900C34FA0 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B3322ADD68D900C34FA0 /* ChessBoard.swift */; };
 		90D2B3352ADD84AC00C34FA0 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B3342ADD84AC00C34FA0 /* Position.swift */; };
 		90D2B3382ADD860500C34FA0 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B3372ADD860500C34FA0 /* Piece.swift */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		909229C82AE3F60500FB28AE /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
+		90A2743A2AE67B7E00DFF733 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
+		90A2743C2AE691D900DFF733 /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
 		90D2B3322ADD68D900C34FA0 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		90D2B3342ADD84AC00C34FA0 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		90D2B3372ADD860500C34FA0 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				90D2B3342ADD84AC00C34FA0 /* Position.swift */,
 				90D2B3372ADD860500C34FA0 /* Piece.swift */,
 				90D2B33C2ADD864200C34FA0 /* Pawn.swift */,
+				90A2743A2AE67B7E00DFF733 /* Bishop.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				90EE6FB12ADAE54100C1E8EE /* ChessAppTests.swift */,
+				90A2743C2AE691D900DFF733 /* BishopTests.swift */,
 			);
 			path = ChessAppTests;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 				90D2B33A2ADD862300C34FA0 /* Color.swift in Sources */,
 				90D2B33D2ADD864200C34FA0 /* Pawn.swift in Sources */,
 				90D2B3382ADD860500C34FA0 /* Piece.swift in Sources */,
+				90A2743B2AE67B7E00DFF733 /* Bishop.swift in Sources */,
 				90D2B3332ADD68D900C34FA0 /* ChessBoard.swift in Sources */,
 				90D2B3352ADD84AC00C34FA0 /* Position.swift in Sources */,
 				90EE6F9D2ADAE54000C1E8EE /* SceneDelegate.swift in Sources */,
@@ -316,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A2743D2AE691D900DFF733 /* BishopTests.swift in Sources */,
 				90EE6FB22ADAE54100C1E8EE /* ChessAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
