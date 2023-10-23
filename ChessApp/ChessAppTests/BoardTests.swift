@@ -34,7 +34,7 @@ final class BoardTests: XCTestCase {
         XCTAssertEqual(scoreByWhite, 8)
     }
     
-    func test_move_잘못된_턴() {
+    func test_move_잘못된_턴인_경우_테스트() {
         self.sut.start()
         
         do {
@@ -44,14 +44,14 @@ final class BoardTests: XCTestCase {
         }
     }
     
-    func test_move_성공() {
+    func test_move_이동이_성공했을_때() {
         self.sut.start()
         
         try? self.sut.move(userInput: "A7->A6")
         XCTAssertEqual(self.sut.turnColor, .black)
     }
     
-    func test_move_공격() {
+    func test_move_싱대방_말을_잡을수_있는지_테스트() {
         self.sut.start()
         try? self.sut.move(userInput: "A7->A6")
         try? self.sut.move(userInput: "A2->A3")

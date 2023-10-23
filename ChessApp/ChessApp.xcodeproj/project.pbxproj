@@ -32,13 +32,6 @@
 			remoteGlobalIDString = 8957D9C62ADD15F900B7606D;
 			remoteInfo = ChessApp;
 		};
-		8957D9E82ADD15FD00B7606D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8957D9BF2ADD15F900B7606D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8957D9C62ADD15F900B7606D;
-			remoteInfo = ChessApp;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +44,6 @@
 		8957D9D62ADD15FD00B7606D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8957D9D82ADD15FD00B7606D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8957D9DD2ADD15FD00B7606D /* ChessAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8957D9E72ADD15FD00B7606D /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8962896B2ADF1FA900D31D25 /* ChessAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChessAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		8962896C2ADF1FA900D31D25 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		8962896E2ADF2C2E00D31D25 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
@@ -79,13 +71,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8957D9E42ADD15FD00B7606D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -103,7 +88,6 @@
 			children = (
 				8957D9C72ADD15F900B7606D /* ChessApp.app */,
 				8957D9DD2ADD15FD00B7606D /* ChessAppTests.xctest */,
-				8957D9E72ADD15FD00B7606D /* ChessAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,24 +161,6 @@
 			productReference = 8957D9DD2ADD15FD00B7606D /* ChessAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8957D9E62ADD15FD00B7606D /* ChessAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8957D9F72ADD15FD00B7606D /* Build configuration list for PBXNativeTarget "ChessAppUITests" */;
-			buildPhases = (
-				8957D9E32ADD15FD00B7606D /* Sources */,
-				8957D9E42ADD15FD00B7606D /* Frameworks */,
-				8957D9E52ADD15FD00B7606D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8957D9E92ADD15FD00B7606D /* PBXTargetDependency */,
-			);
-			name = ChessAppUITests;
-			productName = ChessAppUITests;
-			productReference = 8957D9E72ADD15FD00B7606D /* ChessAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -211,10 +177,6 @@
 					8957D9DC2ADD15FD00B7606D = {
 						CreatedOnToolsVersion = 14.2;
 						LastSwiftMigration = 1420;
-						TestTargetID = 8957D9C62ADD15F900B7606D;
-					};
-					8957D9E62ADD15FD00B7606D = {
-						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 8957D9C62ADD15F900B7606D;
 					};
 				};
@@ -234,7 +196,6 @@
 			targets = (
 				8957D9C62ADD15F900B7606D /* ChessApp */,
 				8957D9DC2ADD15FD00B7606D /* ChessAppTests */,
-				8957D9E62ADD15FD00B7606D /* ChessAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,13 +212,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8957D9DB2ADD15FD00B7606D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8957D9E52ADD15FD00B7606D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -293,13 +247,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8957D9E32ADD15FD00B7606D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -307,11 +254,6 @@
 			isa = PBXTargetDependency;
 			target = 8957D9C62ADD15F900B7606D /* ChessApp */;
 			targetProxy = 8957D9DE2ADD15FD00B7606D /* PBXContainerItemProxy */;
-		};
-		8957D9E92ADD15FD00B7606D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8957D9C62ADD15F900B7606D /* ChessApp */;
-			targetProxy = 8957D9E82ADD15FD00B7606D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -560,42 +502,6 @@
 			};
 			name = Release;
 		};
-		8957D9F82ADD15FD00B7606D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NXRYTWY76F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = austin.kd.ChessAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ChessApp;
-			};
-			name = Debug;
-		};
-		8957D9F92ADD15FD00B7606D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NXRYTWY76F;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = austin.kd.ChessAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ChessApp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -622,15 +528,6 @@
 			buildConfigurations = (
 				8957D9F52ADD15FD00B7606D /* Debug */,
 				8957D9F62ADD15FD00B7606D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8957D9F72ADD15FD00B7606D /* Build configuration list for PBXNativeTarget "ChessAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8957D9F82ADD15FD00B7606D /* Debug */,
-				8957D9F92ADD15FD00B7606D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
