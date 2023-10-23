@@ -7,9 +7,15 @@
 
 import Foundation
 
-typealias BoardPosition = (rank:Rank, file:File)
+//struct BoardPosition: Equatable {
+//    let rank: Rank
+//    let file: File
+//}
+
+typealias BoardPosition = (rank: Rank, file: File)
 
 final class Board {
+//    var pieceManager: ChessPieceManager = .init()
     private(set) var map: [[String]] = []
     private(set) var chessPieces: [ChessPiece] = []
 
@@ -18,8 +24,9 @@ final class Board {
     }
 
     func initPieces() {
-        let whitePawns = File.allCases.map { WhitePawn(position: (.seven, $0)) }
-        let blackPawns = File.allCases.map { BlackPawn(position: (.two, $0)) }
+        let whitePawns = File.allCases.map { ChessPiece(color: .white, position: (rank: .seven, file: $0), type: .pawn) }
+
+        let blackPawns = File.allCases.map { ChessPiece(color: .black, position: (rank: .two, file: $0), type: .pawn) }
         self.chessPieces = whitePawns + blackPawns
     }
 
@@ -61,8 +68,8 @@ final class Board {
     func validateIsDifferentTeam(_ from: BoardPosition, _ to: BoardPosition) -> Bool {
         guard let startPiece = findPiece(from),
               let destinationPiece = findPiece(to) else { return false }
-        let startPawnType = startPiece.type
-        let destinationPawnType = destinationPiece.type
+        let startPawnType = startPiece.color
+        let destinationPawnType = destinationPiece.color
         return startPawnType != destinationPawnType
     }
 
@@ -71,25 +78,25 @@ final class Board {
         return chessPieces[index]
     }
 
-    func getPoint(_ pawnType: PawnType) -> Int {
+    func getPoint(_ pawnType: PieceColor) -> Int {
         switch pawnType {
         case .black:
-            return chessPieces.filter { $0.type == .black }.filter { $0.isAlive == false }.count
+            return chessPieces.filter { $0.color == .black }.filter { $0.isAlive == false }.count
         case .white:
-            return chessPieces.filter { $0.type == .white }.filter { $0.isAlive == false }.count
+            return chessPieces.filter { $0.color == .white }.filter { $0.isAlive == false }.count
         }
     }
 
     func display() -> [[String]] {
-        let whitePawnPositions: [BoardPosition] = chessPieces.filter{ $0.isAlive != false }.filter { $0.type != .black }.map { $0.position }
-        let blackPawnPositions: [BoardPosition] = chessPieces.filter{ $0.isAlive != false }.filter { $0.type != .white }.map { $0.position }
+        let whitePawnPositions: [BoardPosition] = chessPieces.filter{ $0.isAlive != false }.filter { $0.color != .black }.map { $0.position }
+        let blackPawnPositions: [BoardPosition] = chessPieces.filter{ $0.isAlive != false }.filter { $0.color != .white }.map { $0.position }
 
-        whitePawnPositions.forEach { (rank, file) in
-            map[rank.rawValue][file.rawValue] = "\u{2659}"
+        whitePawnPositions.forEach { position in
+            map[position.rank.rawValue][position.file.rawValue] = "\u{2659}"
         }
 
-        blackPawnPositions.forEach { (rank, file) in
-            map[rank.rawValue][file.rawValue] = "\u{265F}"
+        blackPawnPositions.forEach { position in
+            map[position.rank.rawValue][position.file.rawValue] = "\u{265F}"
         }
         return map
     }
@@ -100,7 +107,7 @@ final class Board {
 
     private func pawnCanGo(_ startPawn: ChessPiece, _ destination: BoardPosition) -> Bool {
         let isSameFile =  startPawn.position.file == destination.file
-        switch startPawn.type {
+        switch startPawn.color {
         case .black:
             let rankGap = destination.rank.rawValue - startPawn.position.rank.rawValue
             if isSameFile && rankGap == 1 {

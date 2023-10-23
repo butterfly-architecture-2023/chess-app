@@ -60,11 +60,11 @@ final class Chess_gameTests: XCTestCase {
         let mockWhitePawnPosition1: BoardPosition = (rank: .three, file: .A)
         let mockWhitePawnPosition2: BoardPosition = (rank: .four, file: .A)
 
-        let mockWhitePawn1: WhitePawn = .init(position: mockWhitePawnPosition1)
-        let mockWhitePawn2: WhitePawn = .init(position: mockWhitePawnPosition2)
+        let mockWhitePawn1: ChessPiece = .init(color: .white, position: mockWhitePawnPosition1, type: .pawn)
+        let mockWhitePawn2: ChessPiece = .init(color: .white, position: mockWhitePawnPosition2, type: .pawn)
 
-        let mockBlackPawn1: BlackPawn = .init(position: mockBlackPawnPosition1)
-        let mockBlackPawn2: BlackPawn = .init(position: mockBlackPawnPosition2)
+        let mockBlackPawn1: ChessPiece = .init(color: .black, position: mockBlackPawnPosition1, type: .pawn)
+        let mockBlackPawn2: ChessPiece = .init(color: .black, position: mockBlackPawnPosition2, type: .pawn)
 
         let initMap = [["♟", ".", ".", ".", ".", ".", ".", "."], ["♟", ".", ".", ".", ".", ".", ".", "."], ["♙", ".", ".", ".", ".", ".", ".", "."], ["♙", ".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."], [".", ".", ".", ".", ".", ".", ".", "."]]
         sut = Board(chessPieces: [mockBlackPawn1, mockBlackPawn2, mockWhitePawn1, mockWhitePawn2])
@@ -100,14 +100,14 @@ final class Chess_gameTests: XCTestCase {
         }
 
         for position in allPosition {
-            let mockChessPiece: BlackPawn = .init(position: position)
+            let mockChessPiece: ChessPiece = .init(color: .black, position: position, type: .pawn)
             sut = Board(chessPieces: [mockChessPiece])
             guard let foundPiece = sut.findPiece(position) else { return XCTFail("원하는 체스말을 찾지 못했습니다.")}
 
             XCTAssertEqual(foundPiece.position.file, mockChessPiece.position.file)
             XCTAssertEqual(foundPiece.position.rank, mockChessPiece.position.rank)
             XCTAssertEqual(foundPiece.isAlive, mockChessPiece.isAlive)
-            XCTAssertEqual(foundPiece.type, mockChessPiece.type)
+            XCTAssertEqual(foundPiece.color, mockChessPiece.color)
         }
     }
 
@@ -117,10 +117,10 @@ final class Chess_gameTests: XCTestCase {
         let mockBlackPawnPosition1: BoardPosition = (rank: .one, file: .C)
         let mockBlackPawnPosition2: BoardPosition = (rank: .one, file: .D)
 
-        let mockWhitePawn1: WhitePawn = .init(position: mockWhitePawnPosition1)
-        let mockWhitePawn2: WhitePawn = .init(position: mockWhitePawnPosition2)
-        let mockBlackPawn1: BlackPawn = .init(position: mockBlackPawnPosition1)
-        let mockBlackPawn2: BlackPawn = .init(position: mockBlackPawnPosition2)
+        let mockWhitePawn1: ChessPiece = .init(color: .white, position: mockWhitePawnPosition1, type: .pawn)
+        let mockWhitePawn2: ChessPiece = .init(color: .white, position: mockWhitePawnPosition2, type: .pawn)
+        let mockBlackPawn1: ChessPiece = .init(color: .black, position: mockBlackPawnPosition1, type: .pawn)
+        let mockBlackPawn2: ChessPiece = .init(color: .black, position: mockBlackPawnPosition2, type: .pawn)
 
         sut = Board(chessPieces: [mockBlackPawn1, mockBlackPawn2, mockWhitePawn1, mockWhitePawn2])
 
@@ -158,18 +158,18 @@ final class Chess_gameTests: XCTestCase {
         let mockBlackPawnPosition4: BoardPosition = (rank: .one, file: .D)
         let mockDeadBlackPawnPosition: BoardPosition = (rank: .two, file: .C)
 
-        let mockWhitePawn1: WhitePawn = .init(position: mockWhitePawnPosition1)
-        let mockWhitePawn2: WhitePawn = .init(position: mockWhitePawnPosition2)
-        let mockWhitePawn3: WhitePawn = .init(position: mockWhitePawnPosition3)
-        let mockWhitePawn4: WhitePawn = .init(position: mockWhitePawnPosition4)
-        var mockWhiteDeadPawn: WhitePawn = .init(position: mockDeadWhitePawnPosition)
+        let mockWhitePawn1: ChessPiece = .init(color: .white, position: mockWhitePawnPosition1, type: .pawn)
+        let mockWhitePawn2: ChessPiece = .init(color: .white, position: mockWhitePawnPosition2, type: .pawn)
+        let mockWhitePawn3: ChessPiece = .init(color: .white, position: mockWhitePawnPosition3, type: .pawn)
+        let mockWhitePawn4: ChessPiece = .init(color: .white, position: mockWhitePawnPosition4, type: .pawn)
+        var mockWhiteDeadPawn: ChessPiece = .init(color: .white, position: mockDeadWhitePawnPosition, type: .pawn)
         mockWhiteDeadPawn.isAlive = false
 
-        let mockBlackPawn1: BlackPawn = .init(position: mockBlackPawnPosition1)
-        let mockBlackPawn2: BlackPawn = .init(position: mockBlackPawnPosition2)
-        let mockBlackPawn3: BlackPawn = .init(position: mockBlackPawnPosition3)
-        let mockBlackPawn4: BlackPawn = .init(position: mockBlackPawnPosition4)
-        var mockBlackDeadPawn: WhitePawn = .init(position: mockDeadBlackPawnPosition)
+        let mockBlackPawn1: ChessPiece = .init(color: .black, position: mockBlackPawnPosition1, type: .pawn)
+        let mockBlackPawn2: ChessPiece = .init(color: .black, position: mockBlackPawnPosition2, type: .pawn)
+        let mockBlackPawn3: ChessPiece = .init(color: .black, position: mockBlackPawnPosition3, type: .pawn)
+        let mockBlackPawn4: ChessPiece = .init(color: .black, position: mockBlackPawnPosition4, type: .pawn)
+        var mockBlackDeadPawn: ChessPiece = .init(color: .black, position: mockDeadBlackPawnPosition, type: .pawn)
         mockBlackDeadPawn.isAlive = false
 
         sut = Board(chessPieces: [mockBlackPawn1, mockBlackPawn2, mockBlackPawn3, mockBlackPawn4,
@@ -256,7 +256,7 @@ final class Chess_gameTests: XCTestCase {
         for position in positions {
             sut.kill(position)
             guard let piece = sut.chessPieces.first(where: { $0.position == position }) else { return XCTFail("조건에 맞는 말을 찾지 못했습니다")}
-            if piece.type == .black {
+            if piece.color == .black {
                 whiteTeamScore += 1
                 let expectedBlackTeamScore = sut.getPoint(.black)
                 XCTAssertEqual(whiteTeamScore, expectedBlackTeamScore)
