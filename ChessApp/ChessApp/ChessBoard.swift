@@ -14,9 +14,11 @@ final class ChessBoard {
         var piece: Piece?
     }
 
+    private var thisTurn: Color
     private var board: [Square] = []
     
     init() {
+        thisTurn = Color.white
         board = initBoard()
         startGame()
     }
@@ -84,6 +86,7 @@ final class ChessBoard {
                 let movingPiece = board[fromSquareIndex].piece
                 board[toSquareIndex].piece = movingPiece
                 board[fromSquareIndex].piece = nil
+                thisTurn = movingPiece?.color == .white ? .black : .white
             }
             
             return canMove
@@ -166,6 +169,7 @@ final class ChessBoard {
         do {
             let from = try makePosition(by: inputs[0])
             let to = try makePosition(by: inputs[1])
+            let thisTurn = try validateThisTurn(by: from)
             return [from, to]
         } catch {
             throw error
@@ -179,5 +183,14 @@ final class ChessBoard {
             throw ErrorType.wrongInput
         }
         return .init(rank: rank, file: file)
+    }
+    
+    private func validateThisTurn(by position: Position) throws -> Bool {
+        guard let fromPositionPieceColor = board.first(where: { $0.position == position })?.piece?.color else { throw ErrorType.wrongInput }
+        if fromPositionPieceColor != thisTurn {
+            return true
+        } else {
+            throw ErrorType.invalidTurn
+        }
     }
 }
