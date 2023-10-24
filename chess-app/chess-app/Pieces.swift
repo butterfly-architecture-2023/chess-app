@@ -26,16 +26,16 @@ extension Piece {
         case .pawn:
             switch self.color {
             case .black:
-                return .init(file: 0, rank: 1)
+                return .init(rank: 1, file: 0)
             case .white:
-                return .init(file: 0, rank: -1)
+                return .init(rank: -1, file: 0)
             case .none:
-                return .init(file: 0, rank: 0)
+                return .init(rank: 0, file: 0)
             }
             
         // TODO: - 추후 룰 적용
         default:
-            return .init(file: 0, rank: 0)
+            return .init(rank: 0, file: 0)
         }
     }
 }
@@ -66,6 +66,7 @@ enum PieceColor {
 // MARK: - MovableRange
 
 struct MovableRange: Equatable {
-    let file: Int
-    let rank: Int
+    var rank: Int
+    var file: Int
+    
 }

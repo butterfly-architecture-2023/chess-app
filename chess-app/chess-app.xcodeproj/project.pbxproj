@@ -11,6 +11,9 @@
 		739CE6BB2AE52B12009FD513 /* Pieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BA2AE52B12009FD513 /* Pieces.swift */; };
 		739CE6BD2AE540D3009FD513 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BC2AE540D3009FD513 /* Board.swift */; };
 		739CE6BF2AE54136009FD513 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BE2AE54136009FD513 /* Position.swift */; };
+		739CE6C02AE7E007009FD513 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BC2AE540D3009FD513 /* Board.swift */; };
+		739CE6C22AE7E26A009FD513 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BE2AE54136009FD513 /* Position.swift */; };
+		739CE6C32AE7E26D009FD513 /* Pieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739CE6BA2AE52B12009FD513 /* Pieces.swift */; };
 		73DB20972ADBB91E00376571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB20962ADBB91E00376571 /* AppDelegate.swift */; };
 		73DB20992ADBB91E00376571 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB20982ADBB91E00376571 /* SceneDelegate.swift */; };
 		73DB209B2ADBB91E00376571 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DB209A2ADBB91E00376571 /* ViewController.swift */; };
@@ -300,7 +303,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				739CE6C32AE7E26D009FD513 /* Pieces.swift in Sources */,
+				739CE6C02AE7E007009FD513 /* Board.swift in Sources */,
 				73DB20AE2ADBB91F00376571 /* chess_appTests.swift in Sources */,
+				739CE6C22AE7E26A009FD513 /* Position.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

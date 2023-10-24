@@ -7,6 +7,19 @@
 
 import Foundation
 
+// MARK: - Position
+
+final class Position {
+    var rank: Int
+    var file: Int
+    
+    init(rank: Rank, file: File) {
+        self.rank = rank.number
+        self.file = file.number
+    }
+}
+
+
 // MARK: - File
 
 enum File {
@@ -58,17 +71,5 @@ enum Rank {
         case .eight:
             return 7
         }
-    }
-}
-
-// MARK: - Position
-
-final class Position {
-    var file: Int
-    var rank: Int
-    
-    init(file: File, rank: Rank) {
-        self.file = file.number
-        self.rank = rank.number
     }
 }

@@ -46,35 +46,26 @@ final class Board {
             color: .white
         )
         
-        chessBoard
-            .insert(Array(repeating: blackPwan,
-                          count: size
-                         ), at: Rank.two.number
-            )
-        
-        chessBoard
-            .insert(Array(repeating: whitePwan,
-                          count: size
-                         ), at: Rank.seven.number
-            )
+        chessBoard[Rank.two.number] = Array(repeating: blackPwan, count: size)
+        chessBoard[Rank.seven.number] = Array(repeating: whitePwan, count: size)
     }
     
     // MARK: - Move Method
     
     /// 말 이동
-    private func movePiece(piece: Piece, from: Position, to: Position) {
+    func movePiece(piece: Piece, from: Position, to: Position) {
         guard piece.color == player else { return }
         guard validateMove(piece: piece, from: from, to: to) else { return }
         guard move(from: from, to: to) else { return }
         
-        chessBoard[to.file][to.rank] = chessBoard[from.file][from.rank]
-        chessBoard[from.file][from.rank] = .init(type: .none, color: .none)
+        chessBoard[to.rank][to.file] = chessBoard[from.rank][from.file]
+        chessBoard[from.rank][from.file] = .init(type: .none, color: .none)
         changPlayer()
     }
     
     /// 이동 가능한 범위인지 확인
-    private func validateMove(piece: Piece, from: Position, to: Position) -> Bool {
-        let distance: MovableRange = .init(file: from.file - to.file, rank: from.rank - to.rank)
+    func validateMove(piece: Piece, from: Position, to: Position) -> Bool {
+        let distance: MovableRange = .init(rank: to.rank - from.rank, file: to.file - from.file)
         return distance == piece.movableRange
     }
     
@@ -94,18 +85,18 @@ final class Board {
     // MARK: - Method
     
     /// 현재 보드 상태
-    private func display() -> [[String]] {
+    func display() -> [[String]] {
         chessBoard
-            .map { file in
-                file.map { rank in
-                    rank.color.symbol
+            .map { rank in
+                rank.map { file in
+                    file.color.symbol
                 }
             }
     }
     
     /// 특정 위치의 말
     private func getPiece(position: Position) -> Piece {
-        chessBoard[position.file][position.rank]
+        chessBoard[position.rank][position.file]
     }
     
     /// 순서 변경
