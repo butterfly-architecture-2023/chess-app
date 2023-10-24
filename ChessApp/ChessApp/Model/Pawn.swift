@@ -35,16 +35,16 @@ struct Pawn: Piece {
         return isPossible
     }
     
-    func getMovableAllPositions(from position: Position) -> Set<Position> {
-        var result: Set<Position?> = .init()
+    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> Set<Position> {
+        var movablePositions: Set<Position?> = .init()
         
         switch color {
         case .white:
-            result.insert(position.makePosition(rankDiff: -1, fileDiff: 0))
+            movablePositions.insert(position.makePosition(rankDiff: -1, fileDiff: 0))
         case .black:
-            result.insert(position.makePosition(rankDiff: 1, fileDiff: 0))
+            movablePositions.insert(position.makePosition(rankDiff: 1, fileDiff: 0))
         }
         
-        return Set(result.compactMap({ $0 }))
+        return removeDuplicates(neighbors: neighborPositions, movablePositions: movablePositions)
     }
 }

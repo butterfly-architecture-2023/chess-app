@@ -37,22 +37,22 @@ struct Queen: Piece {
         return isPossible
     }
     
-    func getMovableAllPositions(from position: Position) -> Set<Position> {
-        var result: Set<Position?> = []
+    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> Set<Position> {
+        var movablePositions: Set<Position?> = []
         
         for index in 0..<8 {
-            result.insert(position.makePosition(rankDiff: 0, fileDiff: -index))
-            result.insert(position.makePosition(rankDiff: 0, fileDiff: index))
-            result.insert(position.makePosition(rankDiff: -index, fileDiff: 0))
-            result.insert(position.makePosition(rankDiff: index, fileDiff: 0))
+            movablePositions.insert(position.makePosition(rankDiff: 0, fileDiff: -index))
+            movablePositions.insert(position.makePosition(rankDiff: 0, fileDiff: index))
+            movablePositions.insert(position.makePosition(rankDiff: -index, fileDiff: 0))
+            movablePositions.insert(position.makePosition(rankDiff: index, fileDiff: 0))
             
-            result.insert(position.makePosition(rankDiff: index, fileDiff: index))
-            result.insert(position.makePosition(rankDiff: index, fileDiff: -index))
-            result.insert(position.makePosition(rankDiff: -index, fileDiff: index))
-            result.insert(position.makePosition(rankDiff: -index, fileDiff: -index))
+            movablePositions.insert(position.makePosition(rankDiff: index, fileDiff: index))
+            movablePositions.insert(position.makePosition(rankDiff: index, fileDiff: -index))
+            movablePositions.insert(position.makePosition(rankDiff: -index, fileDiff: index))
+            movablePositions.insert(position.makePosition(rankDiff: -index, fileDiff: -index))
         }
-        result.remove(position)
+        movablePositions.remove(position)
         
-        return Set(result.compactMap({ $0 }))
+        return removeDuplicates(neighbors: neighborPositions, movablePositions: movablePositions)
     }
 }

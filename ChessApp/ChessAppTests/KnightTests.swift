@@ -18,19 +18,49 @@ final class KnightTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func test_D5위치의_Knight가_움직일_수_있는_모든_위치() {
+    func test_더_큰_rank로의_전진만_가능한_경우() {
         let knight = Knight(color: .white)
-        let movablePositions = knight.getMovableAllPositions(from: .init(rank: .five, file: .D))
+        let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .five, file: .D)])
         
         let expectedResult: Set<Position> = [
-            .init(rank: .three, file: .C),
-            .init(rank: .three, file: .E),
-            .init(rank: .four, file: .B),
-            .init(rank: .four, file: .F),
-            .init(rank: .six, file: .B),
-            .init(rank: .six, file: .F),
-            .init(rank: .seven, file: .C),
-            .init(rank: .seven, file: .E)
+            .init(rank: .six, file: .C),
+            .init(rank: .six, file: .E)
+        ]
+        
+        XCTAssertEqual(movablePositions, expectedResult)
+    }
+    
+    func test_더_작은_rank로의_전진만_가능한_경우() {
+        let knight = Knight(color: .white)
+        let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .three, file: .D)])
+        
+        let expectedResult: Set<Position> = [
+            .init(rank: .two, file: .C),
+            .init(rank: .two, file: .E)
+        ]
+        
+        XCTAssertEqual(movablePositions, expectedResult)
+    }
+    
+    func test_더_큰_file로의_전진만_가능한_경우() {
+        let knight = Knight(color: .white)
+        let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .four, file: .E)])
+        
+        let expectedResult: Set<Position> = [
+            .init(rank: .five, file: .F),
+            .init(rank: .three, file: .F)
+        ]
+        
+        XCTAssertEqual(movablePositions, expectedResult)
+    }
+    
+    func test_더_작은_file로의_전진만_가능한_경우() {
+        let knight = Knight(color: .white)
+        let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .four, file: .C)])
+        
+        let expectedResult: Set<Position> = [
+            .init(rank: .five, file: .B),
+            .init(rank: .three, file: .B)
         ]
         
         XCTAssertEqual(movablePositions, expectedResult)

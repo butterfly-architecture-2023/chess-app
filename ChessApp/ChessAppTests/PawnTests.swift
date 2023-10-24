@@ -20,11 +20,9 @@ final class PawnTests: XCTestCase {
 
     func test_7B위치의_Pawn이_움직일_수_있는_모든_위치_확인() {
         let pawn = Pawn(color: .white)
-        let movablePositions = pawn.getMovableAllPositions(from: .init(rank: .seven, file: .B))
+        let movablePositions = pawn.getMovableAllPositions(from: .init(rank: .three, file: .D), with: .init([.init(rank: .three, file: .C), .init(rank: .four, file: .C)]))
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .six, file: .B)
-        ]
+        let expectedResult: Set<Position> = [ ]
         
         XCTAssertEqual(movablePositions, expectedResult)
     }

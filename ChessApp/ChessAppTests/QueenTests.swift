@@ -20,34 +20,12 @@ final class QueenTests: XCTestCase {
 
     func test_F5위치의_Queen이_움직일_수_있는_모든_위치_확인() {
         let queen = Queen(color: .black)
-        let movablePositions = queen.getMovableAllPositions(from: .init(rank: .five, file: .F))
+        let movablePositions = queen.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .five, file: .C), .init(rank: .four, file: .C), .init(rank: .three, file: .C)])
         
         let expectedResult: Set<Position> = [
-            .init(rank: .one, file: .B),
-            .init(rank: .one, file: .F),
-            .init(rank: .two, file: .C),
-            .init(rank: .two, file: .F),
-            .init(rank: .three, file: .D),
-            .init(rank: .three, file: .F),
-            .init(rank: .three, file: .H),
-            .init(rank: .four, file: .E),
-            .init(rank: .four, file: .F),
-            .init(rank: .four, file: .G),
-            .init(rank: .five, file: .A),
-            .init(rank: .five, file: .B),
             .init(rank: .five, file: .C),
-            .init(rank: .five, file: .D),
-            .init(rank: .five, file: .E),
-            .init(rank: .five, file: .G),
-            .init(rank: .five, file: .H),
-            .init(rank: .six, file: .E),
-            .init(rank: .six, file: .F),
-            .init(rank: .six, file: .G),
-            .init(rank: .seven, file: .D),
-            .init(rank: .seven, file: .F),
-            .init(rank: .seven, file: .H),
-            .init(rank: .eight, file: .C),
-            .init(rank: .eight, file: .F)
+            .init(rank: .four, file: .C),
+            .init(rank: .three, file: .C)
         ]
         
         XCTAssertEqual(movablePositions, expectedResult)

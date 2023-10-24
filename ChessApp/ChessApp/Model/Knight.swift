@@ -39,19 +39,27 @@ struct Knight: Piece {
         return isPossible
     }
     
-    func getMovableAllPositions(from position: Position) -> Set<Position> {
-        var result: Set<Position?> = []
+    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> Set<Position> {
+        var movablePositions: Set<Position?> = []
         
-        result.insert(position.makePosition(rankDiff: -2, fileDiff: -1))
-        result.insert(position.makePosition(rankDiff: -2, fileDiff: 1))
-        result.insert(position.makePosition(rankDiff: -1, fileDiff: -2))
-        result.insert(position.makePosition(rankDiff: -1, fileDiff: 2))
-        result.insert(position.makePosition(rankDiff: 1, fileDiff: -2))
-        result.insert(position.makePosition(rankDiff: 1, fileDiff: 2))
-        result.insert(position.makePosition(rankDiff: 2, fileDiff: -1))
-        result.insert(position.makePosition(rankDiff: 2, fileDiff: 1))
+        if neighborPositions.contains(position.makePosition(rankDiff: -1, fileDiff: 0) ?? position) {
+            movablePositions.insert(position.makePosition(rankDiff: -2, fileDiff: -1))
+            movablePositions.insert(position.makePosition(rankDiff: -2, fileDiff: 1))
+        }
+        if neighborPositions.contains(position.makePosition(rankDiff: 1, fileDiff: 0) ?? position) {
+            movablePositions.insert(position.makePosition(rankDiff: 2, fileDiff: -1))
+            movablePositions.insert(position.makePosition(rankDiff: 2, fileDiff: 1))
+        }
+        if neighborPositions.contains(position.makePosition(rankDiff: 0, fileDiff: -1) ?? position) {
+            movablePositions.insert(position.makePosition(rankDiff: -1, fileDiff: -2))
+            movablePositions.insert(position.makePosition(rankDiff: 1, fileDiff: -2))
+        }
+        if neighborPositions.contains(position.makePosition(rankDiff: 0, fileDiff: 1) ?? position) {
+            movablePositions.insert(position.makePosition(rankDiff: -1, fileDiff: 2))
+            movablePositions.insert(position.makePosition(rankDiff: 1, fileDiff: 2))
+        }
 
-        result.remove(position)
-        return Set(result.compactMap({ $0 }))
+        movablePositions.remove(position)
+        return Set(movablePositions.compactMap({ $0 }))
     }
 }

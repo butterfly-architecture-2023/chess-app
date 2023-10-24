@@ -43,17 +43,17 @@ struct Bishop: Piece {
         return isPossible
     }
     
-    func getMovableAllPositions(from position: Position) -> Set<Position> {
-        var result: Set<Position?> = []
+    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> Set<Position> {
+        var movablePositions: Set<Position?> = []
                 
         for index in 1..<8 {
-            result.insert(position.makePosition(rankDiff: index, fileDiff: index))
-            result.insert(position.makePosition(rankDiff: index, fileDiff: -index))
-            result.insert(position.makePosition(rankDiff: -index, fileDiff: index))
-            result.insert(position.makePosition(rankDiff: -index, fileDiff: -index))
+            movablePositions.insert(position.makePosition(rankDiff: index, fileDiff: index))
+            movablePositions.insert(position.makePosition(rankDiff: index, fileDiff: -index))
+            movablePositions.insert(position.makePosition(rankDiff: -index, fileDiff: index))
+            movablePositions.insert(position.makePosition(rankDiff: -index, fileDiff: -index))
         }
-        result.remove(position)
-
-        return Set(result.compactMap({ $0 }))
+        movablePositions.remove(position)
+        
+        return removeDuplicates(neighbors: neighborPositions, movablePositions: movablePositions)
     }
 }

@@ -20,17 +20,9 @@ final class BishopTests: XCTestCase {
 
     func test_C8위치의_Bishop이_움직일_수_있는_모든_위치_확인() {
         let bishop = Bishop(color: .white)
-        let movablePositions = bishop.getMovableAllPositions(from: .init(rank: .eight, file: .C))
+        let movablePositions = bishop.getMovableAllPositions(from: .init(rank: .eight, file: .C), with: [.init(rank: .eight, file: .D)])
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .seven, file: .B),
-            .init(rank: .six, file: .A),
-            .init(rank: .seven, file: .D),
-            .init(rank: .six, file: .E),
-            .init(rank: .five, file: .F),
-            .init(rank: .four, file: .G),
-            .init(rank: .three, file: .H)
-        ]
+        let expectedResult: Set<Position> = []
         XCTAssertEqual(movablePositions, expectedResult)
     }
 }
