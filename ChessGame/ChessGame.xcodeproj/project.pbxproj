@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4443C9D2AE8207C00F22290 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443C9C2AE8207C00F22290 /* Rank.swift */; };
+		B4443C9F2AE8208400F22290 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443C9E2AE8208400F22290 /* File.swift */; };
 		B4458F122ADAD6DB00427F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F112ADAD6DB00427F6E /* AppDelegate.swift */; };
 		B4458F142ADAD6DB00427F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F132ADAD6DB00427F6E /* SceneDelegate.swift */; };
 		B4458F162ADAD6DB00427F6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F152ADAD6DB00427F6E /* ViewController.swift */; };
@@ -16,10 +18,7 @@
 		B4458F292ADAD6DC00427F6E /* ChessGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F282ADAD6DC00427F6E /* ChessGameTests.swift */; };
 		B4458F332ADAD6DC00427F6E /* ChessGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F322ADAD6DC00427F6E /* ChessGameUITests.swift */; };
 		B4458F352ADAD6DC00427F6E /* ChessGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F342ADAD6DC00427F6E /* ChessGameUITestsLaunchTests.swift */; };
-		B45686452ADEEC12002F9EC7 /* PieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45686442ADEEC12002F9EC7 /* PieceType.swift */; };
-		B45686472ADEEC1B002F9EC7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45686462ADEEC1B002F9EC7 /* File.swift */; };
 		B45686492ADEEC28002F9EC7 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45686482ADEEC28002F9EC7 /* Position.swift */; };
-		B456864B2ADEEC32002F9EC7 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456864A2ADEEC32002F9EC7 /* Pawn.swift */; };
 		B456864E2ADEEC7D002F9EC7 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B456864D2ADEEC7D002F9EC7 /* ChessBoard.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B4443C9C2AE8207C00F22290 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		B4443C9E2AE8208400F22290 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		B4458F0E2ADAD6DB00427F6E /* ChessGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4458F112ADAD6DB00427F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4458F132ADAD6DB00427F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,10 +55,7 @@
 		B4458F2E2ADAD6DC00427F6E /* ChessGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4458F322ADAD6DC00427F6E /* ChessGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameUITests.swift; sourceTree = "<group>"; };
 		B4458F342ADAD6DC00427F6E /* ChessGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B45686442ADEEC12002F9EC7 /* PieceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceType.swift; sourceTree = "<group>"; };
-		B45686462ADEEC1B002F9EC7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		B45686482ADEEC28002F9EC7 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
-		B456864A2ADEEC32002F9EC7 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		B456864D2ADEEC7D002F9EC7 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B4443C9B2AE8206D00F22290 /* Position */ = {
+			isa = PBXGroup;
+			children = (
+				B4443C9C2AE8207C00F22290 /* Rank.swift */,
+				B4443C9E2AE8208400F22290 /* File.swift */,
+				B45686482ADEEC28002F9EC7 /* Position.swift */,
+			);
+			path = Position;
+			sourceTree = "<group>";
+		};
 		B4458F052ADAD6DB00427F6E = {
 			isa = PBXGroup;
 			children = (
@@ -141,21 +149,10 @@
 		B45686432ADEEBFC002F9EC7 /* ChessTest */ = {
 			isa = PBXGroup;
 			children = (
-				B456864C2ADEEC3A002F9EC7 /* ChessPiece */,
+				B4443C9B2AE8206D00F22290 /* Position */,
 				B456864D2ADEEC7D002F9EC7 /* ChessBoard.swift */,
 			);
 			path = ChessTest;
-			sourceTree = "<group>";
-		};
-		B456864C2ADEEC3A002F9EC7 /* ChessPiece */ = {
-			isa = PBXGroup;
-			children = (
-				B45686442ADEEC12002F9EC7 /* PieceType.swift */,
-				B45686462ADEEC1B002F9EC7 /* File.swift */,
-				B45686482ADEEC28002F9EC7 /* Position.swift */,
-				B456864A2ADEEC32002F9EC7 /* Pawn.swift */,
-			);
-			path = ChessPiece;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,13 +286,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B45686472ADEEC1B002F9EC7 /* File.swift in Sources */,
 				B456864E2ADEEC7D002F9EC7 /* ChessBoard.swift in Sources */,
-				B456864B2ADEEC32002F9EC7 /* Pawn.swift in Sources */,
 				B4458F162ADAD6DB00427F6E /* ViewController.swift in Sources */,
 				B45686492ADEEC28002F9EC7 /* Position.swift in Sources */,
+				B4443C9F2AE8208400F22290 /* File.swift in Sources */,
 				B4458F122ADAD6DB00427F6E /* AppDelegate.swift in Sources */,
-				B45686452ADEEC12002F9EC7 /* PieceType.swift in Sources */,
+				B4443C9D2AE8207C00F22290 /* Rank.swift in Sources */,
 				B4458F142ADAD6DB00427F6E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
