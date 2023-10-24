@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		B4443C9D2AE8207C00F22290 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443C9C2AE8207C00F22290 /* Rank.swift */; };
 		B4443C9F2AE8208400F22290 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443C9E2AE8208400F22290 /* File.swift */; };
+		B4443CA22AE8214100F22290 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CA12AE8214100F22290 /* Color.swift */; };
+		B4443CA42AE8214B00F22290 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CA32AE8214B00F22290 /* Piece.swift */; };
+		B4443CA72AE8217D00F22290 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CA62AE8217D00F22290 /* Pawn.swift */; };
+		B4443CA92AE821AA00F22290 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CA82AE821AA00F22290 /* Knight.swift */; };
+		B4443CAB2AE821BB00F22290 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CAA2AE821BB00F22290 /* Bishop.swift */; };
+		B4443CAD2AE821CB00F22290 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CAC2AE821CB00F22290 /* Rook.swift */; };
+		B4443CAF2AE821D900F22290 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CAE2AE821D900F22290 /* Queen.swift */; };
 		B4458F122ADAD6DB00427F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F112ADAD6DB00427F6E /* AppDelegate.swift */; };
 		B4458F142ADAD6DB00427F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F132ADAD6DB00427F6E /* SceneDelegate.swift */; };
 		B4458F162ADAD6DB00427F6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F152ADAD6DB00427F6E /* ViewController.swift */; };
@@ -42,6 +49,13 @@
 /* Begin PBXFileReference section */
 		B4443C9C2AE8207C00F22290 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		B4443C9E2AE8208400F22290 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		B4443CA12AE8214100F22290 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		B4443CA32AE8214B00F22290 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		B4443CA62AE8217D00F22290 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		B4443CA82AE821AA00F22290 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
+		B4443CAA2AE821BB00F22290 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
+		B4443CAC2AE821CB00F22290 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		B4443CAE2AE821D900F22290 /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		B4458F0E2ADAD6DB00427F6E /* ChessGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4458F112ADAD6DB00427F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4458F132ADAD6DB00427F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +106,28 @@
 				B45686482ADEEC28002F9EC7 /* Position.swift */,
 			);
 			path = Position;
+			sourceTree = "<group>";
+		};
+		B4443CA02AE8213800F22290 /* Piece */ = {
+			isa = PBXGroup;
+			children = (
+				B4443CA12AE8214100F22290 /* Color.swift */,
+				B4443CA32AE8214B00F22290 /* Piece.swift */,
+				B4443CA52AE8217000F22290 /* PieceType */,
+			);
+			path = Piece;
+			sourceTree = "<group>";
+		};
+		B4443CA52AE8217000F22290 /* PieceType */ = {
+			isa = PBXGroup;
+			children = (
+				B4443CA62AE8217D00F22290 /* Pawn.swift */,
+				B4443CA82AE821AA00F22290 /* Knight.swift */,
+				B4443CAA2AE821BB00F22290 /* Bishop.swift */,
+				B4443CAC2AE821CB00F22290 /* Rook.swift */,
+				B4443CAE2AE821D900F22290 /* Queen.swift */,
+			);
+			path = PieceType;
 			sourceTree = "<group>";
 		};
 		B4458F052ADAD6DB00427F6E = {
@@ -150,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				B4443C9B2AE8206D00F22290 /* Position */,
+				B4443CA02AE8213800F22290 /* Piece */,
 				B456864D2ADEEC7D002F9EC7 /* ChessBoard.swift */,
 			);
 			path = ChessTest;
@@ -288,10 +325,17 @@
 			files = (
 				B456864E2ADEEC7D002F9EC7 /* ChessBoard.swift in Sources */,
 				B4458F162ADAD6DB00427F6E /* ViewController.swift in Sources */,
+				B4443CAF2AE821D900F22290 /* Queen.swift in Sources */,
 				B45686492ADEEC28002F9EC7 /* Position.swift in Sources */,
+				B4443CA72AE8217D00F22290 /* Pawn.swift in Sources */,
 				B4443C9F2AE8208400F22290 /* File.swift in Sources */,
 				B4458F122ADAD6DB00427F6E /* AppDelegate.swift in Sources */,
+				B4443CA42AE8214B00F22290 /* Piece.swift in Sources */,
+				B4443CA22AE8214100F22290 /* Color.swift in Sources */,
+				B4443CAB2AE821BB00F22290 /* Bishop.swift in Sources */,
 				B4443C9D2AE8207C00F22290 /* Rank.swift in Sources */,
+				B4443CA92AE821AA00F22290 /* Knight.swift in Sources */,
+				B4443CAD2AE821CB00F22290 /* Rook.swift in Sources */,
 				B4458F142ADAD6DB00427F6E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
