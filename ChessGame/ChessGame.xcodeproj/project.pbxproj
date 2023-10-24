@@ -16,6 +16,11 @@
 		B4443CAB2AE821BB00F22290 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CAA2AE821BB00F22290 /* Bishop.swift */; };
 		B4443CAD2AE821CB00F22290 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CAC2AE821CB00F22290 /* Rook.swift */; };
 		B4443CAF2AE821D900F22290 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CAE2AE821D900F22290 /* Queen.swift */; };
+		B4443CB22AE8276600F22290 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CB12AE8276600F22290 /* PawnTests.swift */; };
+		B4443CB42AE8277300F22290 /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CB32AE8277300F22290 /* KnightTests.swift */; };
+		B4443CB62AE8277E00F22290 /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CB52AE8277E00F22290 /* BishopTests.swift */; };
+		B4443CB82AE8278C00F22290 /* RookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CB72AE8278C00F22290 /* RookTests.swift */; };
+		B4443CBA2AE8279600F22290 /* QueenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4443CB92AE8279600F22290 /* QueenTests.swift */; };
 		B4458F122ADAD6DB00427F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F112ADAD6DB00427F6E /* AppDelegate.swift */; };
 		B4458F142ADAD6DB00427F6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F132ADAD6DB00427F6E /* SceneDelegate.swift */; };
 		B4458F162ADAD6DB00427F6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4458F152ADAD6DB00427F6E /* ViewController.swift */; };
@@ -56,6 +61,11 @@
 		B4443CAA2AE821BB00F22290 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		B4443CAC2AE821CB00F22290 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		B4443CAE2AE821D900F22290 /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		B4443CB12AE8276600F22290 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
+		B4443CB32AE8277300F22290 /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
+		B4443CB52AE8277E00F22290 /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
+		B4443CB72AE8278C00F22290 /* RookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RookTests.swift; sourceTree = "<group>"; };
+		B4443CB92AE8279600F22290 /* QueenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenTests.swift; sourceTree = "<group>"; };
 		B4458F0E2ADAD6DB00427F6E /* ChessGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4458F112ADAD6DB00427F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4458F132ADAD6DB00427F6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +140,18 @@
 			path = PieceType;
 			sourceTree = "<group>";
 		};
+		B4443CB02AE8275F00F22290 /* PieceTests */ = {
+			isa = PBXGroup;
+			children = (
+				B4443CB12AE8276600F22290 /* PawnTests.swift */,
+				B4443CB32AE8277300F22290 /* KnightTests.swift */,
+				B4443CB52AE8277E00F22290 /* BishopTests.swift */,
+				B4443CB72AE8278C00F22290 /* RookTests.swift */,
+				B4443CB92AE8279600F22290 /* QueenTests.swift */,
+			);
+			path = PieceTests;
+			sourceTree = "<group>";
+		};
 		B4458F052ADAD6DB00427F6E = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +190,7 @@
 		B4458F272ADAD6DC00427F6E /* ChessGameTests */ = {
 			isa = PBXGroup;
 			children = (
+				B4443CB02AE8275F00F22290 /* PieceTests */,
 				B4458F282ADAD6DC00427F6E /* ChessGameTests.swift */,
 			);
 			path = ChessGameTests;
@@ -344,7 +367,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4443CB62AE8277E00F22290 /* BishopTests.swift in Sources */,
+				B4443CB82AE8278C00F22290 /* RookTests.swift in Sources */,
+				B4443CBA2AE8279600F22290 /* QueenTests.swift in Sources */,
 				B4458F292ADAD6DC00427F6E /* ChessGameTests.swift in Sources */,
+				B4443CB42AE8277300F22290 /* KnightTests.swift in Sources */,
+				B4443CB22AE8276600F22290 /* PawnTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
