@@ -38,10 +38,9 @@ struct Pawn: Piece {
     func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> [[Position]] {
         var result: [[Position]] = .init()
         
-        let rankDiff = color == .white ? -1 : 0
+        let rankDiff = color == .white ? -1 : 1
         if let movablePosition = position.makePosition(rankDiff: rankDiff, fileDiff: 0), neighborPositions.contains(movablePosition) {
             result.append([movablePosition])
-
         }
         
         return result

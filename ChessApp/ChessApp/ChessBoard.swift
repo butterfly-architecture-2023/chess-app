@@ -69,20 +69,23 @@ final class ChessBoard {
             guard let fromSquareIndex = board.firstIndex(where: { $0.position == from }), let toSquareIndex = board.firstIndex(where: { $0.position == to }) else { return canMove }
             
             let fromSquare = board[fromSquareIndex]
-            let toSquare = board[toSquareIndex]
             
             let neighborPositions = getMovableNeighborDirections(from: fromSquare.position)
             if let avaliableMovingPositions = fromSquare.piece?.getMovableAllPositions(from: fromSquare.position, with: neighborPositions) {
                 
                 avaliableMovingPositions.forEach { ways in
                     if ways.contains(where: { $0 == to }) {
-                        var arrived = false
                         ways.forEach { position in
                             if let piece = board.first(where: { $0.position == position })?.piece {
-                                if arrived && piece.color != fromSquare.piece?.color {
+                                if position == to && piece.color != fromSquare.piece?.color {
                                     canMove = true
                                     return
                                 } else {
+                                    return
+                                }
+                            } else {
+                                if position == to {
+                                    canMove = true
                                     return
                                 }
                             }
@@ -196,7 +199,7 @@ final class ChessBoard {
     
     private func validateThisTurn(by position: Position) throws {
         guard let fromPositionPieceColor = board.first(where: { $0.position == position })?.piece?.color else { throw ErrorType.wrongInput }
-        if fromPositionPieceColor == thisTurn {
+        if fromPositionPieceColor != thisTurn {
             throw ErrorType.invalidTurn
         }
     }

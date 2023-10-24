@@ -46,4 +46,14 @@ final class ChessBoardTests: XCTestCase {
         ]
         XCTAssertEqual(result, expectedValue)
     }
+    
+    func test_체스말을_여러번_움직여_이동_가능_여부_확인() throws {
+        let whiteFirstMove = try chessBoard.canMove(by: "E7->E6")
+        let blackFirstMove = try chessBoard.canMove(by: "D2->D3")
+        let whiteSecondMove = try chessBoard.canMove(by: "E6->E5")
+        let blackSecondMove = try chessBoard.canMove(by: "D3->D4")
+        let whiteThirdMove = try chessBoard.canMove(by: "C7->C6")
+        let blackThirdMove = try chessBoard.canMove(by: "C1->E3")
+        XCTAssertTrue(blackThirdMove)
+    }
 }
