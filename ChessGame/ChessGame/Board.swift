@@ -9,7 +9,13 @@ import Foundation
 
 final class Board {
     
-    private var pieces: [Position: Piece]
+    private var pieces: [Position: Piece] {
+        didSet {
+            updateSquare()
+        }
+    }
+    
+    private var square: [[Piece?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
     init(pieces: [Position: Piece]) {
         self.pieces = pieces
@@ -42,13 +48,25 @@ final class Board {
     // 흑색 Pawn는 ♟ U+265F를 빈 곳은 "."을 표시한다.
     // 백색 Pawn는 ♙ U+2659를 빈 곳은 "."을 표시한다.
     func display() -> [[String]] {
-        var square = Array(repeating: Array(repeating: ".", count: 8), count: 8)
         
         pieces.forEach { (position, piece) in
-            square[position.file][position.rank] = piece.description
+            self.square[position.file][position.rank] = piece
         }
+
+        return self.square.map { $0.map { $0?.description ?? "." }}
+    }
+    
+    private func reset() {
+        pieces = [:]
+        square = Array(repeating: Array(repeating: nil, count: 8), count: 8)
+    }
+    
+    private func updateSquare() {
+        square = Array(repeating: Array(repeating: nil, count: 8), count: 8)
         
-        return square
+        pieces.forEach { (position, piece) in
+            self.square[position.file][position.rank] = piece
+        }
     }
     
     // 프로그래밍 요구사항 4.
@@ -59,13 +77,19 @@ final class Board {
     // 체스말 종류별로 최대 개수보다 많이 생성할 수는 없다.
     // Pawn는 색상별로 8개만 가능하다.
     func gameStart() {
+
+        reset()
         
-        // 초기화
-//        self.square =  Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
-//        
-//        // 폰들 초기화
-//        square[1] = square[1].map{ _ in Piece(category: .pawn(color: .black)) }
-//        square[6] = square[6].map{ _ in Piece(category: .pawn(color: .white)) }
+        let pieceTypes: [any Piece.Type] = [BlackPawn.self, BlackRook.self,
+                                            BlackKnight.self, BlackRook.self,
+                                            BlackQueen.self, BlackBiship.self,
+                                            WhitePawn.self, WhiteRook.self,
+                                            WhiteKnight.self, WhiteRook.self,
+                                            WhiteQueen.self, WhiteBiship.self]
+        
+        pieceTypes.forEach { pieceType in
+            self.pieces += pieceType.initialPositions()
+        }
     }
     
     // 프로그래밍 요구사항 5.
