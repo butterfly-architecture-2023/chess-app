@@ -14,8 +14,8 @@ struct BlackQueen: BlackPiece {
         []
     }
     
-    func movablePositions(currentPosition: (file: Int, rank: Int)) -> [(file: Int, rank: Int)] {
-        return []
+    static func initialPositions() -> [Position: Self] {
+        return [Position(file: 0, rank: 4): Self.init()]
     }
 }
 
@@ -26,8 +26,8 @@ struct WhiteQueen: WhitePiece {
         []
     }
     
-    func movablePositions(currentPosition: (file: Int, rank: Int)) -> [(file: Int, rank: Int)] {
-        return []
+    static func initialPositions() -> [Position: Self] {
+        return [Position(file: 7, rank: 4): Self.init()]
     }
 }
 

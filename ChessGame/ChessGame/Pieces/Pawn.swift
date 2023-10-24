@@ -13,6 +13,14 @@ struct BlackPawn: BlackPiece {
     func movablePositions(current: Position) -> [Position] {
         return [current.bottomPosition()].compactMap{ $0 }
     }
+    
+    static func initialPositions() -> [Position: Self] {
+        var positions: [Position: Self] = [:]
+         for rank in 0..<8 {
+             positions[Position(file: 1, rank: rank)] = Self.init()
+         }
+         return positions
+    }
 }
 
 struct WhitePawn: WhitePiece {
@@ -21,6 +29,15 @@ struct WhitePawn: WhitePiece {
     func movablePositions(current: Position) -> [Position] {
         return [current.topPosition()].compactMap{ $0 }
     }
+    
+    static func initialPositions() -> [Position: Self] {
+        var positions: [Position: Self] = [:]
+         for rank in 0..<8 {
+             positions[Position(file: 6, rank: rank)] = Self.init()
+         }
+         return positions
+    }
+   
 }
 
 extension BlackPawn: CustomStringConvertible {

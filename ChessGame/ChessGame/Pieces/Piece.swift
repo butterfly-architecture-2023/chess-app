@@ -15,6 +15,7 @@ protocol Piece: CustomStringConvertible {
     static var color: Color { get }
     
     func movablePositions(current: Position) -> [Position]
+    static func initialPositions() -> [Position: Self]
 }
 
 protocol WhitePiece: Piece { }
