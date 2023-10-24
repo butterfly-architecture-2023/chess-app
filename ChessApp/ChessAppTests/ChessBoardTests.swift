@@ -38,4 +38,12 @@ final class ChessBoardTests: XCTestCase {
         let displayResult = chessBoard.display()
         XCTAssertEqual(boardInitDisplay, displayResult)
     }
+    
+    func test_움직이려는_piece에_근접한_Position_중_기물이_없는_Position_확인() throws {
+        let result = chessBoard.getMovableNeighborDirections(from: .init(rank: .eight, file: .E))
+        let expectedValue: Set<Position> = [
+            .init(rank: .eight, file: .D)
+        ]
+        XCTAssertEqual(result, expectedValue)
+    }
 }

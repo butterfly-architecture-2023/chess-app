@@ -71,6 +71,7 @@ final class ChessBoard {
             let fromSquare = board[fromSquareIndex]
             let toSquare = board[toSquareIndex]
             
+            let movableNeighborDirections = getMovableNeighborDirections(from: fromSquare.position)
             if let avaliableMovingPosition = fromSquare.piece?.getMovableAllPositions(from: fromSquare.position) {
                 
                 if avaliableMovingPosition.contains(where: { $0 == to }) {
@@ -192,5 +193,34 @@ final class ChessBoard {
         if fromPositionPieceColor == thisTurn {
             throw ErrorType.invalidTurn
         }
+    }
+    
+    func getMovableNeighborDirections(from position: Position) -> Set<Position> {
+        var neighborPosition: Set<Position?> = []
+        
+        neighborPosition.insert(position.makePosition(rankDiff: -1, fileDiff: -1))
+        neighborPosition.insert(position.makePosition(rankDiff: -1, fileDiff: 0))
+        neighborPosition.insert(position.makePosition(rankDiff: -1, fileDiff: 1))
+        neighborPosition.insert(position.makePosition(rankDiff: 0, fileDiff: -1))
+        neighborPosition.insert(position.makePosition(rankDiff: 0, fileDiff: 1))
+        neighborPosition.insert(position.makePosition(rankDiff: 1, fileDiff: -1))
+        neighborPosition.insert(position.makePosition(rankDiff: 1, fileDiff: 0))
+        neighborPosition.insert(position.makePosition(rankDiff: 1, fileDiff: 1))
+        
+        var result: Set<Position> = []
+        guard let currentPieceColor: Color = board.first(where: { $0.position == position})?.piece?.color else { return [] }
+        
+        neighborPosition.compactMap({ $0 }).forEach { neighborPosition in
+            if let piece = board.first(where: { $0.position == neighborPosition })?.piece {
+                if piece.color != currentPieceColor {
+                    // 근접한 Position 중 다른 색깔의 체스말이 있는 경우
+                    result.insert(neighborPosition)
+                }
+            } else {
+                // 근접한 Position 중 비어있는 곳
+                result.insert(neighborPosition)
+            }
+        }
+        return result
     }
 }
