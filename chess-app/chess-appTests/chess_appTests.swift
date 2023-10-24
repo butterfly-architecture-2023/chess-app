@@ -37,9 +37,9 @@ final class chess_appTests: XCTestCase {
         let from: Position = .init(rank: .seven, file: .A)
         let to: Position = .init(rank: .five, file: .A)
         
-        let canMove = sut.validateMove(piece: .init(type: .pawn, color: .white),
-                                      from: from,
-                                      to: to)
+        let canMove = sut.validateMovableRange(piece: .init(type: .pawn, color: .white),
+                                               from: from,
+                                               to: to)
         
         XCTAssertEqual(canMove, false)
     }
@@ -48,9 +48,9 @@ final class chess_appTests: XCTestCase {
         let from: Position = .init(rank: .one, file: .A)
         let to: Position = .init(rank: .two, file: .A)
         
-        let canMove = sut.validateMove(piece: .init(type: .pawn, color: .black),
-                                      from: from,
-                                      to: to)
+        let canMove = sut.validateMovableRange(piece: .init(type: .pawn, color: .black),
+                                               from: from,
+                                               to: to)
         
         XCTAssertEqual(canMove, true)
     }

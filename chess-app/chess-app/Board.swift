@@ -55,8 +55,8 @@ final class Board {
     /// 말 이동
     func movePiece(piece: Piece, from: Position, to: Position) {
         guard piece.color == player else { return }
-        guard validateMove(piece: piece, from: from, to: to) else { return }
-        guard move(from: from, to: to) else { return }
+        guard validateMovableRange(piece: piece, from: from, to: to) else { return }
+        guard validateMove(from: from, to: to) else { return }
         
         chessBoard[to.rank][to.file] = chessBoard[from.rank][from.file]
         chessBoard[from.rank][from.file] = .init(type: .none, color: .none)
@@ -64,13 +64,13 @@ final class Board {
     }
     
     /// 이동 가능한 범위인지 확인
-    func validateMove(piece: Piece, from: Position, to: Position) -> Bool {
+    func validateMovableRange(piece: Piece, from: Position, to: Position) -> Bool {
         let distance: MovableRange = .init(rank: to.rank - from.rank, file: to.file - from.file)
         return distance == piece.movableRange
     }
     
     /// 말 이동 가능 여부 파악
-    private func move(from: Position, to: Position) -> Bool {
+    private func validateMove(from: Position, to: Position) -> Bool {
         let currentColor = getPiece(position: from).color
         let nextColor = getPiece(position: to).color
         
