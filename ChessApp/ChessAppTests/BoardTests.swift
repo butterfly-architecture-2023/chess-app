@@ -29,22 +29,31 @@ final class BoardTests: XCTestCase {
       "D7 C6", // White Pawn 제거
     ]
     
-    // TODO: - 보드 구성이 바뀌었으므로 새로 테스트 작성 필요
-//    for i in blackPawnInputs.indices {
-//      let blackMock = try board.getCmd(blackPawnInputs[i])
-//      let whiteMock = try board.getCmd(whitePawnInputs[i])
-//      
-//      XCTAssertTrue(
-//        board.move(from: blackMock.from, to: blackMock.to)
-//        && board.move(from: whiteMock.from, to: whiteMock.to))
-//    }
-//    
-//    XCTAssertEqual(board.score[.black], 1)
-//    XCTAssertEqual(board.score[.white], 2)
+    for i in blackPawnInputs.indices {
+      let blackMoved: Bool, whiteMoved: Bool
+      if board.currentTurn == .black {
+        let blackMock = try board.getCmd(blackPawnInputs[i])
+        blackMoved = try board.move(from: blackMock.from, to: blackMock.to)
+        let whiteMock = try board.getCmd(whitePawnInputs[i])
+        whiteMoved = try board.move(from: whiteMock.from, to: whiteMock.to)
+      } else {
+        let whiteMock = try board.getCmd(whitePawnInputs[i])
+        whiteMoved = try board.move(from: whiteMock.from, to: whiteMock.to)
+        let blackMock = try board.getCmd(blackPawnInputs[i])
+        blackMoved = try board.move(from: blackMock.from, to: blackMock.to)
+      }
+      
+      XCTAssertTrue(blackMoved == whiteMoved)
+    }
+    
+    print("testScore", board.score)
+    XCTAssertEqual(board.score[.black], 2)
+    XCTAssertEqual(board.score[.white], 1)
   }
   
   // 원하는 PieceType 과 통신하고 있는지 이동과 함께 테스트하는 통신 기반 테스트
   func testMovesIntendedPieces() throws {
+    print("testMovesIntendedPieces", board.score)
     let blackPawnInputs = [
       "B2 B3",
       "B3 B4",
@@ -58,20 +67,19 @@ final class BoardTests: XCTestCase {
       "D7 C6", // White Pawn 제거
     ]
     
-    // TODO: - 보드 구성이 바뀌었으므로 새로 테스트 작성 필요
-//    for i in blackPawnInputs.indices {
-//      let whiteMock = try board.getCmd(whitePawnInputs[i])
-//      let blackMock = try board.getCmd(blackPawnInputs[i])
-//      
-//      let whiteSUT = board.getPiece(whiteMock.from)
-//      board.move(from: whiteMock.from, to: whiteMock.to)
-//      let blackSUT = board.getPiece(blackMock.from)
-//      board.move(from: blackMock.from, to: blackMock.to)
-//      
-//      XCTAssertEqual(whiteSUT?.color, .white)
-//      XCTAssertNotNil(whiteSUT as? Pawn)
-//      XCTAssertEqual(blackSUT?.color, .black)
-//      XCTAssertNotNil(blackSUT as? Pawn)
-//    }
+    for i in blackPawnInputs.indices {
+      let whiteMock = try board.getCmd(whitePawnInputs[i])
+      let blackMock = try board.getCmd(blackPawnInputs[i])
+      
+      let whiteSUT = board.getPiece(whiteMock.from)
+      try board.move(from: whiteMock.from, to: whiteMock.to)
+      let blackSUT = board.getPiece(blackMock.from)
+      try board.move(from: blackMock.from, to: blackMock.to)
+      
+      XCTAssertEqual(whiteSUT?.color, .white)
+      XCTAssertNotNil(whiteSUT as? Pawn)
+      XCTAssertEqual(blackSUT?.color, .black)
+      XCTAssertNotNil(blackSUT as? Pawn)
+    }
   }
 }

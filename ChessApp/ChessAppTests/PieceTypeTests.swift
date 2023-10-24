@@ -33,7 +33,7 @@ final class PieceTypeTests: XCTestCase {
     for i in mockInputs.indices {
       let mock = try board.getCmd(mockInputs[i])
       
-      XCTAssertTrue(board.move(from: mock.from, to: mock.to))
+      XCTAssertTrue(try board.move(from: mock.from, to: mock.to))
       XCTAssertGreaterThanOrEqual(board.positions.rows(mock.to.row).filter({$0.piece is Pawn}).count, 1)
     }
   }
@@ -60,9 +60,9 @@ final class PieceTypeTests: XCTestCase {
       let blackInput = blackPawnInputs[i]
       
       let whiteMock = try board.getCmd(whiteInput)
-      let whiteMoveResult = board.move(from: whiteMock.from, to: whiteMock.to)
+      let whiteMoveResult = try board.move(from: whiteMock.from, to: whiteMock.to)
       let blackMock = try board.getCmd(blackInput)
-      let blackMoveResult = board.move(from: blackMock.from, to: blackMock.to)
+      let blackMoveResult = try board.move(from: blackMock.from, to: blackMock.to)
       
       XCTAssertFalse(whiteMoveResult)
       XCTAssertFalse(blackMoveResult)
@@ -83,7 +83,7 @@ final class PieceTypeTests: XCTestCase {
     for i in mockThrowable.indices {
       do {
         let mock = try board.getCmd(mockThrowable[i].input)
-        XCTAssertThrowsError(board.move(from: mock.from, to: mock.to))
+        XCTAssertThrowsError(try board.move(from: mock.from, to: mock.to))
       } catch let error {
         XCTAssertEqual(error as? Board.InputError, mockThrowable[i].error)
       }
@@ -109,13 +109,11 @@ final class PieceTypeTests: XCTestCase {
     let blackInput = blackPawnInputs[0]
     
     let whiteMock = try board.getCmd(whiteInput)
-    let whiteMoveResult = board.move(from: whiteMock.from, to: whiteMock.to)
     let blackMock = try board.getCmd(blackInput)
-    let blackMoveResult = board.move(from: blackMock.from, to: blackMock.to)
     
     // TODO: - getNextPosition 을 수정해야 함. 이동거리를 고려하지 않은 메소드이므로 수정 필요.
-    XCTAssertTrue(whiteMoveResult)
-    XCTAssertFalse(blackMoveResult)
+    XCTAssertTrue(try board.move(from: whiteMock.from, to: whiteMock.to))
+    XCTAssertThrowsError(try board.move(from: blackMock.from, to: blackMock.to))
   }
   
   class MockPiece: Piece {
