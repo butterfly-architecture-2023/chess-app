@@ -39,7 +39,7 @@ struct Knight: Piece {
         return isPossible
     }
     
-    func getMovablePositions(from position: Position) -> Set<Position> {
+    func getMovableAllPositions(from position: Position) -> Set<Position> {
         var result: Set<Position?> = []
         
         result.insert(position.makePosition(rankDiff: -2, fileDiff: -1))

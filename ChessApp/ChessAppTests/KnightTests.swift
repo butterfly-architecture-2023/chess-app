@@ -20,7 +20,7 @@ final class KnightTests: XCTestCase {
     
     func test_D5위치의_Knight가_움직일_수_있는_모든_위치() {
         let knight = Knight(color: .white)
-        let movablePositions = knight.getMovablePositions(from: .init(rank: .five, file: .D))
+        let movablePositions = knight.getMovableAllPositions(from: .init(rank: .five, file: .D))
         
         let expectedResult: Set<Position> = [
             .init(rank: .three, file: .C),

@@ -20,7 +20,7 @@ final class RookTests: XCTestCase {
 
     func test_D4위치의_Rook이_움직일_수_있는_모든_위치_확인() {
         let rook = Rook(color: .white)
-        let movablePositions = rook.getMovablePositions(from: .init(rank: .four, file: .D))
+        let movablePositions = rook.getMovableAllPositions(from: .init(rank: .four, file: .D))
         
         let expectedResult: Set<Position> = [
             .init(rank: .four, file: .A),

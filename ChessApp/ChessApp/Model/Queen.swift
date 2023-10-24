@@ -37,7 +37,7 @@ struct Queen: Piece {
         return isPossible
     }
     
-    func getMovablePositions(from position: Position) -> Set<Position> {
+    func getMovableAllPositions(from position: Position) -> Set<Position> {
         var result: Set<Position?> = []
         
         for index in 0..<8 {

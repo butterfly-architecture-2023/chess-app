@@ -35,7 +35,7 @@ struct Pawn: Piece {
         return isPossible
     }
     
-    func getMovablePositions(from position: Position) -> Set<Position> {
+    func getMovableAllPositions(from position: Position) -> Set<Position> {
         var result: Set<Position?> = .init()
         
         switch color {

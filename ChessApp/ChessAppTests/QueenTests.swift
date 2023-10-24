@@ -20,7 +20,7 @@ final class QueenTests: XCTestCase {
 
     func test_F5위치의_Queen이_움직일_수_있는_모든_위치_확인() {
         let queen = Queen(color: .black)
-        let movablePositions = queen.getMovablePositions(from: .init(rank: .five, file: .F))
+        let movablePositions = queen.getMovableAllPositions(from: .init(rank: .five, file: .F))
         
         let expectedResult: Set<Position> = [
             .init(rank: .one, file: .B),

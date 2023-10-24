@@ -20,7 +20,7 @@ final class BishopTests: XCTestCase {
 
     func test_C8위치의_Bishop이_움직일_수_있는_모든_위치_확인() {
         let bishop = Bishop(color: .white)
-        let movablePositions = bishop.getMovablePositions(from: .init(rank: .eight, file: .C))
+        let movablePositions = bishop.getMovableAllPositions(from: .init(rank: .eight, file: .C))
         
         let expectedResult: Set<Position> = [
             .init(rank: .seven, file: .B),
