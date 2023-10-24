@@ -35,6 +35,36 @@ final class ChessGameTests: XCTestCase {
         }
     }
 
+    /// 초기화할 때 1,2-rank는 흑백 체스말이, 7,8-rank는 백색 체스말이 위치한다.
+    func test_InitialBoardSetup() {
+        for rank in Rank.allCases {
+            for file in File.allCases {
+                let piece = sut.board[rank.rawValue - 1][file.rawValue]
+
+                let expectedColor: Color
+                if rank == .one || rank == .two {
+                    expectedColor = .black
+                } else if rank == .seven || rank == .eight {
+                    expectedColor = .white
+                } else {
+                    continue
+                }
+
+                let shouldBeNil = file == .d && (rank == .one || rank == .eight)
+
+                if shouldBeNil {
+                    XCTAssertNil(piece)
+                } else {
+                    XCTAssertNotNil(piece)
+                    XCTAssertEqual(piece?.color, expectedColor)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Helpers
+extension ChessGameTests {
     private func getExpectedRankString(forRank rank: Rank) -> String {
         let rankString = "\(rank.rawValue)"
         let pieces = sut.board[rank.rawValue - 1].compactMap { $0?.icon ?? "." }
