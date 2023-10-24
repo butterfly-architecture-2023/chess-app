@@ -71,13 +71,15 @@ final class ChessBoard {
             let fromSquare = board[fromSquareIndex]
             let toSquare = board[toSquareIndex]
             
-            if let avaliableMovingPosition = fromSquare.piece?.getMovablePositions(from: fromSquare.position), avaliableMovingPosition.contains(where: { $0 == to }) {
-
-                if toSquare.piece == nil {
-                    canMove = true
-                } else {
-                    if fromSquare.piece?.color != toSquare.piece?.color {
+            if let avaliableMovingPosition = fromSquare.piece?.getMovableAllPositions(from: fromSquare.position) {
+                
+                if avaliableMovingPosition.contains(where: { $0 == to }) {
+                    if toSquare.piece == nil {
                         canMove = true
+                    } else {
+                        if fromSquare.piece?.color != toSquare.piece?.color {
+                            canMove = true
+                        }
                     }
                 }
             }
@@ -169,7 +171,7 @@ final class ChessBoard {
         do {
             let from = try makePosition(by: inputs[0])
             let to = try makePosition(by: inputs[1])
-            let thisTurn = try validateThisTurn(by: from)
+            _ = try validateThisTurn(by: from)
             return [from, to]
         } catch {
             throw error
@@ -185,11 +187,9 @@ final class ChessBoard {
         return .init(rank: rank, file: file)
     }
     
-    private func validateThisTurn(by position: Position) throws -> Bool {
+    private func validateThisTurn(by position: Position) throws {
         guard let fromPositionPieceColor = board.first(where: { $0.position == position })?.piece?.color else { throw ErrorType.wrongInput }
-        if fromPositionPieceColor != thisTurn {
-            return true
-        } else {
+        if fromPositionPieceColor == thisTurn {
             throw ErrorType.invalidTurn
         }
     }
