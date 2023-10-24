@@ -20,9 +20,33 @@ struct Pawn: PawnConfigurable {
     let color: Color
     let currentPosition: Position
     
+    var text: String {
+        switch self.color {
+        case .black:
+            return "♟"
+        case .white:
+            return "♙"
+        }
+    }
+    
     func canMove(to position: Position) -> Bool {
+        guard self.isSame(file: position.file) else {
+            return false
+        }
+
+        guard self.canMove(to: position.rank) else {
+            return false
+        }
+        
+        return true
+    }
+    
+    private func isSame(file: File) -> Bool {
+        return self.currentPosition.file == file
+    }
+    
+    private func canMove(to destinationRank: Rank) -> Bool {
         let currentRank = self.currentPosition.rank
-        let destinationRank = position.rank
         
         guard currentRank.distance(with: destinationRank) == 1 else {
             return false
@@ -33,15 +57,6 @@ struct Pawn: PawnConfigurable {
             return currentRank < destinationRank
         case .white:
             return currentRank > destinationRank
-        }
-    }
-    
-    var text: String {
-        switch self.color {
-        case .black:
-            return "♟"
-        case .white:
-            return "♙"
         }
     }
 }
