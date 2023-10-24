@@ -20,24 +20,9 @@ final class RookTests: XCTestCase {
 
     func test_D4위치의_Rook이_움직일_수_있는_모든_위치_확인() {
         let rook = Rook(color: .white)
-        let movablePositions = rook.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [])
+        let movablePositions = rook.getMovableAllPositions(from: .init(rank: .five, file: .D), with: [.init(rank: .five, file: .E), .init(rank: .six, file: .E)])
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .four, file: .A),
-            .init(rank: .four, file: .B),
-            .init(rank: .four, file: .C),
-            .init(rank: .four, file: .E),
-            .init(rank: .four, file: .F),
-            .init(rank: .four, file: .G),
-            .init(rank: .four, file: .H),
-            .init(rank: .one, file: .D),
-            .init(rank: .two, file: .D),
-            .init(rank: .three, file: .D),
-            .init(rank: .five, file: .D),
-            .init(rank: .six, file: .D),
-            .init(rank: .seven, file: .D),
-            .init(rank: .eight, file: .D)
-        ]
+        let expectedResult: [[Position]] = [[.init(rank: .five, file: .E), .init(rank: .five, file: .F), .init(rank: .five, file: .G), .init(rank: .five, file: .H)]]
         
         XCTAssertEqual(movablePositions, expectedResult)
     }

@@ -42,18 +42,27 @@ struct Rook: Piece {
         return isPossible
     }
     
-    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> Set<Position> {
-        var movablePositions: Set<Position?> = []
+    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> [[Position]] {
+        var result: [[Position]] = .init()
         
-        for index in 0..<8 {
-            movablePositions.insert(position.makePosition(rankDiff: 0, fileDiff: -index))
-            movablePositions.insert(position.makePosition(rankDiff: 0, fileDiff: index))
-            movablePositions.insert(position.makePosition(rankDiff: -index, fileDiff: 0))
-            movablePositions.insert(position.makePosition(rankDiff: index, fileDiff: 0))
+        let availableStartPosition = neighborPositions.filter({ $0.rank == position.rank || $0.file == position.file })
+        
+        availableStartPosition.forEach { startPosition in
+            let rankDiff = startPosition.rank.rawValue - position.rank.rawValue
+            let fileDiff = startPosition.file.rawValue - position.file.rawValue
+            
+            var ways: [Position?] = []
+            for index in 1..<8 {
+                let newRank = rankDiff * index
+                let newFile = fileDiff * index
+                if rankDiff == 0 {
+                    ways.append(position.makePosition(rankDiff: 0, fileDiff: newFile))
+                } else if fileDiff == 0 {
+                    ways.append(position.makePosition(rankDiff: newRank, fileDiff: 0))
+                }
+            }
+            result.append(ways.compactMap({ $0 }))
         }
-        
-        movablePositions.remove(position)
-        
-        return removeDuplicates(neighbors: neighborPositions, movablePositions: movablePositions)
+        return result
     }
 }

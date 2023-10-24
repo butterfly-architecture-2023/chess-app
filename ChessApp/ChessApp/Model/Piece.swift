@@ -14,19 +14,5 @@ protocol Piece {
     var displayText: String { get }
 
     func isPossibleInitPosition(with position: Position) -> Bool
-    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> Set<Position>
-}
-
-extension Piece {
-    func removeDuplicates(neighbors: Set<Position?>, movablePositions: Set<Position?>) -> Set<Position> {
-        var result: Set<Position?> = []
-        
-        movablePositions.forEach {
-            if neighbors.contains($0) {
-                result.insert($0)
-            }
-        }
-        
-        return Set(result.compactMap({ $0 }))
-    }
+    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> [[Position]]
 }

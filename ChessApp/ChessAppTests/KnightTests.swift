@@ -22,9 +22,9 @@ final class KnightTests: XCTestCase {
         let knight = Knight(color: .white)
         let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .five, file: .D)])
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .six, file: .C),
-            .init(rank: .six, file: .E)
+        let expectedResult: [[Position]] = [
+            [.init(rank: .five, file: .D), .init(rank: .six, file: .C)],
+            [.init(rank: .five, file: .D), .init(rank: .six, file: .E)]
         ]
         
         XCTAssertEqual(movablePositions, expectedResult)
@@ -34,11 +34,10 @@ final class KnightTests: XCTestCase {
         let knight = Knight(color: .white)
         let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .three, file: .D)])
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .two, file: .C),
-            .init(rank: .two, file: .E)
+        let expectedResult: [[Position]] = [
+            [.init(rank: .three, file: .D), .init(rank: .two, file: .C)],
+            [.init(rank: .three, file: .D), .init(rank: .two, file: .E)]
         ]
-        
         XCTAssertEqual(movablePositions, expectedResult)
     }
     
@@ -46,9 +45,9 @@ final class KnightTests: XCTestCase {
         let knight = Knight(color: .white)
         let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .four, file: .E)])
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .five, file: .F),
-            .init(rank: .three, file: .F)
+        var expectedResult: [[Position]] = [
+            [.init(rank: .four, file: .E), .init(rank: .three, file: .F)],
+            [.init(rank: .four, file: .E), .init(rank: .five, file: .F)]
         ]
         
         XCTAssertEqual(movablePositions, expectedResult)
@@ -58,11 +57,10 @@ final class KnightTests: XCTestCase {
         let knight = Knight(color: .white)
         let movablePositions = knight.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .four, file: .C)])
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .five, file: .B),
-            .init(rank: .three, file: .B)
+        let expectedResult: [[Position]] = [
+            [.init(rank: .four, file: .C), .init(rank: .three, file: .B)],
+            [.init(rank: .four, file: .C), .init(rank: .five, file: .B)]
         ]
-        
         XCTAssertEqual(movablePositions, expectedResult)
     }
 }

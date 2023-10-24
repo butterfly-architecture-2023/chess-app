@@ -72,14 +72,20 @@ final class ChessBoard {
             let toSquare = board[toSquareIndex]
             
             let neighborPositions = getMovableNeighborDirections(from: fromSquare.position)
-            if let avaliableMovingPosition = fromSquare.piece?.getMovableAllPositions(from: fromSquare.position, with: neighborPositions) {
+            if let avaliableMovingPositions = fromSquare.piece?.getMovableAllPositions(from: fromSquare.position, with: neighborPositions) {
                 
-                if avaliableMovingPosition.contains(where: { $0 == to }) {
-                    if toSquare.piece == nil {
-                        canMove = true
-                    } else {
-                        if fromSquare.piece?.color != toSquare.piece?.color {
-                            canMove = true
+                avaliableMovingPositions.forEach { ways in
+                    if ways.contains(where: { $0 == to }) {
+                        var arrived = false
+                        ways.forEach { position in
+                            if let piece = board.first(where: { $0.position == position })?.piece {
+                                if arrived && piece.color != fromSquare.piece?.color {
+                                    canMove = true
+                                    return
+                                } else {
+                                    return
+                                }
+                            }
                         }
                     }
                 }

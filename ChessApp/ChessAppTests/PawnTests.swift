@@ -22,7 +22,7 @@ final class PawnTests: XCTestCase {
         let pawn = Pawn(color: .white)
         let movablePositions = pawn.getMovableAllPositions(from: .init(rank: .three, file: .D), with: .init([.init(rank: .three, file: .C), .init(rank: .four, file: .C)]))
         
-        let expectedResult: Set<Position> = [ ]
+        let expectedResult: [[Position]] = [ ]
         
         XCTAssertEqual(movablePositions, expectedResult)
     }

@@ -20,13 +20,10 @@ final class QueenTests: XCTestCase {
 
     func test_F5위치의_Queen이_움직일_수_있는_모든_위치_확인() {
         let queen = Queen(color: .black)
-        let movablePositions = queen.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .five, file: .C), .init(rank: .four, file: .C), .init(rank: .three, file: .C)])
+        let movablePositions = queen.getMovableAllPositions(from: .init(rank: .four, file: .D), with: [.init(rank: .five, file: .C)])
         
-        let expectedResult: Set<Position> = [
-            .init(rank: .five, file: .C),
-            .init(rank: .four, file: .C),
-            .init(rank: .three, file: .C)
-        ]
+        let expectedResult: [[Position]] = [
+            [.init(rank: .five, file: .C), .init(rank: .six, file: .B), .init(rank: .seven, file: .A)]]
         
         XCTAssertEqual(movablePositions, expectedResult)
     }
