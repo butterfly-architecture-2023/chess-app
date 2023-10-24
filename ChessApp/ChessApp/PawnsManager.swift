@@ -46,7 +46,7 @@ final class PawnsManagerImpl: PawnsManager {
     }
     
     func update(from source: Position, to destination: Position) {
-        guard let pawn = self.pawns[source] else { return }
+        guard let pawn = self.getPawn(at: source) else { return }
         
         self.pawns[pawn.currentPosition] = nil
         self.pawns[destination] = Pawn(color: pawn.color, currentPosition: destination)

@@ -11,6 +11,7 @@
 		8908800A2AE737AB0049E578 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890880092AE737AB0049E578 /* Rank.swift */; };
 		8908800D2AE73AF80049E578 /* InputManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908800C2AE73AF80049E578 /* InputManagerTests.swift */; };
 		8908800F2AE74ACD0049E578 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8908800E2AE74ACD0049E578 /* PawnTests.swift */; };
+		890880112AE753C30049E578 /* BoardTests+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 890880102AE753C30049E578 /* BoardTests+Stub.swift */; };
 		8957D9CB2ADD15F900B7606D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9CA2ADD15F900B7606D /* AppDelegate.swift */; };
 		8957D9CD2ADD15F900B7606D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9CC2ADD15F900B7606D /* SceneDelegate.swift */; };
 		8957D9CF2ADD15F900B7606D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9CE2ADD15F900B7606D /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		890880092AE737AB0049E578 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		8908800C2AE73AF80049E578 /* InputManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManagerTests.swift; sourceTree = "<group>"; };
 		8908800E2AE74ACD0049E578 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
+		890880102AE753C30049E578 /* BoardTests+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardTests+Stub.swift"; sourceTree = "<group>"; };
 		8957D9C72ADD15F900B7606D /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8957D9CA2ADD15F900B7606D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8957D9CC2ADD15F900B7606D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				8962896C2ADF1FA900D31D25 /* BoardTests.swift */,
+				890880102AE753C30049E578 /* BoardTests+Stub.swift */,
 				8908800C2AE73AF80049E578 /* InputManagerTests.swift */,
 				8908800E2AE74ACD0049E578 /* PawnTests.swift */,
 				8962896B2ADF1FA900D31D25 /* ChessAppTests-Bridging-Header.h */,
@@ -259,6 +262,7 @@
 			files = (
 				8908800F2AE74ACD0049E578 /* PawnTests.swift in Sources */,
 				8908800D2AE73AF80049E578 /* InputManagerTests.swift in Sources */,
+				890880112AE753C30049E578 /* BoardTests+Stub.swift in Sources */,
 				8962896D2ADF1FA900D31D25 /* BoardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

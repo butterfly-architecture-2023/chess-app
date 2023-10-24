@@ -10,7 +10,6 @@ import Foundation
 protocol BoardConfigurable {
     init(pawnsManager: PawnsManager)
     
-    func start()
     func display() -> [[String]]
     func move(from source: Position, to destination: Position) throws
     func getScore(of color: Color) -> Int
@@ -22,9 +21,6 @@ final class Board: BoardConfigurable {
     
     init(pawnsManager: PawnsManager) {
         self.pawnsManager = pawnsManager
-    }
-    
-    func start() {
         self.pawnsManager.resetPawns()
     }
     
