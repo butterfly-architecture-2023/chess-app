@@ -16,10 +16,7 @@ struct Position: Equatable, Hashable {
     let file: Int     // column
     let rank: Int     // row
 
-    init?(file: Int, rank: Int) {
-        guard Position.fileMap.keys.count > file,
-              Position.rankMap.keys.count > rank else { return nil }
-        
+    init(file: Int, rank: Int) {        
         self.file = file
         self.rank = rank
     }
