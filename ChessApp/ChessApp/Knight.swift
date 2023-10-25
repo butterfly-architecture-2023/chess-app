@@ -10,7 +10,7 @@ import Foundation
 struct Knight: Piece {
   let type: PieceType = .knight
   let color: PieceColor
-  let directionMovable: Set<MoveDirection> = [
+  let directionMovable: Set<MoveVector> = [
     .combination([.up(1), .upLeft(1)]), .combination([.up(1), .upRight(1)]),
     .combination([.left(1), .upLeft(1)]), .combination([.left(1), .downLeft(1)]),
     .combination([.down(1), .downLeft(1)]), .combination([.down(1), .downRight(1)]),

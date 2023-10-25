@@ -10,7 +10,7 @@ import Foundation
 struct Pawn: Piece {
   let type: PieceType = .pawn
   let color: PieceColor
-  let directionMovable: Set<MoveDirection>
+  let directionMovable: Set<MoveVector>
   
   var moveCount: Int = 0
   

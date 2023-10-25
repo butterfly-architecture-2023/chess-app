@@ -10,6 +10,6 @@ import Foundation
 protocol Piece: Equatable {
   var type: PieceType { get }
   var color: PieceColor { get }
-  var directionMovable: Set<MoveDirection> { get }
+  var directionMovable: Set<MoveVector> { get }
   init(_ color: PieceColor)
 }

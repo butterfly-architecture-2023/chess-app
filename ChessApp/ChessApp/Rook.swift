@@ -10,7 +10,7 @@ import Foundation
 struct Rook: Piece {
   let type: PieceType = .rook
   let color: PieceColor
-  let directionMovable: Set<MoveDirection> = [
+  let directionMovable: Set<MoveVector> = [
     .up(nil), .left(nil), .down(nil), .right(nil)
   ]
   

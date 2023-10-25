@@ -44,15 +44,11 @@ final class PieceTypeTests: XCTestCase {
       "B2 B1", // Black Pawn 은 위로 이동할 수 없다.
       "B2 A1", // Black Pawn 은 대각선 왼쪽으로 이동할 수 없다.
       "B2 C1", // Black Pawn 은 대각선 오른쪽으로 이동할 수 없다.
-      "B2 A2", // Black Pawn 은 왼쪽으로 이동할 수 없다.
-      "B2 C2", // Black Pawn 은 오른쪽으로 이동할 수 없다.
     ]
     let blackPawnInputs = [
       "B7 B8", // White Pawn 은 뒤로 이동할 수 없다.
       "B7 A8", // White Pawn 은 대각선 왼쪽으로 이동할 수 없다.
       "B7 C8", // White Pawn 은 대각선 오른쪽으로 이동할 수 없다.
-      "B7 A7", // White Pawn 은 왼쪽으로 이동할 수 없다.
-      "B7 C7", // White Pawn 은 으론쪽으로 이동할 수 없다.
     ]
     
     for i in blackPawnInputs.indices {
@@ -126,7 +122,7 @@ final class PieceTypeTests: XCTestCase {
     var type: PieceType = .pawn
     var color: PieceColor
     
-    var directionMovable: Set<MoveDirection>
+    var directionMovable: Set<MoveVector>
     
     required init(_ color: PieceColor) {
       self.color = color

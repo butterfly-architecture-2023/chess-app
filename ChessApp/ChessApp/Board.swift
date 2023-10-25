@@ -106,7 +106,7 @@ class Board {
     score[currentTurn] = ((score[currentTurn] ?? 0) + 1)
   }
   
-  class Position: Equatable, Hashable {
+  class Position: CustomStringConvertible, Equatable, Hashable {
     static func == (lhs: Board.Position, rhs: Board.Position) -> Bool {
       lhs.row == rhs.row && lhs.column == rhs.column
     }
@@ -134,6 +134,10 @@ class Board {
       hasher.combine(row)
       hasher.combine(column)
     }
+    
+    var description: String {
+      "\(column)"+"\(row)"
+    }
   }
   
   func getCmd(_ cmd: String) throws -> (from: Position, to: Position) {
@@ -151,7 +155,7 @@ class Board {
   }
   
   /// 도착지점을 제외하고 경로 상에 있는 모든 체스말들을 반환합니다.
-  func getExistsPieces(from position: Position, to direction: MoveDirection) -> [(any Piece)] {
+  func getExistsPieces(from position: Position, to direction: MoveVector) -> [(any Piece)] {
     var position = position
     let distance = (direction.distance ?? 0)-1
     var result = [(any Piece)]()
@@ -243,13 +247,13 @@ extension Board.Position {
     }
   }
   
-  func direction(to position: Board.Position, color: PieceColor) -> [MoveDirection] {
+  func direction(to position: Board.Position, color: PieceColor) -> [MoveVector] {
     guard position != self else {
       return []
     }
     
-    var current = self, result: [MoveDirection] = []
-    var step: MoveDirection?
+    var current = self, result: [MoveVector] = []
+    var step: MoveVector?
     
     while current != position {
       // 좌우 여부를 확인
@@ -279,7 +283,7 @@ extension Board.Position {
       }
       
       if let nextStep = step, let nextPosition = current.getNextPosition(to: nextStep) {
-        if result.last.self == nextStep.self {
+        if result.isEmpty == false, result.last?.equalDirection(with: nextStep) ?? false {
           let removed = result.removeLast()
           result.append(removed.add(1))
         } else {
@@ -296,7 +300,7 @@ extension Board.Position {
     return result
   }
   
-  func getNextPosition(to direction: MoveDirection) -> Board.Position? {
+  func getNextPosition(to direction: MoveVector) -> Board.Position? {
     // 이동하는 거리는 고려하지 않음. 다음 칸은 무조건 한칸이므로 Int 값 불필요
     switch direction {
     case .up(_), .upRight(_), .upLeft(_), .downLeft(_), .downRight(_), .down(_), .left(_), .right(_):

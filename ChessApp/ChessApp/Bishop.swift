@@ -10,7 +10,7 @@ import Foundation
 struct Bishop: Piece {
   let type: PieceType = .bishop
   let color: PieceColor
-  let directionMovable: Set<MoveDirection> = .init([
+  let directionMovable: Set<MoveVector> = .init([
     .upLeft(nil), .upRight(nil), .downLeft(nil), .downRight(nil)
   ])
   
