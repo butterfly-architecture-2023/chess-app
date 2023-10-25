@@ -47,6 +47,12 @@ extension Row: Comparable {
   }
 }
 
+extension Row: CustomStringConvertible {
+  var description: String {
+    return "\(self.rawValue)"
+  }
+}
+
 extension Int {
   var toRow: Row? {
     Row.allCases.first(where: {$0.rawValue == self})

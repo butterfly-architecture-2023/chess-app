@@ -55,7 +55,7 @@ class Board {
   func move(from start: Position, to dest: Position) throws -> Bool {
     let (result, _) = try movePiece(from: start, to: dest)
     currentTurn = currentTurn == .white ? .black : .white
-    
+    print(display())
     return result
   }
   
@@ -86,9 +86,15 @@ class Board {
     // 목적지까지 이동하기 위해 경로를 탐색
     let directionToMove = start.direction(to: dest, color: piece.color)
     // 이동하기 위한 경로가 말이 움직일 수 있는 경로인지 검사
-    guard piece.directionMovable.isSuperset(of: directionToMove) else {
-      return []
+  directionLoop: for direction in directionToMove {
+    for movable in piece.directionMovable {
+      if movable.equalDirection(with: direction) {
+        continue directionLoop
+      }
     }
+      
+    return []
+  }
     
     return directionToMove
   }
@@ -197,6 +203,19 @@ class Board {
       nil,
       Queen(color), Bishop(color), Knight(color), Rook(color)
     ]
+  }
+  
+  func display() -> String {
+    var result = ""
+    result += Column.allCases.reduce(" ", { $0 + "\($1)" }) + "\n"
+    
+    for (inx, row) in Row.allCases.enumerated() {
+      result += "\(row)"
+      result += positions.rows(row).reduce("", { $0 + ($1.piece?.typeDesc ?? ".") })
+      result += (inx != Row.allCases.endIndex-1 ? "\n" : "")
+    }
+    
+    return result
   }
   
   enum InputError: Error {

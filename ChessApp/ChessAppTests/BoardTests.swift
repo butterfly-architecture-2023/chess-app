@@ -103,4 +103,8 @@ final class BoardTests: XCTestCase {
       XCTAssertNotNil(blackSUT as? Knight)
     }
   }
+  
+  func testDisplay() throws {
+    print(board.display())
+  }
 }

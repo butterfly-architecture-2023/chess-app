@@ -46,6 +46,12 @@ extension Column: Comparable {
   }
 }
 
+extension Column: CustomStringConvertible {
+  var description: String {
+    return self.rawValue
+  }
+}
+
 extension String {
   var toColumn: Column? {
     Column.allCases.first(where: {$0.rawValue == self})
