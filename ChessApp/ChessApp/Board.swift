@@ -37,14 +37,10 @@ class Board {
     }
   }
   
-  // movePiece, calculate 호출
+  // movePiece
   @discardableResult
   func move(from start: Position, to dest: Position) throws -> Bool {
-    let (result, sideEffect) = try movePiece(from: start, to: dest)
-    if sideEffect != nil {
-      calculate()
-    }
-    
+    let (result, _) = try movePiece(from: start, to: dest)
     currentTurn = currentTurn == .white ? .black : .white
     
     return result
@@ -91,7 +87,7 @@ class Board {
       } else {
         positions[start]?.piece = nil
         positions[dest]?.piece = startPiece
-        calculate()
+        calculate(destPiece)
         return (true, destPiece)
       }
     } else {
@@ -102,8 +98,9 @@ class Board {
   }
   
   // 점수를 수정하는 Side-Effect 존재
-  private func calculate() {
-    score[currentTurn] = ((score[currentTurn] ?? 0) + 1)
+  private func calculate(_ sideEffect: (any Piece)) {
+    let color: PieceColor = sideEffect.color == .black ? .white : .black
+    score[color] = (score[color] ?? 0) + 1
   }
   
   class Position: CustomStringConvertible, Equatable, Hashable {

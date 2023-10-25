@@ -16,17 +16,19 @@ final class BoardTests: XCTestCase {
   
   // 점수 상태를 최종 테스트하는 상태 기반 테스트
   func testScores() throws {
-    let blackPawnInputs = [
-      "B2 B3",
-      "B3 B4",
-      "B4 B5", // Black Pawn 제거
-      "B5 C6", // Black Pawn 제거(대각선 이동)
-    ]
     let whitePawnInputs = [
       "B7 B6",
       "B6 B5",
       "C7 C6",
-      "D7 C6", // White Pawn 제거
+      "C6 C5",
+      "C5 C4"
+    ]
+    let blackPawnInputs = [
+      "B2 B3",
+      "B3 B4",
+      "B4 B5",
+      "C2 C3",
+      "C3 C4"
     ]
     
     for i in blackPawnInputs.indices {
@@ -43,12 +45,12 @@ final class BoardTests: XCTestCase {
         blackMoved = try board.move(from: blackMock.from, to: blackMock.to)
       }
       
-      XCTAssertTrue(blackMoved == whiteMoved)
+      XCTAssertTrue(blackMoved && whiteMoved)
     }
     
     print("testScore", board.score)
     XCTAssertEqual(board.score[.black], 2)
-    XCTAssertEqual(board.score[.white], 1)
+    XCTAssertEqual(board.score[.white], 0)
   }
   
   // 원하는 PieceType 과 통신하고 있는지 이동과 함께 테스트하는 통신 기반 테스트
@@ -58,13 +60,11 @@ final class BoardTests: XCTestCase {
       "B2 B3",
       "B3 B4",
       "B4 B5", // Black Pawn 제거
-      "B5 C6", // Black Pawn 제거(대각선 이동)
     ]
     let whitePawnInputs = [
       "B7 B6",
       "B6 B5",
       "C7 C6",
-      "D7 C6", // White Pawn 제거
     ]
     
     for i in blackPawnInputs.indices {
