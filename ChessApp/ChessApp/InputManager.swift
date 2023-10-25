@@ -8,12 +8,6 @@
 import Foundation
 
 struct InputManager {
-    private(set) var inputText: String = ""
-    
-    init(inputText: String?) {
-        self.inputText = inputText ?? ""
-    }
-    
     
     /// Input 형식에 맞는지 체크하여 어떤 FormatType인지 리턴
     /// - Parameter input: 입력된 String Type 값

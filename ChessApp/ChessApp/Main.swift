@@ -21,18 +21,22 @@ func main() {
         
         // MARK: - 입력
         printManager.showDescription(.inputText)
-        var inputManager = InputManager(inputText: readLine())
+        let inputText = readLine() ?? ""
+        var inputManager = InputManager()
         
         do {
             // MARK: - 검증
             // - 형식에 맞는가? "OO->OO" or "?OO"인가
-            let inputFormatType = try inputManager.checkFormatType(inputManager.inputText)
+            let inputFormatType = try inputManager.checkFormatType(inputText)
             
             // - inputText를 분류하고, Position 형식으로 변환
-            let positionInfo = inputManager.makePositionList(inputManager.inputText, inputFormatType)
+            let positionInfo = inputManager.makePositionList(inputText, inputFormatType)
             
             // - currentPosition 값이 게임 순서와 맞는지 체크
             try board.checkGameTurn(positionInfo)
+            
+            // - 이동이 가능한지 체크
+            try board.checkMovable(positionInfo, inputFormatType)
             
             
             // MARK: - [처리/계산] board 저장값 수정

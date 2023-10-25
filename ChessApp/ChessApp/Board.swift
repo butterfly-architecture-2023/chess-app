@@ -12,8 +12,8 @@ typealias ChessPieceGroup = [Position:Piece]
 struct Board {
     private var size: Int = 0
     private(set) var chessBoard: ChessPieceGroup = [:]
-    private var chessPoint: ChessPoint = ChessPoint(black: 0, white: 0)
-    private var gameTurn: PieceColorType = .white
+    private(set) var chessPoint: ChessPoint = ChessPoint(black: 0, white: 0)
+    private(set) var gameTurn: PieceColorType = .white
     
     init(size: Int) {
         self.size = size
@@ -73,23 +73,63 @@ struct Board {
         guard let currentPosition = positionArray.first,
               let updatePosition = positionArray.last else { return }
         chessBoard[updatePosition] = chessBoard[currentPosition]
-        print(currentPosition.rank, currentPosition.file)
-        print(chessBoard[currentPosition])
-        print("=>")
         chessBoard[currentPosition] = EmptySpace()
-        print(chessBoard[currentPosition])
-        
     }
     
     mutating func checkGameTurn(_ positionArray: [Position]) throws {
         guard let currentPosition = positionArray.first else { return }
         guard getPawnType(by: currentPosition) == gameTurn else {
-            throw ErrorType.chessTypeError(pawnType: gameTurn)
+            throw ErrorType.chessTypeError(pieceColorType: gameTurn)
         }
     }
     
-    private mutating func getPawnType(by position: Position) -> PieceColorType {
-        let pawn = Pawn(pieceColorType: .black)
-        return pawn.pieceColorType
+    func checkMovable(_ positionArray: [Position], _ type: RegexFormatType) throws {
+        //
+        // 1. [0]이 어떤 체스말인지 가져옴
+        let currentPosition: Position = positionArray.first!
+        guard let currentPiece = chessBoard[currentPosition] else { throw ErrorType.pieceError }
+        
+        // 2. [0] 기준으로 해당 [Position]이 어딘지 리턴받아옴
+        var array = currentPiece.movablePosition(currentPosition)
+        array = checkInBoardArea(array)
+        array = checkInSameGroup(array, currentPosition)
+        
+        // help형식이면, 2 리턴
+        // update형식이면, [1]이 [Position]에 속하는지 체크
+            // 해당 위치에 같은 편 체스말 있는지 체크해서 제외시킴
+            // 이동 안된다면 throw
+        switch type {
+            case .updatePiece:
+                let updatePosition: Position = positionArray.last!
+                if !array.contains(updatePosition) { throw ErrorType.unableToMoveError }
+                if let updatePiece = chessBoard[updatePosition],
+                    updatePiece.pieceColorType == currentPiece.pieceColorType {
+                    throw ErrorType.unableToMoveError
+                }
+            case .help:
+                throw ErrorType.helpPosition(positionList: array)
+        }
+    }
+    
+    func checkInBoardArea(_ array: [Position]) -> [Position] {
+        return array.filter {
+            ($0.rank >= 0 && $0.rank <= 8) && ($0.file >= 0 && $0.file <= 8)
+        }
+    }
+    
+    func checkInSameGroup(_ array: [Position], _ currentPosition: Position) -> [Position] {
+        return array.filter {
+            if let piece = chessBoard[$0], let currentPiece = chessBoard[currentPosition] {
+                return !((piece.pieceColorType == currentPiece.pieceColorType) && piece.pieceType != .empty)
+            }
+            return true
+        }
+    }
+    
+    private func getPawnType(by position: Position) -> PieceColorType {
+        if let piece = chessBoard[position] {
+            return piece.pieceColorType
+        }
+        return .black
     }
  }
