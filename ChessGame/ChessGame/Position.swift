@@ -29,11 +29,11 @@ struct Position: Equatable, Hashable {
     }
     
     func topPosition() -> Self? {
-        Position(file: file, rank: rank-1)
+        Position(file: file-1, rank: rank)
     }
     
     func bottomPosition() -> Self? {
-        Position(file: file, rank: rank+1)
+        Position(file: file+1, rank: rank)
     }
 
 }
