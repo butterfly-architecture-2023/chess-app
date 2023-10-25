@@ -64,16 +64,53 @@ final class BoardTests: XCTestCase {
 
         XCTAssertEqual(sut, target)
     }
-//    
-//    func testMovePawn_체스보드_맨_위에_검은_폰이_위치했을_때_폰을_움직일_수_있는지_확인() {
-//        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
-//        square[0] = square[0].map{ _ in Piece(category: .pawn(color: .black)) }
-//        
-//        let board = Board(square: square)
+    
+    func testMovePiece_게임_시작_시점에_모든_검은_폰은_아래로_한칸_움직일_수_있다() {
+        let board = Board()
+        let blackPawnStartPositions = BlackPawn.initialPositions()
+        
+        // 체스판 시작지점에 체스말 초기화
+        // ["♜", "♞", "♝", ".", "♛", "♝", "♞", "♜"]
+        // ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"]
+        // ["♖", "♘", "♗", ".", "♕", "♗", "♘", "♖"]
+        board.gameStart()
+        
+        blackPawnStartPositions.forEach { (position, blackPawn) in
+            if let bottomPosition = position.bottomPosition() {
+                let canMove = board.movePiece(from: position, to: bottomPosition)
+                XCTAssertTrue(canMove)
+            }
+        }
+    }
+    
+    func testMovePiece_게임_시작_시점에_모든_하얀_폰이_위로_한칸_움직일_수_있다() {
+        let board = Board()
+        let whitePawnStartPositions = WhitePawn.initialPositions()
+        
+        // 체스판 시작지점에 체스말 초기화
+        // ["♜", "♞", "♝", ".", "♛", "♝", "♞", "♜"]
+        // ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // [".", ".", ".", ".", ".", ".", ".", "."]
+        // ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"]
+        // ["♖", "♘", "♗", ".", "♕", "♗", "♘", "♖"]
+        board.gameStart()
+        
+        whitePawnStartPositions.forEach { (position, blackPawn) in
+            if let topPosition = position.topPosition() {
+                let canMove = board.movePiece(from: position, to: topPosition)
+                XCTAssertTrue(canMove)
+            }
+        }
+    }
 //
-//        XCTAssertTrue(board.movePawn(current: .init(file: 0, rank: 0)))
-//    }
-//    
 //    func testMovePawn_체스보드_맨_위에_하얀_폰이_위치했을_때_폰을_움직일_수_없는지_확인() {
 //        var square = Array(repeating: Array(repeating: Piece(category: .empty), count: 8), count: 8)
 //        square[0] = square[0].map{ _ in Piece(category: .pawn(color: .white)) }
