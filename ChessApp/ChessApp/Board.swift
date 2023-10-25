@@ -55,23 +55,51 @@ class Board {
       throw MoveError.noPiece(start)
     }
     
-    // 목적지까지 이동하기 위해 경로를 탐색
-    let directionToMove = start.direction(to: dest, color: startPiece.color)
-    // 이동하기 위한 경로가 말이 움직일 수 있는 경로인지 검사
-    guard startPiece.directionMovable.isSuperset(of: directionToMove) else {
+    let vectors = getMoveVectors(using: startPiece, from: start, to: dest)
+    guard vectors.isEmpty == false else {
       return (false, nil)
     }
     
+    try checkObstacle(vectors: vectors, from: start, to: dest)
+    
+    return try updateBoard(using: startPiece, from: start, to: dest)
+  }
+  
+  private func getMoveVectors(
+    using piece: any Piece,
+    from start: Position,
+    to dest: Position
+  ) -> [MoveVector] {
+    // 목적지까지 이동하기 위해 경로를 탐색
+    let directionToMove = start.direction(to: dest, color: piece.color)
+    // 이동하기 위한 경로가 말이 움직일 수 있는 경로인지 검사
+    guard piece.directionMovable.isSuperset(of: directionToMove) else {
+      return []
+    }
+    
+    return directionToMove
+  }
+  
+  private func checkObstacle(
+    vectors: [MoveVector],
+    from start: Position,
+    to dest: Position
+  ) throws {
     // 진행 중 장애물이 있는지 검사
     var current = start
-    for direction in directionToMove {
+    
+    for direction in vectors {
+      
       let piece = getExistsPieces(from: current, to: direction)
+      
       if let obstacle = piece.first {
         throw MoveError.haveObstacle(current, obstacle)
       } else { // 장애물이 있음
+        
         if let nextStep = current.getNextPosition(to: direction) {
           current = nextStep
         } else { // 다음에 움직일 위치를 가져오지 못함
+          
           if current.column == .H || current.row == .eight {
             throw InputError.maximumLengthExceeded
           } else {
@@ -80,21 +108,28 @@ class Board {
         }
       }
     }
+  }
+  
+  private func updateBoard(
+    using piece: any Piece,
+    from start: Position,
+    to dest: Position
+  ) throws -> (Bool, any Piece) {
     
-    if let destPiece = getPiece(dest) {
-      if destPiece.color == startPiece.color {
+    let destPiece = getPiece(dest)
+    
+    if let destPiece = destPiece {
+      
+      if destPiece.color == piece.color {
         throw MoveError.haveObstacle(dest, destPiece)
       } else {
-        positions[start]?.piece = nil
-        positions[dest]?.piece = startPiece
         calculate(destPiece)
-        return (true, destPiece)
       }
-    } else {
-      positions[start]?.piece = nil
-      positions[dest]?.piece = startPiece
-      return (true, startPiece)
     }
+    
+    positions[start]?.piece = nil
+    positions[dest]?.piece = piece
+    return (true, destPiece ?? piece) // 만약 destPiece 가 nil 이면 단순 이동이었으며, 아니면 점수계산이 되었거나 throw 하였다는 것임.
   }
   
   // 점수를 수정하는 Side-Effect 존재
@@ -152,7 +187,7 @@ class Board {
   }
   
   /// 도착지점을 제외하고 경로 상에 있는 모든 체스말들을 반환합니다.
-  func getExistsPieces(from position: Position, to direction: MoveVector) -> [(any Piece)] {
+  private func getExistsPieces(from position: Position, to direction: MoveVector) -> [(any Piece)] {
     var position = position
     let distance = (direction.distance ?? 0)-1
     var result = [(any Piece)]()
