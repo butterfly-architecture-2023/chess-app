@@ -79,19 +79,30 @@ final class ChessBoard {
 
         return isValidPosition(from) && isValidPosition(to) &&
         isVaildColor(fromPiece: pieceAtFromPosition, toPiece: pieceAtToPosition) &&
+        isDestinationEmptyOrHasDifferentColor(pieceAtToPosition, fromPieceAtFromPosition: pieceAtFromPosition) &&
         isValidRankMove(from: from, to: to)
     }
 
     /// 체스말은 위치값은 가로 file은 A부터 H까지, 세로 rank는 1부터 8까지 입력이 가능하다.
     private func isValidPosition(_ position: Position) -> Bool {
-        return (1...Rank.allCases.count).contains(position.rank.rawValue) && (0..<File.allCases.count).contains(position.file.rawValue)
+        return (1...Rank.allCases.count).contains(position.rank.rawValue) && (
+            0..<File.allCases.count).contains(position.file.rawValue)
+    }
+
+    /// from과 to의 체스말은 동일할 수 없다.
+    private func isVaildColor(fromPiece: Piece?, toPiece: Piece?) -> Bool {
+        if toPiece == nil {
+            return true
+        }
+        return fromPiece?.color != toPiece?.color
     }
 
     /// 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없다.
-    /// from과 to의 체스말은 동일할 수 없다.
-    private func isVaildColor(fromPiece: Piece?, toPiece: Piece?) -> Bool {
-        if fromPiece?.color != toPiece?.color {
-            return false
+    private func isDestinationEmptyOrHasDifferentColor(
+        _ toPiece: Piece?, fromPieceAtFromPosition: Piece?
+    ) -> Bool {
+        if let toPiece = toPiece {
+            return toPiece.color != fromPieceAtFromPosition?.color
         }
         return true
     }

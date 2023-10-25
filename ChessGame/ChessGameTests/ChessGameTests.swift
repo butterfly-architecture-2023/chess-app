@@ -64,8 +64,8 @@ final class ChessGameTests: XCTestCase {
 
     /// 특정 말을 옮기는 메소드 유효성 테스트
     func test_movePiece() {
-        let fromPosition = Position(rank: .eight, file: .a)
-        let toPosition = Position(rank: .seven, file: .b)
+        let fromPosition = Position(rank: .two, file: .a)
+        let toPosition = Position(rank: .three, file: .a)
         XCTAssertTrue(sut.movePiece(from: fromPosition, to: toPosition))
     }
 }
