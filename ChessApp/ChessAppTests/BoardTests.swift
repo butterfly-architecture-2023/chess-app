@@ -61,10 +61,16 @@ final class BoardTests: XCTestCase {
       "B3 B4",
       "B4 B5", // Black Pawn 제거
     ]
+    let blackKnightInputs = [
+      "B1 C3",
+    ]
     let whitePawnInputs = [
       "B7 B6",
       "B6 B5",
       "C7 C6",
+    ]
+    let whiteKnightInputs = [
+      "C8 A6",
     ]
     
     for i in blackPawnInputs.indices {
@@ -80,6 +86,21 @@ final class BoardTests: XCTestCase {
       XCTAssertNotNil(whiteSUT as? Pawn)
       XCTAssertEqual(blackSUT?.color, .black)
       XCTAssertNotNil(blackSUT as? Pawn)
+    }
+    
+    for i in blackKnightInputs.indices {
+      let whiteMock = try board.getCmd(whiteKnightInputs[i])
+      let blackMock = try board.getCmd(blackKnightInputs[i])
+      
+      let whiteSUT = board.getPiece(whiteMock.from)
+      try board.move(from: whiteMock.from, to: whiteMock.to)
+      let blackSUT = board.getPiece(blackMock.from)
+      try board.move(from: blackMock.from, to: blackMock.to)
+      
+      XCTAssertEqual(whiteSUT?.color, .white)
+      XCTAssertNotNil(whiteSUT as? Bishop)
+      XCTAssertEqual(blackSUT?.color, .black)
+      XCTAssertNotNil(blackSUT as? Knight)
     }
   }
 }
