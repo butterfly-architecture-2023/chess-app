@@ -5,8 +5,6 @@
 //  Created by 박진섭 on 10/25/23.
 //
 
-import Foundation
-
 final class MapManager {
     private var map: [[String]]
 

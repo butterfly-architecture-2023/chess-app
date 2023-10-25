@@ -5,8 +5,6 @@
 //  Created by 박진섭 on 10/23/23.
 //
 
-// PieceManager: 검증(Piece가 움직일 수 있는지, 움직일수 있는 곳은 어디인지)
-
 final class PieceManager {
     private var pieces: [Piece]
 

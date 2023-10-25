@@ -11,7 +11,4 @@ import XCTest
 final class Chess_gameTests: XCTestCase {
 
 
-//
-
-
 }

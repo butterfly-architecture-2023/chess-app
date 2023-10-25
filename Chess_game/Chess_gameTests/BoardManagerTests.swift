@@ -9,7 +9,6 @@ import XCTest
 
 final class BoardManagerTests: XCTestCase {
 
-
     func test_특정위치로_말이_이동한후_맵이_정상적으로_바뀌는가() {
         // 가지 못함
         // 이동하면서 말을 잡음
