@@ -37,6 +37,19 @@ class Board {
     }
   }
   
+  func getCmd(_ cmd: String) throws -> (from: Position, to: Position) {
+    let cmds = cmd.split(separator: " ").map({String($0)})
+    guard cmds.count == 2 else {
+      throw InputError.formatError
+    }
+    
+    return try (from: getPosition(from: cmds[0]), to: getPosition(from: cmds[1]))
+  }
+  
+  func getPiece(_ position: Position) -> (any Piece)? {
+    return positions[position]?.piece
+  }
+  
   // movePiece
   @discardableResult
   func move(from start: Position, to dest: Position) throws -> Bool {
@@ -138,54 +151,6 @@ class Board {
     score[color] = (score[color] ?? 0) + 1
   }
   
-  class Position: CustomStringConvertible, Equatable, Hashable {
-    static func == (lhs: Board.Position, rhs: Board.Position) -> Bool {
-      lhs.row == rhs.row && lhs.column == rhs.column
-    }
-    
-    let row: Row, column: Column
-    
-    var piece: (any Piece)?
-    
-    init(_ column: Column, _ row: Row) {
-      self.row = row; self.column = column
-    }
-    
-    init?(_ column: String, _ row: Int) {
-      guard
-        let row = row.toRow,
-        let column = column.toColumn
-      else {
-        return nil
-      }
-      
-      self.row = row; self.column = column
-    }
-    
-    func hash(into hasher: inout Hasher) {
-      hasher.combine(row)
-      hasher.combine(column)
-    }
-    
-    var description: String {
-      "\(column)"+"\(row)"
-    }
-  }
-  
-  func getCmd(_ cmd: String) throws -> (from: Position, to: Position) {
-    let cmds = cmd.split(separator: " ").map({String($0)})
-    
-    guard cmds.count == 2 else {
-      throw InputError.formatError
-    }
-    
-    return try (from: getPosition(from: cmds[0]), to: getPosition(from: cmds[1]))
-  }
-  
-  func getPiece(_ position: Position) -> (any Piece)? {
-    return positions[position]?.piece
-  }
-  
   /// 도착지점을 제외하고 경로 상에 있는 모든 체스말들을 반환합니다.
   private func getExistsPieces(from position: Position, to direction: MoveVector) -> [(any Piece)] {
     var position = position
@@ -240,129 +205,5 @@ class Board {
   
   enum MoveError: Error {
     case noPiece(Position), noDirectionContained, haveObstacle(Position, any Piece)
-  }
-}
-
-extension Array where Element == Board.Position {
-  static var boardGrid: Self = [
-    .init("A",1),.init("A",2),.init("A",3),.init("A",4),.init("A",5),.init("A",6),.init("A",7),.init("A",8),
-    .init("B",1),.init("B",2),.init("B",3),.init("B",4),.init("B",5),.init("B",6),.init("B",7),.init("B",8),
-    .init("C",1),.init("C",2),.init("C",3),.init("C",4),.init("C",5),.init("C",6),.init("C",7),.init("C",8),
-    .init("D",1),.init("D",2),.init("D",3),.init("D",4),.init("D",5),.init("D",6),.init("D",7),.init("D",8),
-    .init("E",1),.init("E",2),.init("E",3),.init("E",4),.init("E",5),.init("E",6),.init("E",7),.init("E",8),
-    .init("F",1),.init("F",2),.init("F",3),.init("F",4),.init("F",5),.init("F",6),.init("F",7),.init("F",8),
-    .init("G",1),.init("G",2),.init("G",3),.init("G",4),.init("G",5),.init("G",6),.init("G",7),.init("G",8),
-    .init("H",1),.init("H",2),.init("H",3),.init("H",4),.init("H",5),.init("H",6),.init("H",7),.init("H",8)
-  ].compactMap({$0})
-  
-  func rows(_ row: Row) -> Self {
-    self.filter({$0.row == row})
-  }
-  
-  func columns(_ column: Column) -> Self {
-    self.filter({$0.column == column})
-  }
-  
-  subscript(position: Board.Position) -> Board.Position? {
-    get {
-      self.first(where: {$0 == position})
-    }
-  }
-}
-
-extension Board.Position {
-  func distance(to position: Board.Position) -> Int {
-    if self.row != position.row {
-      return abs(row.rawValue - position.row.rawValue)
-    } else {
-      return abs(column.order - position.column.order)
-    }
-  }
-  
-  func direction(to position: Board.Position, color: PieceColor) -> [MoveVector] {
-    guard position != self else {
-      return []
-    }
-    
-    var current = self, result: [MoveVector] = []
-    var step: MoveVector?
-    
-    while current != position {
-      // 좌우 여부를 확인
-      if self.column > position.column {
-        step = .left((step?.distance ?? 0) + 1)
-      } else if self.column < position.column {
-        step = .right((step?.distance ?? 0) - 1)
-      }
-      
-      // 상하 여부 혹은 대각선인지 확인
-      if self.row > position.row {
-        if case .left(let dist) = step {
-          step = .upLeft(dist)
-        } else if case .right(let dist) = step {
-          step = .upRight(dist)
-        } else {
-          step = .up(step?.distance ?? 1)
-        }
-      } else {
-        if case .left(let dist) = step {
-          step = .downLeft(dist)
-        } else if case .right(let dist) = step {
-          step = .downRight(dist)
-        } else {
-          step = .down(step?.distance ?? 1)
-        }
-      }
-      
-      if let nextStep = step, let nextPosition = current.getNextPosition(to: nextStep) {
-        if result.isEmpty == false, result.last?.equalDirection(with: nextStep) ?? false {
-          let removed = result.removeLast()
-          result.append(removed.add(1))
-        } else {
-          result.append(nextStep)
-        }
-        
-        step = nextStep
-        current = nextPosition
-      } else {
-        break
-      }
-    }
-    
-    return result
-  }
-  
-  func getNextPosition(to direction: MoveVector) -> Board.Position? {
-    // 이동하는 거리는 고려하지 않음. 다음 칸은 무조건 한칸이므로 Int 값 불필요
-    switch direction {
-    case .up(_), .upRight(_), .upLeft(_), .downLeft(_), .downRight(_), .down(_), .left(_), .right(_):
-      let columnDistance: Int = {
-        switch direction {
-        case .downRight(_), .upRight(_), .right(_): return 1 // 오른쪽으로 가므로 +1
-        case .downLeft(_), .upLeft(_), .left(_): return -1 // 왼쪽으로 가므로 -1
-        default: return 0
-        }
-      }()
-      let rowDistance: Int = {
-        switch direction {
-        case .downRight(_), .downLeft(_), .down(_): return 1 // 내려가므로 +1
-        case .upRight(_), .upLeft(_), .up(_): return -1 // 올라가므로 -1
-        default: return 0
-        }
-      }()
-      
-      guard 
-        let newColumn = column + columnDistance,
-        let newRow = row + rowDistance
-      else {
-        return nil
-      }
-      
-      return Board.Position(newColumn, newRow)
-    case .combination(let directions):
-      return directions.reduce(Optional<Board.Position>.some(self), {
-        return $0?.getNextPosition(to: $1)
-      })
-    }
   }
 }
