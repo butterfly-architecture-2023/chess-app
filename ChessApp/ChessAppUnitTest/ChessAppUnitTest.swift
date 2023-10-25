@@ -8,55 +8,88 @@
 import XCTest
 
 final class ChessAppUnitTest: XCTestCase {
-
-    // test 1 - current position 입력형식 적합
-    func testValidInputValue() throws {
-        var input = InputManager(inputText: "A2->A3")
-        XCTAssertNoThrow(try input.checkInputFormat())
-    }
     
-    // test 2 - current position 입력형식 오류
-    func testCurrentPositionInputValue() throws {
-        var input = InputManager(inputText: "A2A->A3")
-        XCTAssertThrowsError(try input.checkInputFormat()) { error in
-            guard case ErrorType.invalidInputText = error else { return XCTFail()}
-            if let currentPosition = input.positionInfo.first {
-                let rank = currentPosition.rank
-                let file = currentPosition.file
-                print(rank, file)
-                XCTAssertEqual("\(rank)\(file)","02")
-            }
+    // test 1 - Update Position Mode 입력형식 오류
+    func test_입력값_체스말이동_오류() {
+        let input = InputManager()
+        XCTAssertThrowsError(try input.checkFormatType("A2A->A3")) { error in
+            guard case ErrorType.invalidInputText = error else { return XCTFail() }
         }
     }
     
-    // test 3 - update position 입력형식 오류
-    func testUpdatePositionInputValue() throws {
-        var input = InputManager(inputText: "A2->B33")
-        XCTAssertThrowsError(try input.checkInputFormat()) { error in
-            guard case ErrorType.invalidInputText = error else { return XCTFail()}
-            if let currentPosition = input.positionInfo.first {
-                let rank = currentPosition.rank
-                let file = currentPosition.file
-                print(rank, file)
-                XCTAssertEqual("\(rank)\(file)","02")
-            }
+    // test 2 - Update Position Mode 입력형식 통과
+    func test_입력값_체스말이동_통과() throws {
+        let input = InputManager()
+        let regexType = try input.checkFormatType("A2->A3")
+        XCTAssertEqual(regexType, .updatePiece)
+    }
+    
+    // test 3 - Help Mode 입력형식 오류
+    func test_입력값_도움말_오류() {
+        let input = InputManager()
+        XCTAssertThrowsError(try input.checkFormatType("!A2")) { error in
+            guard case ErrorType.invalidInputText = error else { return XCTFail() }
         }
     }
     
-    // test 4 - 체스말 시작 순서 체크
-    func testCheckGameTurn() {
-        var board = Board(size: 8)
-        let input = InputManager(inputText: "A7") // 백색 체스말
-        XCTAssertNoThrow(try board.checkGameTurn(input.positionInfo))
+    // test 4 - Help Mode 입력형식 통과
+    func test_입력값_도움말_통과() throws {
+        let input = InputManager()
+        let regexType = try input.checkFormatType("?A2")
+        XCTAssertEqual(regexType, .help)
     }
     
-    // test 5 - Board update 체스말 체크
-    func testBoardUpdate() {
-        var board = Board(size: 8)
-        let positionList = [Position(rank: "2", file: "A"), Position(rank: "3", file: "A")]
-        board.updateBoard(positionList)
-        print(board.chessBoard)
-        XCTAssertEqual(board.chessBoard[1][0], .none)
-        XCTAssertEqual(board.chessBoard[2][0], .black)
+    // test 5 - 게임 순서 백색 체스말 먼저 시작 오류
+    func test_게임_체스말_순서_백색먼저시작_오류() throws {
+        var input = InputManager()
+        var board: Board = Board(size: 8)
+        let positionInfo = input.makePositionList("A2->A3", .updatePiece)
+        XCTAssertThrowsError(try board.checkGameTurn(positionInfo))
+    }
+    
+    // test 6 - 게임 순서 백색 체스말 먼저 시작 통과
+    func test_게임_체스말_순서_백색먼저시작_통과() {
+        var input = InputManager()
+        var board: Board = Board(size: 8)
+        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
+        XCTAssertNoThrow(try board.checkGameTurn(positionInfo))
+    }
+    
+    // test 7 - 체스말 이동 가능 여부 오류
+    func test_이동_가능한지_체크_오류() {
+        var input = InputManager()
+        let board: Board = Board(size: 8)
+        let positionInfo = input.makePositionList("A7->B7", .updatePiece)
+        XCTAssertThrowsError(try board.checkMovable(positionInfo, .updatePiece)) { error in
+            guard case ErrorType.unableToMoveError = error else { return XCTFail() }
+        }
+    }
+    
+    // test 8 - 체스말 이동 가능 여부 통과
+    func test_이동_가능한지_체크_통과() {
+        var input = InputManager()
+        let board: Board = Board(size: 8)
+        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
+        XCTAssertNoThrow(try board.checkMovable(positionInfo, .updatePiece))
+    }
+      
+    // test 9 - Board update 이후 체스말 기존 위치 체크 (empty로 변경)
+    func test_체스말_이동_후_현재_위치_업데이트_체크() {
+        var input = InputManager()
+        var board: Board = Board(size: 8)
+        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
+        board.updateBoard(positionInfo)
+        guard let currentPosition = positionInfo.first else { return }
+        XCTAssertEqual(board.chessBoard[currentPosition]?.pieceType, .empty)
+    }
+    
+    // test 10 - Board update 이후 체스말 업데이트된 위치 체크 (pawn로 변경)
+    func test_체스말_이동_후_이동한_위치_업데이트_체크() {
+        var input = InputManager()
+        var board: Board = Board(size: 8)
+        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
+        board.updateBoard(positionInfo)
+        guard let updatePosition = positionInfo.last else { return }
+        XCTAssertEqual(board.chessBoard[updatePosition]?.pieceType, .pawn)
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4594C7182AE3B17E0077907E /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594C7172AE3B17E0077907E /* Piece.swift */; };
+		4594C7192AE892E00077907E /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594C7172AE3B17E0077907E /* Piece.swift */; };
 		45B756532ADEC6F90040F509 /* ChessAppUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B756522ADEC6F90040F509 /* ChessAppUnitTest.swift */; };
 		45B756582ADEC9060040F509 /* PrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FC32ADD2B6300B05FFE /* PrintManager.swift */; };
 		45B756592ADEC9090040F509 /* InputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C18FD02ADD3E9500B05FFE /* InputManager.swift */; };
@@ -199,6 +200,7 @@
 				45B756532ADEC6F90040F509 /* ChessAppUnitTest.swift in Sources */,
 				45B7565A2ADEC94C0040F509 /* Board.swift in Sources */,
 				45B7565D2ADEC95C0040F509 /* ChessPoint.swift in Sources */,
+				4594C7192AE892E00077907E /* Piece.swift in Sources */,
 				45B7565C2ADEC9580040F509 /* ErrorType.swift in Sources */,
 				45B7565E2ADEC9640040F509 /* Position.swift in Sources */,
 				45B756582ADEC9060040F509 /* PrintManager.swift in Sources */,
