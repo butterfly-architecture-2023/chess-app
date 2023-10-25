@@ -97,35 +97,32 @@ final class Board {
     // 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없다.
     // 말을 옮길 수 있으면 true, 옮길 수 없으면 false를 리턴한다.
     // 만약, 다른 색상의 말이 to 위치에 있는 경우는 기존에 있던 말을 제거하고 이동한다.
-    func movePawn(current: Position) -> Bool {
-//        let piece = square[current.rank][current.file]
-//        let newRank: Int
-//        
-//        switch piece.category {
-//        case .pawn(color: .black):
-//            newRank = current.rank + 1
-//        case .pawn(color: .white):
-//            newRank = current.rank - 1
-//        case .empty:
-//            return false
-//        }
-//        
-//        guard isValidMove(piece: piece, position: Position(file: current.file, rank: newRank)) else {
-//            return false
-//        }
-//        
-//        square[newRank][current.file] = piece
-//        square[current.rank][current.file] = Piece(category: .empty)
+    func movePiece(from: Position, to: Position) -> Bool {
+        
+        guard isValidMove(from: from, to: to) else { return false }
+        
+        pieces[to] = pieces[from]
+        pieces[from] = nil
 
         return true
     }
 
-    private func isValidMove(piece: Piece, position: Position) -> Bool {
-//        guard position.rank >= 0,
-//              position.rank < square.count,
-//              square[position.rank][position.file].category != piece.category else { return false }
+    private func isValidMove(from: Position, to: Position) -> Bool {
         
-        return true
+        // from 위치의 체스말 존재 여부 검사
+        guard let startPositionPiece = pieces[from] else { return false }
+        
+        // to 위치의 체스말이 존재 여부 검사
+        if let endPositionPiece = pieces[to] {
+            // 체스말 색 검사
+            if type(of: startPositionPiece).color == type(of: endPositionPiece).color {
+                return false
+            }
+        }
+        
+        let canMove = startPositionPiece.movablePositions(current: from).contains(to)
+
+        return canMove
     }
 }
 
