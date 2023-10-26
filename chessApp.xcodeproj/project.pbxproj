@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4285962AEA92DD00BECE3D /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1676F2AEA8C470065E27F /* King.swift */; };
 		5C5BFD3A2AEA8EDB00D6B5A0 /* KingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BFD392AEA8EDB00D6B5A0 /* KingTest.swift */; };
 		CCE1675E2AEA8B800065E27F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1675D2AEA8B800065E27F /* main.swift */; };
 		CCE1676B2AEA8B960065E27F /* chessAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1676A2AEA8B960065E27F /* chessAppTests.swift */; };
@@ -188,6 +189,7 @@
 			files = (
 				5C5BFD3A2AEA8EDB00D6B5A0 /* KingTest.swift in Sources */,
 				CCE1676B2AEA8B960065E27F /* chessAppTests.swift in Sources */,
+				0C4285962AEA92DD00BECE3D /* King.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
