@@ -20,7 +20,7 @@ struct Bishop: Piece {
             return "♗"
         }
     }
-        
+    
     func canMove(to destination: Position, pieces originPieces: [Position : Piece]) -> Bool {
         guard self.source != destination else {
             return false
@@ -35,7 +35,7 @@ struct Bishop: Piece {
                                                  pieces: originPieces)
     }
     
-    static  func postionsCanCreate(of color: Color) -> [Position] {
+    static func postionsCanCreate(of color: Color) -> [Position] {
         switch color {
         case .black:
             return [Position(file: .C, rank: .one), Position(file: .F, rank: .one)]
