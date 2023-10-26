@@ -36,7 +36,7 @@
 		89B5A00F2ADEFA46007A1988 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A00E2ADEFA46007A1988 /* Pawn.swift */; };
 		89B5A0112ADEFBCC007A1988 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0102ADEFBCC007A1988 /* Color.swift */; };
 		89B5A0132ADEFD55007A1988 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0122ADEFD55007A1988 /* Position.swift */; };
-		89B5A0152ADF0BF3007A1988 /* PawnsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */; };
+		89B5A0152ADF0BF3007A1988 /* PiecesManagerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B5A0142ADF0BF3007A1988 /* PiecesManagerable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,7 @@
 		89B5A00E2ADEFA46007A1988 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		89B5A0102ADEFBCC007A1988 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		89B5A0122ADEFD55007A1988 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
-		89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnsManager.swift; sourceTree = "<group>"; };
+		89B5A0142ADF0BF3007A1988 /* PiecesManagerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiecesManagerable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +110,9 @@
 				893F52042AEA262A00CA3E68 /* Piece.swift */,
 				89B5A00E2ADEFA46007A1988 /* Pawn.swift */,
 				893F52062AEA268A00CA3E68 /* Bishop.swift */,
+				893F520C2AEA293B00CA3E68 /* Knight.swift */,
 				893F52082AEA269C00CA3E68 /* Rook.swift */,
 				893F520A2AEA287200CA3E68 /* Queen.swift */,
-				893F520C2AEA293B00CA3E68 /* Knight.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -152,7 +152,7 @@
 			children = (
 				893F52032AEA261500CA3E68 /* Pieces */,
 				89B5A00B2ADEF9EF007A1988 /* Board.swift */,
-				89B5A0142ADF0BF3007A1988 /* PawnsManager.swift */,
+				89B5A0142ADF0BF3007A1988 /* PiecesManagerable.swift */,
 				896289702ADFC19600D31D25 /* InputManager.swift */,
 				89B5A0102ADEFBCC007A1988 /* Color.swift */,
 				89B5A0122ADEFD55007A1988 /* Position.swift */,
@@ -303,7 +303,7 @@
 				893F52072AEA268A00CA3E68 /* Bishop.swift in Sources */,
 				89B5A0132ADEFD55007A1988 /* Position.swift in Sources */,
 				8908800A2AE737AB0049E578 /* Rank.swift in Sources */,
-				89B5A0152ADF0BF3007A1988 /* PawnsManager.swift in Sources */,
+				89B5A0152ADF0BF3007A1988 /* PiecesManagerable.swift in Sources */,
 				893F521C2AEA318D00CA3E68 /* DistanceCalculatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

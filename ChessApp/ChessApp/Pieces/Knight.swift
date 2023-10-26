@@ -13,7 +13,7 @@ struct Knight: Piece {
     let currentPosition: Position
     
     var text: String {
-        switch color {
+        switch self.color {
         case .black:
             return "♞"
         case .white:
@@ -27,4 +27,14 @@ struct Knight: Piece {
         
         return (distanceOfFile == 2 && distanceOfRank == 1) || (distanceOfFile == 1 && distanceOfRank == 2)
     }
+    
+    static func postionsCanCreate(of color: Color) -> [Position] {
+        switch color {
+        case .black:
+            return [Position(file: .B, rank: .one), Position(file: .G, rank: .one)]
+        case .white:
+            return [Position(file: .B, rank: .eight), Position(file: .G, rank: .eight)]
+        }
+    }
+    
 }

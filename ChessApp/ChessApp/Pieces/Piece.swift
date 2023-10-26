@@ -13,5 +13,8 @@ protocol Piece {
     var currentPosition: Position { get }
     var text: String { get }
     
+    init(color: Color, currentPosition: Position)
+    
     func canMove(to position: Position) -> Bool
+    static func postionsCanCreate(of color: Color) -> [Position]
 }

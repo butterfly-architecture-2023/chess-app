@@ -8,12 +8,12 @@
 import Foundation
 
 struct Rook: Piece {
-    let score: Int = 3
+    let score: Int = 5
     let color: Color
     let currentPosition: Position
     
     var text: String {
-        switch color {
+        switch self.color {
         case .black:
             return "♜"
         case .white:
@@ -28,4 +28,14 @@ struct Rook: Piece {
         
         return (self.currentPosition.file == position.file) || (self.currentPosition.rank == position.rank)
     }
+    
+    static func postionsCanCreate(of color: Color) -> [Position] {
+        switch color {
+        case .black:
+            return [Position(file: .A, rank: .one), Position(file: .H, rank: .one)]
+        case .white:
+            return [Position(file: .A, rank: .eight), Position(file: .H, rank: .eight)]
+        }
+    }
+    
 }

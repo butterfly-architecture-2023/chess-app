@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BoardConfigurable {
-    init(pawnsManager: PawnsManager)
+    init(piecesManager: PiecesManagerable)
     
     func display() -> [[String]]
     func move(from source: Position, to destination: Position) throws
@@ -17,11 +17,11 @@ protocol BoardConfigurable {
 
 final class Board: BoardConfigurable {
     private(set) var turnColor: Color = .white
-    private let pawnsManager: PawnsManager
+    private let piecesManager: PiecesManagerable
     
-    init(pawnsManager: PawnsManager) {
-        self.pawnsManager = pawnsManager
-        self.pawnsManager.resetPawns()
+    init(piecesManager: PiecesManagerable) {
+        self.piecesManager = piecesManager
+        self.piecesManager.resetPieces()
     }
     
     func display() -> [[String]] {
@@ -33,10 +33,7 @@ final class Board: BoardConfigurable {
                 let file = File.allCases[fileNumber]
                 let rank = Rank.allCases[rankNumber]
 
-                let text = self.pawnsManager
-                    .getPawn(at: Position(file: file, rank: rank))?
-                    .text
-                
+                let text = self.piecesManager.piece(at: Position(file: file, rank: rank))?.text
                 boards[rankNumber][fileNumber] = text ?? "."
             }
         }
@@ -47,12 +44,12 @@ final class Board: BoardConfigurable {
     func move(from source: Position, to destination: Position) throws {
         try self.validate(source: source, destination: destination)
         
-        self.pawnsManager.update(from: source, to: destination)
+        self.piecesManager.update(from: source, to: destination)
         self.turnColor = (self.turnColor == .black) ? .white : .black
     }
     
     private func validate(source: Position, destination: Position) throws {
-        guard let originPawn = self.pawnsManager.getPawn(at: source) else {
+        guard let originPawn = self.piecesManager.piece(at: source) else {
             throw ValidationError.sourceNotExist
         }
         
@@ -64,14 +61,14 @@ final class Board: BoardConfigurable {
             throw ValidationError.invalidScope
         }
         
-        let pawnOrNilForDestination = self.pawnsManager.getPawn(at: destination)
+        let pawnOrNilForDestination = self.piecesManager.piece(at: destination)
         guard originPawn.color != pawnOrNilForDestination?.color else {
             throw ValidationError.sameTeam
         }
     }
     
     func getScore(of color: Color) -> Int {
-        return self.pawnsManager.getPawns(color: color)
+        return self.piecesManager.pieces(color: color)
             .map({ $0.score })
             .reduce(0, +)
     }

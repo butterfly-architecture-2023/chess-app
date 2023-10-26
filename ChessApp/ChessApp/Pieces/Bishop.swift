@@ -13,7 +13,7 @@ struct Bishop: Piece {
     let currentPosition: Position
     
     var text: String {
-        switch color {
+        switch self.color {
         case .black:
             return "♝"
         case .white:
@@ -31,4 +31,14 @@ struct Bishop: Piece {
         
         return distanceOfFile == distanceOfRank
     }
+    
+    static  func postionsCanCreate(of color: Color) -> [Position] {
+        switch color {
+        case .black:
+            return [Position(file: .C, rank: .one), Position(file: .F, rank: .one)]
+        case .white:
+            return [Position(file: .C, rank: .eight), Position(file: .F, rank: .eight)]
+        }
+    }
+    
 }

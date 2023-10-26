@@ -11,7 +11,7 @@ import XCTest
 extension BoardTests {
     
     func test_move메서드_실패케이스_destination위치에_같은팀의_말이있을_때_테스트() {
-        let board = Board(pawnsManager: PawnsManagerStub())
+        let board = Board(piecesManager: PiecesManagerStub())
         
         do {
             try board.move(from: Position(file: .A, rank: .seven),
@@ -23,10 +23,10 @@ extension BoardTests {
     
 }
 
-final class PawnsManagerStub: PawnsManager {
+final class PiecesManagerStub: PiecesManagerable {
     private var pawns: [Position: Pawn] = [:]
     
-    func resetPawns() {
+    func resetPieces() {
         self.pawns = self.makePawns()
     }
     
@@ -41,7 +41,7 @@ final class PawnsManagerStub: PawnsManager {
                positionOfSecondPawn: secondPawnOfSameTeam]
     }
     
-    func getPawn(at position: ChessApp.Position) -> ChessApp.Pawn? {
+    func piece(at position: ChessApp.Position) -> ChessApp.Piece? {
         self.pawns[position]
     }
     
@@ -51,11 +51,11 @@ final class PawnsManagerStub: PawnsManager {
         
     }
     
-    func hasPawn(at position: ChessApp.Position) -> Bool {
+    func hasPiece(at position: ChessApp.Position) -> Bool {
         return true
     }
     
-    func getPawns(color: ChessApp.Color) -> [ChessApp.Pawn] {
+    func pieces(color: ChessApp.Color) -> [ChessApp.Piece] {
         return []
     }
     

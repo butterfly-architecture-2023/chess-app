@@ -13,7 +13,7 @@ struct Queen: Piece {
     let currentPosition: Position
     
     var text: String {
-        switch color {
+        switch self.color {
         case .black:
             return "♛"
         case .white:
@@ -39,4 +39,14 @@ struct Queen: Piece {
     private func canMoveStraight(to position: Position) -> Bool {
         return (self.currentPosition.file == position.file) || (self.currentPosition.rank == position.rank)
     }
+    
+    static func postionsCanCreate(of color: Color) -> [Position] {
+        switch color {
+        case .black:
+            return [Position(file: .E, rank: .one)]
+        case .white:
+            return [Position(file: .E, rank: .eight)]
+        }
+    }
+    
 }

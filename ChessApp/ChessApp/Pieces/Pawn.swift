@@ -51,6 +51,15 @@ struct Pawn: Piece {
             return currentRank > destinationRank
         }
     }
+    
+    static func postionsCanCreate(of color: Color) -> [Position] {
+        switch color {
+        case .black:
+            return File.allCases.map({ Position(file: $0, rank: .two) })
+        case .white:
+            return File.allCases.map({ Position(file: $0, rank: .seven) })
+        }
+    }
 }
 
 
