@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Position: Hashable {
+struct Position: Hashable, Equatable {
     let file: File
     let rank: Rank
 }

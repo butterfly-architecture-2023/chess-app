@@ -32,8 +32,7 @@ struct InputManager {
     
     private func makePosition(from input: String) -> Position? {
         guard let file = File(input[input.startIndex]),
-              let rankNum = Int(String(input[input.index(input.startIndex, offsetBy: 1)])),
-              let rank = Rank(rawValue: rankNum) else {
+              let rank = Rank(input[input.index(input.startIndex, offsetBy: 1)]) else {
             return nil
         }
         

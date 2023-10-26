@@ -25,3 +25,33 @@ enum File: String, CaseIterable {
         self = file
     }
 }
+
+extension File: DistanceCalculatable {
+    typealias Item = File
+    
+    func distance(with compared: File) -> Int {
+        return abs(self.amount - compared.amount)
+    }
+    
+    var amount: Int {
+        switch self {
+        case .A:
+            return 1
+        case .B:
+            return 2
+        case .C:
+            return 3
+        case .D:
+            return 4
+        case .E:
+            return 5
+        case .F:
+            return 6
+        case .G:
+            return 7
+        case .H:
+            return 8
+        }
+    }
+    
+}

@@ -7,15 +7,7 @@
 
 import Foundation
 
-protocol PawnConfigurable {
-    var color: Color { get }
-    var currentPosition: Position { get }
-    var text: String { get }
-    
-    func canMove(to position: Position) -> Bool
-}
-
-struct Pawn: PawnConfigurable {
+struct Pawn: Piece {
     let score: Int = 1
     let color: Color
     let currentPosition: Position
