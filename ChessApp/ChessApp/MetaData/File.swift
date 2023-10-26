@@ -30,10 +30,10 @@ extension File: DistanceCalculatable {
     typealias Item = File
     
     func distance(with compared: File) -> Int {
-        return abs(self.amount - compared.amount)
+        return compared.amount - self.amount
     }
     
-    var amount: Int {
+    private var amount: Int {
         switch self {
         case .A:
             return 1

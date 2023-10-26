@@ -21,7 +21,7 @@ struct Pawn: Piece {
         }
     }
     
-    func canMove(to position: Position) -> Bool {
+    func canMove(to position: Position, pieces originPieces: [Position: Piece]) -> Bool {
         guard self.isSame(file: position.file) else {
             return false
         }
@@ -39,8 +39,7 @@ struct Pawn: Piece {
     
     private func canMove(to destinationRank: Rank) -> Bool {
         let currentRank = self.source.rank
-        
-        guard currentRank.distance(with: destinationRank) == 1 else {
+        guard abs(currentRank.distance(with: destinationRank)) == 1 else {
             return false
         }
         

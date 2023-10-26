@@ -33,10 +33,10 @@ enum Rank: String, Comparable, CaseIterable {
 extension Rank {
 
     func distance(with compared: Rank) -> Int {
-        return abs(self.amount - compared.amount)
+        return compared.amount - self.amount 
     }
 
-    var amount: Int {
+    private var amount: Int {
         switch self {
         case .one:
             return 1

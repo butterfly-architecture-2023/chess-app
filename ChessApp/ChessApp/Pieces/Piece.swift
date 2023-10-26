@@ -15,6 +15,6 @@ protocol Piece {
     
     init(color: Color, source: Position)
     
-    func canMove(to destination: Position) -> Bool
+    func canMove(to destination: Position, pieces originPieces: [Position: Piece]) -> Bool
     static func postionsCanCreate(of color: Color) -> [Position]
 }

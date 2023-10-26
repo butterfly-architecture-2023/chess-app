@@ -1,5 +1,5 @@
 //
-//  PawnsGenerator.swift
+//  PieceManager.swift
 //  ChessApp
 //
 //  Created by 김도형 on 2023/10/18.
@@ -8,6 +8,8 @@
 import Foundation
 
 protocol PiecesManagerable {
+    var pieces: [Position: Piece] { get }
+    
     func resetPieces()
     func piece(at position: Position) -> Piece?
     func update(from source: Position, to destination: Position)
@@ -16,7 +18,7 @@ protocol PiecesManagerable {
 }
 
 final class PieceManager: PiecesManagerable {
-    private var pieces: [Position: Piece] = [:]
+    private(set) var pieces: [Position: Piece] = [:]
     
     func resetPieces() {
         self.pieces = self.makePieces()

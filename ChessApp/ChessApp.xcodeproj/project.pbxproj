@@ -22,6 +22,7 @@
 		893F52182AEA2A8B00CA3E68 /* QueenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F52172AEA2A8B00CA3E68 /* QueenTests.swift */; };
 		893F521A2AEA2AE900CA3E68 /* KnightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F52192AEA2AE900CA3E68 /* KnightTests.swift */; };
 		893F521C2AEA318D00CA3E68 /* DistanceCalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F521B2AEA318D00CA3E68 /* DistanceCalculatable.swift */; };
+		893F52202AEA5E5000CA3E68 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893F521F2AEA5E5000CA3E68 /* Array+.swift */; };
 		8957D9CB2ADD15F900B7606D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9CA2ADD15F900B7606D /* AppDelegate.swift */; };
 		8957D9CD2ADD15F900B7606D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9CC2ADD15F900B7606D /* SceneDelegate.swift */; };
 		8957D9CF2ADD15F900B7606D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8957D9CE2ADD15F900B7606D /* ViewController.swift */; };
@@ -65,6 +66,7 @@
 		893F52172AEA2A8B00CA3E68 /* QueenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueenTests.swift; sourceTree = "<group>"; };
 		893F52192AEA2AE900CA3E68 /* KnightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightTests.swift; sourceTree = "<group>"; };
 		893F521B2AEA318D00CA3E68 /* DistanceCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCalculatable.swift; sourceTree = "<group>"; };
+		893F521F2AEA5E5000CA3E68 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		8957D9C72ADD15F900B7606D /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8957D9CA2ADD15F900B7606D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8957D9CC2ADD15F900B7606D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		8957D9C92ADD15F900B7606D /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				893F521F2AEA5E5000CA3E68 /* Array+.swift */,
 				893F521D2AEA58FB00CA3E68 /* Board */,
 				893F52032AEA261500CA3E68 /* Pieces */,
 				893F521E2AEA590E00CA3E68 /* MetaData */,
@@ -311,6 +314,7 @@
 				8957D9CB2ADD15F900B7606D /* AppDelegate.swift in Sources */,
 				89B5A00C2ADEF9EF007A1988 /* Board.swift in Sources */,
 				893F520B2AEA287200CA3E68 /* Queen.swift in Sources */,
+				893F52202AEA5E5000CA3E68 /* Array+.swift in Sources */,
 				89B5A00F2ADEFA46007A1988 /* Pawn.swift in Sources */,
 				8957D9CD2ADD15F900B7606D /* SceneDelegate.swift in Sources */,
 				893F52052AEA262A00CA3E68 /* Piece.swift in Sources */,

@@ -49,20 +49,20 @@ final class Board: BoardConfigurable {
     }
     
     private func validate(source: Position, destination: Position) throws {
-        guard let originPawn = self.piecesManager.piece(at: source) else {
+        guard let originPiece = self.piecesManager.piece(at: source) else {
             throw ValidationError.sourceNotExist
         }
         
-        guard originPawn.color == self.turnColor else {
+        guard originPiece.color == self.turnColor else {
             throw ValidationError.invalidTurn
         }
         
-        guard originPawn.canMove(to: destination) else {
+        guard originPiece.canMove(to: destination, pieces: self.piecesManager.pieces) else {
             throw ValidationError.invalidScope
         }
         
-        let pawnOrNilForDestination = self.piecesManager.piece(at: destination)
-        guard originPawn.color != pawnOrNilForDestination?.color else {
+        let pieceOrNilForDestination = self.piecesManager.piece(at: destination)
+        guard originPiece.color != pieceOrNilForDestination?.color else {
             throw ValidationError.sameTeam
         }
     }

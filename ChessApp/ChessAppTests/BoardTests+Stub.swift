@@ -24,10 +24,10 @@ extension BoardTests {
 }
 
 final class PiecesManagerStub: PiecesManagerable {
-    private var pawns: [Position: Pawn] = [:]
+    private(set) var pieces: [ChessApp.Position : ChessApp.Piece] = [:]
     
     func resetPieces() {
-        self.pawns = self.makePawns()
+        self.pieces = self.makePawns()
     }
     
     private func makePawns() -> [Position: Pawn] {
@@ -42,7 +42,7 @@ final class PiecesManagerStub: PiecesManagerable {
     }
     
     func piece(at position: ChessApp.Position) -> ChessApp.Piece? {
-        self.pawns[position]
+        self.pieces[position]
     }
     
     // MARK: 아래는 테스트에 사용되지 않는 메서드들 입니다.

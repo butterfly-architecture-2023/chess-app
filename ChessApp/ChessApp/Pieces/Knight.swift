@@ -21,9 +21,9 @@ struct Knight: Piece {
         }
     }
     
-    func canMove(to position: Position) -> Bool {
-        let distanceOfFile = self.source.file.distance(with: position.file)
-        let distanceOfRank = self.source.rank.distance(with: position.rank)
+    func canMove(to destination: Position, pieces originPieces: [Position : Piece]) -> Bool {
+        let distanceOfFile = abs(self.source.file.distance(with: destination.file))
+        let distanceOfRank = abs(self.source.rank.distance(with: destination.rank))
         
         return (distanceOfFile == 2 && distanceOfRank == 1) || (distanceOfFile == 1 && distanceOfRank == 2)
     }
@@ -35,6 +35,17 @@ struct Knight: Piece {
         case .white:
             return [Position(file: .B, rank: .eight), Position(file: .G, rank: .eight)]
         }
+    }
+    
+    enum Direction {
+        case upAndLeft
+        case upAndRight
+        case downAndLeft
+        case downAndRight
+        case leftAndUp
+        case leftAndDown
+        case rightAndUp
+        case rightAndDown
     }
     
 }

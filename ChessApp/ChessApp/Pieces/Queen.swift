@@ -21,17 +21,17 @@ struct Queen: Piece {
         }
     }
     
-    func canMove(to position: Position) -> Bool {
-        guard self.source != position else {
+    func canMove(to destination: Position, pieces originPieces: [Position : Piece]) -> Bool {
+        guard self.source != destination else {
             return false
         }
         
-        return self.canMoveDiagonal(to: position) || self.canMoveStraight(to: position)
+        return self.canMoveDiagonal(to: destination) || self.canMoveStraight(to: destination)
     }
     
     private func canMoveDiagonal(to position: Position) -> Bool {
-        let distanceOfFile = self.source.file.distance(with: position.file)
-        let distanceOfRank = self.source.rank.distance(with: position.rank)
+        let distanceOfFile = abs(self.source.file.distance(with: position.file))
+        let distanceOfRank = abs(self.source.rank.distance(with: position.rank))
         
         return distanceOfFile == distanceOfRank
     }
@@ -47,6 +47,17 @@ struct Queen: Piece {
         case .white:
             return [Position(file: .E, rank: .eight)]
         }
+    }
+    
+    enum Direction {
+        case up
+        case down
+        case left
+        case right
+        case upAndLeft
+        case upAndRight
+        case downAndLeft
+        case downAndRight
     }
     
 }

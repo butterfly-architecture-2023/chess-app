@@ -10,6 +10,5 @@ import Foundation
 protocol DistanceCalculatable {
     associatedtype Item
     
-    var amount: Int { get }
     func distance(with compared: Item) -> Int
 }
