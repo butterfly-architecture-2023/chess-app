@@ -10,7 +10,7 @@ import Foundation
 struct Knight: Piece {
     let score: Int = 3
     let color: Color
-    let currentPosition: Position
+    let source: Position
     
     var text: String {
         switch self.color {
@@ -22,8 +22,8 @@ struct Knight: Piece {
     }
     
     func canMove(to position: Position) -> Bool {
-        let distanceOfFile = self.currentPosition.file.distance(with: position.file)
-        let distanceOfRank = self.currentPosition.rank.distance(with: position.rank)
+        let distanceOfFile = self.source.file.distance(with: position.file)
+        let distanceOfRank = self.source.rank.distance(with: position.rank)
         
         return (distanceOfFile == 2 && distanceOfRank == 1) || (distanceOfFile == 1 && distanceOfRank == 2)
     }

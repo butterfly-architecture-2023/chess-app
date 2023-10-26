@@ -10,11 +10,11 @@ import Foundation
 protocol Piece {
     var score: Int { get }
     var color: Color { get }
-    var currentPosition: Position { get }
+    var source: Position { get }
     var text: String { get }
     
-    init(color: Color, currentPosition: Position)
+    init(color: Color, source: Position)
     
-    func canMove(to position: Position) -> Bool
+    func canMove(to destination: Position) -> Bool
     static func postionsCanCreate(of color: Color) -> [Position]
 }

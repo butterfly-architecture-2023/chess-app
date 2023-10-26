@@ -37,7 +37,7 @@ final class PieceManager: PiecesManagerable {
             let positions = pieceType.postionsCanCreate(of: color)
             
             for position in positions {
-                pieces[position] = pieceType.init(color: color, currentPosition: position)
+                pieces[position] = pieceType.init(color: color, source: position)
             }
         }
     }
@@ -49,8 +49,8 @@ final class PieceManager: PiecesManagerable {
     func update(from source: Position, to destination: Position) {
         guard let piece = self.piece(at: source) else { return }
         
-        self.pieces[piece.currentPosition] = nil
-        self.pieces[destination] = type(of: piece).init(color: piece.color, currentPosition: destination)
+        self.pieces[piece.source] = nil
+        self.pieces[destination] = type(of: piece).init(color: piece.color, source: destination)
     }
     
     func hasPiece(at position: Position) -> Bool {

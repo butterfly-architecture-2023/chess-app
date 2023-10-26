@@ -10,7 +10,7 @@ import Foundation
 struct Queen: Piece {
     let score: Int = 9
     let color: Color
-    let currentPosition: Position
+    let source: Position
     
     var text: String {
         switch self.color {
@@ -22,7 +22,7 @@ struct Queen: Piece {
     }
     
     func canMove(to position: Position) -> Bool {
-        guard self.currentPosition != position else {
+        guard self.source != position else {
             return false
         }
         
@@ -30,14 +30,14 @@ struct Queen: Piece {
     }
     
     private func canMoveDiagonal(to position: Position) -> Bool {
-        let distanceOfFile = self.currentPosition.file.distance(with: position.file)
-        let distanceOfRank = self.currentPosition.rank.distance(with: position.rank)
+        let distanceOfFile = self.source.file.distance(with: position.file)
+        let distanceOfRank = self.source.rank.distance(with: position.rank)
         
         return distanceOfFile == distanceOfRank
     }
     
     private func canMoveStraight(to position: Position) -> Bool {
-        return (self.currentPosition.file == position.file) || (self.currentPosition.rank == position.rank)
+        return (self.source.file == position.file) || (self.source.rank == position.rank)
     }
     
     static func postionsCanCreate(of color: Color) -> [Position] {

@@ -12,7 +12,7 @@ final class BishopTests: XCTestCase {
     private var sut: Bishop!
 
     override func setUpWithError() throws {
-        self.sut = Bishop(color: .white, currentPosition: Position(file: .D, rank: .five))
+        self.sut = Bishop(color: .white, source: Position(file: .D, rank: .five))
     }
 
     func test_canMove메서드_성공케이스_G_2_로_이동할_때() {

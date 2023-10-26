@@ -12,7 +12,7 @@ final class RookTests: XCTestCase {
     private var sut: Rook!
 
     override func setUpWithError() throws {
-        self.sut = Rook(color: .white, currentPosition: Position(file: .D, rank: .five))
+        self.sut = Rook(color: .white, source: Position(file: .D, rank: .five))
     }
     
     func test_canMove메서드_성공케이스_D_2_로_이동할_때() {

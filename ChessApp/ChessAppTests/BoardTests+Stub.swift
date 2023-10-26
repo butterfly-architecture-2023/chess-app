@@ -32,10 +32,10 @@ final class PiecesManagerStub: PiecesManagerable {
     
     private func makePawns() -> [Position: Pawn] {
         let positionOfFirstPawn = Position(file: .A, rank: .seven)
-        let firstPawnOfSameTeam = Pawn(color: .white, currentPosition: positionOfFirstPawn)
+        let firstPawnOfSameTeam = Pawn(color: .white, source: positionOfFirstPawn)
         
         let positionOfSecondPawn = Position(file: .A, rank: .six)
-        let secondPawnOfSameTeam = Pawn(color: .white, currentPosition: positionOfSecondPawn)
+        let secondPawnOfSameTeam = Pawn(color: .white, source: positionOfSecondPawn)
 
         return [positionOfFirstPawn: firstPawnOfSameTeam,
                positionOfSecondPawn: secondPawnOfSameTeam]

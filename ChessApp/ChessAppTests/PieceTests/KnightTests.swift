@@ -12,7 +12,7 @@ final class KnightTests: XCTestCase {
     private var sut: Knight!
 
     override func setUpWithError() throws {
-        self.sut = Knight(color: .white, currentPosition: Position(file: .D, rank: .four))
+        self.sut = Knight(color: .white, source: Position(file: .D, rank: .four))
     }
 
     func test_canMove메서드_성공케이스() {

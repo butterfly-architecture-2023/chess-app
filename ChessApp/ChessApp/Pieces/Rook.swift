@@ -10,7 +10,7 @@ import Foundation
 struct Rook: Piece {
     let score: Int = 5
     let color: Color
-    let currentPosition: Position
+    let source: Position
     
     var text: String {
         switch self.color {
@@ -22,11 +22,11 @@ struct Rook: Piece {
     }
     
     func canMove(to position: Position) -> Bool {
-        guard self.currentPosition != position else {
+        guard self.source != position else {
             return false
         }
         
-        return (self.currentPosition.file == position.file) || (self.currentPosition.rank == position.rank)
+        return (self.source.file == position.file) || (self.source.rank == position.rank)
     }
     
     static func postionsCanCreate(of color: Color) -> [Position] {

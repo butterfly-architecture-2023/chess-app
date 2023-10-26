@@ -10,7 +10,7 @@ import Foundation
 struct Pawn: Piece {
     let score: Int = 1
     let color: Color
-    let currentPosition: Position
+    let source: Position
     
     var text: String {
         switch self.color {
@@ -34,11 +34,11 @@ struct Pawn: Piece {
     }
     
     private func isSame(file: File) -> Bool {
-        return self.currentPosition.file == file
+        return self.source.file == file
     }
     
     private func canMove(to destinationRank: Rank) -> Bool {
-        let currentRank = self.currentPosition.rank
+        let currentRank = self.source.rank
         
         guard currentRank.distance(with: destinationRank) == 1 else {
             return false

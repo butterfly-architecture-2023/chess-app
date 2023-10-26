@@ -10,7 +10,7 @@ import Foundation
 struct Bishop: Piece {
     let score: Int = 3
     let color: Color
-    let currentPosition: Position
+    let source: Position
     
     var text: String {
         switch self.color {
@@ -22,12 +22,12 @@ struct Bishop: Piece {
     }
     
     func canMove(to position: Position) -> Bool {
-        guard self.currentPosition != position else {
+        guard self.source != position else {
             return false
         }
         
-        let distanceOfFile = self.currentPosition.file.distance(with: position.file)
-        let distanceOfRank = self.currentPosition.rank.distance(with: position.rank)
+        let distanceOfFile = self.source.file.distance(with: position.file)
+        let distanceOfRank = self.source.rank.distance(with: position.rank)
         
         return distanceOfFile == distanceOfRank
     }
