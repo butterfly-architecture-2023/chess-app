@@ -6,31 +6,85 @@
 //
 
 import XCTest
-@testable import chess_app
 
 final class chess_appTests: XCTestCase {
-
+    private var sut: Board!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = Board()
+        try super.setUpWithError()
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_보드_잘_생성되었는지() {
+        let mockBoard = [[".", ".", ".", ".", ".", ".", ".", "."],
+                         ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+                         [".", ".", ".", ".", ".", ".", ".", "."],
+                         [".", ".", ".", ".", ".", ".", ".", "."],
+                         [".", ".", ".", ".", ".", ".", ".", "."],
+                         [".", ".", ".", ".", ".", ".", ".", "."],
+                         ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+                         [".", ".", ".", ".", ".", ".", ".", "."]]
+        let testBoard = sut.display()
+        XCTAssertEqual(mockBoard, testBoard)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_폰의_이동_가능_여부가_정상적인지() {
+        let from: Position = .init(rank: .seven, file: .A)
+        let to: Position = .init(rank: .five, file: .A)
+        
+        let canMove = sut.validateMovableRange(piece: .init(type: .pawn, color: .white),
+                                               from: from,
+                                               to: to)
+        
+        XCTAssertEqual(canMove, false)
     }
-
+    
+    func test_폰의_이동_가능_여부가_정상적인지2() {
+        let from: Position = .init(rank: .one, file: .A)
+        let to: Position = .init(rank: .two, file: .A)
+        
+        let canMove = sut.validateMovableRange(piece: .init(type: .pawn, color: .black),
+                                               from: from,
+                                               to: to)
+        
+        XCTAssertEqual(canMove, true)
+    }
+    
+    func test_말을_잡았는지() {
+        let mockBoard = [[".", ".", ".", ".", ".", ".", ".", "."],
+                         [".", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+                         [".", ".", ".", ".", ".", ".", ".", "."],
+                         ["♙", ".", ".", ".", ".", ".", ".", "."],
+                         [".", ".", ".", ".", ".", ".", ".", "."],
+                         [".", ".", ".", ".", ".", ".", ".", "."],
+                         [".", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+                         [".", ".", ".", ".", ".", ".", ".", "."]]
+        sut.movePiece(piece: .init(type: .pawn, color: .white),
+                      from: .init(rank: .seven, file: .A),
+                      to: .init(rank: .six, file: .A))
+        
+        sut.movePiece(piece: .init(type: .pawn, color: .black),
+                      from: .init(rank: .two, file: .A),
+                      to: .init(rank: .three, file: .A))
+        
+        sut.movePiece(piece: .init(type: .pawn, color: .white),
+                      from: .init(rank: .six, file: .A),
+                      to: .init(rank: .five, file: .A))
+        
+        sut.movePiece(piece: .init(type: .pawn, color: .black),
+                      from: .init(rank: .three, file: .A),
+                      to: .init(rank: .four, file: .A))
+        
+        sut.movePiece(piece: .init(type: .pawn, color: .white),
+                      from: .init(rank: .five, file: .A),
+                      to: .init(rank: .four, file: .A))
+        
+        let testBoard = sut.display()
+        XCTAssertEqual(mockBoard, testBoard)
+    }
 }
