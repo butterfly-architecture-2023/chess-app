@@ -6,12 +6,6 @@
 //
 
 struct Position {
-    let rank: Int
+    let rank: Rank
     let column: Column
-}
-
-extension Position: Equatable {
-    static func == (lhs: Position, rhs: Position) -> Bool {
-        return lhs.column.rawValue == rhs.column.rawValue && lhs.rank == rhs.rank
-    }
 }

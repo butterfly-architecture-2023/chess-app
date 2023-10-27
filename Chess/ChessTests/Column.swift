@@ -18,7 +18,7 @@ enum Column: String, CaseIterable {
     var number: Int {
         switch self {
         case .a:
-           return 0
+            return 0
         case .b:
             return 1
         case .c:
