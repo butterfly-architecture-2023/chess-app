@@ -9,7 +9,7 @@ import Foundation
 
 struct Pawn: Piece {
     static let maxCount: Int = 8
-    let score: Int = 1
+    static let score: Int = 1
     
     var color: Color
     var displayText: String {
@@ -34,22 +34,15 @@ struct Pawn: Piece {
         
         return isPossible
     }
-
-    func canMove(from: Position, to: Position) -> Bool {
-        var canMove: Bool = false
+    
+    func getMovableAllPositions(from position: Position, with neighborPositions: Set<Position>) -> [[Position]] {
+        var result: [[Position]] = .init()
         
-        let rankDiff = abs(from.rank.rawValue - to.rank.rawValue)
-        let fileDiff = abs(from.file.rawValue - to.file.rawValue)
-        
-        if rankDiff <= 1, fileDiff <= 1 {
-            switch color {
-            case .white:
-                canMove = from.rank.rawValue > to.rank.rawValue
-            case .black:
-                canMove = from.rank.rawValue < to.rank.rawValue
-            }
+        let rankDiff = color == .white ? -1 : 1
+        if let movablePosition = position.makePosition(rankDiff: rankDiff, fileDiff: 0), neighborPositions.contains(movablePosition) {
+            result.append([movablePosition])
         }
         
-        return canMove
+        return result
     }
 }

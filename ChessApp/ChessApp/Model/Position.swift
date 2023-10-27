@@ -7,13 +7,18 @@
 
 import Foundation
 
-struct Position: Equatable {
+struct Position: Equatable, Hashable {
     enum Rank: Int, CaseIterable {
         case one, two, three, four, five, six, seven, eight
         
         var displayText: String {
             return "\(self.rawValue + 1)"
         }
+        
+        func makeRank(by offset: Int) -> Rank? {
+            return Rank(rawValue: rawValue + offset) ?? nil
+        }
+        
     }
     
     enum File: Int, CaseIterable {
@@ -21,6 +26,10 @@ struct Position: Equatable {
         
         var displayText: String {
             return String(describing: self)
+        }
+        
+        func makeFile(by offset: Int) -> File? {
+            return File(rawValue: rawValue + offset) ?? nil
         }
     }
     
@@ -36,6 +45,11 @@ struct Position: Equatable {
         default:
             return nil
         }
+    }
+    
+    func makePosition(rankDiff: Int, fileDiff: Int) -> Position? {
+        guard let newRank = rank.makeRank(by: rankDiff), let newFile = file.makeFile(by: fileDiff) else { return nil }
+        return .init(rank: newRank, file: newFile)
     }
 }
 

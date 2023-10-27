@@ -14,16 +14,18 @@ final class ChessBoard {
         var piece: Piece?
     }
 
+    private var thisTurn: Color
     private var board: [Square] = []
     
     init() {
+        thisTurn = Color.white
         board = initBoard()
         startGame()
     }
     
     func getScore() -> Int {
         var result: Int = 0
-        let allPieceScore = board.compactMap({ $0.piece }).map({ $0.score })
+        let allPieceScore = board.compactMap({ $0.piece }).map({ type(of: $0).score })
         result = allPieceScore.reduce(0, +)
         return result
     }
@@ -57,31 +59,52 @@ final class ChessBoard {
         return result
     }
     
-    func canMovePiece(from: Position, to: Position) -> Bool {
+    func canMove(by path: String) throws -> Bool {
         var canMove: Bool = false
-
-        guard let fromSquareIndex = board.firstIndex(where: { $0.position == from }), let toSquareIndex = board.firstIndex(where: { $0.position == to }) else { return canMove }
-
-        let fromSquare = board[fromSquareIndex]
-        let toSquare = board[toSquareIndex]
         
-        if fromSquare.piece?.canMove(from: from, to: to) == true {
-            if toSquare.piece == nil {
-                canMove = true
-            } else {
-                if fromSquare.piece?.color != toSquare.piece?.color {
-                    canMove = true
+        do {
+            let positions = try validate(input: path)
+            let from = positions[0]
+            let to = positions[1]
+            guard let fromSquareIndex = board.firstIndex(where: { $0.position == from }), let toSquareIndex = board.firstIndex(where: { $0.position == to }) else { return canMove }
+            
+            let fromSquare = board[fromSquareIndex]
+            
+            let neighborPositions = getMovableNeighborDirections(from: fromSquare.position)
+            if let avaliableMovingPositions = fromSquare.piece?.getMovableAllPositions(from: fromSquare.position, with: neighborPositions) {
+                
+                avaliableMovingPositions.forEach { ways in
+                    if ways.contains(where: { $0 == to }) {
+                        ways.forEach { position in
+                            if let piece = board.first(where: { $0.position == position })?.piece {
+                                if position == to && piece.color != fromSquare.piece?.color {
+                                    canMove = true
+                                    return
+                                } else {
+                                    return
+                                }
+                            } else {
+                                if position == to {
+                                    canMove = true
+                                    return
+                                }
+                            }
+                        }
+                    }
                 }
             }
+            
+            if canMove {
+                let movingPiece = board[fromSquareIndex].piece
+                board[toSquareIndex].piece = movingPiece
+                board[fromSquareIndex].piece = nil
+                thisTurn = movingPiece?.color == .white ? .black : .white
+            }
+            
+            return canMove
+        } catch {
+            throw error
         }
-        
-        if canMove {
-            let movingPiece = board[fromSquareIndex].piece
-            board[toSquareIndex].piece = movingPiece
-            board[fromSquareIndex].piece = nil
-        }
-        
-        return canMove
     }
     
     private func initBoard() -> [Square] {
@@ -97,9 +120,18 @@ final class ChessBoard {
     }
     
     private func startGame() {
-        var blackPawns: [Pawn] = .init(repeating: .init(color: .black), count: Pawn.maxCount)
         var whitePawns: [Pawn] = .init(repeating: .init(color: .white), count: Pawn.maxCount)
+        var whiteBishops: [Bishop] = .init(repeating: .init(color: .white), count: Bishop.maxCount)
+        var whiteRooks: [Rook] = .init(repeating: .init(color: .white), count: Rook.maxCount)
+        var whiteQueens: [Queen] = .init(repeating: .init(color: .white), count: Queen.maxCount)
+        var whiteKnights: [Knight] = .init(repeating: .init(color: .white), count: Knight.maxCount)
         
+        var blackPawns: [Pawn] = .init(repeating: .init(color: .black), count: Pawn.maxCount)
+        var blackBishops: [Bishop] = .init(repeating: .init(color: .black), count: Bishop.maxCount)
+        var blackRooks: [Rook] = .init(repeating: .init(color: .black), count: Rook.maxCount)
+        var blackQueens: [Queen] = .init(repeating: .init(color: .black), count: Queen.maxCount)
+        var blackKnights: [Knight] = .init(repeating: .init(color: .black), count: Knight.maxCount)
+
         for (index, square) in board.enumerated() {
             if square.piece == nil, let availableInitPieceColor = square.position.getInitAvailableColor() {
                 switch availableInitPieceColor {
@@ -107,14 +139,97 @@ final class ChessBoard {
                     if let whitePawn = whitePawns.first, whitePawn.isPossibleInitPosition(with: square.position) {
                         board[index].piece = whitePawn
                         whitePawns.removeFirst()
+                    } else if let whiteBishop = whiteBishops.first, whiteBishop.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteBishop
+                        whiteBishops.removeFirst()
+                    } else if let whiteRook = whiteRooks.first, whiteRook.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteRook
+                        whiteRooks.removeFirst()
+                    } else if let whiteQueen = whiteQueens.first, whiteQueen.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteQueen
+                        whiteQueens.removeFirst()
+                    } else if let whiteKnight = whiteKnights.first, whiteKnight.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = whiteKnight
+                        whiteKnights.removeFirst()
                     }
                 case .black:
                     if let blackPawn = blackPawns.first, blackPawn.isPossibleInitPosition(with: square.position) {
                         board[index].piece = blackPawn
                         blackPawns.removeFirst()
+                    } else if let blackBishop = blackBishops.first, blackBishop.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackBishop
+                        blackBishops.removeFirst()
+                    } else if let blackRook = blackRooks.first, blackRook.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackRook
+                        blackRooks.removeFirst()
+                    } else if let blackQueen = blackQueens.first, blackQueen.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackQueen
+                        blackQueens.removeFirst()
+                    } else if let blackKnight = blackKnights.first, blackKnight.isPossibleInitPosition(with: square.position) {
+                        board[index].piece = blackKnight
+                        blackKnights.removeFirst()
                     }
                 }
             }
         }
+    }
+    
+    private func validate(input: String) throws -> [Position] {
+        let inputs = input.components(separatedBy: "->")
+        guard inputs.count == 2 else { throw ErrorType.wrongInput }
+        
+        do {
+            let from = try makePosition(by: inputs[0])
+            let to = try makePosition(by: inputs[1])
+            _ = try validateThisTurn(by: from)
+            return [from, to]
+        } catch {
+            throw error
+        }
+    }
+    
+    private func makePosition(by input: String) throws -> Position {
+        let separated = input.map({ String($0) })
+        guard let file = Position.File.allCases.first(where: { $0.displayText == separated[0] }),
+              let rank = Position.Rank.allCases.first(where: { $0.displayText == separated[1]}) else {
+            throw ErrorType.wrongInput
+        }
+        return .init(rank: rank, file: file)
+    }
+    
+    private func validateThisTurn(by position: Position) throws {
+        guard let fromPositionPieceColor = board.first(where: { $0.position == position })?.piece?.color else { throw ErrorType.wrongInput }
+        if fromPositionPieceColor != thisTurn {
+            throw ErrorType.invalidTurn
+        }
+    }
+    
+    func getMovableNeighborDirections(from position: Position) -> Set<Position> {
+        var neighborPosition: Set<Position?> = []
+        
+        neighborPosition.insert(position.makePosition(rankDiff: -1, fileDiff: -1))
+        neighborPosition.insert(position.makePosition(rankDiff: -1, fileDiff: 0))
+        neighborPosition.insert(position.makePosition(rankDiff: -1, fileDiff: 1))
+        neighborPosition.insert(position.makePosition(rankDiff: 0, fileDiff: -1))
+        neighborPosition.insert(position.makePosition(rankDiff: 0, fileDiff: 1))
+        neighborPosition.insert(position.makePosition(rankDiff: 1, fileDiff: -1))
+        neighborPosition.insert(position.makePosition(rankDiff: 1, fileDiff: 0))
+        neighborPosition.insert(position.makePosition(rankDiff: 1, fileDiff: 1))
+        
+        var result: Set<Position> = []
+        guard let currentPieceColor: Color = board.first(where: { $0.position == position})?.piece?.color else { return [] }
+        
+        neighborPosition.compactMap({ $0 }).forEach { neighborPosition in
+            if let piece = board.first(where: { $0.position == neighborPosition })?.piece {
+                if piece.color != currentPieceColor {
+                    // 근접한 Position 중 다른 색깔의 체스말이 있는 경우
+                    result.insert(neighborPosition)
+                }
+            } else {
+                // 근접한 Position 중 비어있는 곳
+                result.insert(neighborPosition)
+            }
+        }
+        return result
     }
 }
