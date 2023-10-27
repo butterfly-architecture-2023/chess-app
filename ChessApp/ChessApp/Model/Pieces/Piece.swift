@@ -9,11 +9,10 @@ import Foundation
 
 protocol Piece: CustomStringConvertible {
     var color: Color { get }
-    var position: Position { get set }
-    var availableMovePositions: Set<Position> { get }
+    func availableMovingWays(for position: Position) -> Set<PieceMovingWay>
     
-    var maximumCount: Int { get }
-    var score: Int { get }
+    static var maximumCount: Int { get }
+    static var score: Int { get }
 }
 
 extension Piece {

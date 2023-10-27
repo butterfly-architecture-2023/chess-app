@@ -9,9 +9,8 @@ import Foundation
 
 struct Pawn: Piece {
     let color: Color
-    var position: Position
     
-    var availableMovePositions: Set<Position> {
+    func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
         let stride = {
             switch color {
             case .black:
@@ -20,14 +19,12 @@ struct Pawn: Piece {
                 return -1
             }
         }()
-        let expectedRank = Int(position.rank.rawValue) + stride
-        guard expectedRank > 0,
-              let rank = Position.Rank(UInt8(expectedRank)) else { return [] }
-        return [Position(file: position.file, rank: rank)]
+        guard let position = position.offsetBy(fileOffset: 0, rankOffset: stride) else { return [] }
+        return [PieceMovingWay(positions: [position])]
     }
     
-    let score: Int = 1
-    let maximumCount: Int = 8
+    static let score: Int = 1
+    static let maximumCount: Int = 8
 }
 
 extension Pawn: CustomStringConvertible {

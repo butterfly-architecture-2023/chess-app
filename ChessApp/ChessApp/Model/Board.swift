@@ -10,21 +10,18 @@ import Foundation
 struct Board {
     private(set) var pieces: [Position: Piece] = [:]
     
-    mutating func updatePieces(_ pieces: [Piece]) -> Bool {
-        guard validate(pieces: pieces) else { return false }
-        let piecePairs = pieces.map { ($0.position, $0) }
-        self.pieces = [Position: Piece](uniqueKeysWithValues: piecePairs)
-        return true
+    mutating func updatePieces(_ pieces: [Position: Piece]) throws {
+        try validate(pieces: pieces)
+        self.pieces = pieces
     }
     
-    mutating func move(from: Position, to: Position) -> Bool {
-        guard canMove(from: from, to: to) else {
-            return false
-        }
-        
+    @discardableResult
+    mutating func move(from: Position, to: Position) throws -> Bool {
+        try checkMovable(from: from, to: to)
+        let hasPieceAtDestination = pieces[to] != nil
         pieces[to] = pieces[from]
         pieces[from] = nil
-        return true
+        return hasPieceAtDestination
     }
     
     func display() -> String {
@@ -39,27 +36,29 @@ struct Board {
     func score(for color: Color) -> Int {
         pieces.values
             .filter { $0.color == color }
-            .map(\.score)
+            .map { type(of: $0).score }
             .reduce(0, +)
     }
     
-    private func validate(pieces: [Piece]) -> Bool {
+    private func validate(pieces: [Position: Piece]) throws {
         var classified = [String: Int]()
-        for piece in pieces {
+        for piece in pieces.values {
             let identifier = piece.type + "\(piece.color)"
             let count = classified[identifier, default: 0] + 1
-            guard piece.maximumCount >= count else {
-                return false
+            guard type(of: piece).maximumCount >= count else {
+                throw BoardValidateError.exceedMaximumCount
             }
             classified[identifier] = count
         }
-        return true
     }
     
-    private func canMove(from: Position, to: Position) -> Bool {
-        guard let fromPiece = pieces[from],
-                fromPiece.availableMovePositions.contains(to) else { return false }
-        guard let toPiece = pieces[to] else { return true }
-        return fromPiece.color != toPiece.color
+    private func checkMovable(from: Position, to: Position) throws {
+        guard let fromPiece = pieces[from] else { throw BoardMoveError.invalidStartingPoint }
+        let hasAvailableWay = fromPiece
+            .availableMovingWays(for: from)
+            .contains(where: { $0.canMove(to: to, pieces: pieces) })
+        guard hasAvailableWay else { throw BoardMoveError.invalidDestination }
+        guard let toPiece = pieces[to] else { return }
+        guard fromPiece.color != toPiece.color else { throw BoardMoveError.sameColor }
     }
 }
