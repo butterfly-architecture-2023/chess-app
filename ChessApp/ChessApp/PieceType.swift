@@ -8,5 +8,5 @@
 import Foundation
 
 enum PieceType: Equatable {
-  case pawn
+  case pawn, bishop, knight, queen, rook
 }

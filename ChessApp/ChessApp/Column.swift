@@ -22,11 +22,33 @@ enum Column: String, CaseIterable, Equatable {
     case .H: return 7
     }
   }
+  
+  static func - (lhs: Column, rhs: Column) -> Column? {
+    (lhs.order - rhs.order).toColumn
+  }
+  
+  static func + (lhs: Column, rhs: Column) -> Column? {
+    (lhs.order + rhs.order).toColumn
+  }
+  
+  static func - (lhs: Column, rhs: Int) -> Column? {
+    (lhs.order - rhs).toColumn
+  }
+  
+  static func + (lhs: Column, rhs: Int) -> Column? {
+    (lhs.order + rhs).toColumn
+  }
 }
 
 extension Column: Comparable {
   static func < (lhs: Column, rhs: Column) -> Bool {
     lhs.order < rhs.order
+  }
+}
+
+extension Column: CustomStringConvertible {
+  var description: String {
+    return self.rawValue
   }
 }
 

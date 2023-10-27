@@ -7,20 +7,14 @@
 
 import Foundation
 
-class Pawn: Piece {
-  static func == (lhs: Pawn, rhs: Pawn) -> Bool {
-    lhs.color == rhs.color
-    && lhs.type == rhs.type
-    && lhs.directionMovable == rhs.directionMovable
-  }
-  
+struct Pawn: Piece {
   let type: PieceType = .pawn
   let color: PieceColor
-  let directionMovable: Set<MoveDirection>
+  let directionMovable: Set<MoveVector>
   
   var moveCount: Int = 0
   
-  required init(_ color: PieceColor) {
+  init(_ color: PieceColor) {
     self.color = color
     self.directionMovable = color == .black
     ? Set([.down(1), .downLeft(1), .downRight(1)])
