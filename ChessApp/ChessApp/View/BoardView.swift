@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol BoardViewDelegate: AnyObject {
+    func didTapped(position: Position)
+}
+
 final class BoardView: UIView {
+    weak var delegate: BoardViewDelegate?
+    
     private lazy var pieceGridView = stackView(axis: .vertical)
     
     override init(frame: CGRect) {
@@ -22,10 +28,15 @@ final class BoardView: UIView {
     
     private func setupViews() {
         let vStack = pieceGridView
-        for _ in 0..<8 {
+        for i in (0..<8).reversed() {
             let hStack = stackView(axis: .horizontal)
-            for _ in 0..<8 {
-                let positionView = positionView()
+            for j in 0..<8 {
+                guard let file = Position.File(j),
+                      let rank = Position.Rank(i) else {
+                    assertionFailure()
+                    continue
+                }
+                let positionView = positionView(Position(file: file, rank: rank))
                 hStack.addArrangedSubview(positionView)
             }
             vStack.addArrangedSubview(hStack)
@@ -46,10 +57,10 @@ final class BoardView: UIView {
         return stackView
     }
     
-    private func positionView() -> BoardPositionView {
-        let positionView = BoardPositionView()
-        positionView.addAction(.init{ [weak positionView] _ in
-            positionView?.isSelected.toggle()
+    private func positionView(_ position: Position) -> BoardPositionView {
+        let positionView = BoardPositionView(position: position)
+        positionView.addAction(.init{ [weak self] _ in
+            self?.delegate?.didTapped(position: position)
         }, for: .touchUpInside)
         return positionView
     }

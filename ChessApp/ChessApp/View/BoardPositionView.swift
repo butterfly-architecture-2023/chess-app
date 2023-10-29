@@ -8,6 +8,8 @@
 import UIKit
 
 final class BoardPositionView: UIControl {
+    private let position: Position
+    
     override var isSelected: Bool {
         didSet {
             circleView.isHidden = !isSelected
@@ -28,14 +30,13 @@ final class BoardPositionView: UIControl {
         circleView.frame.center = bounds.center
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
+    init(position: Position) {
+        self.position = position
+        super.init(frame: .zero)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupViews()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupViews() {
