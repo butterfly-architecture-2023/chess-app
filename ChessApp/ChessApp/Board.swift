@@ -16,6 +16,21 @@ class Board {
   var score = [PieceColor.black: 0, PieceColor.white: 0]
   
   let positions: [Position]
+  var positionPerRow: [[Position]] {
+    guard positions.isEmpty == false else { return [[]] }
+    var positions = positions
+    var result = [[Position]]()
+    
+    while positions.isEmpty == false, positions.count.isMultiple(of: 8) {
+      result.append(Array(positions[0..<8]))
+      positions.removeSubrange(0...7)
+    }
+    
+    if positions.isEmpty == false {
+      result.append(positions)
+    }
+    return result
+  }
   
   init() {
     self.positions = pieceManager.getNormalBoard()
