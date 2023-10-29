@@ -11,7 +11,7 @@ struct BoardViewModel {
     let elements: [Position: Element]
     
     struct Element {
-        let description: String
+        let title: String
         let isSelected: Bool
         let isHighlighted: Bool
         let backgroundColor: UIColor

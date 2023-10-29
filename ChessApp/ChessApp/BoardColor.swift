@@ -10,4 +10,5 @@ import UIKit
 enum BoardColor {
     static let light = UIColor(named: "boardLight")!
     static let dark = UIColor(named: "boardDark")!
+    static let dim = UIColor(named: "boardDim")!
 }

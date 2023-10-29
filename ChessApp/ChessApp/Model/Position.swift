@@ -90,4 +90,8 @@ struct Position: Hashable, CustomStringConvertible {
     var description: String {
         return file.description + rank.description 
     }
+    
+    var isEven: Bool {
+        (rank.rawValue + file.rawValue) % 2 == 0
+    }
 }

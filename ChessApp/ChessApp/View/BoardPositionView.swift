@@ -7,33 +7,36 @@
 
 import UIKit
 
-final class BoardPositionView: UIControl {
+final class BoardPositionView: UIButton {
     private let position: Position
     
-    override var isSelected: Bool {
-        didSet {
-            circleView.isHidden = !isSelected
-        }
-    }
-    
     private let circleView = {
-        let ellipseView = EllipseView()
-        ellipseView.bounds.size = CGSize(width: 16, height: 16)
-        ellipseView.backgroundColor = .systemGray
-        ellipseView.isUserInteractionEnabled = false
-        ellipseView.isHidden = true
-        return ellipseView
+        let view = EllipseView()
+        view.bounds.size = CGSize(width: 16, height: 16)
+        view.backgroundColor = .systemGray
+        view.isUserInteractionEnabled = false
+        view.isHidden = true
+        return view
+    }()
+    
+    private let dimmedView = {
+        let view = UIView()
+        view.backgroundColor = BoardColor.dim
+        view.isHidden = true
+        return view
     }()
     
     override func layoutSubviews() {
         super.layoutSubviews()
         circleView.frame.center = bounds.center
+        dimmedView.frame = bounds
     }
     
     init(position: Position) {
         self.position = position
         super.init(frame: .zero)
         addSubview(circleView)
+        addSubview(dimmedView)
     }
     
     required init?(coder: NSCoder) {
@@ -41,8 +44,10 @@ final class BoardPositionView: UIControl {
     }
     
     func setup(viewModel: BoardViewModel.Element) {
-        self.isSelected = viewModel.isSelected
-        self.isHighlighted = viewModel.isHighlighted
+        self.dimmedView.isHidden = !viewModel.isSelected
+        self.circleView.isHidden = !viewModel.isHighlighted
         self.backgroundColor = viewModel.backgroundColor
+        setTitleColor(.black, for: .normal)
+        setTitle(viewModel.title, for: .normal)
     }
 }

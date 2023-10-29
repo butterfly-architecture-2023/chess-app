@@ -29,14 +29,9 @@ final class BoardView: UIView {
     
     private func setupViews() {
         let vStack = positionViewContainer
-        for i in (0..<8).reversed() {
+        for rank in Position.Rank.allCases.reversed() {
             let hStack = stackView(axis: .horizontal)
-            for j in 0..<8 {
-                guard let file = Position.File(j),
-                      let rank = Position.Rank(i) else {
-                    assertionFailure()
-                    continue
-                }
+            for file in Position.File.allCases {
                 let position = Position(file: file, rank: rank)
                 let positionView = positionView(position)
                 positionViews[position] = positionView
