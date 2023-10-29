@@ -20,9 +20,8 @@
 0. (struct) BoardView : 모델인 Board 의 inputCmd 를 호출. BoardResult 에 따라 뷰 업데이트.
 1. (class) Board : 체스판 전체. 입력을 Position 으로 변경하고 체스말을 이동시킨다. 체스 게임 자체를 정의함.
   1. (struct) BoardPieceManager : Board 에서 사용할 positons 를 생성함. Board 를 테스트하기 위한 positions 로 반환하기도 함.
-  2. (enum) BoardPieceManager 를 초기화하는
-  3. (struct) BoardMoveManager : 이동 가능한 범위를 반환 
-  4. (enum) BoardResult : 체스판에서 방출할 수 있는 결과 값.
+  2. (struct) BoardMoveManager : 이동 가능한 범위를 반환 
+  3. (enum) BoardResult : 체스판에서 방출할 수 있는 결과 값.
     1. 이동 완료.
     2. 이동 완료. 흰색 혹은 검은색이 점수를 얻음.
     3. 이동할 수 없는 입력.

@@ -13,14 +13,14 @@ enum Row: Int, CaseIterable, Equatable {
   // 헷갈림을 방지하고자 rawValue 를 이름과 같이 정의
   var rawValue: Int {
     switch self {
-    case .one: return 1
-    case .two: return 2
-    case .three: return 3
-    case .four: return 4
-    case .five: return 5
-    case .six: return 6
-    case .seven: return 7
-    case .eight: return 8
+    case .one: return 0
+    case .two: return 1
+    case .three: return 2
+    case .four: return 3
+    case .five: return 4
+    case .six: return 5
+    case .seven: return 6
+    case .eight: return 7
     }
   }
   
@@ -61,6 +61,9 @@ extension Int {
 
 extension String {
   var getRow: Row? {
-    Int(String(self.last ?? Character("")))?.toRow
+    guard let num = Int(String(self.last ?? Character(""))) else {
+      return nil
+    }
+    return (num - 1).toRow
   }
 }

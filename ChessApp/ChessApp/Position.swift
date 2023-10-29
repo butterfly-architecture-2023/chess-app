@@ -15,6 +15,7 @@ class Position: CustomStringConvertible, Equatable {
   let row: Row, column: Column
   
   var piece: (any Piece)?
+  var isHighlighted = false
   
   init(_ column: Column, _ row: Row) {
     self.row = row

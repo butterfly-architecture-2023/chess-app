@@ -32,6 +32,11 @@
 		1B99EF762AE94E35008DEAE3 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99EF752AE94E35008DEAE3 /* Array+Extensions.swift */; };
 		1B99EF772AE94EFC008DEAE3 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99EF732AE94DD5008DEAE3 /* Position.swift */; };
 		1B99EF782AE94F0F008DEAE3 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B99EF752AE94E35008DEAE3 /* Array+Extensions.swift */; };
+		1BB22BDB2AEE192F005251B9 /* BoardPieceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB22BDA2AEE192E005251B9 /* BoardPieceManager.swift */; };
+		1BB22BDD2AEE1CA4005251B9 /* BoardMoveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB22BDC2AEE1CA4005251B9 /* BoardMoveManager.swift */; };
+		1BB22BDF2AEE7505005251B9 /* Board+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB22BDE2AEE7505005251B9 /* Board+Extensions.swift */; };
+		1BB22BE02AEE7CB6005251B9 /* BoardPieceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB22BDA2AEE192E005251B9 /* BoardPieceManager.swift */; };
+		1BB22BE12AEE7CBB005251B9 /* BoardMoveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB22BDC2AEE1CA4005251B9 /* BoardMoveManager.swift */; };
 		1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D32ADD7B9700ACE122 /* Column.swift */; };
 		1BF7B7D62ADD7FB000ACE122 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */; };
 		1BF7B7DB2ADD800E00ACE122 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B20D91C2ADBCAE40057C0CD /* Board.swift */; };
@@ -76,6 +81,9 @@
 		1B99EF5E2AE69562008DEAE3 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		1B99EF732AE94DD5008DEAE3 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		1B99EF752AE94E35008DEAE3 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		1BB22BDA2AEE192E005251B9 /* BoardPieceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPieceManager.swift; sourceTree = "<group>"; };
+		1BB22BDC2AEE1CA4005251B9 /* BoardMoveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardMoveManager.swift; sourceTree = "<group>"; };
+		1BB22BDE2AEE7505005251B9 /* Board+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Board+Extensions.swift"; sourceTree = "<group>"; };
 		1BF7B7D32ADD7B9700ACE122 /* Column.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +131,8 @@
 				1B20D8F02ADBB6A40057C0CD /* ChessAppApp.swift */,
 				1B20D8F22ADBB6A40057C0CD /* ContentView.swift */,
 				1B20D91C2ADBCAE40057C0CD /* Board.swift */,
+				1BB22BDA2AEE192E005251B9 /* BoardPieceManager.swift */,
+				1BB22BDC2AEE1CA4005251B9 /* BoardMoveManager.swift */,
 				1B20D91E2ADBCAF00057C0CD /* Pawn.swift */,
 				1B76CF052AE5377B0079011D /* Bishop.swift */,
 				1B99EF5E2AE69562008DEAE3 /* Rook.swift */,
@@ -155,6 +165,7 @@
 			children = (
 				1B20D9012ADBB6A50057C0CD /* PieceTypeTests.swift */,
 				1BF7B7D52ADD7FB000ACE122 /* BoardTests.swift */,
+				1BB22BDE2AEE7505005251B9 /* Board+Extensions.swift */,
 			);
 			path = ChessAppTests;
 			sourceTree = "<group>";
@@ -268,12 +279,14 @@
 				1B76CF082AE54E4F0079011D /* Knight.swift in Sources */,
 				1B20D8F12ADBB6A40057C0CD /* ChessAppApp.swift in Sources */,
 				1BF7B7D42ADD7B9700ACE122 /* Column.swift in Sources */,
+				1BB22BDB2AEE192F005251B9 /* BoardPieceManager.swift in Sources */,
 				1B99EF742AE94DD5008DEAE3 /* Position.swift in Sources */,
 				1B99EF5F2AE69562008DEAE3 /* Rook.swift in Sources */,
 				1B20D91D2ADBCAE40057C0CD /* Board.swift in Sources */,
 				1B99EF762AE94E35008DEAE3 /* Array+Extensions.swift in Sources */,
 				1B20D9292ADBDB470057C0CD /* Piece.swift in Sources */,
 				1B20D9232ADBDB340057C0CD /* PieceType.swift in Sources */,
+				1BB22BDD2AEE1CA4005251B9 /* BoardMoveManager.swift in Sources */,
 				1B20D9272ADBDB420057C0CD /* MoveVector.swift in Sources */,
 				1B20D91F2ADBCAF00057C0CD /* Pawn.swift in Sources */,
 			);
@@ -294,11 +307,14 @@
 				1B99EF772AE94EFC008DEAE3 /* Position.swift in Sources */,
 				1B99EF662AE696A0008DEAE3 /* Bishop.swift in Sources */,
 				1BF7B7DD2ADD801900ACE122 /* Row.swift in Sources */,
+				1BB22BDF2AEE7505005251B9 /* Board+Extensions.swift in Sources */,
 				1B99EF782AE94F0F008DEAE3 /* Array+Extensions.swift in Sources */,
 				1BF7B7DF2ADD802500ACE122 /* Pawn.swift in Sources */,
 				1B99EF632AE6968F008DEAE3 /* Knight.swift in Sources */,
 				1B99EF652AE6968F008DEAE3 /* Rook.swift in Sources */,
+				1BB22BE12AEE7CBB005251B9 /* BoardMoveManager.swift in Sources */,
 				1BF7B7DC2ADD801900ACE122 /* Column.swift in Sources */,
+				1BB22BE02AEE7CB6005251B9 /* BoardPieceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
