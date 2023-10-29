@@ -12,7 +12,7 @@ import XCTest
 extension [Position: Piece] {
     static var initialPawns: [Position: Piece] {
         Position.File.range.reduce([:]) { (partialResult: [Position: Piece], i: Int) -> [Position: Piece] in
-            guard let file = UnicodeScalar(65 + i) else { // "A" + i
+            guard let file = UnicodeScalar(AsciiValue.A + i) else { // "A" + i
                 return partialResult
             }
             var partialResult = partialResult
