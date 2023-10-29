@@ -18,7 +18,7 @@ struct PieceMovingWay: Hashable {
         self.init(spots: positions.map { Spot(position: $0) })
     }
     
-    init(for position: Position, fileMultiplier: Int, rankMultiplier: Int, repeat: Int) {
+    init(for position: Position, fileMultiplier: Int = 0, rankMultiplier: Int = 0, repeat: Int = 8) {
         guard 1<`repeat` else {
             self.init(positions: [])
             return
