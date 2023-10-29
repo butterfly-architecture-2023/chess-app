@@ -33,15 +33,16 @@ final class BoardPositionView: UIControl {
     init(position: Position) {
         self.position = position
         super.init(frame: .zero)
+        addSubview(circleView)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViews() {
-        addSubview(circleView)
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.systemBlue.cgColor
+    func setup(viewModel: BoardViewModel.Element) {
+        self.isSelected = viewModel.isSelected
+        self.isHighlighted = viewModel.isHighlighted
+        self.backgroundColor = viewModel.backgroundColor
     }
 }

@@ -14,7 +14,8 @@ protocol BoardViewDelegate: AnyObject {
 final class BoardView: UIView {
     weak var delegate: BoardViewDelegate?
     
-    private lazy var pieceGridView = stackView(axis: .vertical)
+    private lazy var positionViewContainer = stackView(axis: .vertical)
+    private var positionViews = [Position: BoardPositionView]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,7 +28,7 @@ final class BoardView: UIView {
     }
     
     private func setupViews() {
-        let vStack = pieceGridView
+        let vStack = positionViewContainer
         for i in (0..<8).reversed() {
             let hStack = stackView(axis: .horizontal)
             for j in 0..<8 {
@@ -36,7 +37,9 @@ final class BoardView: UIView {
                     assertionFailure()
                     continue
                 }
-                let positionView = positionView(Position(file: file, rank: rank))
+                let position = Position(file: file, rank: rank)
+                let positionView = positionView(position)
+                positionViews[position] = positionView
                 hStack.addArrangedSubview(positionView)
             }
             vStack.addArrangedSubview(hStack)
@@ -46,7 +49,7 @@ final class BoardView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        pieceGridView.frame = bounds
+        positionViewContainer.frame = bounds
     }
     
     private func stackView(axis: NSLayoutConstraint.Axis) -> UIStackView {
@@ -63,5 +66,13 @@ final class BoardView: UIView {
             self?.delegate?.didTapped(position: position)
         }, for: .touchUpInside)
         return positionView
+    }
+}
+
+extension BoardView: BoardPresenter {
+    func updateViewModel(_ viewModel: BoardViewModel) {
+        for element in viewModel.elements {
+            positionViews[element.key]?.setup(viewModel: element.value)
+        }
     }
 }
