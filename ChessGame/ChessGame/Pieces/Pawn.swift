@@ -17,7 +17,7 @@ struct BlackPawn: BlackPiece {
     static func initialPositions() -> [Position: Self] {
         var positions: [Position: Self] = [:]
          for rank in 0..<8 {
-             positions[Position(file: 1, rank: rank)] = Self.init()
+             positions[Position(file: 1, rank: rank)!] = Self.init()
          }
          return positions
     }
@@ -33,7 +33,7 @@ struct WhitePawn: WhitePiece {
     static func initialPositions() -> [Position: Self] {
         var positions: [Position: Self] = [:]
          for rank in 0..<8 {
-             positions[Position(file: 6, rank: rank)] = Self.init()
+             positions[Position(file: 6, rank: rank)!] = Self.init()
          }
          return positions
     }

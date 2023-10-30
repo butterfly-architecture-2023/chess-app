@@ -15,7 +15,7 @@ struct BlackQueen: BlackPiece {
     }
     
     static func initialPositions() -> [Position: Self] {
-        return [Position(file: 0, rank: 4): Self.init()]
+        return [Position(file: 0, rank: 4)!: Self.init()]
     }
 }
 
@@ -27,7 +27,7 @@ struct WhiteQueen: WhitePiece {
     }
     
     static func initialPositions() -> [Position: Self] {
-        return [Position(file: 7, rank: 4): Self.init()]
+        return [Position(file: 7, rank: 4)!: Self.init()]
     }
 }
 

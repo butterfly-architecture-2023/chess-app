@@ -15,8 +15,8 @@ struct BlackRook: BlackPiece {
     }
     
     static func initialPositions() -> [Position: Self] {
-        return [Position(file: 0, rank: 0): Self.init(),
-                Position(file: 0, rank: 7): Self.init()]
+        return [Position(file: 0, rank: 0)!: Self.init(),
+                Position(file: 0, rank: 7)!: Self.init()]
     }
 }
 
@@ -28,8 +28,8 @@ struct WhiteRook: WhitePiece {
     }
     
     static func initialPositions() -> [Position: Self] {
-        return [Position(file: 7, rank: 0): Self.init(),
-                Position(file: 7, rank: 7): Self.init()]
+        return [Position(file: 7, rank: 0)!: Self.init(),
+                Position(file: 7, rank: 7)!: Self.init()]
     }
 }
 
