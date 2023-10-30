@@ -20,7 +20,7 @@ struct Pawn: Piece {
         }
     }
     
-    var initialPositions: Set<PieceCoordinate> {
+    var initialCoordinates: Set<PieceCoordinate> {
         switch color {
         case .black:
             return [
@@ -49,5 +49,26 @@ struct Pawn: Piece {
     
     init(color: PieceColor) {
         self.color = color
+    }
+    
+    func movableCoordinates(from: PieceCoordinate) -> [PieceCoordinate] {
+        switch color {
+        case .black:
+            guard 
+                let increasedRank = PieceCoordinate.Rank(rawValue: from.rank.rawValue + 1)
+            else { return [] }
+            
+            return [
+                .init(rank: increasedRank, file: from.file)
+            ]
+        case .white:
+            guard
+                let decreasedRank = PieceCoordinate.Rank(rawValue: from.rank.rawValue - 1)
+            else { return [] }
+            
+            return [
+                .init(rank: decreasedRank, file: from.file)
+            ]
+        }
     }
 }

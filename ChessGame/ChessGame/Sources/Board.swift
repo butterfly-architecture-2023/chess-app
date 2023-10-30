@@ -13,6 +13,7 @@ final class Board {
     
     // PRIVATE
     private var squares: [[(any Piece)?]] = []
+    private(set) var turn: PieceColor = .white
     
     // MARK: - initialize
     
@@ -30,7 +31,7 @@ extension Board {
         for color in PieceColor.allCases {
             let piece = type.init(color: color)
             
-            piece.initialPositions.forEach { coordinate in
+            piece.initialCoordinates.forEach { coordinate in
                 self.squares[coordinate.rank.rawValue][coordinate.file.rawValue] = piece
             }
         }
@@ -56,10 +57,35 @@ extension Board {
         
         return result
     }
+    
+    @discardableResult
+    func move(from: PieceCoordinate, to: PieceCoordinate) -> Bool {
+        guard 
+            let movablePiece = piece(at: from),
+            turn == movablePiece.color,
+            movablePiece.movableCoordinates(from: from).contains(to)
+        else { return false }
+        
+        let targetPiece = piece(at: to)
+        
+        guard movablePiece.color != targetPiece?.color else { return false }
+        
+        squares[from.rank.rawValue][from.file.rawValue] = nil
+        squares[to.rank.rawValue][to.file.rawValue] = movablePiece
+        
+        turn = (turn == .white) ? .black : .white
+        
+        return true
+    }
 }
 
 // MARK: - private method
 
 extension Board {
     
+    private func piece(at: PieceCoordinate) -> (any Piece)? {
+        guard let piece = squares[at.rank.rawValue][at.file.rawValue] else { return nil }
+        
+        return piece
+    }
 }
