@@ -136,28 +136,9 @@
 		1B20D8EF2ADBB6A40057C0CD /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
-				1BB22BE82AEEA9B4005251B9 /* BoardGame.swift */,
-				1BB22BE62AEEA8B3005251B9 /* InfoArea.swift */,
-				1BB22BE22AEE9A2F005251B9 /* BoardView.swift */,
-				1BB22BE42AEEA712005251B9 /* ChessGrid.swift */,
 				1B20D8F02ADBB6A40057C0CD /* ChessAppApp.swift */,
-				1B20D8F22ADBB6A40057C0CD /* ContentView.swift */,
-				1B20D91C2ADBCAE40057C0CD /* Board.swift */,
-				1BB22BDA2AEE192E005251B9 /* BoardPieceManager.swift */,
-				1BB22BDC2AEE1CA4005251B9 /* BoardMoveManager.swift */,
-				1B20D91E2ADBCAF00057C0CD /* Pawn.swift */,
-				1B76CF052AE5377B0079011D /* Bishop.swift */,
-				1B99EF5E2AE69562008DEAE3 /* Rook.swift */,
-				1B76CF072AE54E4F0079011D /* Knight.swift */,
-				1B76CF092AE54F460079011D /* Queen.swift */,
-				1B20D9202ADBDB250057C0CD /* Row.swift */,
-				1BF7B7D32ADD7B9700ACE122 /* Column.swift */,
-				1B20D9222ADBDB340057C0CD /* PieceType.swift */,
-				1B20D9242ADBDB390057C0CD /* PieceColor.swift */,
-				1B20D9262ADBDB420057C0CD /* MoveVector.swift */,
-				1B20D9282ADBDB470057C0CD /* Piece.swift */,
-				1B99EF732AE94DD5008DEAE3 /* Position.swift */,
-				1B99EF752AE94E35008DEAE3 /* Array+Extensions.swift */,
+				1BC343662AEFDBC10069D12C /* View */,
+				1BC343672AEFDBD30069D12C /* Model */,
 				1B20D8F42ADBB6A50057C0CD /* Assets.xcassets */,
 				1B20D8F62ADBB6A50057C0CD /* Preview Content */,
 			);
@@ -180,6 +161,73 @@
 				1BB22BDE2AEE7505005251B9 /* Board+Extensions.swift */,
 			);
 			path = ChessAppTests;
+			sourceTree = "<group>";
+		};
+		1BC343662AEFDBC10069D12C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1BB22BE82AEEA9B4005251B9 /* BoardGame.swift */,
+				1BB22BE62AEEA8B3005251B9 /* InfoArea.swift */,
+				1BB22BE22AEE9A2F005251B9 /* BoardView.swift */,
+				1BB22BE42AEEA712005251B9 /* ChessGrid.swift */,
+				1B20D8F22ADBB6A40057C0CD /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1BC343672AEFDBD30069D12C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BC343682AEFDBDE0069D12C /* Board */,
+				1BC343692AEFDBE70069D12C /* Piece */,
+				1BC3436A2AEFDBF00069D12C /* Grid */,
+				1BC3436B2AEFDBFD0069D12C /* Abstration */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1BC343682AEFDBDE0069D12C /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				1B20D91C2ADBCAE40057C0CD /* Board.swift */,
+				1BB22BDA2AEE192E005251B9 /* BoardPieceManager.swift */,
+				1BB22BDC2AEE1CA4005251B9 /* BoardMoveManager.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		1BC343692AEFDBE70069D12C /* Piece */ = {
+			isa = PBXGroup;
+			children = (
+				1B20D91E2ADBCAF00057C0CD /* Pawn.swift */,
+				1B76CF052AE5377B0079011D /* Bishop.swift */,
+				1B99EF5E2AE69562008DEAE3 /* Rook.swift */,
+				1B76CF072AE54E4F0079011D /* Knight.swift */,
+				1B76CF092AE54F460079011D /* Queen.swift */,
+			);
+			path = Piece;
+			sourceTree = "<group>";
+		};
+		1BC3436A2AEFDBF00069D12C /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				1B20D9202ADBDB250057C0CD /* Row.swift */,
+				1BF7B7D32ADD7B9700ACE122 /* Column.swift */,
+				1B99EF732AE94DD5008DEAE3 /* Position.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		1BC3436B2AEFDBFD0069D12C /* Abstration */ = {
+			isa = PBXGroup;
+			children = (
+				1B20D9222ADBDB340057C0CD /* PieceType.swift */,
+				1B20D9242ADBDB390057C0CD /* PieceColor.swift */,
+				1B20D9262ADBDB420057C0CD /* MoveVector.swift */,
+				1B20D9282ADBDB470057C0CD /* Piece.swift */,
+				1B99EF752AE94E35008DEAE3 /* Array+Extensions.swift */,
+			);
+			path = Abstration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
