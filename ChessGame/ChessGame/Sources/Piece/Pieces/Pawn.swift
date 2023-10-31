@@ -59,24 +59,31 @@ struct Pawn: Piece {
     
     // MARK: - method
     
-    func movableCoordinates(from: PieceCoordinate) -> [PieceCoordinate] {
+    func movableCoordinates(from coordinate: PieceCoordinate) -> [PieceCoordinate] {
         switch color {
         case .black:
-            guard 
-                let increasedRank = PieceCoordinate.Rank(rawValue: from.rank.rawValue + 1)
+            guard
+                let increasedRank = PieceCoordinate.Rank(rawValue: coordinate.rank.rawValue + 1)
             else { return [] }
             
             return [
-                .init(rank: increasedRank, file: from.file)
+                .init(rank: increasedRank, file: coordinate.file)
             ]
         case .white:
             guard
-                let decreasedRank = PieceCoordinate.Rank(rawValue: from.rank.rawValue - 1)
+                let decreasedRank = PieceCoordinate.Rank(rawValue: coordinate.rank.rawValue - 1)
             else { return [] }
             
             return [
-                .init(rank: decreasedRank, file: from.file)
+                .init(rank: decreasedRank, file: coordinate.file)
             ]
         }
+    }
+    
+    func availableMovingCoordinates(
+        from coordinate: PieceCoordinate,
+        on squares: [[(Piece)?]]
+    ) -> [PieceCoordinate] {
+        return movableCoordinates(from: coordinate)
     }
 }
