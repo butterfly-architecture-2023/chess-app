@@ -23,6 +23,7 @@ final class BoardPositionView: UIButton {
         let view = UIView()
         view.backgroundColor = BoardColor.dim
         view.isHidden = true
+        view.isUserInteractionEnabled = false
         return view
     }()
     
@@ -35,6 +36,7 @@ final class BoardPositionView: UIButton {
     init(position: Position) {
         self.position = position
         super.init(frame: .zero)
+        titleLabel?.font = .systemFont(ofSize: 24)
         addSubview(circleView)
         addSubview(dimmedView)
     }
