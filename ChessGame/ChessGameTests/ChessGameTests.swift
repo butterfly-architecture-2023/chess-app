@@ -100,4 +100,20 @@ final class ChessGameTests: XCTestCase {
         
         XCTAssertEqual(result, expectedBoard)
     }
+    
+    func test_점수계산_성공케이스() {
+        sut.move(from: .init(rank: .seven, file: .A),
+                 to: .init(rank: .six, file: .A))
+        sut.move(from: .init(rank: .two, file: .A),
+                 to: .init(rank: .three, file: .A))
+        sut.move(from: .init(rank: .six, file: .A),
+                 to: .init(rank: .five, file: .A))
+        sut.move(from: .init(rank: .three, file: .A),
+                 to: .init(rank: .four, file: .A))
+        sut.move(from: .init(rank: .five, file: .A),
+                 to: .init(rank: .four, file: .A))
+        
+        XCTAssertEqual(sut.getScore().black, 7)
+        XCTAssertEqual(sut.getScore().white, 8)
+    }
 }

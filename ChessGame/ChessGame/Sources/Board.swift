@@ -60,7 +60,7 @@ extension Board {
     
     @discardableResult
     func move(from: PieceCoordinate, to: PieceCoordinate) -> Bool {
-        guard 
+        guard
             let movablePiece = piece(at: from),
             turn == movablePiece.color,
             movablePiece.movableCoordinates(from: from).contains(to)
@@ -76,6 +76,22 @@ extension Board {
         turn = (turn == .white) ? .black : .white
         
         return true
+    }
+    
+    func getScore() -> (black: Int, white: Int) {
+        var (blackScore, whiteScore) = (0, 0)
+        
+        for rank in squares {
+            for file in rank {
+                guard let piece = file else { continue }
+                
+                piece.color == .black
+                ? (blackScore += piece.point)
+                : (whiteScore += piece.point)
+            }
+        }
+        
+        return (black: blackScore, white: whiteScore)
     }
 }
 

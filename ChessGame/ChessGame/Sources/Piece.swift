@@ -13,6 +13,8 @@ protocol Piece {
     
     var symbol: String { get }
     
+    var point: Int { get }
+    
     var initialCoordinates: Set<PieceCoordinate> { get }
     
     func movableCoordinates(from: PieceCoordinate) -> [PieceCoordinate]

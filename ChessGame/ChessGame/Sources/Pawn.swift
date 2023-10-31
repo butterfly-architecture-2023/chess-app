@@ -20,6 +20,8 @@ struct Pawn: Piece {
         }
     }
     
+    var point: Int { 1 }
+    
     var initialCoordinates: Set<PieceCoordinate> {
         switch color {
         case .black:
