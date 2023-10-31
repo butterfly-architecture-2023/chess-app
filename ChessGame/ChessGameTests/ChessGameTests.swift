@@ -19,6 +19,7 @@ final class ChessGameTests: XCTestCase {
         sut.setUpPieces(type: Bishop.self)
         sut.setUpPieces(type: Rook.self)
         sut.setUpPieces(type: Queen.self)
+        sut.setUpPieces(type: Knight.self)
     }
     
     override func tearDown() {
@@ -34,14 +35,14 @@ final class ChessGameTests: XCTestCase {
     
     func test_board_생성후_display_확인() throws {
         let expectedBoard = [
-            "♜.♝.♛♝.♜",
+            "♜♞♝.♛♝♞♜",
             "♟♟♟♟♟♟♟♟",
             "........",
             "........",
             "........",
             "........",
             "♙♙♙♙♙♙♙♙",
-            "♖.♗.♕♗.♖"
+            "♖♘♗.♕♗♘♖"
         ]
         
         let result = sut.display()
@@ -74,14 +75,14 @@ final class ChessGameTests: XCTestCase {
                  to: .init(rank: .six, file: .A))
         
         let expectedBoard = [
-            "♜.♝.♛♝.♜",
+            "♜♞♝.♛♝♞♜",
             "♟♟♟♟♟♟♟♟",
             "........",
             "........",
             "........",
             "♙.......",
             ".♙♙♙♙♙♙♙",
-            "♖.♗.♕♗.♖"
+            "♖♘♗.♕♗♘♖"
         ]
         
         let result = sut.display()
@@ -109,14 +110,14 @@ final class ChessGameTests: XCTestCase {
                  to: .init(rank: .four, file: .A))
         
         let expectedBoard = [
-            "♜.♝.♛♝.♜",
+            "♜♞♝.♛♝♞♜",
             ".♟♟♟♟♟♟♟",
             "........",
             "♙.......",
             "........",
             "........",
             ".♙♙♙♙♙♙♙",
-            "♖.♗.♕♗.♖"
+            "♖♘♗.♕♗♘♖"
         ]
         
         let result = sut.display()
@@ -136,7 +137,7 @@ final class ChessGameTests: XCTestCase {
         sut.move(from: .init(rank: .five, file: .A),
                  to: .init(rank: .four, file: .A))
         
-        XCTAssertEqual(sut.getScore().black, 32)
-        XCTAssertEqual(sut.getScore().white, 33)
+        XCTAssertEqual(sut.getScore().black, 38)
+        XCTAssertEqual(sut.getScore().white, 39)
     }
 }
