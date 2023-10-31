@@ -33,8 +33,6 @@ final class PieceTests: XCTestCase {
         let pawn = BlackBiship()
         let movablePositions = pawn.movablePositions(current: position)
 
-        print(movablePositions)
-        
         let target: [Position] = 
         [
             Position(file: 1, rank: 1)!,
@@ -75,8 +73,6 @@ final class PieceTests: XCTestCase {
         let pawn = BlackRook()
         let movablePositions = pawn.movablePositions(current: position)
 
-        print(movablePositions)
-        
         let bottomTarget: [Position] =
         [
             Position(file: 0, rank: 1)!,
@@ -110,8 +106,6 @@ final class PieceTests: XCTestCase {
         let pawn = WhiteRook()
         let movablePositions = pawn.movablePositions(current: position)
 
-        print(movablePositions)
-        
         let topTarget: [Position] =
         [
             Position(file: 7, rank: 6)!,
@@ -145,8 +139,6 @@ final class PieceTests: XCTestCase {
         let pawn = BlackQueen()
         let movablePositions = pawn.movablePositions(current: position)
 
-        print(movablePositions)
-        
         let bottomTarget: [Position] =
         [
             Position(file: 0, rank: 1)!,
@@ -191,8 +183,6 @@ final class PieceTests: XCTestCase {
         let pawn = WhiteQueen()
         let movablePositions = pawn.movablePositions(current: position)
 
-        print(movablePositions)
-        
         let topTarget: [Position] =
         [
             Position(file: 7, rank: 6)!,
