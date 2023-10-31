@@ -17,7 +17,7 @@ protocol Piece {
     
     var initialCoordinates: Set<PieceCoordinate> { get }
     
-    func movableCoordinates(from: PieceCoordinate) -> [PieceCoordinate]
+    func movableCoordinates(from coordinate: PieceCoordinate) -> [PieceCoordinate]
     
     init(color: PieceColor)
 }
