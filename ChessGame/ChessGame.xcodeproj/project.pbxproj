@@ -25,6 +25,8 @@
 		76D895002AF1383D00255CA4 /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D894FE2AF1383D00255CA4 /* Rook.swift */; };
 		76D895022AF13DC300255CA4 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D895012AF13DC300255CA4 /* Queen.swift */; };
 		76D895032AF13DC300255CA4 /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D895012AF13DC300255CA4 /* Queen.swift */; };
+		76D895052AF141D200255CA4 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D895042AF141D200255CA4 /* Knight.swift */; };
+		76D895062AF141D200255CA4 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D895042AF141D200255CA4 /* Knight.swift */; };
 		76FC326F2AEEA4DE00D07299 /* PieceColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC326E2AEEA4DE00D07299 /* PieceColor.swift */; };
 		76FC32712AEEA4EB00D07299 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC32702AEEA4EB00D07299 /* Pawn.swift */; };
 		76FC32732AEEA51400D07299 /* PieceCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FC32722AEEA51400D07299 /* PieceCoordinate.swift */; };
@@ -68,6 +70,7 @@
 		76D894F92AF117FF00255CA4 /* Bishop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bishop.swift; sourceTree = "<group>"; };
 		76D894FE2AF1383D00255CA4 /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
 		76D895012AF13DC300255CA4 /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
+		76D895042AF141D200255CA4 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		76FC326E2AEEA4DE00D07299 /* PieceColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceColor.swift; sourceTree = "<group>"; };
 		76FC32702AEEA4EB00D07299 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		76FC32722AEEA51400D07299 /* PieceCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceCoordinate.swift; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 				76D894F92AF117FF00255CA4 /* Bishop.swift */,
 				76D894FE2AF1383D00255CA4 /* Rook.swift */,
 				76D895012AF13DC300255CA4 /* Queen.swift */,
+				76D895042AF141D200255CA4 /* Knight.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -346,6 +350,7 @@
 				76FC32712AEEA4EB00D07299 /* Pawn.swift in Sources */,
 				764CDA1E2AD9696300527094 /* AppDelegate.swift in Sources */,
 				76D895022AF13DC300255CA4 /* Queen.swift in Sources */,
+				76D895052AF141D200255CA4 /* Knight.swift in Sources */,
 				76C72F492ADED00500E4BA4C /* Piece.swift in Sources */,
 				76D894FF2AF1383D00255CA4 /* Rook.swift in Sources */,
 				76C72F462ADEC7CF00E4BA4C /* Board.swift in Sources */,
@@ -364,6 +369,7 @@
 				76C72F472ADEC7CF00E4BA4C /* Board.swift in Sources */,
 				76D894FB2AF117FF00255CA4 /* Bishop.swift in Sources */,
 				76D895032AF13DC300255CA4 /* Queen.swift in Sources */,
+				76D895062AF141D200255CA4 /* Knight.swift in Sources */,
 				764CDA352AD9696600527094 /* ChessGameTests.swift in Sources */,
 				76FC32742AEEA57B00D07299 /* PieceCoordinate.swift in Sources */,
 				76FC32752AEEA57E00D07299 /* Pawn.swift in Sources */,
