@@ -50,23 +50,27 @@ final class ChessGameTests: XCTestCase {
         XCTAssertEqual(result, expectedBoard)
     }
     
-    func test_s() throws {
+    func test_룩이_움직일수있는포지션_성공케이스() throws {
         sut.move(from: .init(rank: .seven, file: .A),
                  to: .init(rank: .six, file: .A))
+        sut.move(from: .init(rank: .two, file: .A),
+                 to: .init(rank: .three, file: .A))
+        sut.move(from: .init(rank: .six, file: .A),
+                 to: .init(rank: .five, file: .A))
+        sut.move(from: .init(rank: .three, file: .A),
+                 to: .init(rank: .four, file: .A))
+        sut.move(from: .init(rank: .five, file: .A),
+                 to: .init(rank: .four, file: .A))
         
-        let movableCoordinates = sut.movableCoordinates(from: .init(
+        let rookAvailableMovingCoordinates = sut.movableCoordinates(from: .init(
             rank: .one,
-            file: .C
+            file: .A
         ))
         
-        XCTAssertEqual(movableCoordinates, [
-            .init(rank: .two, file: .D),
-            .init(rank: .three, file: .E),
-            .init(rank: .four, file: .F),
-            .init(rank: .five, file: .G),
-            .init(rank: .six, file: .H),
-            .init(rank: .two, file: .B),
-            .init(rank: .three, file: .A)
+        XCTAssertEqual(rookAvailableMovingCoordinates, [
+            .init(rank: .two, file: .A),
+            .init(rank: .three, file: .A),
+            .init(rank: .four, file: .A)
         ])
     }
     
