@@ -40,6 +40,15 @@ struct Board {
             .reduce(0, +)
     }
     
+    func canMovePositions(from: Position?) throws -> [Position] {
+        guard let from, let piece = pieces[from] else {
+            throw BoardMoveError.invalidStartingPoint
+        }
+        return piece.availableMovingWays(for: from)
+            .flatMap { $0.canMovePositions(pieces: pieces) }
+            .filter { piece.color != pieces[$0]?.color }
+    }
+    
     private func validate(pieces: [Position: Piece]) throws {
         var classified = [String: Int]()
         for piece in pieces.values {
@@ -53,12 +62,8 @@ struct Board {
     }
     
     private func checkMovable(from: Position, to: Position) throws {
-        guard let fromPiece = pieces[from] else { throw BoardMoveError.invalidStartingPoint }
-        let hasAvailableWay = fromPiece
-            .availableMovingWays(for: from)
-            .contains(where: { $0.canMove(to: to, pieces: pieces) })
-        guard hasAvailableWay else { throw BoardMoveError.invalidDestination }
-        guard let toPiece = pieces[to] else { return }
-        guard fromPiece.color != toPiece.color else { throw BoardMoveError.sameColor }
+        guard try canMovePositions(from: from).contains(to) else {
+            throw BoardMoveError.invalidDestination
+        }
     }
 }

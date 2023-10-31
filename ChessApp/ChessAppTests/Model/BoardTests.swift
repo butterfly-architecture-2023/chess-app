@@ -80,7 +80,7 @@ final class BoardTests: XCTestCase {
             "A7": Pawn(color: .white)
         ])
         XCTAssertThrowsError(try board.move(from: "A7", to: "A6")) {
-            XCTAssertEqual($0 as? BoardMoveError, .sameColor)
+            XCTAssertEqual($0 as? BoardMoveError, .invalidDestination)
         }
     }
     
