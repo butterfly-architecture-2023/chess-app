@@ -18,7 +18,7 @@ struct PieceMovingWay: Hashable {
         self.init(spots: positions.map { Spot(position: $0) })
     }
     
-    init(for position: Position, fileMultiplier: Int, rankMultiplier: Int, repeat: Int) {
+    init(for position: Position, fileMultiplier: Int = 0, rankMultiplier: Int = 0, repeat: Int = 8) {
         guard 1<`repeat` else {
             self.init(positions: [])
             return
@@ -29,7 +29,13 @@ struct PieceMovingWay: Hashable {
         self.init(positions: positions)
     }
     
-    func canMove(to destination: Position, pieces: [Position: Piece]) -> Bool {
+    func canMovePositions(pieces: [Position: Piece]) -> [Position] {
+        rawValue
+            .filter { canMove(to: $0.position, pieces: pieces) }
+            .map { $0.position }
+    }
+    
+    private func canMove(to destination: Position, pieces: [Position: Piece]) -> Bool {
         for spot in rawValue {
             if spot.position == destination {
                 return spot.canStop

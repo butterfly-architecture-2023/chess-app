@@ -12,10 +12,10 @@ struct Bishop: Piece {
     
     func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
         [
-            .init(for: position, fileMultiplier: -1, rankMultiplier: -1, repeat: 8),
-            .init(for: position, fileMultiplier: -1, rankMultiplier: +1, repeat: 8),
-            .init(for: position, fileMultiplier: +1, rankMultiplier: -1, repeat: 8),
-            .init(for: position, fileMultiplier: +1, rankMultiplier: +1, repeat: 8),
+            .init(for: position, fileMultiplier: -1, rankMultiplier: -1),
+            .init(for: position, fileMultiplier: -1, rankMultiplier: +1),
+            .init(for: position, fileMultiplier: +1, rankMultiplier: -1),
+            .init(for: position, fileMultiplier: +1, rankMultiplier: +1),
         ]
     }
     

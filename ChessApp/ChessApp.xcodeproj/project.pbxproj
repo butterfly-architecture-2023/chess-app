@@ -15,6 +15,14 @@
 		CC4FCB842ADBD9290084E261 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4FCB832ADBD9290084E261 /* BoardTests.swift */; };
 		CC4FCB892ADBD9790084E261 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4FCB882ADBD9790084E261 /* Position.swift */; };
 		CC4FCB8B2ADBD9E10084E261 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4FCB8A2ADBD9E10084E261 /* Color.swift */; };
+		CC9636AB2AEE7DF8006F97B3 /* BoardColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9636AA2AEE7DF8006F97B3 /* BoardColor.swift */; };
+		CCC98B1B2AEE36160000A63A /* AsciiValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC98B1A2AEE36160000A63A /* AsciiValue.swift */; };
+		CCC98B1D2AEE4C6E0000A63A /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC98B1C2AEE4C6E0000A63A /* BoardView.swift */; };
+		CCC98B202AEE4DF40000A63A /* EllipseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC98B1F2AEE4DF40000A63A /* EllipseView.swift */; };
+		CCC98B222AEE5A1A0000A63A /* CGRect+center.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC98B212AEE5A1A0000A63A /* CGRect+center.swift */; };
+		CCC98B242AEE5DD50000A63A /* BoardPositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC98B232AEE5DD50000A63A /* BoardPositionView.swift */; };
+		CCC98B262AEE78590000A63A /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC98B252AEE78590000A63A /* BoardViewModel.swift */; };
+		CCC98B282AEE79AB0000A63A /* BoardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC98B272AEE79AB0000A63A /* BoardInteractor.swift */; };
 		CCD18EBF2ADBFB33007D02AF /* Position+StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD18EBE2ADBFB33007D02AF /* Position+StringLiteral.swift */; };
 		CCD18EC12ADC001B007D02AF /* PostionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD18EC02ADC001B007D02AF /* PostionTests.swift */; };
 		CCE1673E2AE2A99A0065E27F /* BishopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1673D2AE2A99A0065E27F /* BishopTests.swift */; };
@@ -29,12 +37,13 @@
 		CCE167502AE531E40065E27F /* QueenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1674F2AE531E40065E27F /* QueenTests.swift */; };
 		CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */; };
 		CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */; };
-		CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52652ADBCE1000CD43ED /* ViewController.swift */; };
+		CCEA52662ADBCE1000CD43ED /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52652ADBCE1000CD43ED /* BoardViewController.swift */; };
 		CCEA52692ADBCE1000CD43ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCEA52672ADBCE1000CD43ED /* Main.storyboard */; };
 		CCEA526B2ADBCE1100CD43ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCEA526A2ADBCE1100CD43ED /* Assets.xcassets */; };
 		CCEA526E2ADBCE1100CD43ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCEA526C2ADBCE1100CD43ED /* LaunchScreen.storyboard */; };
 		CCEA52832ADBCE1100CD43ED /* ChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52822ADBCE1100CD43ED /* ChessAppUITests.swift */; };
 		CCEA52852ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52842ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift */; };
+		CCED17752AF11DA100F28B78 /* InitiailBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCED17742AF11DA100F28B78 /* InitiailBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +72,14 @@
 		CC4FCB832ADBD9290084E261 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 		CC4FCB882ADBD9790084E261 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		CC4FCB8A2ADBD9E10084E261 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CC9636AA2AEE7DF8006F97B3 /* BoardColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardColor.swift; sourceTree = "<group>"; };
+		CCC98B1A2AEE36160000A63A /* AsciiValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiValue.swift; sourceTree = "<group>"; };
+		CCC98B1C2AEE4C6E0000A63A /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		CCC98B1F2AEE4DF40000A63A /* EllipseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipseView.swift; sourceTree = "<group>"; };
+		CCC98B212AEE5A1A0000A63A /* CGRect+center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+center.swift"; sourceTree = "<group>"; };
+		CCC98B232AEE5DD50000A63A /* BoardPositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPositionView.swift; sourceTree = "<group>"; };
+		CCC98B252AEE78590000A63A /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		CCC98B272AEE79AB0000A63A /* BoardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardInteractor.swift; sourceTree = "<group>"; };
 		CCD18EBE2ADBFB33007D02AF /* Position+StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Position+StringLiteral.swift"; sourceTree = "<group>"; };
 		CCD18EC02ADC001B007D02AF /* PostionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostionTests.swift; sourceTree = "<group>"; };
 		CCE1673D2AE2A99A0065E27F /* BishopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishopTests.swift; sourceTree = "<group>"; };
@@ -78,7 +95,7 @@
 		CCEA525E2ADBCE1000CD43ED /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CCEA52652ADBCE1000CD43ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CCEA52652ADBCE1000CD43ED /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		CCEA52682ADBCE1000CD43ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CCEA526A2ADBCE1100CD43ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCEA526D2ADBCE1100CD43ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,6 +104,7 @@
 		CCEA527E2ADBCE1100CD43ED /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52822ADBCE1100CD43ED /* ChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITests.swift; sourceTree = "<group>"; };
 		CCEA52842ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CCED17742AF11DA100F28B78 /* InitiailBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiailBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +141,7 @@
 				CC4FCB8A2ADBD9E10084E261 /* Color.swift */,
 				CCE167452AE3A6730065E27F /* BoardErrors.swift */,
 				CCE167472AE3B7950065E27F /* PieceMovingWay.swift */,
+				CCED17742AF11DA100F28B78 /* InitiailBoard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,6 +181,25 @@
 			path = Pieces;
 			sourceTree = "<group>";
 		};
+		CCC98B192AEE36080000A63A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CCC98B1A2AEE36160000A63A /* AsciiValue.swift */,
+				CCC98B212AEE5A1A0000A63A /* CGRect+center.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		CCC98B1E2AEE4DEB0000A63A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCC98B1C2AEE4C6E0000A63A /* BoardView.swift */,
+				CCC98B1F2AEE4DF40000A63A /* EllipseView.swift */,
+				CCC98B232AEE5DD50000A63A /* BoardPositionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CCD18EBD2ADBFB25007D02AF /* TestExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,14 +232,19 @@
 		CCEA52602ADBCE1000CD43ED /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				CCC98B1E2AEE4DEB0000A63A /* View */,
+				CCC98B192AEE36080000A63A /* Utility */,
 				CC4FCB782ADBD8A10084E261 /* Model */,
 				CCEA52612ADBCE1000CD43ED /* AppDelegate.swift */,
 				CCEA52632ADBCE1000CD43ED /* SceneDelegate.swift */,
-				CCEA52652ADBCE1000CD43ED /* ViewController.swift */,
+				CCEA52652ADBCE1000CD43ED /* BoardViewController.swift */,
 				CCEA52672ADBCE1000CD43ED /* Main.storyboard */,
 				CCEA526A2ADBCE1100CD43ED /* Assets.xcassets */,
 				CCEA526C2ADBCE1100CD43ED /* LaunchScreen.storyboard */,
 				CCEA526F2ADBCE1100CD43ED /* Info.plist */,
+				CCC98B252AEE78590000A63A /* BoardViewModel.swift */,
+				CCC98B272AEE79AB0000A63A /* BoardInteractor.swift */,
+				CC9636AA2AEE7DF8006F97B3 /* BoardColor.swift */,
 			);
 			path = ChessApp;
 			sourceTree = "<group>";
@@ -356,19 +399,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4FCB892ADBD9790084E261 /* Position.swift in Sources */,
-				CCEA52662ADBCE1000CD43ED /* ViewController.swift in Sources */,
+				CCEA52662ADBCE1000CD43ED /* BoardViewController.swift in Sources */,
+				CCC98B222AEE5A1A0000A63A /* CGRect+center.swift in Sources */,
 				CCE1674E2AE531340065E27F /* Queen.swift in Sources */,
 				CCE167482AE3B7950065E27F /* PieceMovingWay.swift in Sources */,
+				CCC98B1B2AEE36160000A63A /* AsciiValue.swift in Sources */,
 				CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */,
+				CCED17752AF11DA100F28B78 /* InitiailBoard.swift in Sources */,
 				CC4FCB7E2ADBD8D90084E261 /* Piece.swift in Sources */,
+				CCC98B1D2AEE4C6E0000A63A /* BoardView.swift in Sources */,
 				CCE167462AE3A6730065E27F /* BoardErrors.swift in Sources */,
+				CC9636AB2AEE7DF8006F97B3 /* BoardColor.swift in Sources */,
 				CCE167422AE3A18B0065E27F /* Rook.swift in Sources */,
 				CC4FCB8B2ADBD9E10084E261 /* Color.swift in Sources */,
+				CCC98B282AEE79AB0000A63A /* BoardInteractor.swift in Sources */,
+				CCC98B202AEE4DF40000A63A /* EllipseView.swift in Sources */,
 				CCE1674A2AE3C6AA0065E27F /* Knight.swift in Sources */,
 				CCE167402AE2AA210065E27F /* Bishop.swift in Sources */,
 				CC4FCB7A2ADBD8A90084E261 /* Board.swift in Sources */,
 				CC4FCB7C2ADBD8B30084E261 /* Pawn.swift in Sources */,
+				CCC98B242AEE5DD50000A63A /* BoardPositionView.swift in Sources */,
 				CCEA52642ADBCE1000CD43ED /* SceneDelegate.swift in Sources */,
+				CCC98B262AEE78590000A63A /* BoardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

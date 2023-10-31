@@ -80,7 +80,7 @@ final class BoardTests: XCTestCase {
             "A7": Pawn(color: .white)
         ])
         XCTAssertThrowsError(try board.move(from: "A7", to: "A6")) {
-            XCTAssertEqual($0 as? BoardMoveError, .sameColor)
+            XCTAssertEqual($0 as? BoardMoveError, .invalidDestination)
         }
     }
     
@@ -207,24 +207,7 @@ final class BoardTests: XCTestCase {
     }
     
     func test킹을_제외한_말들이_초기화된_상태의_board를_display할_수_있다() {
-        let pieces = [
-            "A1": Rook(color: .black),
-            "B1": Knight(color: .black),
-            "C1": Bishop(color: .black),
-            "E1": Queen(color: .black),
-            "F1": Bishop(color: .black),
-            "G1": Knight(color: .black),
-            "H1": Rook(color: .black),
-            "A8": Rook(color: .white),
-            "B8": Knight(color: .white),
-            "C8": Bishop(color: .white),
-            "E8": Queen(color: .white),
-            "F8": Bishop(color: .white),
-            "G8": Knight(color: .white),
-            "H8": Rook(color: .white)
-        ].merging([Position: Piece].initialPawns, uniquingKeysWith: { $1 })
-        
-        let board = Board(pieces: pieces)
+        let board = Board(pieces: InitialBoard.pieces)
         let expect = """
 ♜♞♝.♛♝♞♜
 ♟♟♟♟♟♟♟♟

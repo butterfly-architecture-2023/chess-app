@@ -18,9 +18,8 @@ struct Position: Hashable, CustomStringConvertible {
         }
         
         init?(_ value: Character) {
-            guard let value = value.asciiValue,
-                  value >= 49 else { return nil }
-            self.init(Int(value) - 49) // value - "1"
+            guard let value = value.asciiValue else { return nil }
+            self.init(Int(value) - AsciiValue.number1)
         }
         
         static var allCases: [Rank] {
@@ -46,9 +45,8 @@ struct Position: Hashable, CustomStringConvertible {
         }
         
         init?(_ value: Character) {
-            guard let value = value.asciiValue,
-                  value >= 65 else { return nil }
-            self.init(Int(value) - 65) // value - "A"
+            guard let value = value.asciiValue else { return nil }
+            self.init(Int(value) - AsciiValue.A)
         }
         
         static var allCases: [File] {
@@ -56,7 +54,7 @@ struct Position: Hashable, CustomStringConvertible {
         }
         
         var description: String {
-            guard let unicodeScalar = UnicodeScalar(65 + rawValue) else {
+            guard let unicodeScalar = UnicodeScalar(AsciiValue.A + rawValue) else {
                 return "?"
             }
             return String(unicodeScalar)
@@ -91,5 +89,9 @@ struct Position: Hashable, CustomStringConvertible {
     
     var description: String {
         return file.description + rank.description 
+    }
+    
+    var isEven: Bool {
+        (rank.rawValue + file.rawValue) % 2 == 0
     }
 }

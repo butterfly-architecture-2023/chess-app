@@ -12,14 +12,14 @@ struct Queen: Piece {
     
     func availableMovingWays(for position: Position) -> Set<PieceMovingWay> {
         return [
-            .init(for: position, fileMultiplier: 0, rankMultiplier: +1, repeat: 8),
-            .init(for: position, fileMultiplier: 0, rankMultiplier: -1, repeat: 8),
-            .init(for: position, fileMultiplier: +1, rankMultiplier:  0, repeat: 8),
-            .init(for: position, fileMultiplier: -1, rankMultiplier:  0, repeat: 8),
-            .init(for: position, fileMultiplier: -1, rankMultiplier: -1, repeat: 8),
-            .init(for: position, fileMultiplier: -1, rankMultiplier: +1, repeat: 8),
-            .init(for: position, fileMultiplier: +1, rankMultiplier: -1, repeat: 8),
-            .init(for: position, fileMultiplier: +1, rankMultiplier: +1, repeat: 8),
+            .init(for: position, rankMultiplier: +1),
+            .init(for: position, rankMultiplier: -1),
+            .init(for: position, fileMultiplier: +1),
+            .init(for: position, fileMultiplier: -1),
+            .init(for: position, fileMultiplier: -1, rankMultiplier: -1),
+            .init(for: position, fileMultiplier: -1, rankMultiplier: +1),
+            .init(for: position, fileMultiplier: +1, rankMultiplier: -1),
+            .init(for: position, fileMultiplier: +1, rankMultiplier: +1),
         ]
     }
     
