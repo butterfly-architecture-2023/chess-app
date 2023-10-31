@@ -123,7 +123,7 @@ extension ChessBoard {
         return fromPiece?.color != toPiece?.color
     }
 
-    /// 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없는지
+    ///  to 위치에 같은 색상의 말이 이미 있으면 옮길 수 없는지
     private func isDestinationEmptyOrHasDifferentColor(
         _ toPiece: Piece?, fromPieceAtFromPosition: Piece?
     ) -> Bool {
