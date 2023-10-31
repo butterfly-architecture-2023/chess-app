@@ -11,7 +11,12 @@ struct BlackRook: BlackPiece {
     static let score: Int = 5
     
     func movablePositions(current: Position) -> [Position] {
-        []
+        let bottom = current.bottomPositions()
+        let top = current.topPositions()
+        let left = current.leftPositions()
+        let right = current.rightPositions()
+        
+        return top + left + bottom + right
     }
     
     static func initialPositions() -> [Position: Self] {
@@ -24,7 +29,12 @@ struct WhiteRook: WhitePiece {
     static let score: Int = 5
     
     func movablePositions(current: Position) -> [Position] {
-        []
+        let bottom = current.bottomPositions()
+        let top = current.topPositions()
+        let left = current.leftPositions()
+        let right = current.rightPositions()
+        
+        return top + left + bottom + right
     }
     
     static func initialPositions() -> [Position: Self] {
