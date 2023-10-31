@@ -25,8 +25,8 @@ final class QueenTests: XCTestCase {
     }
 
     func test_Queen_최대_개수_비교() {
-        let blackQueensCount = sut.board.flatMap { $0 }.filter { ($0 as? Queen)?.color == .black }.count
-        let whiteQueensCount = sut.board.flatMap { $0 }.filter { ($0 as? Queen)?.color == .white }.count
+        let blackQueensCount = sut.pieces.values.filter { ($0 as? Queen)?.color == .black }.count
+        let whiteQueensCount = sut.pieces.values.filter { ($0 as? Queen)?.color == .white }.count
 
         XCTAssertEqual(blackQueensCount, Queen(color: .black).maxCount)
         XCTAssertEqual(whiteQueensCount, Queen(color: .white).maxCount)

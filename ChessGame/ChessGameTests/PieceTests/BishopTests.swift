@@ -25,8 +25,8 @@ final class BishopTests: XCTestCase {
     }
 
     func test_Bishop_최대_개수_비교() {
-        let blackBishopsCount = sut.board.flatMap { $0 }.filter { ($0 as? Bishop)?.color == .black }.count
-        let whiteBishopsCount = sut.board.flatMap { $0 }.filter { ($0 as? Bishop)?.color == .white }.count
+        let blackBishopsCount = sut.pieces.values.filter { ($0 as? Bishop)?.color == .black }.count
+        let whiteBishopsCount = sut.pieces.values.filter { ($0 as? Bishop)?.color == .white }.count
 
         XCTAssertEqual(blackBishopsCount, Bishop(color: .black).maxCount)
         XCTAssertEqual(whiteBishopsCount, Bishop(color: .white).maxCount)

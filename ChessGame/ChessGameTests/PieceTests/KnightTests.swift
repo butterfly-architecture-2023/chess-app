@@ -25,8 +25,8 @@ final class KnightTests: XCTestCase {
     }
 
     func test_Knight_최대_개수_비교() {
-        let blackKnightsCount = sut.board.flatMap { $0 }.filter { ($0 as? Knight)?.color == .black }.count
-        let whiteKnightsCount = sut.board.flatMap { $0 }.filter { ($0 as? Knight)?.color == .white }.count
+        let blackKnightsCount = sut.pieces.values.filter { ($0 as? Knight)?.color == .black }.count
+        let whiteKnightsCount = sut.pieces.values.filter { ($0 as? Knight)?.color == .white }.count
 
         XCTAssertEqual(blackKnightsCount, Knight(color: .black).maxCount)
         XCTAssertEqual(whiteKnightsCount, Knight(color: .white).maxCount)

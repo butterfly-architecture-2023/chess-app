@@ -25,10 +25,10 @@ final class KingTests: XCTestCase {
     }
 
     func test_King_최대_개수_비교() {
-        let blackPawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? King)?.color == .black }.count
-        let whitePawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? King)?.color == .white }.count
+        let blackKingsCount = sut.pieces.values.filter { ($0 as? King)?.color == .black }.count
+        let whiteKingsCount = sut.pieces.values.filter { ($0 as? King)?.color == .white }.count
 
-        XCTAssertEqual(blackPawnsCount, King(color: .black).maxCount)
-        XCTAssertEqual(whitePawnsCount, King(color: .white).maxCount)
+        XCTAssertEqual(blackKingsCount, King(color: .black).maxCount)
+        XCTAssertEqual(whiteKingsCount, King(color: .white).maxCount)
     }
 }

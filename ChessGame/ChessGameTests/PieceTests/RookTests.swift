@@ -25,8 +25,8 @@ final class RookTests: XCTestCase {
     }
 
     func test_Rook_최대_개수_비교() {
-        let blackRooksCount = sut.board.flatMap { $0 }.filter { ($0 as? Rook)?.color == .black }.count
-        let whiteRooksCount = sut.board.flatMap { $0 }.filter { ($0 as? Rook)?.color == .white }.count
+        let blackRooksCount = sut.pieces.values.filter { ($0 as? Rook)?.color == .black }.count
+        let whiteRooksCount = sut.pieces.values.filter { ($0 as? Rook)?.color == .white }.count
 
         XCTAssertEqual(blackRooksCount, Rook(color: .black).maxCount)
         XCTAssertEqual(whiteRooksCount, Rook(color: .white).maxCount)
