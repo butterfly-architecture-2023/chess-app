@@ -50,14 +50,44 @@ struct Knight: Piece {
     func movableCoordinates(from coordinate: PieceCoordinate) -> [PieceCoordinate] {
         var result: [PieceCoordinate] = []
         
-        let directions = [
+        let moves = [
             (2, 1), (1, 2), (-1, 2), (-2, 1),
             (-2, -1), (-1, -2), (1, -2), (2, -1)
         ]
         
-        for direction in directions {
-            let nextRank = coordinate.rank.rawValue + direction.0
-            let nextFile = coordinate.file.rawValue + direction.1
+        for move in moves {
+            let nextRank = coordinate.rank.rawValue + move.0
+            let nextFile = coordinate.file.rawValue + move.1
+            
+            if nextRank >= 0
+                && nextRank < PieceCoordinate.Rank.allCases.count
+                && nextFile >= 0
+                && nextFile < PieceCoordinate.File.allCases.count,
+               let nextRankEnum = PieceCoordinate.Rank(rawValue: nextRank),
+               let nextFileEnum = PieceCoordinate.File(rawValue: nextFile)
+            {
+                let nextCoordinate = PieceCoordinate(rank: nextRankEnum, file: nextFileEnum)
+                result.append(nextCoordinate)
+            }
+        }
+        
+        return result
+    }
+    
+    func availableMovingCoordinates(
+        from coordinate: PieceCoordinate,
+        on squares: [[(Piece)?]]
+    ) -> [PieceCoordinate] {
+        var result: [PieceCoordinate] = []
+        
+        let moves = [
+            (2, 1), (1, 2), (-1, 2), (-2, 1),
+            (-2, -1), (-1, -2), (1, -2), (2, -1)
+        ]
+        
+        for move in moves {
+            let nextRank = coordinate.rank.rawValue + move.0
+            let nextFile = coordinate.file.rawValue + move.1
             
             if nextRank >= 0 
                 && nextRank < PieceCoordinate.Rank.allCases.count
@@ -67,7 +97,12 @@ struct Knight: Piece {
                let nextFileEnum = PieceCoordinate.File(rawValue: nextFile)
             {
                 let nextCoordinate = PieceCoordinate(rank: nextRankEnum, file: nextFileEnum)
-                result.append(nextCoordinate)
+                
+                let nextPiece = squares[nextCoordinate.rank.rawValue][nextCoordinate.file.rawValue]
+                
+                if nextPiece == nil || nextPiece?.color != self.color {
+                    result.append(nextCoordinate)
+                }
             }
         }
         
