@@ -24,12 +24,11 @@ final class BishopTests: XCTestCase {
         super.tearDown()
     }
 
-    /// 체스말 종류별로 최대 개수와 비교
-    func test_checkMaxPieceCount() {
-        let blackPawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Bishop)?.color == .black }.count
-        let whitePawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Bishop)?.color == .white }.count
+    func test_Bishop_최대_개수_비교() {
+        let blackBishopsCount = sut.board.flatMap { $0 }.filter { ($0 as? Bishop)?.color == .black }.count
+        let whiteBishopsCount = sut.board.flatMap { $0 }.filter { ($0 as? Bishop)?.color == .white }.count
 
-        XCTAssertEqual(blackPawnsCount, Bishop(color: .black).maxCount)
-        XCTAssertEqual(whitePawnsCount, Bishop(color: .white).maxCount)
+        XCTAssertEqual(blackBishopsCount, Bishop(color: .black).maxCount)
+        XCTAssertEqual(whiteBishopsCount, Bishop(color: .white).maxCount)
     }
 }

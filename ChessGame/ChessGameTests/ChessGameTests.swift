@@ -22,8 +22,7 @@ final class ChessGameTests: XCTestCase {
         super.tearDown()
     }
 
-    /// display() 함수는 1-rank부터 8-rank까지 rank 문자열 배열로 보드 위에 체스말을 리턴한다.
-    func test_displayReturnsChessBoardState() {
+    func test_display_함수는_1rank_부터_8rank까지_문자열_배열로_리턴하는지() {
         let display = sut.display()
         let displayLines = display.components(separatedBy: "\n").dropLast()
 
@@ -35,8 +34,7 @@ final class ChessGameTests: XCTestCase {
         }
     }
 
-    /// 초기화할 때 1,2-rank는 흑백 체스말이, 7,8-rank는 백색 체스말이 위치한다.
-    func test_InitialBoardSetup() {
+    func test_초기화_1에서_2rank는_흑색_체스말이_7에서_8rank는_백색_체스말이_위치하는지() {
         for rank in Rank.allCases {
             for file in File.allCases {
                 let piece = sut.board[rank.rawValue - 1][file.rawValue]
@@ -62,7 +60,6 @@ final class ChessGameTests: XCTestCase {
         }
     }
 
-    /// 특정 말을 옮기는 메소드 유효성 테스트
     func test_movePiece() {
         let fromPosition = Position(rank: .two, file: .a)
         let toPosition = Position(rank: .three, file: .a)
@@ -74,7 +71,7 @@ final class ChessGameTests: XCTestCase {
 extension ChessGameTests {
     private func getExpectedRankString(forRank rank: Rank) -> String {
         let rankString = "\(rank.rawValue)"
-        let pieces = sut.board[rank.rawValue - 1].compactMap { $0?.icon ?? "." }
+        let pieces = sut.board[rank.rawValue - 1].compactMap { $0?.icon.unicode ?? "." }
         return rankString + pieces.joined()
     }
 }

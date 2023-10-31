@@ -24,12 +24,11 @@ final class RookTests: XCTestCase {
         super.tearDown()
     }
 
-    /// 체스말 종류별로 최대 개수와 비교
-    func test_checkMaxPieceCount() {
-        let blackPawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Rook)?.color == .black }.count
-        let whitePawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Rook)?.color == .white }.count
+    func test_Rook_최대_개수_비교() {
+        let blackRooksCount = sut.board.flatMap { $0 }.filter { ($0 as? Rook)?.color == .black }.count
+        let whiteRooksCount = sut.board.flatMap { $0 }.filter { ($0 as? Rook)?.color == .white }.count
 
-        XCTAssertEqual(blackPawnsCount, Rook(color: .black).maxCount)
-        XCTAssertEqual(whitePawnsCount, Rook(color: .white).maxCount)
+        XCTAssertEqual(blackRooksCount, Rook(color: .black).maxCount)
+        XCTAssertEqual(whiteRooksCount, Rook(color: .white).maxCount)
     }
 }

@@ -24,12 +24,11 @@ final class QueenTests: XCTestCase {
         super.tearDown()
     }
 
-    /// 체스말 종류별로 최대 개수와 비교
-    func test_checkMaxPieceCount() {
-        let blackPawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Queen)?.color == .black }.count
-        let whitePawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Queen)?.color == .white }.count
+    func test_Queen_최대_개수_비교() {
+        let blackQueensCount = sut.board.flatMap { $0 }.filter { ($0 as? Queen)?.color == .black }.count
+        let whiteQueensCount = sut.board.flatMap { $0 }.filter { ($0 as? Queen)?.color == .white }.count
 
-        XCTAssertEqual(blackPawnsCount, Queen(color: .black).maxCount)
-        XCTAssertEqual(whitePawnsCount, Queen(color: .white).maxCount)
+        XCTAssertEqual(blackQueensCount, Queen(color: .black).maxCount)
+        XCTAssertEqual(whiteQueensCount, Queen(color: .white).maxCount)
     }
 }
