@@ -231,4 +231,33 @@ final class PieceTests: XCTestCase {
         XCTAssertTrue(movablePositions.contains(target),
                       "\(target)과 \n \(movablePositions)은 서로 다릅니다.")
     }
+    
+    func testMovablePositions_검은_나이트의_위치가_file_0_rank_0_일_때_오른쪽_아래_대각선의_오른쪽과_아래_위치_배열_반환() {
+        let position = Position(file: 0, rank: 0)!
+        let piece = BlackKnight()
+        let movablePositions = piece.movablePositions(current: position)
+
+        let target: [Position] =
+        [
+            Position(file: 2, rank: 1)!,
+            Position(file: 1, rank: 2)!,
+        ]
+        XCTAssertTrue(movablePositions.contains(target),
+                      "\(target)과 \n \(movablePositions)은 서로 다릅니다.")
+    }
+    
+    func testMovablePositions_하얀_나이트의_위치가_file_7_rank_7_일_때_위와_왼쪽과_대각선_위치들의_배열_반환() {
+        let position = Position(file: 7, rank: 7)!
+        let piece = WhiteKnight()
+        let movablePositions = piece.movablePositions(current: position)
+
+        let target: [Position] =
+        [
+            Position(file: 6, rank: 5)!,
+            Position(file: 5, rank: 6)!,
+        ]
+   
+        XCTAssertTrue(movablePositions.contains(target),
+                      "\(target)과 \n \(movablePositions)은 서로 다릅니다.")
+    }
 }
