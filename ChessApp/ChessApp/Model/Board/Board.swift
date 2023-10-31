@@ -7,15 +7,16 @@
 
 import Foundation
 
-class Board {
+class Board: ObservableObject {
   private let pieceManager = BoardPieceManager()
   private let moveManager = BoardMoveManager()
   private var selected: Position?
   
-  var currentTurn: PieceColor = .white
-  var score = [PieceColor.black: 0, PieceColor.white: 0]
+  @Published var currentTurn: PieceColor = .white
+  @Published var score = [PieceColor.black: 0, PieceColor.white: 0]
   
-  let positions: [Position]
+  @Published var positions: [Position]
+  
   var positionPerRow: [[Position]] {
     guard positions.isEmpty == false else { return [[]] }
     var positions = positions
@@ -42,11 +43,12 @@ class Board {
     
     guard let selected = selected, highlighted.isEmpty == false else {
       // 선택되어 있는 자리가 없다. 그러나 체스말을 선택하고자 한다.
-      if let pieceToSelect = positions[cmd]?.piece {
-        selected = cmd
-        selected?.isHighlighted = true
-        for vector in pieceToSelect.directionMovable {
+      selected = cmd
+      selected?.isHighlighted = true
+      if let directionMovable = cmd.piece?.directionMovable {
+        for vector in directionMovable {
           for item in moveManager.getPositions(from: cmd, using: vector) {
+            print(cmd, vector, item)
             positions[item]?.isHighlighted = true
           }
         }
@@ -55,7 +57,7 @@ class Board {
       return
     }
     
-    if highlighted.contains(cmd) == false {
+    if highlighted.contains(cmd) {
       try move(from: selected, to: cmd)
     }
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BoardGame: View {
   @State var localError: Error?
-  let board = Board()
+  @ObservedObject var board = Board()
   
   var body: some View {
     VStack(spacing: 16) {

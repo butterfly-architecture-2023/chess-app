@@ -7,15 +7,15 @@
 
 import Foundation
 
-class Position: CustomStringConvertible, Equatable {
+class Position: CustomStringConvertible, Equatable, ObservableObject {
   static func == (lhs: Position, rhs: Position) -> Bool {
     lhs.row == rhs.row && lhs.column == rhs.column
   }
   
   let row: Row, column: Column
   
-  var piece: (any Piece)?
-  var isHighlighted = false
+  @Published var piece: (any Piece)?
+  @Published var isHighlighted = false
   
   init(_ column: Column, _ row: Row) {
     self.row = row

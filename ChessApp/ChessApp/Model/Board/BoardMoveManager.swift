@@ -104,55 +104,55 @@ struct BoardMoveManager {
   
   func getPositions(from start: Position, using vector: MoveVector) -> [Position] {
     var start = start
-    var result = [start]
-    guard let distance = vector.distance else { return result }
+    var result: [Position] = []
+    let distance = vector.distance ?? 8
     
     switch vector {
     case .up(_):
-      for i in stride(from: distance, to: 0, by: -1) {
-        if let row = i.toRow {
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let row = (start.row - i) {
           result.append(Position(start.column, row))
         }
       }
     case .upRight(_):
-      for i in stride(from: distance, to: 0, by: -1) {
-        if let row = (i).toRow, let column = (i * -1).toColumn {
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let row = (start.row - i), let column = (start.column + i) {
           result.append(Position(column, row))
         }
       }
     case .right(_):
-      for i in stride(from: distance, to: 0, by: 1) {
-        if let column = i.toColumn {
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let column = (start.column + i) {
           result.append(Position(column, start.row))
         }
       }
     case .downRight(_):
-      for i in stride(from: distance, to: 0, by: 1) {
-        if let row = i.toRow, let column = i.toColumn {
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let row = (start.row + i), let column = (start.column + i) {
           result.append(Position(column, row))
         }
       }
     case .down(_):
-      for i in stride(from: distance, to: 0, by: 1) {
-        if let column = i.toColumn {
-          result.append(Position(column, start.row))
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let row = (start.row + i) {
+          result.append(Position(start.column, row))
         }
       }
     case .downLeft(_):
-      for i in stride(from: distance, to: 0, by: 1) {
-        if let row = i.toRow, let column = (i * -1).toColumn {
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let row = (start.row + i), let column = (start.column - i) {
           result.append(Position(column, row))
         }
       }
     case .left(_):
-      for i in stride(from: distance, to: 0, by: -1) {
-        if let column = i.toColumn {
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let column = (start.column - i) {
           result.append(Position(column, start.row))
         }
       }
     case .upLeft(_):
-      for i in stride(from: distance, to: 0, by: 1) {
-        if let row = (i * -1).toRow, let column = i.toColumn {
+      for i in stride(from: 1, to: distance+1, by: 1) {
+        if let row = (start.row - i), let column = (start.column - i) {
           result.append(Position(column, row))
         }
       }

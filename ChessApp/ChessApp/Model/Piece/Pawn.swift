@@ -17,7 +17,7 @@ struct Pawn: Piece {
   init(_ color: PieceColor) {
     self.color = color
     self.directionMovable = color == .black
-    ? Set([.down(1), .downLeft(1), .downRight(1)])
-    : Set([.up(1), .upLeft(1), .upRight(1)])
+    ? Set([.up(1), .upLeft(1), .upRight(1)])
+    : Set([.down(1), .downLeft(1), .downRight(1)])
   }
 }

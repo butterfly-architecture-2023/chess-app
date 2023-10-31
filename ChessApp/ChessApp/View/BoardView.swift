@@ -12,7 +12,8 @@ typealias ActionPublisher = PassthroughSubject<Position, Never>
 
 struct BoardView: View {
   @Binding var localError: Error?
-  let board: Board
+  var board: Board
+  
   let actionPublisher = ActionPublisher()
   
   var body: some View {
