@@ -27,13 +27,8 @@ final class BoardInteractor {
     
     init(presenter: BoardPresenter) {
         self.presenter = presenter
+        try? self.board.updatePieces(InitialBoard.pieces)
         updateViewModel()
-        DispatchQueue.main.async {
-            try? self.board.updatePieces([
-                Position("A1")!: Rook(color: .black),
-                Position("C1")!: Bishop(color: .black)
-            ])
-        }
     }
     
     private func updateViewModel() {

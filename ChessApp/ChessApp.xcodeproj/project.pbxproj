@@ -43,6 +43,7 @@
 		CCEA526E2ADBCE1100CD43ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCEA526C2ADBCE1100CD43ED /* LaunchScreen.storyboard */; };
 		CCEA52832ADBCE1100CD43ED /* ChessAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52822ADBCE1100CD43ED /* ChessAppUITests.swift */; };
 		CCEA52852ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEA52842ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift */; };
+		CCED17752AF11DA100F28B78 /* InitiailBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCED17742AF11DA100F28B78 /* InitiailBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		CCEA527E2ADBCE1100CD43ED /* ChessAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEA52822ADBCE1100CD43ED /* ChessAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITests.swift; sourceTree = "<group>"; };
 		CCEA52842ADBCE1100CD43ED /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CCED17742AF11DA100F28B78 /* InitiailBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiailBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				CC4FCB8A2ADBD9E10084E261 /* Color.swift */,
 				CCE167452AE3A6730065E27F /* BoardErrors.swift */,
 				CCE167472AE3B7950065E27F /* PieceMovingWay.swift */,
+				CCED17742AF11DA100F28B78 /* InitiailBoard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				CCE167482AE3B7950065E27F /* PieceMovingWay.swift in Sources */,
 				CCC98B1B2AEE36160000A63A /* AsciiValue.swift in Sources */,
 				CCEA52622ADBCE1000CD43ED /* AppDelegate.swift in Sources */,
+				CCED17752AF11DA100F28B78 /* InitiailBoard.swift in Sources */,
 				CC4FCB7E2ADBD8D90084E261 /* Piece.swift in Sources */,
 				CCC98B1D2AEE4C6E0000A63A /* BoardView.swift in Sources */,
 				CCE167462AE3A6730065E27F /* BoardErrors.swift in Sources */,
