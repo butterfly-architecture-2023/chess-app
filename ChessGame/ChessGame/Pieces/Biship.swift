@@ -11,7 +11,12 @@ struct BlackBiship: BlackPiece {
     static let score: Int = 3
     
     func movablePositions(current: Position) -> [Position] {
-        []
+        let bottomLeft = current.bottomLeftPositions()
+        let topLeft = current.topLeftPositions()
+        let bottomRight = current.bottomRightPositions()
+        let topRight = current.topRightPositions()
+        
+        return topRight + topLeft + bottomLeft + bottomRight
     }
     
     static func initialPositions() -> [Position: Self] {
@@ -24,7 +29,12 @@ struct WhiteBiship: WhitePiece {
     static let score: Int = 3
     
     func movablePositions(current: Position) -> [Position] {
-        []
+        let bottomLeft = current.bottomLeftPositions()
+        let topLeft = current.topLeftPositions()
+        let bottomRight = current.bottomRightPositions()
+        let topRight = current.topRightPositions()
+        
+        return topRight + topLeft + bottomLeft + bottomRight
     }
     
     static func initialPositions() -> [Position: Self] {

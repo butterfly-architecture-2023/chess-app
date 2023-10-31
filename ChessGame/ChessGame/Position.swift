@@ -50,19 +50,19 @@ struct Position: Equatable, Hashable {
     }
 
     func topLeftPosition() -> Self? {
-        Position(file: file-1, rank: -1)
+        Position(file: file-1, rank: rank-1)
     }
     
     func topRightPosition() -> Self? {
-        Position(file: file+1, rank: -1)
+        Position(file: file+1, rank: rank-1)
     }
     
     func bottomRightPosition() -> Self? {
-        Position(file: file+1, rank: +1)
+        Position(file: file+1, rank: rank+1)
     }
     
     func bottomLeftPosition() -> Self? {
-        Position(file: file-1, rank: +1)
+        Position(file: file-1, rank: rank+1)
     }
     
     func topLeftPositions() -> [Self] {
