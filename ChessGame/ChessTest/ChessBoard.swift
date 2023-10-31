@@ -68,7 +68,7 @@ final class ChessBoard {
 
     private func getRankString(forRank rank: Rank) -> String {
         let rankString = "\(rank.rawValue)"
-        let pieces = board[rank.rawValue - 1].compactMap { $0?.icon ?? "." }
+        let pieces = board[rank.rawValue - 1].compactMap { $0?.icon.unicode ?? "." }
         return rankString + pieces.joined() + "\n"
     }
 

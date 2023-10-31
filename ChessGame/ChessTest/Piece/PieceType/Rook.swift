@@ -8,14 +8,14 @@
 import Foundation
 
 struct Rook: Piece {
-    var icon: String
+    var icon: PieceIcon
     var color: Color
     let maxCount: Int
     var score: Int
 
     init(color: Color) {
         self.color = color
-        icon = color == .black ? "♜" : "♖"
+        icon = color == .black ? .blackRook : .whiteRook
         maxCount = 2
         score = 0
     }
