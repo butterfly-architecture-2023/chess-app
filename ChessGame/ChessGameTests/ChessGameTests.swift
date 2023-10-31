@@ -63,7 +63,7 @@ final class ChessGameTests: XCTestCase {
     func test_movePiece() {
         let fromPosition = Position(rank: .two, file: .a)
         let toPosition = Position(rank: .three, file: .a)
-        XCTAssertTrue(sut.movePiece(from: fromPosition, to: toPosition))
+        XCTAssertTrue(sut.canMove(from: fromPosition, to: toPosition))
     }
 }
 

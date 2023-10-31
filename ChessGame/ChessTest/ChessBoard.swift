@@ -12,6 +12,7 @@ final class ChessBoard {
     // MARK: - Property
 
     var board: [[Piece?]]
+    var currentPlayer: Color = .white
 
     // MARK: - Init
 
@@ -60,36 +61,43 @@ final class ChessBoard {
     func display() -> String {
         var displayBoard = ""
         for rank in Rank.allCases {
-            displayBoard += getRankString(forRank: rank)
+            displayBoard += getRowString(forRank: rank)
         }
         print(displayBoard)
         return displayBoard
     }
 
-    private func getRankString(forRank rank: Rank) -> String {
+    private func getRowString(forRank rank: Rank) -> String {
         let rankString = "\(rank.rawValue)"
         let pieces = board[rank.rawValue - 1].compactMap { $0?.icon.unicode ?? "." }
         return rankString + pieces.joined() + "\n"
     }
 
-    /// 움직이려는 말이 있는 위치(from)와 이동하려는 위치(to)를 차례대로 입력받아서 말을 이동한다.
-    func movePiece(from: Position, to: Position) -> Bool {
+    /// 움직이려는 말이 있는 위치(from)와 이동하려는 위치(to)를 차례대로 입력받아서 말을 이동
+    func movePiece(from: Position, to: Position) {
+        guard canMove(from: from, to: to) else { return }
+
+        /// player turn 변경
+        currentPlayer = (currentPlayer == .white) ? .black : .white
+    }
+
+    func canMove(from: Position, to: Position) -> Bool {
         let pieceAtFromPosition = board[from.rank.rawValue - 1][from.file.rawValue]
         let pieceAtToPosition = board[to.rank.rawValue - 1][to.file.rawValue]
 
-        return isValidPosition(from) && isValidPosition(to) &&
+        return isVaildPlayer(fromPiece: pieceAtFromPosition) &&
         isVaildColor(fromPiece: pieceAtFromPosition, toPiece: pieceAtToPosition) &&
         isDestinationEmptyOrHasDifferentColor(pieceAtToPosition, fromPieceAtFromPosition: pieceAtFromPosition) &&
         isValidRankMove(from: from, to: to)
     }
 
-    /// 체스말은 위치값은 가로 file은 A부터 H까지, 세로 rank는 1부터 8까지 입력이 가능하다.
-    private func isValidPosition(_ position: Position) -> Bool {
-        return (1...Rank.allCases.count).contains(position.rank.rawValue) && (
-            0..<File.allCases.count).contains(position.file.rawValue)
-    }
+    /// 현재 턴과 움직이려는(from) 말의 color가 동일한지 확인
+     private func isVaildPlayer(fromPiece: Piece?) -> Bool {
+         guard currentPlayer == fromPiece?.color else { return false }
+         return true
+     }
 
-    /// from과 to의 체스말은 동일할 수 없다.
+    /// from과 to의 체스말이 동일한지 확인
     private func isVaildColor(fromPiece: Piece?, toPiece: Piece?) -> Bool {
         if toPiece == nil {
             return true
@@ -97,7 +105,7 @@ final class ChessBoard {
         return fromPiece?.color != toPiece?.color
     }
 
-    /// 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없다.
+    /// 같은 색상의 말이 to 위치에 다른 말이 이미 있는지 확인
     private func isDestinationEmptyOrHasDifferentColor(
         _ toPiece: Piece?, fromPieceAtFromPosition: Piece?
     ) -> Bool {
@@ -107,7 +115,7 @@ final class ChessBoard {
         return true
     }
 
-    /// 백색은 큰 rank에서 더 작은 rank로 움직일 수 있고, 흑색은 작은 rank에서 더 큰 rank로 움직일 수 있다.
+    /// 백색은 큰 rank에서 더 작은 rank로 움직일 수 있고, 흑색은 작은 rank에서 더 큰 rank로 움직임이 가능
     private func isValidRankMove(from: Position, to: Position) -> Bool {
         let fromRank = from.rank.rawValue
         let toRank = to.rank.rawValue
