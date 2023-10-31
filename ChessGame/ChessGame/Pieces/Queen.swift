@@ -11,7 +11,19 @@ struct BlackQueen: BlackPiece {
     static let score: Int = 9
     
     func movablePositions(current: Position) -> [Position] {
-        []
+        let bottomLeft = current.bottomLeftPositions()
+        let topLeft = current.topLeftPositions()
+        let bottomRight = current.bottomRightPositions()
+        let topRight = current.topRightPositions()
+        
+        let bottom = current.bottomPositions()
+        let top = current.topPositions()
+        let left = current.leftPositions()
+        let right = current.rightPositions()
+        
+        let positions = top + left + bottom + right + topRight + topLeft + bottomLeft + bottomRight
+        
+        return positions
     }
     
     static func initialPositions() -> [Position: Self] {
@@ -23,7 +35,19 @@ struct WhiteQueen: WhitePiece {
     static let score: Int = 9
     
     func movablePositions(current: Position) -> [Position] {
-        []
+        let bottomLeft = current.bottomLeftPositions()
+        let topLeft = current.topLeftPositions()
+        let bottomRight = current.bottomRightPositions()
+        let topRight = current.topRightPositions()
+        
+        let bottom = current.bottomPositions()
+        let top = current.topPositions()
+        let left = current.leftPositions()
+        let right = current.rightPositions()
+        
+        let positions = top + left + bottom + right + topRight + topLeft + bottomLeft + bottomRight
+        
+        return positions
     }
     
     static func initialPositions() -> [Position: Self] {
