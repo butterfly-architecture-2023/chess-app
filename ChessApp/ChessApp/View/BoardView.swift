@@ -11,6 +11,7 @@ import Combine
 typealias ActionPublisher = PassthroughSubject<Position, Never>
 
 struct BoardView: View {
+  @Binding var localError: Error?
   let board: Board
   let actionPublisher = ActionPublisher()
   
@@ -28,13 +29,16 @@ struct BoardView: View {
         }
       }
     }
-    .padding(.horizontal)
     .onReceive(actionPublisher, perform: { position in
-      print(position)
+      do {
+        try board.inputCmd(position)
+      } catch {
+        self.localError = error
+      }
     })
   }
 }
 
 #Preview {
-  BoardView(board: Board())
+  BoardView(localError: .constant(nil), board: Board())
 }

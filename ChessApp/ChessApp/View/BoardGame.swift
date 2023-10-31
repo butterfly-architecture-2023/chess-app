@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct BoardGame: View {
+  @State var localError: Error?
   let board = Board()
+  
   var body: some View {
     VStack(spacing: 16) {
       InfoArea(board: board)
         .padding(.horizontal)
       
-      BoardView(board: board)
+      SimpleLine()
+        .padding(.horizontal)
+      
+      BoardView(
+        localError: $localError,
+        board: board)
+      .padding(.horizontal)
+      
+      SimpleLine()
+        .padding(.horizontal)
+      
+      ErrorPresenterView(localError: $localError)
+        .padding(.horizontal)
+      
+      Spacer()
     }
   }
 }

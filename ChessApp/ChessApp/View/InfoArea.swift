@@ -11,12 +11,12 @@ struct InfoArea: View {
   let board: Board
   var body: some View {
     HStack {
-      VStack {
+      VStack(alignment: .leading) {
         Text("현재 턴은?")
         Text("Black : ")
         Text("White : ")
       }
-      VStack {
+      VStack(alignment: .leading) {
         Text(board.currentTurn == .black ? "Black" : "White")
         Text("\(board.score[.black] ?? 0)")
         Text("\(board.score[.white] ?? 0)")
