@@ -50,7 +50,7 @@ final class Board {
     func display() -> [[String]] {
         
         pieces.forEach { (position, piece) in
-            self.square[position.file][position.rank] = piece
+            self.square[position.rank][position.file] = piece
         }
 
         return self.square.map { $0.map { $0?.description ?? "." }}
@@ -65,7 +65,7 @@ final class Board {
         square = Array(repeating: Array(repeating: nil, count: 8), count: 8)
         
         pieces.forEach { (position, piece) in
-            self.square[position.file][position.rank] = piece
+            self.square[position.rank][position.file] = piece
         }
     }
     

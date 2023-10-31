@@ -15,8 +15,8 @@ struct BlackBiship: BlackPiece {
     }
     
     static func initialPositions() -> [Position: Self] {
-        return [Position(file: 0, rank: 2)!: Self.init(),
-                Position(file: 0, rank: 5)!: Self.init()]
+        return [Position(file: 2, rank: 0)!: Self.init(),
+                Position(file: 5, rank: 0)!: Self.init()]
     }
 }
 
@@ -28,8 +28,8 @@ struct WhiteBiship: WhitePiece {
     }
     
     static func initialPositions() -> [Position: Self] {
-        return [Position(file: 7, rank: 2)!: Self.init(),
-                Position(file: 7, rank: 5)!: Self.init()]
+        return [Position(file: 2, rank: 7)!: Self.init(),
+                Position(file: 5, rank: 7)!: Self.init()]
     }
 }
 
