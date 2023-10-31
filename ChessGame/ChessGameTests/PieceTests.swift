@@ -69,4 +69,74 @@ final class PieceTests: XCTestCase {
         XCTAssertTrue(movablePositions.contains(target),
                       "\(target)과 \n \(movablePositions)은 서로 다릅니다.")
     }
+    
+    func testMovablePositions_검은_룩의_위치가_file_0_rank_0_일_때_아래와_오른쪽_위치들의_배열_반환() {
+        let position = Position(file: 0, rank: 0)!
+        let pawn = BlackRook()
+        let movablePositions = pawn.movablePositions(current: position)
+
+        print(movablePositions)
+        
+        let bottomTarget: [Position] =
+        [
+            Position(file: 0, rank: 1)!,
+            Position(file: 0, rank: 2)!,
+            Position(file: 0, rank: 3)!,
+            Position(file: 0, rank: 4)!,
+            Position(file: 0, rank: 5)!,
+            Position(file: 0, rank: 6)!,
+            Position(file: 0, rank: 7)!
+        ]
+        
+        let rightTarget: [Position] =
+        [
+            Position(file: 1, rank: 0)!,
+            Position(file: 2, rank: 0)!,
+            Position(file: 3, rank: 0)!,
+            Position(file: 4, rank: 0)!,
+            Position(file: 5, rank: 0)!,
+            Position(file: 6, rank: 0)!,
+            Position(file: 7, rank: 0)!
+        ]
+        
+        let target = bottomTarget+rightTarget
+        
+        XCTAssertTrue(movablePositions.contains(target),
+                      "\(target)과 \n \(movablePositions)은 서로 다릅니다.")
+    }
+    
+    func testMovablePositions_하얀_룩의_위치가_file_7_rank_7_일_때_위와_왼쪽_위치들의_배열_반환() {
+        let position = Position(file: 7, rank: 7)!
+        let pawn = WhiteRook()
+        let movablePositions = pawn.movablePositions(current: position)
+
+        print(movablePositions)
+        
+        let topTarget: [Position] =
+        [
+            Position(file: 7, rank: 6)!,
+            Position(file: 7, rank: 5)!,
+            Position(file: 7, rank: 4)!,
+            Position(file: 7, rank: 3)!,
+            Position(file: 7, rank: 2)!,
+            Position(file: 7, rank: 1)!,
+            Position(file: 7, rank: 0)!
+        ]
+        
+        let leftTarget: [Position] =
+        [
+            Position(file: 6, rank: 7)!,
+            Position(file: 5, rank: 7)!,
+            Position(file: 4, rank: 7)!,
+            Position(file: 3, rank: 7)!,
+            Position(file: 2, rank: 7)!,
+            Position(file: 1, rank: 7)!,
+            Position(file: 0, rank: 7)!
+        ]
+        
+        let target = topTarget+leftTarget
+        
+        XCTAssertTrue(movablePositions.contains(target),
+                      "\(target)과 \n \(movablePositions)은 서로 다릅니다.")
+    }
 }
