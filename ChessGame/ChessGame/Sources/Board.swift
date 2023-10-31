@@ -37,6 +37,16 @@ extension Board {
         }
     }
     
+    func movableCoordinates(from coordinate: PieceCoordinate) -> [PieceCoordinate] {
+        guard
+            let piece = piece(at: coordinate),
+            piece.color == self.turn
+        else { return [] }
+        
+        // 구현 필요 -> 단, 자신과 같은 색의 말이 가리고 있는 경우는 멈춘다.
+        return piece.movableCoordinates(from: coordinate)
+    }
+    
     func display() -> [String] {
         var result: [String] = []
         

@@ -9,6 +9,8 @@ import Foundation
 
 struct Pawn: Piece {
     
+    // MARK: - property
+    
     let color: PieceColor
     
     var symbol: String {
@@ -49,9 +51,13 @@ struct Pawn: Piece {
         }
     }
     
+    // MARK: - initialize
+    
     init(color: PieceColor) {
         self.color = color
     }
+    
+    // MARK: - method
     
     func movableCoordinates(from: PieceCoordinate) -> [PieceCoordinate] {
         switch color {

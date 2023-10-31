@@ -16,6 +16,7 @@ final class ChessGameTests: XCTestCase {
         
         sut = Board()
         sut.setUpPieces(type: Pawn.self)
+        sut.setUpPieces(type: Bishop.self)
     }
     
     override func tearDown() {
@@ -31,14 +32,14 @@ final class ChessGameTests: XCTestCase {
     
     func test_board_생성후_display_확인() throws {
         let expectedBoard = [
-            "........",
+            "..♝..♝..",
             "♟♟♟♟♟♟♟♟",
             "........",
             "........",
             "........",
             "........",
             "♙♙♙♙♙♙♙♙",
-            "........"
+            "..♗..♗.."
         ]
         
         let result = sut.display()
@@ -46,19 +47,39 @@ final class ChessGameTests: XCTestCase {
         XCTAssertEqual(result, expectedBoard)
     }
     
+    func test_s() throws {
+        sut.move(from: .init(rank: .seven, file: .A),
+                 to: .init(rank: .six, file: .A))
+        
+        let movableCoordinates = sut.movableCoordinates(from: .init(
+            rank: .one,
+            file: .C
+        ))
+        
+        XCTAssertEqual(movableCoordinates, [
+            .init(rank: .two, file: .D),
+            .init(rank: .three, file: .E),
+            .init(rank: .four, file: .F),
+            .init(rank: .five, file: .G),
+            .init(rank: .six, file: .H),
+            .init(rank: .two, file: .B),
+            .init(rank: .three, file: .A)
+        ])
+    }
+    
     func test_체스말이동_성공케이스_이동할수있는가() throws {
         sut.move(from: .init(rank: .seven, file: .A),
                  to: .init(rank: .six, file: .A))
         
         let expectedBoard = [
-            "........",
+            "..♝..♝..",
             "♟♟♟♟♟♟♟♟",
             "........",
             "........",
             "........",
             "♙.......",
             ".♙♙♙♙♙♙♙",
-            "........"
+            "..♗..♗.."
         ]
         
         let result = sut.display()
@@ -86,14 +107,14 @@ final class ChessGameTests: XCTestCase {
                  to: .init(rank: .four, file: .A))
         
         let expectedBoard = [
-            "........",
+            "..♝..♝..",
             ".♟♟♟♟♟♟♟",
             "........",
             "♙.......",
             "........",
             "........",
             ".♙♙♙♙♙♙♙",
-            "........"
+            "..♗..♗.."
         ]
         
         let result = sut.display()
@@ -113,7 +134,7 @@ final class ChessGameTests: XCTestCase {
         sut.move(from: .init(rank: .five, file: .A),
                  to: .init(rank: .four, file: .A))
         
-        XCTAssertEqual(sut.getScore().black, 7)
-        XCTAssertEqual(sut.getScore().white, 8)
+        XCTAssertEqual(sut.getScore().black, 13)
+        XCTAssertEqual(sut.getScore().white, 14)
     }
 }
