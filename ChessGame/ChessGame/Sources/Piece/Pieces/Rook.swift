@@ -1,0 +1,76 @@
+//
+//  Rook.swift
+//  ChessGame
+//
+//  Created by Dongyoung Kwon on 2023/10/31.
+//
+
+import Foundation
+
+struct Rook: Piece {
+    
+    // MARK: - property
+    
+    let color: PieceColor
+    
+    var symbol: String {
+        switch color {
+        case .black:
+            return "♜"
+        case .white:
+            return "♖"
+        }
+    }
+    
+    var point: Int { 5 }
+    
+    var initialCoordinates: Set<PieceCoordinate> {
+        switch color {
+        case .black:
+            return [
+                .init(rank: .one, file: .A),
+                .init(rank: .one, file: .H),
+            ]
+        case .white:
+            return [
+                .init(rank: .eight, file: .A),
+                .init(rank: .eight, file: .H),
+            ]
+        }
+    }
+    
+    // MARK: - initialize
+    
+    init(color: PieceColor) {
+        self.color = color
+    }
+    
+    // MARK: - method
+    
+    func movableCoordinates(from coordinate: PieceCoordinate) -> [PieceCoordinate] {
+        var result: [PieceCoordinate] = []
+        
+        let directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+        
+        for direction in directions {
+            var nextRank = coordinate.rank.rawValue + direction.0
+            var nextFile = coordinate.file.rawValue + direction.1
+            
+            while nextRank >= 0
+                    && nextRank < PieceCoordinate.Rank.allCases.count
+                    && nextFile >= 0
+                    && nextFile < PieceCoordinate.File.allCases.count,
+                  let nextRankEnum = PieceCoordinate.Rank(rawValue: nextRank),
+                  let nextFileEnum = PieceCoordinate.File(rawValue: nextFile)
+            {
+                let nextCoordinate = PieceCoordinate(rank: nextRankEnum, file: nextFileEnum)
+                result.append(nextCoordinate)
+                
+                nextRank += direction.0
+                nextFile += direction.1
+            }
+        }
+        
+        return result
+    }
+}
