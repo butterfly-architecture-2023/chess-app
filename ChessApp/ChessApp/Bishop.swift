@@ -8,8 +8,8 @@
 import Foundation
 
 class Bishop: Piece {
-    var point: Int = 3
-    var pieceColorType: PieceColorType
+    private(set) var point: Int = 3
+    private(set) var pieceColorType: PieceColorType
     
     init(pieceColorType: PieceColorType) {
         self.pieceColorType = pieceColorType

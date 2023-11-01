@@ -8,8 +8,8 @@
 import Foundation
 
 class EmptySpace: Piece {
-    var point: Int = 0
-    var pieceColorType: PieceColorType = .white
+    private(set) var point: Int = 0
+    private(set) var pieceColorType: PieceColorType = .white
     
     func showIcon() -> String {
         return "."

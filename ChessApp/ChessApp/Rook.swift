@@ -8,8 +8,8 @@
 import Foundation
 
 class Rook: Piece {
-    var point: Int = 5
-    var pieceColorType: PieceColorType
+    private(set) var point: Int = 5
+    private(set) var pieceColorType: PieceColorType
     
     init(pieceColorType: PieceColorType) {
         self.pieceColorType = pieceColorType

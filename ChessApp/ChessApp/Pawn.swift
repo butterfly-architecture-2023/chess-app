@@ -8,8 +8,8 @@
 import Foundation
 
 class Pawn: Piece {
-    var point: Int = 1
-    var pieceColorType: PieceColorType
+    private(set) var point: Int = 1
+    private(set) var pieceColorType: PieceColorType
     
     init(pieceColorType: PieceColorType) {
         self.pieceColorType = pieceColorType
