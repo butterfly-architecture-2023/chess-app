@@ -120,7 +120,7 @@ struct Board {
     func checkInSameGroup(_ array: [Position], _ currentPosition: Position) -> [Position] {
         return array.filter {
             if let piece = chessBoard[$0], let currentPiece = chessBoard[currentPosition] {
-                return !((piece.pieceColorType == currentPiece.pieceColorType) && piece.pieceType != .empty)
+                return !((piece.pieceColorType == currentPiece.pieceColorType) && !(piece.self is EmptySpace))
             }
             return true
         }

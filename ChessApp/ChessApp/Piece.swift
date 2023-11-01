@@ -9,7 +9,6 @@ import Foundation
 
 protocol Piece {
     // 점수, color, 생성위치, 움직일 수 있는 위치
-    var pieceType: PieceType { get}
     var point: Int { get }
     var pieceColorType: PieceColorType { get }
     func showIcon() -> String

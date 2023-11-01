@@ -8,7 +8,6 @@
 import Foundation
 
 class EmptySpace: Piece {
-    var pieceType: PieceType = .empty
     var point: Int = 0
     var pieceColorType: PieceColorType = .white
     

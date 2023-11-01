@@ -8,7 +8,6 @@
 import Foundation
 
 class Bishop: Piece {
-    var pieceType: PieceType = .bishop
     var point: Int = 3
     var pieceColorType: PieceColorType
     

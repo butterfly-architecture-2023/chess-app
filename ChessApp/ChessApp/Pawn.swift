@@ -8,7 +8,6 @@
 import Foundation
 
 class Pawn: Piece {
-    var pieceType: PieceType = .pawn
     var point: Int = 1
     var pieceColorType: PieceColorType
     

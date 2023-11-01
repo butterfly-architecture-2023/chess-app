@@ -8,7 +8,6 @@
 import Foundation
 
 class Rook: Piece {
-    var pieceType: PieceType = .rook
     var point: Int = 5
     var pieceColorType: PieceColorType
     
