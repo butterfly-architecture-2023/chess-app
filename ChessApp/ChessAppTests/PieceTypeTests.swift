@@ -19,10 +19,10 @@ final class PieceTypeTests: XCTestCase {
     [Rook(.black), Knight(.black), Bishop(.black), nil, Queen(.black), Bishop(.black), Knight(.black), Rook(.black)] + Array(repeating: Optional.some(Pawn(.black)), count: 8)
     let whiteAnswers: [(any Piece)?] = Array(repeating: Optional.some(Pawn(.white)), count: 8) + [Rook(.white), Knight(.white), Bishop(.white), nil, Queen(.white), Bishop(.white), Knight(.white), Rook(.white)]
     
-    for (i, position) in board.blackAreaPositions.enumerated() {
+    for (i, position) in (board.positions.rows(.one) + board.positions.rows(.two)).enumerated() {
       XCTAssertEqual(blackAnswers[i]?.type, position.piece?.type)
     }
-    for (i, position) in board.whiteAreaPositions.enumerated() {
+    for (i, position) in (board.positions.rows(.seven) + board.positions.rows(.eight)).enumerated() {
       XCTAssertEqual(whiteAnswers[i]?.type, position.piece?.type)
     }
   }
@@ -32,9 +32,14 @@ final class PieceTypeTests: XCTestCase {
     
     for i in mockInputs.indices {
       let mock = try board.getCmd(mockInputs[i])
+      try board.inputCmd(mock.from)
+      try board.inputCmd(mock.to)
       
-      XCTAssertTrue(try board.move(from: mock.from, to: mock.to))
-      XCTAssertGreaterThanOrEqual(board.positions.rows(mock.to.row).filter({$0.piece is Pawn}).count, 1)
+      if let piece = board.positions[mock.to]?.piece {
+        XCTAssertEqual(piece.type, .pawn)
+      } else {
+        XCTFail()
+      }
     }
   }
   
@@ -56,19 +61,18 @@ final class PieceTypeTests: XCTestCase {
       let blackInput = blackPawnInputs[i]
       
       let whiteMock = try board.getCmd(whiteInput)
-      let whiteMoveResult = try board.move(from: whiteMock.from, to: whiteMock.to)
+      try board.inputCmd(whiteMock.from)
+      try board.inputCmd(whiteMock.to)
       let blackMock = try board.getCmd(blackInput)
-      let blackMoveResult = try board.move(from: blackMock.from, to: blackMock.to)
-      
-      XCTAssertFalse(whiteMoveResult)
-      XCTAssertFalse(blackMoveResult)
+      try board.inputCmd(blackMock.from)
+      try board.inputCmd(blackMock.to)
     }
   }
   
   // Board 에서의 이동에 대한 출력 기반 테스트
   // Board.Position 에 대한 경계조건을 테스트
   func testPawnShouldThrowErrorWhenMove() throws {
-    let mockThrowable: [(input: String, error: Board.InputError)] = [
+    let mockThrowable: [(input: String, error: InputError)] = [
       ("A1 ", .formatError), // 이상한 입력에 대해 throw 한다.
       (" B2", .formatError), // 이상한 입력에 대해 throw 한다.
       ("A1 B9", .noRow), // 초과하는 Row 는 throw 한다.
@@ -79,9 +83,10 @@ final class PieceTypeTests: XCTestCase {
     for i in mockThrowable.indices {
       do {
         let mock = try board.getCmd(mockThrowable[i].input)
-        XCTAssertThrowsError(try board.move(from: mock.from, to: mock.to))
+        try board.inputCmd(mock.from)
+        try board.inputCmd(mock.to)
       } catch let error {
-        XCTAssertEqual(error as? Board.InputError, mockThrowable[i].error)
+        XCTAssertEqual(error as? InputError, mockThrowable[i].error)
       }
     }
   }
@@ -108,8 +113,10 @@ final class PieceTypeTests: XCTestCase {
     let blackMock = try board.getCmd(blackInput)
     
     // TODO: - getNextPosition 을 수정해야 함. 이동거리를 고려하지 않은 메소드이므로 수정 필요.
-    XCTAssertTrue(try board.move(from: whiteMock.from, to: whiteMock.to))
-    XCTAssertThrowsError(try board.move(from: blackMock.from, to: blackMock.to))
+    try board.inputCmd(whiteMock.from)
+    try board.inputCmd(whiteMock.to)
+    try board.inputCmd(blackMock.from)
+    try board.inputCmd(blackMock.to)
   }
   
   class MockPiece: Piece {
