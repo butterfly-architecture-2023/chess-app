@@ -35,7 +35,11 @@ final class PieceTypeTests: XCTestCase {
       try board.inputCmd(mock.from)
       try board.inputCmd(mock.to)
       
-      XCTAssertGreaterThanOrEqual(board.positions.rows(mock.to.row).filter({$0.piece is Pawn}).count, 1)
+      if let piece = board.positions[mock.to]?.piece {
+        XCTAssertEqual(piece.type, .pawn)
+      } else {
+        XCTFail()
+      }
     }
   }
   

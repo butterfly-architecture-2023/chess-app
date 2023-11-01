@@ -39,26 +39,23 @@ class Board: ObservableObject {
   
   // 처음 입력
   func inputCmd(_ cmd: Position) throws {
+    guard let cmd = positions[cmd] else {
+      throw InputError.formatError
+    }
+    
     let highlighted = positions.filter({ $0.isHighlighted })
     
     guard let selected = selected, highlighted.isEmpty == false else {
       // 선택되어 있는 자리가 없다. 그러나 체스말을 선택하고자 한다.
-      selected = cmd
-      selected?.isHighlighted = true
-      if let directionMovable = cmd.piece?.directionMovable {
-        for vector in directionMovable {
-          for item in moveManager.getPositions(from: cmd, using: vector) {
-            print(cmd, vector, item)
-            positions[item]?.isHighlighted = true
-          }
-        }
-      }
-      
+      highlight(start: cmd)
       return
     }
     
     if highlighted.contains(cmd) {
       try move(from: selected, to: cmd)
+    } else {
+      self.selected = nil
+      highlighted.forEach { $0.isHighlighted = false }
     }
     
     dismissSelected()
@@ -75,6 +72,19 @@ class Board: ObservableObject {
     
     if let effect = sideEffect {
       calculate(effect)
+    }
+  }
+  
+  private func highlight(start: Position) {
+    selected = start
+    selected?.isHighlighted = true
+    if let directionMovable = start.piece?.directionMovable {
+      for vector in directionMovable {
+        for item in moveManager.getPositions(from: start, using: vector) {
+          print(start, vector, item)
+          positions[item]?.isHighlighted = true
+        }
+      }
     }
   }
   
