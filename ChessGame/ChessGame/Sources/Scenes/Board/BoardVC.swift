@@ -11,10 +11,13 @@ final class BoardVC: UIViewController {
     
     // MARK: - property
     
+    private let boardModel = Board()
+    
     // MARK: - ui component property
     
     private let boardView = BoardView()
-    private let boardModel = Board()
+    private let blackUserScoreLabel: UILabel = .init()
+    private let whiteUserScoreLabel: UILabel = .init()
     
     // MARK: - life cycle
     
@@ -37,6 +40,12 @@ extension BoardVC {
         boardModel.setUpPieces(type: Knight.self)
         
         boardView.updateSquares(with: boardModel.squares)
+        update(scores: boardModel.getScore())
+    }
+    
+    private func update(scores: (black: Int, white: Int)) {
+        blackUserScoreLabel.text = "Black Score : \(scores.black)"
+        whiteUserScoreLabel.text = "White Score : \(scores.white)"
     }
 }
 
@@ -65,14 +74,35 @@ extension BoardVC {
                                                 constant: -20),
             boardView.heightAnchor.constraint(equalTo: boardView.widthAnchor)
         ])
+        
+        [blackUserScoreLabel, whiteUserScoreLabel].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        NSLayoutConstraint.activate([
+            blackUserScoreLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            blackUserScoreLabel.bottomAnchor.constraint(equalTo: boardView.topAnchor, constant: -20),
+            whiteUserScoreLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            whiteUserScoreLabel.topAnchor.constraint(equalTo: boardView.bottomAnchor, constant: 20),
+        ])
     }
     
     private func setUpComponents() {
         setUpBoardView()
+        setUpBlackUserScoreLabel()
+        setUpWhiteUserScoreLabel()
     }
     
     private func setUpBoardView() {
         boardView.delegate = self
+    }
+    
+    private func setUpBlackUserScoreLabel() {
+        blackUserScoreLabel.font = .systemFont(ofSize: 14, weight: .bold)
+    }
+    
+    private func setUpWhiteUserScoreLabel() {
+        whiteUserScoreLabel.font = .systemFont(ofSize: 14, weight: .bold)
     }
 }
 
@@ -88,6 +118,8 @@ extension BoardVC: BoardViewDelegate {
         {
             boardModel.move(from: selectedCoord, to: coordinate)
             boardView.updateSquares(with: boardModel.squares)
+            
+            update(scores: boardModel.getScore())
         } else {
             boardView.displayMovableSquares(current: coordinate, movableCoordinates: a)
         }
