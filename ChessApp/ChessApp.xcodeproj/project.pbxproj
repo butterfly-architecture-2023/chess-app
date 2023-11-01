@@ -40,6 +40,10 @@
 		4594C7C72AF29EC60077907E /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594C7432AF28E130077907E /* Bishop.swift */; };
 		4594C7CA2AF2A2530077907E /* RegexFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594C7C92AF2A2530077907E /* RegexFormatType.swift */; };
 		4594C7CB2AF2A2650077907E /* RegexFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594C7C92AF2A2530077907E /* RegexFormatType.swift */; };
+		4594C7CF2AF2B07A0077907E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 4594C7CE2AF2B07A0077907E /* Then */; };
+		4594C7D22AF2B08C0077907E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4594C7D12AF2B08C0077907E /* SnapKit */; };
+		4594C7D42AF2B3E70077907E /* PieceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594C7D32AF2B3E70077907E /* PieceCollectionViewCell.swift */; };
+		4594C7D72AF2BDCD0077907E /* UISubviewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4594C7D62AF2BDCD0077907E /* UISubviewStyle.swift */; };
 		45B756532ADEC6F90040F509 /* ChessAppUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B756522ADEC6F90040F509 /* ChessAppUnitTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,8 @@
 		4594C7A52AF29D520077907E /* ChessAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4594C7C92AF2A2530077907E /* RegexFormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexFormatType.swift; sourceTree = "<group>"; };
 		4594C7CC2AF2A55E0077907E /* ChessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4594C7D32AF2B3E70077907E /* PieceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceCollectionViewCell.swift; sourceTree = "<group>"; };
+		4594C7D62AF2BDCD0077907E /* UISubviewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISubviewStyle.swift; sourceTree = "<group>"; };
 		45B756502ADEC6F90040F509 /* ChessAppUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessAppUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45B756522ADEC6F90040F509 /* ChessAppUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessAppUnitTest.swift; sourceTree = "<group>"; };
 		45C18FB22ADD13C300B05FFE /* customMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customMain.swift; sourceTree = "<group>"; };
@@ -89,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4594C7CF2AF2B07A0077907E /* Then in Frameworks */,
+				4594C7D22AF2B08C0077907E /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,9 +120,9 @@
 		4594C7812AF29D510077907E /* ChessApp */ = {
 			isa = PBXGroup;
 			children = (
+				4594C7D52AF2BD8F0077907E /* View */,
 				4594C7822AF29D510077907E /* AppDelegate.swift */,
 				4594C7842AF29D510077907E /* SceneDelegate.swift */,
-				4594C7862AF29D510077907E /* ViewController.swift */,
 				45C18FB22ADD13C300B05FFE /* customMain.swift */,
 				45C18FBD2ADD180000B05FFE /* PieceColorType.swift */,
 				45C18FBF2ADD181700B05FFE /* Position.swift */,
@@ -128,12 +136,12 @@
 				4594C73D2AF28DDE0077907E /* Rook.swift */,
 				4594C73F2AF28DEC0077907E /* EmptySpace.swift */,
 				4594C7432AF28E130077907E /* Bishop.swift */,
-				4594C7462AF296990077907E /* BoardView.swift */,
 				4594C7C92AF2A2530077907E /* RegexFormatType.swift */,
 				4594C7882AF29D510077907E /* Main.storyboard */,
 				4594C78B2AF29D520077907E /* Assets.xcassets */,
 				4594C78D2AF29D520077907E /* LaunchScreen.storyboard */,
 				4594C7902AF29D520077907E /* Info.plist */,
+				4594C7D62AF2BDCD0077907E /* UISubviewStyle.swift */,
 			);
 			path = ChessApp;
 			sourceTree = "<group>";
@@ -145,6 +153,16 @@
 				4594C7A52AF29D520077907E /* ChessAppUITestsLaunchTests.swift */,
 			);
 			path = ChessAppUITests;
+			sourceTree = "<group>";
+		};
+		4594C7D52AF2BD8F0077907E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4594C7862AF29D510077907E /* ViewController.swift */,
+				4594C7462AF296990077907E /* BoardView.swift */,
+				4594C7D32AF2B3E70077907E /* PieceCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		45B756512ADEC6F90040F509 /* ChessAppUnitTest */ = {
@@ -183,6 +201,10 @@
 			dependencies = (
 			);
 			name = ChessApp;
+			packageProductDependencies = (
+				4594C7CE2AF2B07A0077907E /* Then */,
+				4594C7D12AF2B08C0077907E /* SnapKit */,
+			);
 			productName = ChessApp;
 			productReference = 4594C7CC2AF2A55E0077907E /* ChessApp.app */;
 			productType = "com.apple.product-type.application";
@@ -253,6 +275,10 @@
 				Base,
 			);
 			mainGroup = 45C18FA62ADD13C300B05FFE;
+			packageReferences = (
+				4594C7CD2AF2B07A0077907E /* XCRemoteSwiftPackageReference "Then" */,
+				4594C7D02AF2B08C0077907E /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 45C18FA62ADD13C300B05FFE;
 			projectDirPath = "";
 			projectRoot = "";
@@ -301,6 +327,7 @@
 				4594C7BA2AF29DA20077907E /* Pawn.swift in Sources */,
 				4594C7B92AF29DA20077907E /* ErrorType.swift in Sources */,
 				4594C7B42AF29DA20077907E /* Rook.swift in Sources */,
+				4594C7D42AF2B3E70077907E /* PieceCollectionViewCell.swift in Sources */,
 				4594C7B82AF29DA20077907E /* Board.swift in Sources */,
 				4594C7B12AF29DA20077907E /* ChessPoint.swift in Sources */,
 				4594C7CA2AF2A2530077907E /* RegexFormatType.swift in Sources */,
@@ -310,6 +337,7 @@
 				4594C7872AF29D510077907E /* ViewController.swift in Sources */,
 				4594C7B52AF29DA20077907E /* Piece.swift in Sources */,
 				4594C7832AF29D510077907E /* AppDelegate.swift in Sources */,
+				4594C7D72AF2BDCD0077907E /* UISubviewStyle.swift in Sources */,
 				4594C7BC2AF29DA20077907E /* Bishop.swift in Sources */,
 				4594C7852AF29D510077907E /* SceneDelegate.swift in Sources */,
 				4594C7B32AF29DA20077907E /* EmptySpace.swift in Sources */,
@@ -673,6 +701,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4594C7CD2AF2B07A0077907E /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		4594C7D02AF2B08C0077907E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4594C7CE2AF2B07A0077907E /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4594C7CD2AF2B07A0077907E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		4594C7D12AF2B08C0077907E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4594C7D02AF2B08C0077907E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 45C18FA72ADD13C300B05FFE /* Project object */;
 }
