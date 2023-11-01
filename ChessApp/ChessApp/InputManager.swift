@@ -76,12 +76,3 @@ struct InputManager {
         return Position(rank: 0, file: 0)
     }
 }
-
-enum RegexFormatType: String {
-    case updatePiece = "([A-H]{1}[0-8]{1})->([A-H]{1}[0-8]{1})"
-    case help = "\\?([A-H]{1}[0-8]{1})"
-    
-    var pattern: String {
-        return self.rawValue
-    }
-}

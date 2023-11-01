@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  customMain.swift
 //  ChessApp
 //
 //  Created by elly on 10/16/23.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-func main() {
-    // MARK: - 체스 시작 초기화
+func customMain() {
+//     MARK: - 체스 시작 초기화
     let printManager = PrintManager()
     printManager.showDescription(.initBoard)
     var board: Board = Board(size: 8)
@@ -53,5 +53,3 @@ func main() {
         }
     } while(true)
 }
-
-main()
