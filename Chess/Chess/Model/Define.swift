@@ -18,12 +18,21 @@ struct Define {
         return list
     }()
     
+    static let chessMap: [[ChessPiece]] = {
+        var map = emptyPieceList
+        map[0] = firstBlackLineList // 1 Rank Black Piece 할당
+        map[1] = firstBlackPawnList // 2 Rank Black Piece 할당
+        map[6] = firstWhitePawnList // 7 Rank Black Piece 할당
+        map[7] = firstWhiteLineList // 8 Rank Black Piece 할당
+        return map
+    }()
+    
     static let firstWhiteLineList: [ChessPiece] = {
         [
             Rook(pieceColor: .white, pieceType: .rook, position: Position(rank: .eight, column: .a)),
             Knight(pieceColor: .white, pieceType: .knight, position: Position(rank: .eight, column: .b)),
             Bishop(pieceColor: .white, pieceType: .bishop, position: Position(rank: .eight, column: .c)),
-            EmptyPiece(pieceColor: .none, pieceType: .none, position: Position(rank: .eight, column: .d)),
+            King(pieceColor: .white, pieceType: .king, position: Position(rank: .eight, column: .d)),
             Queen(pieceColor: .white, pieceType: .queen, position: Position(rank: .eight, column: .e)),
             Bishop(pieceColor: .white, pieceType: .bishop, position: Position(rank: .eight, column: .f)),
             Knight(pieceColor: .white, pieceType: .knight, position: Position(rank: .eight, column: .g)),
@@ -36,7 +45,7 @@ struct Define {
             Rook(pieceColor: .black, pieceType: .rook, position: Position(rank: .one, column: .a)),
             Knight(pieceColor: .black, pieceType: .knight, position: Position(rank: .one, column: .b)),
             Bishop(pieceColor: .black, pieceType: .bishop, position: Position(rank: .one, column: .c)),
-            EmptyPiece(pieceColor: .none, pieceType: .none, position: Position(rank: .one, column: .d)),
+            King(pieceColor: .black, pieceType: .king, position: Position(rank: .one, column: .d)),
             Queen(pieceColor: .black, pieceType: .queen, position: Position(rank: .one, column: .e)),
             Bishop(pieceColor: .black, pieceType: .bishop, position: Position(rank: .one, column: .f)),
             Knight(pieceColor: .black, pieceType: .knight, position: Position(rank: .one, column: .g)),
@@ -67,11 +76,13 @@ struct ChessPieceSymbols {
     static let blackKnight = "♞"
     static let blackRook = "♜"
     static let blackQueen = "♛"
+    static let blackKing = "♚"
     
     static let whitePawn = "♙"
     static let whiteBishop = "♗"
     static let whiteKnight = "♘"
     static let whiteRook = "♖"
     static let whiteQueen = "♕"
+    static let whiteKing = "♔"
 }
 

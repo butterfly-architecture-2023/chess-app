@@ -14,4 +14,8 @@ enum Rank: Int, CaseIterable {
     case six
     case seven
     case eight
+    
+    var index: Int {
+        return rawValue - 1
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Chess
 
 class WhitePieceTests: XCTestCase {
     var board: Board!
@@ -28,6 +29,7 @@ class WhitePieceTests: XCTestCase {
     func test_WhitePiece를_해당_Rank보다_낮은_곳에_이동을_요청하면_실패하는가() {
         let text = "H7->H6"
         let result = board.movePiece(inputText: text)
+        
         XCTAssertTrue(result)
     }
     
@@ -66,13 +68,19 @@ class WhitePieceTests: XCTestCase {
     
     func test_유효한_WhiteRook_이동을_요청하면_성공하는가1() {
         let text = "A8->A6"
+        let position = EmptyPiece(position: Position(rank: .seven, column: .a))
+        board.chessMap.setPiece(position)
         let result = board.movePiece(inputText: text)
         XCTAssertTrue(result)
     }
     
     func test_유효한_WhiteRook_이동을_요청하면_성공하는가2() {
         let text = "A8->C8"
-        board.chessMap[7][2] = EmptyPiece(position: Position(rank: .eight, column: .c))
+        let position1 = Position(rank: .eight, column: .b)
+        let position2 = Position(rank: .eight, column: .c)
+        board.chessMap.removePiece(position: position1)
+        board.chessMap.removePiece(position: position2)
+        
         let result = board.movePiece(inputText: text)
         XCTAssertTrue(result)
     }
@@ -105,8 +113,11 @@ class WhitePieceTests: XCTestCase {
     func test_유효한_WhiteBishop_이동을_요청하면_성공하는가() {
         let text = "C8->D7"
         // 같은 색 말 충돌자리 Empty화
-        board.chessMap[6][3] = EmptyPiece(position: Position(rank: .seven, column: .d))
+        let emptyPiece = EmptyPiece(position: Position(rank: .seven, column: .d))
+        board.chessMap.setPiece(emptyPiece)
+        
         let result = board.movePiece(inputText: text)
+        board.display()
         XCTAssertTrue(result)
     }
     
@@ -116,14 +127,34 @@ class WhitePieceTests: XCTestCase {
         XCTAssertFalse(result)
     }
     
-    func test_유효한_WhiteQueen_이동을_요청하면_성공하는가1() {
-        let text = "E8->D8"
+    func test_유효한_WhiteQueen_이동이지만_같은색_Piece가_막을때1() {
+        let text = "E8->G6"
+        let result = board.movePiece(inputText: text)
+        XCTAssertFalse(result)
+    }
+    
+    func test_유효한_WhiteQueen_이동이지만_같은색_Piece가_막을때2() {
+        let text = "E8->C6"
+        let result = board.movePiece(inputText: text)
+        XCTAssertFalse(result)
+    }
+    
+    func test_유효한_WhiteQueen_Bishop경로_요청이면_성공하는가1() {
+        let text = "E8->G6"
+        let position = Position(rank: .seven, column: .f)
+        // 경로 상 아군말 제거
+        board.chessMap.removePiece(position: position)
+        
         let result = board.movePiece(inputText: text)
         XCTAssertTrue(result)
     }
     
-    func test_유효한_WhiteQueen_이동을_요청하면_성공하는가2() {
-        let text = "E8->C6"
+    func test_유효한_WhiteQueen_Rook경로_요청이면_성공하는가2() {
+        let text = "E8->G6"
+        let position = Position(rank: .seven, column: .e)
+        // 경로 상 아군말 제거
+        board.chessMap.removePiece(position: position)
+        
         let result = board.movePiece(inputText: text)
         XCTAssertTrue(result)
     }

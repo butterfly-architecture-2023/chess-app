@@ -12,6 +12,12 @@ protocol ChessPiece {
     func isCanMove(to: Position) -> Bool
 }
 
+extension ChessPiece {
+    var pieceText: String {
+        return "\(position.column.rawValue)\(position.rank.rawValue)"
+    }
+}
+
 struct EmptyPiece: ChessPiece {
     let pieceColor: PieceColor
     let pieceType: PieceType
@@ -52,18 +58,10 @@ struct Pawn: ChessPiece {
             if toRank.rawValue > position.rank.rawValue {
                 return false
             }
-            
-            if to.rank == .one {
-                return false
-            }
         }
         
         if pieceColor == .black {
             if toRank.rawValue < position.rank.rawValue {
-                return false
-            }
-            
-            if toRank == .eight {
                 return false
             }
         }
@@ -81,18 +79,26 @@ struct Rook: ChessPiece {
         let toRank = to.rank
         
         if pieceColor == .white {
-            if toRank.rawValue > position.rank.rawValue {
-                return false
+            if toRank.rawValue == position.rank.rawValue && to.column.number != position.column.number {
+                return true
+            }
+            
+            if toRank.rawValue < position.rank.rawValue && to.column.number == position.column.number {
+                return true
             }
         }
         
         if pieceColor == .black {
-            if toRank.rawValue < position.rank.rawValue {
-                return false
+            if toRank.rawValue == position.rank.rawValue && to.column.number != position.column.number {
+                return true
+            }
+            
+            if toRank.rawValue > position.rank.rawValue && to.column.number == position.column.number {
+                return true
             }
         }
         
-        return true
+        return false
     }
 }
 
@@ -131,12 +137,39 @@ struct Knight: ChessPiece {
         let toColumn = to.column
         let rankDifference = abs(position.rank.rawValue - toRank.rawValue)
         let columnDifference = abs(position.column.number - toColumn.number)
-        
         if (rankDifference == 2 && columnDifference == 1) || (rankDifference == 1 && columnDifference == 2) {
             return true
         }
         
         return false
+    }
+}
+
+struct King: ChessPiece {
+    let pieceColor: PieceColor
+    let pieceType: PieceType
+    var position: Position
+    
+    func isCanMove(to: Position) -> Bool {
+        let toRank = to.rank
+        let toColumn = to.column
+        
+        if pieceColor == .white {
+            if toRank.rawValue > position.rank.rawValue {
+                return false
+            }
+        }
+        
+        if pieceColor == .black {
+            if toRank.rawValue < position.rank.rawValue {
+                return false
+            }
+        }
+        
+        let rankDifference = abs(position.rank.rawValue - toRank.rawValue)
+        let columnDifference = abs(position.column.number - toColumn.number)
+        
+        return rankDifference <= 1 && columnDifference <= 1
     }
 }
 
@@ -150,31 +183,35 @@ struct Queen: ChessPiece {
         let toColumn = to.column
         
         if pieceColor == .white {
-            if toRank.rawValue == position.rank.rawValue {
+            if toRank.rawValue > position.rank.rawValue {
+                return false
+            }
+            
+            if toRank.rawValue == position.rank.rawValue && to.column.number != position.column.number {
                 return true
             }
             
-            if toColumn == position.column {
+            if toRank.rawValue < position.rank.rawValue && to.column.number == position.column.number {
                 return true
             }
             
-            if toRank.rawValue < position.rank.rawValue {
-                return abs(position.rank.rawValue - toRank.rawValue) == abs(position.column.number - toColumn.number)
-            }
+            return abs(position.rank.rawValue - toRank.rawValue) == abs(position.column.number - toColumn.number)
         }
         
         if pieceColor == .black {
-            if toRank.rawValue == position.rank.rawValue {
+            if toRank.rawValue < position.rank.rawValue {
+                return false
+            }
+            
+            if toRank.rawValue == position.rank.rawValue && to.column.number != position.column.number {
                 return true
             }
             
-            if toColumn == position.column {
+            if toRank.rawValue > position.rank.rawValue && to.column.number == position.column.number {
                 return true
             }
             
-            if toRank.rawValue > position.rank.rawValue {
-                return abs(position.rank.rawValue - toRank.rawValue) == abs(position.column.number - toColumn.number)
-            }
+            return abs(position.rank.rawValue - toRank.rawValue) == abs(position.column.number - toColumn.number)
         }
         return false
     }

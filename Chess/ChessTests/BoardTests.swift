@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Chess
 
 final class BoardTest: XCTestCase {
     var board: Board!
@@ -24,11 +25,8 @@ final class BoardTest: XCTestCase {
     }
     
     func test_Board_초기화후_점수가_동일한가() {
-        // Arrange
         let initialWhiteScore = board.whiteScore
         let initialBlackScore = board.blackScore
-        
-        // Assert
         XCTAssertEqual(initialWhiteScore, initialBlackScore)
     }
     
@@ -140,7 +138,7 @@ final class BoardTest: XCTestCase {
     func test_Black가_이동을_성공한후_White턴으로_변경되는가() {
         let inputText1 = "A7->A6"
         let _ = board.movePiece(inputText: inputText1)
-        
+     
         let inputText2 = "B1->A3"
         let _ = board.movePiece(inputText: inputText2)
         let turn = board.currentTurn
