@@ -110,8 +110,6 @@ extension BoardVC {
 
 extension BoardVC: BoardViewDelegate {
     func onTapSquare(coordinate: PieceCoordinate) {
-        let a = boardModel.movableCoordinates(from: coordinate)
-        
         if let movableSquares = boardView.movableSquares,
            movableSquares.contains(coordinate),
            let selectedCoord = boardView.selectedSquare
@@ -121,7 +119,8 @@ extension BoardVC: BoardViewDelegate {
             
             update(scores: boardModel.getScore())
         } else {
-            boardView.displayMovableSquares(current: coordinate, movableCoordinates: a)
+            boardView.displayMovableSquares(current: coordinate,
+                                            movableCoordinates: boardModel.movableCoordinates(from: coordinate))
         }
     }
 }
