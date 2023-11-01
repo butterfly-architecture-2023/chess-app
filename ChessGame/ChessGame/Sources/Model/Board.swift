@@ -12,8 +12,8 @@ final class Board {
     // MARK: - property
     
     // PRIVATE
-    private var squares: [[(any Piece)?]] = []
-    private(set) var turn: PieceColor = .white
+    private(set) var squares: [[(any Piece)?]] = []
+    private var turn: PieceColor = .white
     
     // MARK: - initialize
     
