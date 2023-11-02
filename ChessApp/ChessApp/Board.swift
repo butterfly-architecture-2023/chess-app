@@ -93,6 +93,7 @@ struct Board {
         var array = currentPiece.movablePosition(currentPosition)
         array = checkInBoardArea(array)
         array = checkInSameGroup(array, currentPosition)
+        print(array)
         
         // help형식이면, 2 리턴
         // update형식이면, [1]이 [Position]에 속하는지 체크
@@ -120,7 +121,7 @@ struct Board {
     func checkInSameGroup(_ array: [Position], _ currentPosition: Position) -> [Position] {
         return array.filter {
             if let piece = chessBoard[$0], let currentPiece = chessBoard[currentPosition] {
-                return !((piece.pieceColorType == currentPiece.pieceColorType) && !(piece.self is EmptySpace))
+                return !(piece.pieceColorType == currentPiece.pieceColorType)
             }
             return true
         }

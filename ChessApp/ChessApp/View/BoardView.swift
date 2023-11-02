@@ -27,9 +27,10 @@ class BoardView: UIView {
     
     
     // MARK: - Properties
-    
+    var board: Board = Board(size: 8)
     var chessPieceGroup: ChessPieceGroup!
-    var listOfPieces: [Piece] = []
+    var listOfPieces: [(key: Position, value: any Piece)] = []
+    var inputBuffer: [Position] = []
     
     
     // MARK: - Initializer
@@ -48,10 +49,8 @@ class BoardView: UIView {
     }
     
     func makeBoard() {
-        var board: Board = Board(size: 8)
         self.chessPieceGroup = board.display()
-        
-        self.listOfPieces = sortChessPieceGroup().compactMap { $0.value }
+        self.listOfPieces = sortChessPieceGroup().compactMap { $0 }
     }
     
     private func setCollectionView() {
@@ -80,10 +79,49 @@ extension BoardView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PieceCollectionViewCell.cellIdentifier, for: indexPath) as? PieceCollectionViewCell else { return UICollectionViewCell() }
-        let icon = listOfPieces[indexPath.row].showIcon()
+        let icon = listOfPieces[indexPath.row].value.showIcon()
         cell.button.setTitle(icon, for: .normal)
         cell.backgroundColor = .systemPink
+        cell.isUserInteractionEnabled = true
         return cell
+    }
+}
+
+
+// MARK: - UICollectionViewDelegate
+
+extension BoardView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let piece = listOfPieces[indexPath.row]
+        print(piece.key.rank, piece.key.file, piece.value)
+        
+        // TODO: - 버튼 클릭 시, 이동 가능한 위치 보여주는 부분 구현중...
+//        // 버퍼가 2가 넘어가면 지움
+//        if inputBuffer.count > 1 {
+//            inputBuffer.removeAll()
+//        }
+//        
+//        // 버퍼에 추가
+//        inputBuffer.append(Position(rank: piece.key.rank, file: piece.key.file))
+//        debugPrint(inputBuffer)
+        
+        // 첫번째 클릭 시, 이동 가능 위치 출력
+        if inputBuffer.count == 1 {
+            do {
+                try board.checkMovable(inputBuffer, .help)
+            } catch let error {
+                guard let error = error as? ErrorType else { return }
+                print(error.showMessage())
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+//        try board.checkMovable(positionInfo, inputFormatType)
     }
 }
 

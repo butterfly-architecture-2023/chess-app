@@ -19,6 +19,7 @@ class PieceCollectionViewCell: UICollectionViewCell {
     var button: UIButton = UIButton().then {
         $0.setTitle(".", for: .normal)
         $0.tintColor = UIColor.black
+        $0.isEnabled = false
     }
     
     
@@ -34,6 +35,12 @@ class PieceCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            print(isSelected)
+        }
+    }
 }
 
 
@@ -41,7 +48,7 @@ class PieceCollectionViewCell: UICollectionViewCell {
 
 extension PieceCollectionViewCell: UISubviewStyle {
     func addSubviews() {
-        self.addSubview(button)
+        self.contentView.addSubview(button)
     }
     
     func makeConstraints() {
