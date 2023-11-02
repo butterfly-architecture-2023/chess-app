@@ -15,7 +15,7 @@ final class Board {
         }
     }
     
-    private var square: [[Piece?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
+    private(set) var square: [[Piece?]] = Array(repeating: Array(repeating: nil, count: 8), count: 8)
     
     init(pieces: [Position: Piece]) {
         self.pieces = pieces
