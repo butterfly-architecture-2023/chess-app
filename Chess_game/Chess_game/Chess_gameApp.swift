@@ -11,7 +11,7 @@ import SwiftUI
 struct Chess_gameApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SelectGameTypeView()
         }
     }
 }

@@ -9,26 +9,36 @@ protocol Piece {
     var color: PieceColor { get }
     var isAlive: Bool { get set }
     var position: Position { get set }
+    var icon: String { get }
+    var point: Int { get }
     func getMoveablePositions(pieces: [Piece]) -> [Position]
 }
 
 extension Piece {
-    func findPiece(pieces: [Piece], with position: Position) -> Piece? {
-        guard let index = getPieceIndex(pieces: pieces, with: position) else { return nil }
-        return pieces[index]
+    func isEncounterSameColorWhenMove(pieces: [Piece], moveTo destination: Position?) -> Bool? {
+        guard let destination = destination else { return nil }
+        guard let encounterPiece = pieces.first (where: { $0.position == destination }) else { return nil }
+        return encounterPiece.color == self.color
     }
 
-    func getPieceIndex(pieces: [Piece], with position: Position) -> Int? {
-        return pieces.firstIndex(where: { $0.position == position })
-    }
+    func getMovablePositionsWithDirection(pieces: [Piece], _ direction: Direction) -> [Position] {
+        var positions: [Position] = []
+        var position = self.position.getNearPosition(direction)
 
-    func validateIsDifferentTeam(_ pieces: [Piece], _ with: Position) -> Bool {
-        guard let destinationPiece = findPiece(pieces: pieces, with: with) else { return false }
-        let startPawnType = self.color
-        let destinationPawnType = destinationPiece.color
-        return startPawnType != destinationPawnType
+        while position != nil {
+            if let isEncounterPieceColorSame = isEncounterSameColorWhenMove(pieces: pieces, moveTo: position) {
+                if isEncounterPieceColorSame {
+                    break
+                } else {
+                    positions.append(position!)
+                    break
+                }
+            }
+            positions.append(position!)
+            position = position!.getNearPosition(direction)
+        }
+        return positions
     }
-
 }
 
 enum PieceColor: CaseIterable {

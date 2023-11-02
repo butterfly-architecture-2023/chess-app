@@ -23,44 +23,12 @@ final class MapManager {
 
         whiteTeam.forEach { piece in
             let position = piece.position
-            let pieceType = type(of: piece)
-            switch pieceType {
-            case is Pawn.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{2659}"
-            case is Knight.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{2658}"
-            case is Bishop.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{2657}"
-            case is Rook.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{2656}"
-            case is Queen.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{2655}"
-            case is King.Type:
-                break
-            default:
-                break
-            }
+            map[position.rank.rawValue][position.file.rawValue] = piece.icon
         }
 
         blackTeam.forEach { piece in
             let position = piece.position
-            let pieceType = type(of: piece)
-            switch pieceType {
-            case is Pawn.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{265F}"
-            case is Knight.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{265E}"
-            case is Bishop.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{265D}"
-            case is Rook.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{265C}"
-            case is Queen.Type:
-                map[position.rank.rawValue][position.file.rawValue] = "\u{265B}"
-            case is King.Type:
-                break
-            default:
-                break
-            }
+            map[position.rank.rawValue][position.file.rawValue] = piece.icon
         }
         return map
     }

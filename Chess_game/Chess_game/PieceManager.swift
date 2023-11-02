@@ -5,24 +5,43 @@
 //  Created by 박진섭 on 10/23/23.
 //
 
-final class PieceManager {
+protocol PieceManager {
+    func move(from startPosition : Position, to destination: Position) -> [Piece]
+}
+
+final class ChessPieceManager: PieceManager {
     private var pieces: [Piece]
 
     init(_ pieces: [Piece]) {
         self.pieces = pieces
     }
 
-    func move(from startPosition : Position, to destination: Position) -> [Piece]? {
-        guard let startPieceIndex = getPieceIndex(with: startPosition) else { return nil }
-        if validateCanGo(startPosition, destination) {
-            if let destinationPiece = findPiece(destination) {
-                if destinationPiece.validateIsDifferentTeam(pieces, startPosition) {
-                    kill(destination)
-                }
+    func getCurrentTeamScores() -> TeamScore {
+        let blackTeamScore = pieces
+            .filter { $0.color == .white }
+            .filter { $0.isAlive == false }
+            .map { $0.point }
+            .reduce(0) { $0 + $1}
+
+        let whiteTeamScore = pieces
+            .filter { $0.color == .black }
+            .filter { $0.isAlive == false }
+            .map { $0.point }
+            .reduce(0) { $0 + $1}
+
+
+        return .init(black: blackTeamScore, white: whiteTeamScore)
+    }
+
+    func move(from startPosition: Position, to destination: Position) -> [Piece] {
+        guard let startPieceIndex = getPieceIndex(with: startPosition) else { return pieces }
+        if validateCanGo(from: startPosition, to: destination) {
+            if isEncounterDifferentTeam(from: startPosition, to: destination) {
+                kill(destination)
             }
+            // 말 포지션을 바꾼다.
+            pieces[startPieceIndex].position = destination
         }
-        // 말 포지션을 바꾼다.
-        pieces[startPieceIndex].position = destination
         return pieces
     }
 
@@ -31,10 +50,10 @@ final class PieceManager {
     }
 
     private func getChessPieceIndex(_ position: Position) -> Int? {
-        return pieces.firstIndex(where: { $0.position == position })
+        return pieces.filter { $0.isAlive }.firstIndex(where: { $0.position == position })
     }
 
-    private func findPiece(_ position: Position) -> Piece? {
+    private func findPiece(at position: Position) -> Piece? {
         guard let index = getChessPieceIndex(position) else { return nil }
         return pieces[index]
     }
@@ -48,14 +67,21 @@ final class PieceManager {
         pieces[index].isAlive = false
     }
 
-    private func validateCanGo(_ from: Position, _ to: Position) -> Bool {
-        guard let startPiece = findPiece(from) else { return false }
+    private func isEncounterDifferentTeam(from startPosition: Position, to destination: Position) -> Bool {
+        guard let startPiece = findPiece(at: startPosition),
+              let destinationPiece = findPiece(at: destination) else { return false }
+        let startPieceColor = startPiece.color
+        let destinationPieceColor = destinationPiece.color
+        return startPieceColor != destinationPieceColor
+    }
+
+    private func validateCanGo(from startPosition: Position, to destination: Position) -> Bool {
+        guard let startPiece = findPiece(at: startPosition) else { return false }
         let moveablePositions = getMovablePositions(startPiece)
 
-        if startPiece.isAlive && moveablePositions.contains(to) {
+        if startPiece.isAlive && moveablePositions.contains(destination) {
             return true
         }
         return false
     }
-
 }
