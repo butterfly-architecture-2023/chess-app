@@ -43,7 +43,7 @@ final class ChessAppUnitTest: XCTestCase {
     func test_게임_체스말_순서_백색먼저시작_오류() throws {
         var input = InputManager()
         var board: Board = Board(size: 8)
-        let positionInfo = input.makePositionList("A2->A3", .updatePiece)
+        let positionInfo = input.makePositionList("A2->A3", RegexFormatType.updatePiece)
         XCTAssertThrowsError(try board.checkGameTurn(positionInfo))
     }
     
@@ -51,7 +51,7 @@ final class ChessAppUnitTest: XCTestCase {
     func test_게임_체스말_순서_백색먼저시작_통과() {
         var input = InputManager()
         var board: Board = Board(size: 8)
-        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
+        let positionInfo = input.makePositionList("A7->A6", RegexFormatType.updatePiece)
         XCTAssertNoThrow(try board.checkGameTurn(positionInfo))
     }
     
@@ -59,8 +59,8 @@ final class ChessAppUnitTest: XCTestCase {
     func test_이동_가능한지_체크_오류() {
         var input = InputManager()
         let board: Board = Board(size: 8)
-        let positionInfo = input.makePositionList("A7->B7", .updatePiece)
-        XCTAssertThrowsError(try board.checkMovable(positionInfo, .updatePiece)) { error in
+        let positionInfo = input.makePositionList("A7->B7", RegexFormatType.updatePiece)
+        XCTAssertThrowsError(try board.checkMovable(positionInfo, RegexFormatType.updatePiece)) { error in
             guard case ErrorType.unableToMoveError = error else { return XCTFail() }
         }
     }
@@ -69,27 +69,27 @@ final class ChessAppUnitTest: XCTestCase {
     func test_이동_가능한지_체크_통과() {
         var input = InputManager()
         let board: Board = Board(size: 8)
-        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
-        XCTAssertNoThrow(try board.checkMovable(positionInfo, .updatePiece))
+        let positionInfo = input.makePositionList("A7->A6", RegexFormatType.updatePiece)
+        XCTAssertNoThrow(try board.checkMovable(positionInfo, RegexFormatType.updatePiece))
     }
       
     // test 9 - Board update 이후 체스말 기존 위치 체크 (empty로 변경)
     func test_체스말_이동_후_현재_위치_업데이트_체크() {
         var input = InputManager()
         var board: Board = Board(size: 8)
-        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
+        let positionInfo = input.makePositionList("A7->A6", RegexFormatType.updatePiece)
         board.updateBoard(positionInfo)
         guard let currentPosition = positionInfo.first else { return }
-        XCTAssertEqual(board.chessBoard[currentPosition]?.pieceType, .empty)
+        XCTAssertTrue(type(of: board.chessBoard[currentPosition]) == EmptySpace.self)
     }
     
     // test 10 - Board update 이후 체스말 업데이트된 위치 체크 (pawn로 변경)
     func test_체스말_이동_후_이동한_위치_업데이트_체크() {
         var input = InputManager()
         var board: Board = Board(size: 8)
-        let positionInfo = input.makePositionList("A7->A6", .updatePiece)
+        let positionInfo = input.makePositionList("A7->A6", RegexFormatType.updatePiece)
         board.updateBoard(positionInfo)
         guard let updatePosition = positionInfo.last else { return }
-        XCTAssertEqual(board.chessBoard[updatePosition]?.pieceType, .pawn)
+        XCTAssertTrue(type(of: board.chessBoard[updatePosition]) == Pawn.self)
     }
 }

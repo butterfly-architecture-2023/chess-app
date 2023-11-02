@@ -39,8 +39,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "45C18FAE2ADD13C300B05FFE"
-            BuildableName = "ChessApp"
+            BlueprintIdentifier = "4594C77F2AF29D510077907E"
+            BuildableName = "ChessApp.app"
             BlueprintName = "ChessApp"
             ReferencedContainer = "container:ChessApp.xcodeproj">
          </BuildableReference>
