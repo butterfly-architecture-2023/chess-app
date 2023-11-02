@@ -6,31 +6,114 @@
 //
 
 import XCTest
-@testable import ChessGame
 
 final class ChessGameTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    private var sut: Board!
+    
+    override func setUp() {
+        super.setUp()
+        
+        sut = Board()
+        sut.setUpPieces(type: Pawn.self)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+//    override func setUpWithError() throws {
+//    }
+//
+//    override func tearDownWithError() throws {
+//    }
+    
+    func test_board_생성후_display_확인() throws {
+        let expectedBoard = [
+            "........",
+            "♟♟♟♟♟♟♟♟",
+            "........",
+            "........",
+            "........",
+            "........",
+            "♙♙♙♙♙♙♙♙",
+            "........"
+        ]
+        
+        let result = sut.display()
+        
+        XCTAssertEqual(result, expectedBoard)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_체스말이동_성공케이스_이동할수있는가() throws {
+        sut.move(from: .init(rank: .seven, file: .A),
+                 to: .init(rank: .six, file: .A))
+        
+        let expectedBoard = [
+            "........",
+            "♟♟♟♟♟♟♟♟",
+            "........",
+            "........",
+            "........",
+            "♙.......",
+            ".♙♙♙♙♙♙♙",
+            "........"
+        ]
+        
+        let result = sut.display()
+        
+        XCTAssertEqual(result, expectedBoard)
     }
-
+    
+    func test_체스말이동_실패케이스_이동할수없는위치로_이동한경우() {
+        let expectedFalse = sut.move(from: .init(rank: .two, file: .A),
+                                     to: .init(rank: .four, file: .A))
+        
+        XCTAssertFalse(expectedFalse)
+    }
+    
+    func test_체스말이동_성공케이스_이동할때_상대말을_잘제거하는가() {
+        sut.move(from: .init(rank: .seven, file: .A),
+                 to: .init(rank: .six, file: .A))
+        sut.move(from: .init(rank: .two, file: .A),
+                 to: .init(rank: .three, file: .A))
+        sut.move(from: .init(rank: .six, file: .A),
+                 to: .init(rank: .five, file: .A))
+        sut.move(from: .init(rank: .three, file: .A),
+                 to: .init(rank: .four, file: .A))
+        sut.move(from: .init(rank: .five, file: .A),
+                 to: .init(rank: .four, file: .A))
+        
+        let expectedBoard = [
+            "........",
+            ".♟♟♟♟♟♟♟",
+            "........",
+            "♙.......",
+            "........",
+            "........",
+            ".♙♙♙♙♙♙♙",
+            "........"
+        ]
+        
+        let result = sut.display()
+        
+        XCTAssertEqual(result, expectedBoard)
+    }
+    
+    func test_점수계산_성공케이스() {
+        sut.move(from: .init(rank: .seven, file: .A),
+                 to: .init(rank: .six, file: .A))
+        sut.move(from: .init(rank: .two, file: .A),
+                 to: .init(rank: .three, file: .A))
+        sut.move(from: .init(rank: .six, file: .A),
+                 to: .init(rank: .five, file: .A))
+        sut.move(from: .init(rank: .three, file: .A),
+                 to: .init(rank: .four, file: .A))
+        sut.move(from: .init(rank: .five, file: .A),
+                 to: .init(rank: .four, file: .A))
+        
+        XCTAssertEqual(sut.getScore().black, 7)
+        XCTAssertEqual(sut.getScore().white, 8)
+    }
 }
