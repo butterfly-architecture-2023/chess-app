@@ -11,85 +11,111 @@ final class ChessBoard {
 
     // MARK: - Property
 
-    var board: [[Piece?]]
+    var pieces: [Position: Piece]
+    var currentPlayer: Color = .white
 
     // MARK: - Init
 
     /// 체스 프로그램을  초기화
     init() {
-        board = Array(
-            repeating: Array(
-                repeating: nil,
-                count: File.allCases.count
-            ),
-            count: Rank.allCases.count
-        )
+        pieces = [:]
 
-        for file in File.allCases {
-            board[Rank.two.rawValue - 1][file.rawValue] = Pawn(color: .black)
+        for rank in Rank.allCases {
+            for file in File.allCases {
+                let position = Position(rank: rank, file: file)
+                pieces[position] = nil
+            }
         }
-        board[Rank.one.rawValue - 1] = [
-            Rook(color: .black),
-            Knight(color: .black),
-            Bishop(color: .black),
-            nil,
-            Queen(color: .black),
-            Bishop(color: .black),
-            Knight(color: .black),
-            Rook(color: .black)
-        ]
-
-        for file in File.allCases {
-            board[Rank.seven.rawValue - 1][file.rawValue] = Pawn(color: .white)
-        }
-        board[Rank.eight.rawValue - 1] = [
-            Rook(color: .white),
-            Knight(color: .white),
-            Bishop(color: .white),
-            nil,
-            Queen(color: .white),
-            Bishop(color: .white),
-            Knight(color: .white),
-            Rook(color: .white)
-        ]
+        initPiecesInBoard()
     }
 
     // MARK: - Helpers
 
+    func initPiecesInBoard() {
+        for file in File.allCases {
+            pieces[Position(rank: .two, file: file)] = Pawn(color: .black)
+        }
+
+        pieces[Position(rank: .one, file: .a)] = Rook(color: .black)
+        pieces[Position(rank: .one, file: .b)] = Knight(color: .black)
+        pieces[Position(rank: .one, file: .c)] = Bishop(color: .black)
+        pieces[Position(rank: .one, file: .d)] = King(color: .black)
+        pieces[Position(rank: .one, file: .e)] = Queen(color: .black)
+        pieces[Position(rank: .one, file: .f)] = Bishop(color: .black)
+        pieces[Position(rank: .one, file: .g)] = Knight(color: .black)
+        pieces[Position(rank: .one, file: .h)] = Rook(color: .black)
+
+        for file in File.allCases {
+            pieces[Position(rank: .seven, file: file)] = Pawn(color: .white)
+        }
+
+        pieces[Position(rank: .eight, file: .a)] = Rook(color: .white)
+        pieces[Position(rank: .eight, file: .b)] = Knight(color: .white)
+        pieces[Position(rank: .eight, file: .c)] = Bishop(color: .white)
+        pieces[Position(rank: .eight, file: .d)] = King(color: .white)
+        pieces[Position(rank: .eight, file: .e)] = Queen(color: .white)
+        pieces[Position(rank: .eight, file: .f)] = Bishop(color: .white)
+        pieces[Position(rank: .eight, file: .g)] = Knight(color: .white)
+        pieces[Position(rank: .eight, file: .h)] = Rook(color: .white)
+    }
+}
+
+// MARK: - Display
+extension ChessBoard {
     /// 1-rank부터 8-rank까지 rank 문자열로 보드 위에 체스말을 리턴
     func display() -> String {
         var displayBoard = ""
         for rank in Rank.allCases {
-            displayBoard += getRankString(forRank: rank)
+            displayBoard += getRowString(forRank: rank)
         }
         print(displayBoard)
         return displayBoard
     }
 
-    private func getRankString(forRank rank: Rank) -> String {
+    private func getRowString(forRank rank: Rank) -> String {
         let rankString = "\(rank.rawValue)"
-        let pieces = board[rank.rawValue - 1].compactMap { $0?.icon ?? "." }
-        return rankString + pieces.joined() + "\n"
+        var pieceString = ""
+
+        for file in File.allCases {
+            let position = Position(rank: rank, file: file)
+            if let piece = pieces[position] {
+                pieceString.append(piece.icon.unicode)
+            } else {
+                pieceString.append(".")
+            }
+        }
+
+        return rankString + pieceString + "\n"
+    }
+}
+
+// MARK: - Move
+extension ChessBoard {
+    func movePiece(from: Position, to: Position) {
+        guard canMove(from: from, to: to) else { return }
+
+        /// player turn 변경
+        currentPlayer = (currentPlayer == .white) ? .black : .white
     }
 
-    /// 움직이려는 말이 있는 위치(from)와 이동하려는 위치(to)를 차례대로 입력받아서 말을 이동한다.
-    func movePiece(from: Position, to: Position) -> Bool {
-        let pieceAtFromPosition = board[from.rank.rawValue - 1][from.file.rawValue]
-        let pieceAtToPosition = board[to.rank.rawValue - 1][to.file.rawValue]
+    /// 움직이려는 말이 있는 위치(from)와 이동하려는 위치(to)를 입력
+    func canMove(from: Position, to: Position) -> Bool {
+        let pieceAtFromPosition = pieces[from]
+        let pieceAtToPosition = pieces[to]
 
-        return isValidPosition(from) && isValidPosition(to) &&
+        return isVaildPlayer(fromPiece: pieceAtFromPosition) &&
         isVaildColor(fromPiece: pieceAtFromPosition, toPiece: pieceAtToPosition) &&
         isDestinationEmptyOrHasDifferentColor(pieceAtToPosition, fromPieceAtFromPosition: pieceAtFromPosition) &&
         isValidRankMove(from: from, to: to)
     }
 
-    /// 체스말은 위치값은 가로 file은 A부터 H까지, 세로 rank는 1부터 8까지 입력이 가능하다.
-    private func isValidPosition(_ position: Position) -> Bool {
-        return (1...Rank.allCases.count).contains(position.rank.rawValue) && (
-            0..<File.allCases.count).contains(position.file.rawValue)
+    /// 현재 턴의 color와 움직이려는 말의 color가 같은지
+    private func isVaildPlayer(fromPiece: Piece?) -> Bool {
+        guard currentPlayer == fromPiece?.color else { return false }
+        return true
     }
 
-    /// from과 to의 체스말은 동일할 수 없다.
+    /// from과 to의 체스말은 동일 여부
     private func isVaildColor(fromPiece: Piece?, toPiece: Piece?) -> Bool {
         if toPiece == nil {
             return true
@@ -97,7 +123,7 @@ final class ChessBoard {
         return fromPiece?.color != toPiece?.color
     }
 
-    /// 같은 색상의 말이 to 위치에 다른 말이 이미 있으면 옮길 수 없다.
+    ///  to 위치에 같은 색상의 말이 이미 있으면 옮길 수 없는지
     private func isDestinationEmptyOrHasDifferentColor(
         _ toPiece: Piece?, fromPieceAtFromPosition: Piece?
     ) -> Bool {
@@ -112,7 +138,7 @@ final class ChessBoard {
         let fromRank = from.rank.rawValue
         let toRank = to.rank.rawValue
 
-        guard let fromPiece = board[from.rank.rawValue - 1][from.file.rawValue] else {
+        guard let fromPiece = pieces[from] else {
             return false
         }
 

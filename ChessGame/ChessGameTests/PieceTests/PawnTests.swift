@@ -24,10 +24,9 @@ final class PawnTests: XCTestCase {
         super.tearDown()
     }
 
-    /// 체스말 종류별로 최대 개수와 비교
-    func test_checkMaxPieceCount() {
-        let blackPawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Pawn)?.color == .black }.count
-        let whitePawnsCount = sut.board.flatMap { $0 }.filter { ($0 as? Pawn)?.color == .white }.count
+    func test_Pawn_최대_개수_비교() {
+        let blackPawnsCount = sut.pieces.values.filter { ($0 as? Pawn)?.color == .black }.count
+        let whitePawnsCount = sut.pieces.values.filter { ($0 as? Pawn)?.color == .white }.count
 
         XCTAssertEqual(blackPawnsCount, Pawn(color: .black).maxCount)
         XCTAssertEqual(whitePawnsCount, Pawn(color: .white).maxCount)

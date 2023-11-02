@@ -9,38 +9,37 @@ import XCTest
 @testable import ChessGame
 
 final class ChessGameTests: XCTestCase {
-
+    
     private var sut: ChessBoard!
-
+    
     override func setUp() {
         sut = ChessBoard()
         super.setUp()
     }
-
+    
     override func tearDown() {
         sut = nil
         super.tearDown()
     }
-
-    /// display() 함수는 1-rank부터 8-rank까지 rank 문자열 배열로 보드 위에 체스말을 리턴한다.
-    func test_displayReturnsChessBoardState() {
+    
+    func test_display함수는_1rank부터_8rank까지_문자열_배열로_체스말을_리턴하는지() {
         let display = sut.display()
         let displayLines = display.components(separatedBy: "\n").dropLast()
-
+        
         XCTAssertEqual(displayLines.count, 8)
-
+        
         for rank in 0..<displayLines.count {
-            let rankString = getExpectedRankString(forRank: Rank.allCases[rank])
+            let rankString = getExpectedRowString(forRank: Rank.allCases[rank])
             XCTAssertEqual(displayLines[rank], rankString)
         }
     }
-
-    /// 초기화할 때 1,2-rank는 흑백 체스말이, 7,8-rank는 백색 체스말이 위치한다.
-    func test_InitialBoardSetup() {
+    
+    func test_초기화_1과2rank는_흑백_체스말_7과8rank는_백색_체스말이_위치하는지() {
         for rank in Rank.allCases {
             for file in File.allCases {
-                let piece = sut.board[rank.rawValue - 1][file.rawValue]
-
+                let position = Position(rank: rank, file: file)
+                let piece = sut.pieces[position]
+                
                 let expectedColor: Color
                 if rank == .one || rank == .two {
                     expectedColor = .black
@@ -49,32 +48,59 @@ final class ChessGameTests: XCTestCase {
                 } else {
                     continue
                 }
-
-                let shouldBeNil = file == .d && (rank == .one || rank == .eight)
-
-                if shouldBeNil {
-                    XCTAssertNil(piece)
-                } else {
-                    XCTAssertNotNil(piece)
-                    XCTAssertEqual(piece?.color, expectedColor)
-                }
+                
+                XCTAssertNotNil(piece)
+                XCTAssertEqual(piece?.color, expectedColor)
             }
         }
     }
+    
+    func test_현재_턴의_체스말과_움직이려는_체스말의_색상이_동일한지() {
+        let currentTurn = sut.currentPlayer
+        let fromPosition = Position(rank: .seven, file: .a)
+        
+        if let fromPiece = sut.pieces[fromPosition] {
+            XCTAssertTrue(currentTurn == fromPiece.color)
+        }
+    }
+    
+    func test_to위치에_같은_색상의_채스말이_있으면_옮길_수_없는지() {
+        let fromPosition = Position(rank: .eight, file: .a)
+        let toPosition = Position(rank: .seven, file: .a)
+        XCTAssertFalse(sut.canMove(from: fromPosition, to: toPosition))
+    }
 
-    /// 특정 말을 옮기는 메소드 유효성 테스트
-    func test_movePiece() {
+    func test_백색은_큰_rank에서_작은_rank로_이동하는지() {
+        sut.currentPlayer = .white
+
+        let fromPosition = Position(rank: .seven, file: .a)
+        let toPosition = Position(rank: .six, file: .a)
+        XCTAssertTrue(sut.canMove(from: fromPosition, to: toPosition))
+    }
+
+    func test_흑색은_작은_rank에서_큰_rank로_이동하는지() {
+        sut.currentPlayer = .black
+
         let fromPosition = Position(rank: .two, file: .a)
         let toPosition = Position(rank: .three, file: .a)
-        XCTAssertTrue(sut.movePiece(from: fromPosition, to: toPosition))
+        XCTAssertTrue(sut.canMove(from: fromPosition, to: toPosition))
     }
 }
 
 // MARK: - Helpers
 extension ChessGameTests {
-    private func getExpectedRankString(forRank rank: Rank) -> String {
+    private func getExpectedRowString(forRank rank: Rank) -> String {
         let rankString = "\(rank.rawValue)"
-        let pieces = sut.board[rank.rawValue - 1].compactMap { $0?.icon ?? "." }
-        return rankString + pieces.joined()
+        var pieces = ""
+
+        for file in File.allCases {
+            let position = Position(rank: rank, file: file)
+            if let piece = sut.pieces[position] {
+                pieces.append(piece.icon.unicode)
+            } else {
+                pieces.append(".")
+            }
+        }
+        return rankString + pieces
     }
 }

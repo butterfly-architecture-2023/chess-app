@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Piece {
-    var icon: String { get }
+    var icon: PieceIcon { get }
     var color: Color { get }
     var maxCount: Int { get }
     var score: Int { get }
