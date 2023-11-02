@@ -12,26 +12,24 @@
 // PieceManager: 게임 종류별 Piece를 만들어줌.
 // Piece: 현재 위치 정보와 움직일 수 있는 곳의 정보를 리턴
 
-enum GameType {
-    case chess
+protocol Game {
+    static var boardCreator: BoardCreator.Type { get }
+    var board: Board { get }
+    func start()
+    func move(from startPosition : Position, to destination: Position)
 }
 
-final class Game {
-    private var board: Board?
+final class ChessGame: Game {
+    static private(set) var boardCreator: BoardCreator.Type = ChessBoardFactory.self
+    private(set) var board: Board = ChessBoard([])
 
-    func start(_ type: GameType) {
-        let pieces = PieceFactory.createPieces(type)
-        switch type {
-        case .chess:
-            self.board = .init(pieces: pieces)
-        }
+    func start() {
+        let chessBoard = Self.boardCreator.createBoard()
+        self.board = chessBoard
     }
 
-    // TODO: 움직인 결과가 nil일 경우 다시 입력을 받음.
     func move(from startPosition : Position, to destination: Position) {
-        if let result = board?.move(from: startPosition, to: destination) {
-            print(result)
-        }
+        let result = board.move(from: startPosition, to: destination)
+        print(result)
     }
-
 }

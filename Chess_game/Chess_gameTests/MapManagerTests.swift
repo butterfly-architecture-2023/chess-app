@@ -36,17 +36,29 @@ final class MapManagerTests: XCTestCase {
     }
 
     func test_display_기본_체스말_세팅되었을때() {
-        let defaultChessPieces = PieceFactory.createPieces(.chess)
+        let pieceCreators: [PieceCreator.Type] = [
+            PawnFactory.self,
+            RookFactory.self,
+            KnightFactory.self,
+            BishopFactory.self,
+            QueenFactory.self,
+            KingFactory.self,
+        ]
+        var defaultChessPieces: [Piece] = []
+        for creator in pieceCreators {
+            defaultChessPieces.append(contentsOf: creator.createDefaultPieces())
+        }
+
         let map = sut.makeMap(defaultChessPieces)
         let expectedMap: [[String]] =
-        [["♜", "♞", "♝", ".", "♛", "♝", "♞", "♜"],
+        [["♜", "♞", "♝", "♚", "♛", "♝", "♞", "♜"],
          ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
          [".", ".", ".", ".", ".", ".", ".", "."],
          [".", ".", ".", ".", ".", ".", ".", "."],
          [".", ".", ".", ".", ".", ".", ".", "."],
          [".", ".", ".", ".", ".", ".", ".", "."],
          ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
-         ["♖", "♘", "♗", ".", "♕", "♗", "♘", "♖"]]
+         ["♖", "♘", "♗", "♔", "♕", "♗", "♘", "♖"]]
         XCTAssertEqual(map, expectedMap)
     }
 

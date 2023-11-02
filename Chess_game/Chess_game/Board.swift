@@ -5,28 +5,32 @@
 //  Created by 박진섭 on 10/15/23.
 //
 
-struct Position: Hashable {
-    let rank: Rank
-    let file: File
+protocol Board {
+    var pieceManager: ChessPieceManager { get }
+    var mapManager: MapManager { get }
+    func getCurrentTeamScores() -> TeamScore 
+    func move(from startPosition : Position, to destination: Position) -> MoveResult
+    init(_ pieces: [Piece])
 }
 
-final class Board {
-    private let pieceManager: PieceManager
-    private let mapManager: MapManager = .init()
+final class ChessBoard: Board {
+    private(set) var pieceManager: ChessPieceManager
+    private(set) var mapManager: MapManager = .init()
 
-    init(pieces: [Piece]) {
-        self.pieceManager = PieceManager(pieces)
+    init(_ pieces: [Piece]) {
+        self.pieceManager = ChessPieceManager(pieces)
         self.mapManager.makeMap(pieces)
     }
     
-    func move(from startPosition : Position, to destination: Position) -> String? {
-        if let moveResult = pieceManager.move(from: startPosition, to: destination) {
-            let map = mapManager.makeMap(moveResult)
-            mapManager.resetPiece(position: startPosition)
-            return convertMapToDisplay(map)
-        } else {
-            return nil
-        }
+    func getCurrentTeamScores() -> TeamScore {
+        return pieceManager.getCurrentTeamScores()
+    }
+
+    func move(from startPosition : Position, to destination: Position) -> MoveResult {
+        let movedPieces = pieceManager.move(from: startPosition, to: destination)
+        let map = mapManager.makeMap(movedPieces)
+        mapManager.resetPiece(position: startPosition)
+        return .init(pieces: movedPieces, teamScore: getCurrentTeamScores())
     }
 
     private func convertMapToDisplay(_ map: [[String]]) -> String {
@@ -40,26 +44,3 @@ final class Board {
         return board
     }
 }
-
-enum Rank: Int, CaseIterable {
-    case one
-    case two
-    case three
-    case four
-    case five
-    case six
-    case seven
-    case eight
-}
-
-enum File: Int, CaseIterable {
-    case A
-    case B
-    case C
-    case D
-    case E
-    case F
-    case G
-    case H
-}
-

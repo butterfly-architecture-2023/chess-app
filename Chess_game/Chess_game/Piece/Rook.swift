@@ -5,96 +5,36 @@
 //  Created by 박진섭 on 10/25/23.
 //
 
-// TODO: 중복 부분 쪼개기, 코드 개선
-struct Rook: Piece {
-    var color: PieceColor
+protocol Rook: Piece { }
+extension Rook {
+    var point: Int { 5 }
+    func getMoveablePositions(pieces: [Piece]) -> [Position] {
+        var positions: [Position] = []
+
+        let lefts: [Position] = getMovablePositionsWithDirection(pieces: pieces, .left)
+        let rights: [Position] = getMovablePositionsWithDirection(pieces: pieces, .right)
+        let bottoms: [Position] = getMovablePositionsWithDirection(pieces: pieces, .bottom)
+        let tops: [Position] = getMovablePositionsWithDirection(pieces: pieces, .top)
+
+        positions.append(contentsOf: lefts)
+        positions.append(contentsOf: rights)
+        positions.append(contentsOf: bottoms)
+        positions.append(contentsOf: tops)
+
+        return positions
+    }
+}
+
+struct BlackRook: Rook {
+    var color: PieceColor = .black
     var isAlive: Bool = true
     var position: Position
+    var icon: String = "\u{265C}"
+}
 
-    func getMoveablePositions(pieces: [Piece]) -> [Position] {
-        var moveablePositions: [Position] = []
-        let currentRankRawValue = position.rank.rawValue
-        let currentFileRawValue = position.file.rawValue
-
-        // 왼쪽으로 다른 말을 발견할때까지 계속
-        for i in 1...File.allCases.count - currentFileRawValue {
-            if let rank = Rank(rawValue: currentRankRawValue),
-               let file = File(rawValue: currentFileRawValue - i) {
-                if let foundPiece = findPiece(pieces: pieces, with: .init(rank: rank, file: file)) {
-                    // 같은 색상일 경우 이전 까지 추가
-                    if foundPiece.color == self.color {
-                        break
-                    } else {
-                        // 다른 색상일 경우 여기까지 추가
-                        moveablePositions.append(.init(rank: rank, file: file))
-                        break
-                    }
-                }
-                moveablePositions.append(.init(rank: rank, file: file))
-            } else {
-                break
-            }
-        }
-
-        // 오른쪽으로 다른 말을 발견할때까지 계속
-        for i in 1...File.allCases.count - currentFileRawValue {
-            if let rank = Rank(rawValue: currentRankRawValue),
-               let file = File(rawValue: currentFileRawValue + i) {
-                if let foundPiece = findPiece(pieces: pieces, with: .init(rank: rank, file: file)) {
-                    // 같은 색상일 경우 이전 까지 추가
-                    if foundPiece.color == self.color {
-                        break
-                    } else {
-                        // 다른 색상일 경우 여기까지 추가
-                        moveablePositions.append(.init(rank: rank, file: file))
-                        break
-                    }
-                }
-                moveablePositions.append(.init(rank: rank, file: file))
-            } else {
-                break
-            }
-        }
-
-        // 위쪽으로 다른 말을 발견할때까지 계속
-        for i in 1...Rank.allCases.count - currentRankRawValue {
-            if let rank = Rank(rawValue: currentRankRawValue + i),
-               let file = File(rawValue: currentFileRawValue) {
-                if let foundPiece = findPiece(pieces: pieces, with: .init(rank: rank, file: file)) {
-                    // 같은 색상일 경우 이전 까지 추가
-                    if foundPiece.color == self.color {
-                        break
-                    } else {
-                        // 다른 색상일 경우 여기까지 추가
-                        moveablePositions.append(.init(rank: rank, file: file))
-                        break
-                    }
-                }
-                moveablePositions.append(.init(rank: rank, file: file))
-            } else {
-                break
-            }
-        }
-
-        // 아래으로 다른 말을 발견할때까지 계속
-        for i in 1...Rank.allCases.count - currentRankRawValue {
-            if let rank = Rank(rawValue: currentRankRawValue - i),
-               let file = File(rawValue: currentFileRawValue) {
-                if let foundPiece = findPiece(pieces: pieces, with: .init(rank: rank, file: file)) {
-                    // 같은 색상일 경우 이전 까지 추가
-                    if foundPiece.color == self.color {
-                        break
-                    } else {
-                        // 다른 색상일 경우 여기까지 추가
-                        moveablePositions.append(.init(rank: rank, file: file))
-                        break
-                    }
-                }
-                moveablePositions.append(.init(rank: rank, file: file))
-            } else {
-                break
-            }
-        }
-        return moveablePositions
-    }
+struct WhiteRook: Rook {
+    var color: PieceColor = .white
+    var isAlive: Bool = true
+    var position: Position
+    var icon: String = "\u{2656}"
 }
