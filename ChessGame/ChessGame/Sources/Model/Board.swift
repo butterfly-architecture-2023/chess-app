@@ -12,8 +12,8 @@ final class Board {
     // MARK: - property
     
     // PRIVATE
-    private var squares: [[(any Piece)?]] = []
-    private(set) var turn: PieceColor = .white
+    private(set) var squares: [[(any Piece)?]] = []
+    private var turn: PieceColor = .white
     
     // MARK: - initialize
     
@@ -35,6 +35,15 @@ extension Board {
                 self.squares[coordinate.rank.rawValue][coordinate.file.rawValue] = piece
             }
         }
+    }
+    
+    func movableCoordinates(from coordinate: PieceCoordinate) -> [PieceCoordinate] {
+        guard
+            let piece = piece(at: coordinate),
+            piece.color == self.turn
+        else { return [] }
+        
+        return piece.availableMovingCoordinates(from: coordinate, on: self.squares)
     }
     
     func display() -> [String] {

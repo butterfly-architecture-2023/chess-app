@@ -27,8 +27,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .yellow
+        let viewController = BoardVC()
         
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
