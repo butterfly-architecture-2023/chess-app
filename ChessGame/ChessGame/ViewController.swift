@@ -19,9 +19,9 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let rows = 8
-    let columns = 8
-    let tileSize: CGFloat = 44.0  // 원하는 타일 크기로 조절
+    let rows = Position.rankMap.count
+    let columns = Position.fileMap.count
+    let tileSize: CGFloat = 44.0
     
     private var board = Board()
     
@@ -38,14 +38,14 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         applyInitialSnapshot()
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         collectionView.allowsMultipleSelection = true
         collectionView.delegate = self
         collectionView.collectionViewLayout = createLayout()
         collectionView.register(PieceCollectionViewCell.self, forCellWithReuseIdentifier: "PieceCollectionViewCell")
     }
     
-    func createLayout() -> UICollectionViewLayout {
+    private func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0/CGFloat(columns)),
                                               heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -53,8 +53,8 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                            repeatingSubitem: item,
-                                                            count: columns)
+                                                       repeatingSubitem: item,
+                                                       count: columns)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 0
@@ -64,7 +64,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         return layout
     }
     
-    func configureDataSource() {
+    private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { [self] (collectionView, indexPath, item) -> UICollectionViewCell? in
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PieceCollectionViewCell", for: indexPath) as! PieceCollectionViewCell
@@ -82,7 +82,7 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         }
     }
     
-    func applyInitialSnapshot() {
+    private func applyInitialSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.main])
         
@@ -95,5 +95,45 @@ class ViewController: UIViewController, UICollectionViewDelegateFlowLayout {
         snapshot.appendItems(items, toSection: .main)
         
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+extension ViewController: UICollectionViewDelegate {
+    
+    // 입력 : select
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        deselectAllItems(in: collectionView)
+        
+        defer { collectionView.deselectItem(at: indexPath, animated: true) }
+        
+        let columns = Position.fileMap.count
+        let actualRow = indexPath.item / columns
+        let actualColumn = indexPath.item % columns
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PieceCollectionViewCell else {
+            return
+        }
+        
+        // 출력 : 체스말이 이동할 수 있는 영역 selected 상태로 변경(UI 변경)
+        let item = board.square[actualRow][actualColumn]
+        
+        if let position = Position(file: actualColumn, rank: actualRow),
+           let positions = cell.piece?.movablePositions(current: position) {
+            
+            for pos in positions {
+                let index = IndexPath(item: (pos.rank * columns) + pos.file, section: 0)
+                if let cell = collectionView.cellForItem(at: index) as? PieceCollectionViewCell {
+                    collectionView.selectItem(at: index, animated: false, scrollPosition: .centeredHorizontally)
+                }
+            }
+        }
+    }
+    
+    private func deselectAllItems(in collectionView: UICollectionView) {
+        if let selectedIndexPaths = collectionView.indexPathsForSelectedItems {
+            for indexPath in selectedIndexPaths {
+                collectionView.deselectItem(at: indexPath, animated: false)
+            }
+        }
     }
 }
